@@ -2284,7 +2284,7 @@
             "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
             "keywords": [
                 "dotenv",
-                "env",
+                "env.example",
                 "environment"
             ],
             "time": "2018-07-01T10:25:50+00:00"

@@ -20,3 +20,7 @@ Route::get('/login', function () {
 Route::post('/signin', function () {
     return view('welcome');
 });
+
+Route::get('/maintenance',function(){
+  return view('maintenance.mCandidates');
+});

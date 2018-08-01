@@ -35,6 +35,9 @@
     <!-- Custom Files -->
     <link href="public/css/helper.css" rel="stylesheet" type="text/css" />
     <link href="public/css/customStyles.css" rel="stylesheet" type="text/css" />
+
+    <!-- DataTables -->
+    <link href="public/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="theme-red fixed-left">

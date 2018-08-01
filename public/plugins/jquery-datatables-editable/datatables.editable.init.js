@@ -18,7 +18,7 @@
 
 		options: {
 			addButton: '#addToTable',
-			table: '#datatable-editable',
+			table: '.datatable-editable',
 			dialog: {
 				wrapper: '#dialog',
 				cancelButton: '#dialogCancel',

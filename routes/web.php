@@ -18,3 +18,15 @@ Route::get('/', function () {
 Route::get('/tSP', function () {
     return view('tSP');
 });
+
+Route::get('/login', function () {
+    return view('Login.login');
+});
+
+Route::post('/signin', function () {
+    return view('welcome');
+});
+
+Route::get('/maintenance',function(){
+  return view('maintenance.mCandidates');
+});

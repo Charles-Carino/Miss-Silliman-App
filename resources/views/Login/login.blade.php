@@ -23,7 +23,7 @@
                         <a href="#">Register</a>
                     </div>
                     <div class="title m-b-md">
-                        Miss Silliman App
+                        Miss Silliman
                     </div>
                     <form class="form-horizontal m-t-20" method="POST" action="{{url('/signin')}}">
                         {{ csrf_field() }}

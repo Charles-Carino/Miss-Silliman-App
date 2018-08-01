@@ -29,6 +29,7 @@
 <script src="public/js/detect.js"></script>
 <script src="public/js/fastclick.js"></script>
 <script src="public/js/jquery.blockUI.js"></script>
+<script src="public/js/bootstrap.js"></script>
 
 </body>
 

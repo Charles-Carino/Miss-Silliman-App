@@ -3,23 +3,77 @@
 @section('content')
 <section class="content">
     <div class="container">
+        <div class="row col-md-12 align-center">
+            <h1> PRESS LAUNCH </h1>
+        </div>
         <div class="row col-md-12">
-            <div class="col-md-3">
-                <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action active" id="list-ccs" data-toggle="list" href="#list-home" role="tab" aria-controls="CCS">CCS</a>
+        <div class="col-md-3"></div>
+            <div class="tabs-vertical-env col-md-6"> 
+                <ul class="nav tabs-vertical">
                     @for( $i=0 ; $i<=12 ; $i++)
-                    <a class="list-group-item list-group-item-action" id=list-{{$i}} data-toggle="list" href=#{{$i}} role="tab" aria-controls={{$i}}>{{$i}}</a>
+                        @if($i==0)
+                            <li class="active">
+                                <a href=#list-{{$i}} data-toggle="tab" aria-expanded="false">{{$i}}</a>
+                            </li> 
+                        @else
+                            <li class="">
+                                <a href=#list-{{$i}} data-toggle="tab" aria-expanded="false">{{$i}}</a>
+                            </li>
+                        @endif
                     @endfor
-                </div>
+                </ul> 
+                <div class="tab-content" style="padding:100px"> 
+                    @for( $i=0 ; $i<=12 ; $i++)
+                        @if($i==0)
+                            <div class="tab-pane active width-auto" id=list-{{$i}}> 
+                                <div class="card" style="padding : 20px">
+                                    <div class="align-center">
+                                        <img 
+                                            class="card-img-top" 
+                                            src="public/css/images/testImg.jpg" 
+                                            alt="Card image cap"
+                                            style="height : 250px; width : 250px; border-radius : 50%">
+                                    </div>
+                                    <div class="card-body">
+                                        <h3 class="card-title">COLLEGE OF {{$i}}</h3>
+                                        <h5 class="card-title">NAME {{$i}}</h5>
+                                        <div class="input-group input-group-lg">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-lg">SCORE</span>
+                                        </div>
+                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        @else
+                            <div class="tab-pane width-auto" id=list-{{$i}}> 
+                                <div class="card col-sm-12" style="padding : 20px">
+                                    <div class="align-center">
+                                        <img 
+                                            class="card-img-top" 
+                                            src="public/css/images/testImg.jpg" 
+                                            alt="Card image cap"
+                                            style="height : 250px; width : 250px; border-radius : 50%">
+                                    </div>
+                                    <div class="card-body">
+                                        <h3 class="card-title">COLLEGE OF {{$i}}</h3>
+                                        <h5 class="card-title">NAME {{$i}}</h5>
+                                        <div class="input-group input-group-lg">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-lg">SCORE</span>
+                                        </div>
+                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        @endif
+                    @endfor
+                    <div class="col-md-2"></div>
+                </div> 
             </div>
-            <div class="col-md-9">
-                <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">HOME</div>
-                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">PROFILE</div>
-                <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">MSG</div>
-                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">SETTINGS</div>
-                </div>
-            </div>
+        <div class="col-md-3"></div>
         </div>
     </div> <!-- container -->
 </section>
@@ -102,4 +156,10 @@
         </div>
     </div>
 </div>
+
 @endsection
+
+<script src="public/js/bootstrap.js"></script>
+<script>
+
+</script>

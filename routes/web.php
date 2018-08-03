@@ -14,17 +14,27 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/tabulations', function () {
+
+Route::get('/tabulations_specialProjects', function () {
     return view('tabulations.tSP');
+});
+
+Route::get('/tabulations_speech', function () {
     return view('tabulations.tSpeech');
+});
+
+Route::get('/tabulations_talent', function () {
     return view('tabulations.tTalent');
 });
+
 Route::get('/login', function () {
     return view('Login.login');
 });
+
 Route::post('/signin', function () {
     return view('welcome');
 });
+
 Route::get('/maintenance',function(){
   return view('maintenance.mCandidates');
 });

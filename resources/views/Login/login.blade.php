@@ -37,7 +37,7 @@
       <!-- START Login Background Pic Wrapper-->
       <div class="bg-pic">
         <!-- START Background Pic-->
-        <img src="public/img/demo/LoginBackground.jpg" data-src="public/img/demo/LoginBackground.jpg" data-src-retina="public/img/demo/LoginBackground.jpg"  alt="" class="lazy">
+        <img src="public/img/demo/LoginBackground.jpg" data-src="public/img/demo/LoginBackground.jpg" data-src-retina="public/img/demo/LoginBackground.jpg" style={width: 100%;} alt="" class="lazy">
         <!-- END Background Pic-->
         <!-- START Background Caption-->
         <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
@@ -52,7 +52,7 @@
       </div>
       <!-- END Login Background Pic Wrapper-->
       <!-- START Login Right Container-->
-      <div class="login-container bg-white">
+      <div class="login-container bg-white" size={opacity: 0.7;}>
         <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
           <p> LOGO HERE </p>
           <p class="p-t-35">Log into your pages account</p>
@@ -99,11 +99,5 @@
     <script src="public/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
     <!-- END VENDOR JS -->
     <script src="public/pages/js/pages.min.js"></script>
-    <script>
-    $(function()
-    {
-      $('#form-login').validate()
-    })
-    </script>
   </body>
 </html>

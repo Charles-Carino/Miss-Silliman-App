@@ -1,6 +1,3 @@
-<?php
-
-?>
 @extends('layouts.master')
 
 @section('content')
@@ -11,29 +8,29 @@
         </div>
         <div class="row col-md-12">
         <div class="col-md-3"></div>
-            <div class="tabs-vertical-env col-md-6"> 
+            <div class="tabs-vertical-env col-md-6">
                 <ul class="nav tabs-vertical">
                     @for( $i=0 ; $i<=12 ; $i++)
                         @if($i==0)
                             <li class="active">
                                 <a href=#list-{{$i}} data-toggle="tab" aria-expanded="false">{{$i}}</a>
-                            </li> 
+                            </li>
                         @else
                             <li class="">
                                 <a href=#list-{{$i}} data-toggle="tab" aria-expanded="false">{{$i}}</a>
                             </li>
                         @endif
                     @endfor
-                </ul> 
-                <div class="tab-content" style="padding:100px"> 
+                </ul>
+                <div class="tab-content" style="padding:100px">
                     @for( $i=0 ; $i<=12 ; $i++)
                         @if($i==0)
-                            <div class="tab-pane active width-auto" id=list-{{$i}}> 
+                            <div class="tab-pane active width-auto" id=list-{{$i}}>
                                 <div class="card" style="padding : 20px">
                                     <div class="align-center">
-                                        <img 
-                                            class="card-img-top" 
-                                            src="public/css/images/testImg.jpg" 
+                                        <img
+                                            class="card-img-top"
+                                            src="public/css/images/testImg.jpg"
                                             alt="Card image cap"
                                             style="height : 250px; width : 250px; border-radius : 50%">
                                     </div>
@@ -48,14 +45,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                         @else
-                            <div class="tab-pane width-auto" id=list-{{$i}}> 
+                            <div class="tab-pane width-auto" id=list-{{$i}}>
                                 <div class="card col-sm-12" style="padding : 20px">
                                     <div class="align-center">
-                                        <img 
-                                            class="card-img-top" 
-                                            src="public/css/images/testImg.jpg" 
+                                        <img
+                                            class="card-img-top"
+                                            src="public/css/images/testImg.jpg"
                                             alt="Card image cap"
                                             style="height : 250px; width : 250px; border-radius : 50%">
                                     </div>
@@ -70,11 +67,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                         @endif
                     @endfor
                     <div class="col-md-2"></div>
-                </div> 
+                </div>
             </div>
         <div class="col-md-3"></div>
         </div>
@@ -161,8 +158,3 @@
 </div>
 
 @endsection
-
-<script src="public/js/bootstrap.js"></script>
-<script>
-
-</script>

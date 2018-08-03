@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tSP', function () {
-    return view('tSP');
+Route::get('/tabulations_specialProjects', function () {
+    return view('tabulations.tSP');
 });
 
 Route::get('/login', function () {

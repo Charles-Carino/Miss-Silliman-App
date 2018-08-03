@@ -1,3 +1,30 @@
+<?php
+    $collegeCode = ["CBA","CAS","MED","HS","CED","MASSCOMM","COPVA","GRAD","IRS","NURSING"];
+    $name = [
+        "Mikhaella",
+        "Christine",
+        "Oghogho",
+        "Erica",
+        "Shannel",
+        "Ivy",
+        "Chanel",
+        "Yihui",
+        "Amidala",
+        "Gabrielle"
+    ];
+    $picSrc = [
+        "public/css/images/CBA.png",
+        "public/css/images/CAS.png",
+        "public/css/images/MED.png",
+        "public/css/images/HS.png",
+        "public/css/images/CED.png",
+        "public/css/images/MC.png",
+        "public/css/images/COPVA.png",
+        "public/css/images/GRAD.png",
+        "public/css/images/IRS.png",
+        "public/css/images/NURSING.png",
+    ];
+?>
 @extends('layouts.master')
 
 @section('content')
@@ -21,7 +48,7 @@
                         </a>
                     </li>
                     <li class="tab">
-                        <a href="#prePageant" data-toggle="tab" aria-expanded="true">
+                        <a href="#prePageant" data-toggle="tab" aria-expanded="false">
                             <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
                             <span class="hidden-xs">Pre-Pageant</span>
                         </a>
@@ -33,48 +60,43 @@
                         </a>
                     </li>
                 </ul>
+
                 <div class="tab-content col-lg-12">
-                    <div class="tab-pane active" id="candidateInfo">
-                      <div class="col-lg-4">
-                          <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
-                            <div class="info-box-4">
-                              <div class="icon">
-                                  <img src="public/css/images/testImg.jpg" width="72" height="72" alt="User" style="border-radius: 50%;"/>
+                      <div class="tab-pane active" id="candidateInfo">
+                        @for( $i=0 ; $i<=9 ; $i++)
+                            @if($i==0)
+                        <div class="col-lg-4">
+                            <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
+                              <div class="info-box-4">
+                                <div class="icon">
+                                    <img src={{$picSrc[$i]}} width="72" height="72" alt="User" style="border-radius: 50%;"/>
+                                </div>
+                                <div class="content">
+                                    <div class="text">{{$collegeCode[$i]}}</div>
+                                    <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">{{$name[$i]}}</div>
+                                </div>
                               </div>
-                              <div class="content">
-                                  <div class="text">College of Computer Studies</div>
-                                  <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">Angel Ross</div>
-                              </div>
-                            </div>
-                        </a>
-                      </div>
-                      <div class="col-lg-4">
-                          <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
-                            <div class="info-box-4">
-                              <div class="icon">
-                                  <img src="public/css/images/testImg.jpg" width="72" height="72" alt="User" style="border-radius: 50%;"/>
-                              </div>
-                              <div class="content">
-                                  <div class="text">College of Computer Studies</div>
-                                  <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">Angel Ross</div>
-                              </div>
-                            </div>
-                        </a>
-                      </div>
-                      <div class="col-lg-4">
-                          <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
-                            <div class="info-box-4">
-                              <div class="icon">
-                                  <img src="public/css/images/testImg.jpg" width="72" height="72" alt="User" style="border-radius: 50%;"/>
-                              </div>
-                              <div class="content">
-                                  <div class="text">College of Computer Studies</div>
-                                  <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">Angel Ross</div>
-                              </div>
-                            </div>
-                        </a>
-                      </div>
-                    </div>
+                          </a>
+                        </div>
+
+                      @else
+                          <div class="col-lg-4">
+                              <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
+                                <div class="info-box-4">
+                                  <div class="icon">
+                                      <img src={{$picSrc[$i]}} width="72" height="72" alt="User" style="border-radius: 50%;"/>
+                                  </div>
+                                  <div class="content">
+                                      <div class="text">{{$collegeCode[$i]}}</div>
+                                      <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">{{$name[$i]}}</div>
+                                  </div>
+                                </div>
+                            </a>
+                          </div>
+                          @endif
+                          @endfor
+                        </div>
+
                     <div class="tab-pane" id="pressLaunch">
                       <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
                       <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
@@ -143,7 +165,6 @@
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
                     </div>
                 </div>
-            </div>
           </div> <!-- container -->
       </div> <!-- content -->
   </div>

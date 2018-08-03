@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tSP', function () {
-    return view('tSP');
+Route::get('/tabulations', function () {
+    return view('tabulations.tSP');
+    return view('tabulations.tSpeech');
+    return view('tabulations.tTalent');
 });
 
 Route::get('/login', function () {
@@ -26,7 +28,6 @@ Route::get('/login', function () {
 Route::post('/signin', function () {
     return view('welcome');
 });
-
 Route::get('/maintenance',function(){
   return view('maintenance.mCandidates');
 });

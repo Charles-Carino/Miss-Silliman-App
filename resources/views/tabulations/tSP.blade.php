@@ -102,7 +102,14 @@
             </div>
             <div class="col-md-3"></div>
         </div>
-        <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
+
+
+
+        <div class="row col-md-12 align-center" style="padding : 50px">
+            <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
+                <button type="button" class="btn btn-link waves-effect btn-success">SAVE CHANGES</button>
+            </a>
+        </div>
     </div> <!-- container -->
 </section>
 
@@ -111,7 +118,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="defaultModalLabel">Angel Ross</h4> <!-- Should be modified-->
+                <h4 class="modal-title" id="defaultModalLabel">TABULATION</h4> <!-- Should be modified-->
             </div>
             <div class="modal-body">
               <div class="row">

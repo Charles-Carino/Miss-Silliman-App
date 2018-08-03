@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login.login');
 });
 
 Route::get('/tabulations_specialProjects', function () {
@@ -28,10 +28,10 @@ Route::get('/tabulations_talent', function () {
 });
 
 Route::get('/login', function () {
-    return view('Login.login');
+    return view('login.login');
 });
 
-Route::post('/signin', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 

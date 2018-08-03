@@ -57,7 +57,7 @@
           <p> LOGO HERE </p>
           <p class="p-t-35">Log into your pages account</p>
           <!-- START Login Form -->
-          <form id="form-login" class="p-t-15" method="POST" action="{{url('/')}}">
+          <form id="form-login" class="p-t-15" method="get" action={{url('/welcome')}}>
             <!-- START Form Control-->
             <div class="form-group form-group-default">
               <label>Username</label>

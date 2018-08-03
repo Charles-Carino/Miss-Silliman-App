@@ -73,7 +73,7 @@
               <div class="navbar-right">
                   <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                   <a href="javascript:void(0);" class="bars"></a>
-                  <a class="navbar-brand" href="{{url('/login')}}">Login</a>
+                  <a class="navbar-brand" href="{{url('/login')}}">Logout</a>
               </div>
           </div>
       </nav>
@@ -93,7 +93,7 @@
               </div>
               <!-- #User Info -->
             <div class="list-group">
-              <a href="{{url('/')}}" class="list-group-item">
+              <a href="{{url('/welcome')}}" class="list-group-item">
                 <i class="fa fa-dashboard">Home</i>
               </a>
 

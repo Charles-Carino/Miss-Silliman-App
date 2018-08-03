@@ -1,16 +1,27 @@
 <?php
     $collegeCode = ["CBA","CAS","MED","HS","CED","MASSCOMM","COPVA","GRAD","IRS","NURSING"];
+    $collegeName = [
+        "COLLEGE OF BUSINESS ADMINISTRATION",
+        "COLLEGE OF ARTS AND SCIENCES",
+        "SENIOR HIGH SCHOOL",
+        "COLLEGE OF ENGINEERING AND DESIGN",
+        "COLLEGE OF MASS COMMUNICATION",
+        "COLLEGE OF PERFORMING AND VISUAL ARTS",
+        "GRADUATE STUDIES",
+        "INSTITUTE OF REHABILITATIVE STUDIES",
+        "COLLEGE OF NURSING"
+    ];
     $name = [
-        "Mikhaella",
-        "Christine",
-        "Oghogho",
-        "Erica",
-        "Shannel",
-        "Ivy",
-        "Chanel",
-        "Yihui",
-        "Amidala",
-        "Gabrielle"
+        "Mikhaella Ponce de Leon",
+        "Christine Torcino",
+        "Oghogho Ovonlen",
+        "Erica Villagracia",
+        "Shannel Vendiola",
+        "Ivy Salaum",
+        "Chanel Pepino",
+        "Yihui Yuan",
+        "Amidala Quisumbing",
+        "Gabrielle Arrojado"
     ];
     $picSrc = [
         "public/css/images/CBA.png",
@@ -90,7 +101,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroup-sizing-lg">SCORE</span>
                                         </div>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                        <input id="scoreInput" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                         </div>
                                     </div>
                                 </div>
@@ -103,8 +114,7 @@
             <div class="col-md-3"></div>
         </div>
         <div class="modal-footer">
-            <button id="openModal" type="button" class="btn btn-link waves-effect" data-toggle="modal" data-target="#myModal">SAVE CHANGES</button>
-            <button href="{{url('/')}}" type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+            <button id="openModal" type="button" class="btn btn-link waves-effect" data-toggle="modal" data-target="#myModal">PROCEED</button>
         </div>
         <div id="myModal" class="modal fade" role="dialog">
           <div class="modal-dialog">

@@ -37,11 +37,11 @@
                               <div class="row">
                                   <div class="col-sm-6">
                                       <div class="m-b-30">
-                                          <button id="add" data-toggle="modal" data-target="#con-close-modal" class="btn btn-primary waves-effect waves-light">Add <i class="fa fa-plus"></i></button>
+                                          <button id="add" data-toggle="modal" data-target="#judgeModal" class="btn btn-primary waves-effect waves-light">Add <i class="fa fa-plus"></i></button>
                                       </div>
                                   </div>
                               </div>
-                              <table class="table table-bordered table-striped" id="datatable-editable">
+                              <table class="table table-bordered datatable table-striped">
                                   <thead>
                                       <tr>
                                           <th>First Name</th>
@@ -78,19 +78,18 @@
                               <div class="row">
                                   <div class="col-sm-6">
                                       <div class="m-b-30">
-                                          <button id="add" data-toggle="modal" data-target="#con-close-modal" class="btn btn-primary waves-effect waves-light">Add <i class="fa fa-plus"></i></button>
+                                          <button id="add" data-toggle="modal" data-target="#organizerModal" class="btn btn-primary waves-effect waves-light">Add <i class="fa fa-plus"></i></button>
                                       </div>
                                   </div>
                               </div>
-                              <table class="table table-bordered table-striped" id="datatable-editable">
+                              <table class="table table-bordered datatable table-striped">
                                   <thead>
                                       <tr>
                                           <th>First Name</th>
                                           <th>Middle Name</th>
                                           <th>Last Name</th>
                                           <th>Position</th>
-                                          <th>Admin</th>
-                                          <th>Judge</th>
+                                          <th>Roles</th>
                                           <th>Username</th>
                                           <th>Password</th>
                                           <th>Action</th>
@@ -121,11 +120,11 @@
                               <div class="row">
                                   <div class="col-sm-6">
                                       <div class="m-b-30">
-                                          <button id="add" data-toggle="modal" data-target="#con-close-modal" class="btn btn-primary waves-effect waves-light">Add <i class="fa fa-plus"></i></button>
+                                          <button id="add" data-toggle="modal" data-target="#candidateModal" class="btn btn-primary waves-effect waves-light">Add <i class="fa fa-plus"></i></button>
                                       </div>
                                   </div>
                               </div>
-                              <table class="table table-bordered table-striped datatable-editable">
+                              <table class="table table-bordered table-striped datatable">
                                   <thead>
                                       <tr>
                                         <th>Image</th>
@@ -150,61 +149,136 @@
         </div>
     </div>
   </section>
-  <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div id="judgeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  <h4 class="modal-title">Modal Content is Responsive</h4>
+                  <h4 class="modal-title">Add Judge</h4>
               </div>
               <div class="modal-body">
                   <div class="row">
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label for="field-1" class="control-label">First Name</label>
+                              <input type="text" class="form-control" id="field-1">
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label for="field-2" class="control-label">Middle Name</label>
+                              <input type="text" class="form-control" id="field-2">
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label for="field-3" class="control-label">Last Name</label>
+                              <input type="text" class="form-control" id="field-3">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">Event</label>
+                            <select class="full-width form-control input-block" data-init-plugin="select2">
+                              <option>Talent</option>
+                              <option>Speech</option>
+                              <option>Final</option>
+                            </select>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
                       <div class="col-md-6">
                           <div class="form-group">
-                              <label for="field-1" class="control-label">Name</label>
-                              <input type="text" class="form-control" id="field-1" placeholder="John">
+                              <label for="field-5" class="control-label">Username</label>
+                              <input type="text" class="form-control" id="field-5">
                           </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
-                              <label for="field-2" class="control-label">Surname</label>
-                              <input type="text" class="form-control" id="field-2" placeholder="Doe">
+                              <label for="field-6" class="control-label">Password</label>
+                              <input type="text" class="form-control" id="field-6">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-info waves-effect waves-light">Save changes</button>
+              </div>
+          </div>
+      </div>
+  </div><!-- /.modal -->
+  <div id="organizerModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="modal-title">Add Organizer</h4>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label for="field-1" class="control-label">First Name</label>
+                              <input type="text" class="form-control" id="field-1">
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label for="field-2" class="control-label">Middle Name</label>
+                              <input type="text" class="form-control" id="field-2">
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label for="field-3" class="control-label">Last Name</label>
+                              <input type="text" class="form-control" id="field-3">
                           </div>
                       </div>
                   </div>
                   <div class="row">
-                      <div class="col-md-12">
-                          <div class="form-group">
-                              <label for="field-3" class="control-label">Address</label>
-                              <input type="text" class="form-control" id="field-3" placeholder="Address">
-                          </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">Position</label>
+                            <select class="full-width form-control input-block" data-init-plugin="select2">
+                              <option>Chair</option>
+                              <option>Vice-Chair</option>
+                              <option>Committee Head</option>
+                              <option>Others</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="checkbox checkbox-success">
+                          <input id="checkbox1" type="checkbox">
+                          <label for="checkbox1">
+                              Admin
+                          </label>
                       </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="checkbox checkbox-primary">
+                          <input id="checkbox2" type="checkbox">
+                          <label for="checkbox2">
+                              Judge
+                          </label>
+                      </div>
+                    </div>
                   </div>
                   <div class="row">
-                      <div class="col-md-4">
+                      <div class="col-md-6">
                           <div class="form-group">
-                              <label for="field-4" class="control-label">City</label>
-                              <input type="text" class="form-control" id="field-4" placeholder="Boston">
+                              <label for="field-5" class="control-label">Username</label>
+                              <input type="text" class="form-control" id="field-5">
                           </div>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-6">
                           <div class="form-group">
-                              <label for="field-5" class="control-label">Country</label>
-                              <input type="text" class="form-control" id="field-5" placeholder="United States">
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div class="form-group">
-                              <label for="field-6" class="control-label">Zip</label>
-                              <input type="text" class="form-control" id="field-6" placeholder="123456">
-                          </div>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="form-group no-margin">
-                              <label for="field-7" class="control-label">Personal Info</label>
-                              <textarea class="form-control autogrow" id="field-7" placeholder="Write something about yourself" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;">                                                        </textarea>
+                              <label for="field-6" class="control-label">Password</label>
+                              <input type="text" class="form-control" id="field-6">
                           </div>
                       </div>
                   </div>

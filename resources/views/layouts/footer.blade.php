@@ -14,11 +14,11 @@
 
 <!-- Custom Js -->
 <script src="public/js/admin.js"></script>
-
+<script src='public/plugins/datatables/jquery.dataTables.min.js'></script>
+<script src='public/plugins/datatables/dataTables.buttons.min.js'></script>
+<script src='public/plugins/datatables/dataTables.bootstrap.min.js'></script>
 <script src="public/plugins/magnific-popup/magnific-popup.js"></script>
-<script src="public/plugins/jquery-datatables-editable/jquery.dataTables.js"></script>
 <script src="public/plugins/datatables/dataTables.bootstrap.js"></script>
-<script src="public/plugins/jquery-datatables-editable/datatables.editable.init.js"></script>
 <script src="public/js/wow.min.js"></script>
 <script src="public/js/jquery.nicescroll.js" type="text/javascript"></script>
 <script src="public/js/jquery.scrollTo.min.js"></script>
@@ -32,7 +32,10 @@ $(document).ready(function() {
     $('table.datatable').DataTable();
   } );
 </script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 </body>
 
 </html>

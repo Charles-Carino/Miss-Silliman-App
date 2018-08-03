@@ -19,6 +19,14 @@ Route::get('/tabulations_specialProjects', function () {
     return view('tabulations.tSP');
 });
 
+Route::get('/tabulations_speech', function () {
+    return view('tabulations.tSpeech');
+});
+
+Route::get('/tabulations_talent', function () {
+    return view('tabulations.tTalent');
+});
+
 Route::get('/login', function () {
     return view('Login.login');
 });

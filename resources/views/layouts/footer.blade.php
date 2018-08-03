@@ -6,9 +6,6 @@
 <!-- Bootstrap Core Js -->
 <script src="public/plugins/bootstrap/js/bootstrap.js"></script>
 
-<!-- Select Plugin Js -->
-<script src="public/plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
 <!-- Slimscroll Plugin Js -->
 <script src="public/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
@@ -29,6 +26,12 @@
 <script src="public/js/detect.js"></script>
 <script src="public/js/fastclick.js"></script>
 <script src="public/js/jquery.blockUI.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('table.datatable').DataTable();
+  } );
+</script>
 
 </body>
 

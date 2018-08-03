@@ -4,7 +4,7 @@
 <section class="content">
     <div class="container">
         <div class="row col-md-12 align-center">
-            <h1> PRE PAGEANT </h1>
+            <h1> SPEECH </h1>
         </div>
         <div class="row col-md-12">
         <div class="col-md-3"></div>

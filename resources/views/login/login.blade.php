@@ -37,7 +37,7 @@
       <!-- START Login Background Pic Wrapper-->
       <div class="bg-pic">
         <!-- START Background Pic-->
-        <img src="public/img/demo/LoginBackground.jpg" data-src="public/img/demo/LoginBackground.jpg" data-src-retina="public/img/demo/LoginBackground.jpg" style={width: 100%;} alt="" class="lazy">
+        <img src="public/img/demo/LoginBackground.jpg" data-src="public/img/demo/LoginBackground.jpg" data-src-retina="public/img/demo/LoginBackground.jpg" style="width: 100%" alt="" class="lazy">
         <!-- END Background Pic-->
         <!-- START Background Caption-->
         <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
@@ -52,14 +52,14 @@
       </div>
       <!-- END Login Background Pic Wrapper-->
       <!-- START Login Right Container-->
-      <div class="login-container bg-white" size={opacity: 0.7;}>
+      <div class="login-container bg-white" style="opacity: 0.9;">
         <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
           <p> LOGO HERE </p>
           <p class="p-t-35">Log into your pages account</p>
           <!-- START Login Form -->
           <form id="form-login" class="p-t-15" method="POST" action="{{url('/')}}">
             <!-- START Form Control-->
-            <div class="form-group form-group-default">
+            <div class="form-group form-group-default" style="opacity: 1">
               <label>Username</label>
               <div class="controls">
                 <input type="text" name="username" placeholder="example1234" class="form-control" required>
@@ -107,3 +107,4 @@
     </script>
   </body>
 </html>
+

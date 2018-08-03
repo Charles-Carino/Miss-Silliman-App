@@ -10812,10 +10812,13 @@ Responsive Util
   opacity: 1;
 }
 .login-wrapper .login-container {
-  width: 496px;
-  display: block;
-  position: relative;
-  float: right;
+  width: 35%;
+  height: 50%;
+  display: unset;
+  position: unset;
+  margin-left: 30%;
+  margin-top: 10%;
+  float: left;
 }
 .login-wrapper .bg-caption {
   width: 500px;

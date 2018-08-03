@@ -18,7 +18,7 @@ Route::get('/tabulations', function () {
     return view('tabulations.tSP');
 });
 Route::get('/login', function () {
-    return view('Login.login');
+    return view('login.login');
 });
 Route::post('/signin', function () {
     return view('welcome');

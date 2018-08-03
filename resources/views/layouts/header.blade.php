@@ -79,11 +79,11 @@
               <!-- User Info -->
               <div class="user-info" >
                   <div class="image">
-                      <img src="public/css/images/user.png" width="48" height="48" alt="User" />
+                      <img src="public/css/images/testImg.jpg" width="48" height="48" alt="User" />
                   </div>
                   <div class="info-container">
-                      <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                      <div class="email">john.doe@example.com</div>
+                      <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Angel Doe</div>
+                      <div class="email">angelvross@su.edu.ph</div>
                   </div>
               </div>
               <!-- #User Info -->

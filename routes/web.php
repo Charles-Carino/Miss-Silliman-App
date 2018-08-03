@@ -14,14 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/tabulations', function () {
     return view('tabulations.tSP');
     return view('tabulations.tSpeech');
     return view('tabulations.tTalent');
 });
+
 Route::get('/login', function () {
     return view('Login.login');
 });
+
 Route::post('/signin', function () {
     return view('welcome');
 });

@@ -70,6 +70,11 @@
                   <a href="javascript:void(0);" class="bars"></a>
                   <a class="navbar-brand" href="{{url('/')}}">Miss Silliman 2018</a>
               </div>
+              <div class="navbar-right">
+                  <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                  <a href="javascript:void(0);" class="bars"></a>
+                  <a class="navbar-brand" href="{{url('/login')}}">Logout</a>
+              </div>
           </div>
       </nav>
       <!-- #Top Bar -->
@@ -79,14 +84,27 @@
               <!-- User Info -->
               <div class="user-info" >
                   <div class="image">
-                      <img src="public/css/images/user.png" width="48" height="48" alt="User" />
+                      <img src="public/css/images/testImg.jpg" width="48" height="48" alt="User" />
                   </div>
                   <div class="info-container">
-                      <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                      <div class="email">john.doe@example.com</div>
+                      <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Angel Doe</div>
+                      <div class="email">angelvross@su.edu.ph</div>
                   </div>
               </div>
               <!-- #User Info -->
-          </aside>
+            <div class="list-group">
+              <a href="{{url('/welcome')}}" class="list-group-item">
+                <i class="fa fa-dashboard">Home</i>
+              </a>
+
+              <a href="{{url('/tabulations_specialProjects')}}" class="list-group-item">
+                <i class="fa fa-trophy">Press Launch</i>
+              </a>
+
+              <a href="{{url('/maintenance')}}" class="list-group-item">
+                <i class="fa fa-wrench">Maintenance</i>
+              </a>
+                  <!-- end RJBS edit -->
+            </div>
           <!-- #END# Left Sidebar -->
       </section>

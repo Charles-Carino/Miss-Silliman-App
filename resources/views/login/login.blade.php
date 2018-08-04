@@ -57,7 +57,7 @@
           <p> LOGO HERE </p>
           <p class="p-t-35">Log into your pages account</p>
           <!-- START Login Form -->
-          <form id="form-login" class="p-t-15" method="POST" action="{{url('/')}}">
+          <form id="form-login" class="p-t-15" method="get" action={{url('/welcome')}}>
             <!-- START Form Control-->
             <div class="form-group form-group-default" style="opacity: 1">
               <label>Username</label>
@@ -99,12 +99,6 @@
     <script src="public/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
     <!-- END VENDOR JS -->
     <script src="public/pages/js/pages.min.js"></script>
-    <script>
-    $(function()
-    {
-      $('#form-login').validate()
-    })
-    </script>
   </body>
 </html>
 

@@ -32,6 +32,10 @@ $(document).ready(function() {
     $('table.datatable').DataTable();
   } );
 </script>
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 </body>
 
 </html>

@@ -1,5 +1,17 @@
 <?php
     $collegeCode = ["CBA","CAS","MED","HS","CED","MASSCOMM","COPVA","GRAD","IRS","NURSING"];
+    $collegeDesc = [
+        "College of Business Administration",
+        "College of Arts and Sciences",
+        "Medical School",
+        "High School",
+        "College of Engineering and Design",
+        "College of Mass Communication",
+        "College of Performing and Visual Arts",
+        "Graduate Studies",
+        "Institute of Rehabilitative Sciences",
+        "College of Nursing",
+    ];
     $name = [
         "Mikhaella",
         "Christine",
@@ -62,7 +74,7 @@
                                             style="height : 250px; width : 250px; border-radius : 50%">
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title">{{$collegeCode[$i]}}</h3>
+                                        <h3 class="card-title">{{$collegeDesc[$i]}}</h3>
                                         <h5 class="card-title">{{$name[$i]}}</h5>
                                         <div class="input-group input-group-lg">
                                         <div class="input-group-prepend">
@@ -84,7 +96,7 @@
                                             style="height : 250px; width : 250px; border-radius : 50%">
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title">{{$collegeCode[$i]}}</h3>
+                                        <h3 class="card-title">{{$collegeDesc[$i]}}</h3>
                                         <h5 class="card-title">{{$name[$i]}}</h5>
                                         <div class="input-group input-group-lg">
                                         <div class="input-group-prepend">
@@ -143,21 +155,6 @@
                                         <td><input type="number" disabled class="form-control perm" name="pp-sp-" min="0" max="100"></td>
                                     </tr>
                                     @endfor
-                                    <tr class="success">
-                                        <td>College Code</td>
-                                        <td>Success</td>
-                                        <td>has score</td>
-                                    </tr>
-                                    <tr>
-                                        <td>College Code</td>
-                                        <td>Name</td>
-                                        <td>Column content</td>
-                                    </tr>
-                                    <tr class="danger">
-                                        <td>College Code</td>
-                                        <td>Name</td>
-                                        <td>No score</td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>

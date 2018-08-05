@@ -3,6 +3,7 @@ LOG BOOK
 
 
 AUG 6, 2018 by Koya haha
+  - added MissSilliman.sql with Candidate table and College table connected :)
   - please check Data Dictionary. there are clarifications there
     that needs to be answered
   - updated the migration files found at database/migrations
@@ -17,6 +18,6 @@ AUG 6, 2018 by Koya haha
 
   God bless us all :D
 
-  --end 
+  --end
 
 */

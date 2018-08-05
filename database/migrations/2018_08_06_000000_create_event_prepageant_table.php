@@ -14,9 +14,9 @@ class CreateEventPrepageantTable extends Migration
     public function up()
     {
         Schema::create('event_prepageant', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('candidate'); //Candidate
-            $table->string('judge'); //Judge
+            $table->increments('PP_ID');
+            $table->string('Cand_ID');
+            $table->string('J_ID');
             $table->float('SP_RS',8,2); //Raw score of Special Project
             $table->float('Talent_RS',8,2); //Talent Raw Score
             $table->float('PSPch_RS',8,2); //Platform Speech Raw Score

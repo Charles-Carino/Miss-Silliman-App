@@ -14,7 +14,7 @@ class CreateCandidatesTable extends Migration
     public function up()
     {
         Schema::create('candidates', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('Cand_ID');
             $table->string('C_FName'); //Candidate's First Name
             $table->string('C_MName'); //Candidate's Middle Name
             $table->string('C_LName'); //Candidate's Last Name

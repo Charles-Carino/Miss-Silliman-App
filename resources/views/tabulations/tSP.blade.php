@@ -1,14 +1,25 @@
 <?php
-    $collegeCode = ["CBA","CAS","MED","HS","CED","MASSCOMM","COPVA","GRAD","IRS","NURSING"];
+    $collegeCode = [
+        "CBA",
+        "CAS",
+        "MED",
+        "HS",
+        "CED",
+        "MASSCOMM",
+        "COPVA",
+        "GRAD",
+        "IRS",
+        "NURSING"];
     $collegeName = [
         "COLLEGE OF BUSINESS ADMINISTRATION",
         "COLLEGE OF ARTS AND SCIENCES",
-        "SENIOR HIGH SCHOOL",
+        "SILLIMAN UNIVERSITY MEDICAL SCHOOL"
+        "SILLIMAN UNIVERSITY HIGH SCHOOL",
         "COLLEGE OF ENGINEERING AND DESIGN",
         "COLLEGE OF MASS COMMUNICATION",
         "COLLEGE OF PERFORMING AND VISUAL ARTS",
         "GRADUATE STUDIES",
-        "INSTITUTE OF REHABILITATIVE STUDIES",
+        "INSTITUTE OF REHABILITATIVE SCIENCES",
         "COLLEGE OF NURSING"
     ];
     $name = [

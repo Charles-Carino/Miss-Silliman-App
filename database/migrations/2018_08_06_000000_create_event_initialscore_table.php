@@ -14,9 +14,9 @@ class CreateEventInitialscoreTable extends Migration
     public function up()
     {
         Schema::create('event_initialscore', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('candidate'); //Candidate
-            $table->string('judge'); //Judge
+            $table->increments('F_ID');
+            $table->string('Cand_ID');
+            $table->string('J_ID');
             $table->float('IS_Production_RS',8,2); //Production Raw Score
             $table->float('IS_ThemeWr_RS',8,2); //Theme Wear Raw Score
             $table->float('IS_EveGown_RS',8,2); //Evening Gown Raw Score
@@ -35,7 +35,7 @@ class CreateEventInitialscoreTable extends Migration
             $table->float('SQ_Confidence_Prcnt',8,2); //Standard Question Confidence Percentage
             $table->float('SQ_Wit_Prcnt',8,2); //Standard Question Wit Percentage
             $table->float('SQ_SubTotal',8,2); //Standard Question Subtotal
-            // 
+            //
             // $table->foreign('candidate')->references('candidates')->on('id');
             // $table->foreign('judge')->references('judges')->on('id');
             $table->timestamps();

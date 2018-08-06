@@ -8,6 +8,9 @@ class Judges extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'J_FName','J_MName','J_LName','J_Event'
+        'J_FName','J_LName','J_Event','username','password'
+    ];
+    protected $hidden = [
+        'password', 'remember_token',
     ];
 }

@@ -15,15 +15,9 @@ class CreateEventInitialscoreTable extends Migration
     {
         Schema::enableForeignKeyConstraints();
         Schema::create('event_initialscore', function (Blueprint $table) {
-<<<<<<< HEAD:database/migrations/2018_07_24_154724_create_event_initialscore_table.php
             $table->increments('id');
             $table->integer('candidate')->unsigned(); //Candidate
             $table->integer('judge')->unsigned(); //Judge
-=======
-            $table->increments('F_ID');
-            $table->string('Cand_ID');
-            $table->string('J_ID');
->>>>>>> 37d1c6bd5afae28536b8cf5c33698e39da6d41b2:database/migrations/2018_08_06_000000_create_event_initialscore_table.php
             $table->float('IS_Production_RS',8,2); //Production Raw Score
             $table->float('IS_ThemeWr_RS',8,2); //Theme Wear Raw Score
             $table->float('IS_EveGown_RS',8,2); //Evening Gown Raw Score
@@ -42,13 +36,6 @@ class CreateEventInitialscoreTable extends Migration
             $table->float('SQ_Confidence_Prcnt',8,2); //Standard Question Confidence Percentage
             $table->float('SQ_Wit_Prcnt',8,2); //Standard Question Wit Percentage
             $table->float('SQ_SubTotal',8,2); //Standard Question Subtotal
-            //
-<<<<<<< HEAD:database/migrations/2018_07_24_154724_create_event_initialscore_table.php
-
-=======
-            // $table->foreign('candidate')->references('candidates')->on('id');
-            // $table->foreign('judge')->references('judges')->on('id');
->>>>>>> 37d1c6bd5afae28536b8cf5c33698e39da6d41b2:database/migrations/2018_08_06_000000_create_event_initialscore_table.php
             $table->timestamps();
         });
     }

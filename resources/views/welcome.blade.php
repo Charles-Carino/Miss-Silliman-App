@@ -161,8 +161,10 @@
                                   </div>
                                   @endforeach
                               </div>
-                                <div class="row"> 
-                                    <input type="submit" class="pull-right btn btn-sm btn-primary">
+                                <div class="row">
+                                  <input type="submit" class="btn bg-red waves-effect">
+                                  <i class="material-icons">print</i>
+                                  <span>PRINT...</span>
                                 </div>
                               </form>
                             </div>

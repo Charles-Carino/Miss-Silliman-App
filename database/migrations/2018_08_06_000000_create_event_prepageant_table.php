@@ -15,9 +15,15 @@ class CreateEventPrepageantTable extends Migration
     {
         Schema::enableForeignKeyConstraints();
         Schema::create('event_prepageant', function (Blueprint $table) {
+<<<<<<< HEAD:database/migrations/2018_07_24_160917_create_event_prepageant_table.php
             $table->increments('id');
             $table->integer('candidate')->unsigned(); //Candidate
             $table->integer('judge')->unsigned(); //Judge
+=======
+            $table->increments('PP_ID');
+            $table->string('Cand_ID');
+            $table->string('J_ID');
+>>>>>>> 37d1c6bd5afae28536b8cf5c33698e39da6d41b2:database/migrations/2018_08_06_000000_create_event_prepageant_table.php
             $table->float('SP_RS',8,2); //Raw score of Special Project
             $table->float('Talent_RS',8,2); //Talent Raw Score
             $table->float('PSPch_RS',8,2); //Platform Speech Raw Score

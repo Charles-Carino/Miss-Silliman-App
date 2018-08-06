@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventPresslaunchTable extends Migration
+class CreateCollegesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateEventPresslaunchTable extends Migration
      */
     public function up()
     {
-        Schema::enableForeignKeyConstraints();
-        Schema::create('event_presslaunch', function (Blueprint $table) {
-            $table->increments('id');
-            $table->float('PL_RS',8,2);
+        Schema::create('colleges', function (Blueprint $table) {
+            $table->increments('Col_ID');
+            $table->string('Col_Code'); //Complete College Name
+            $table->string('Col_Name'); //Complete College Name
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateEventPresslaunchTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_presslaunch');
+        Schema::dropIfExists('colleges');
     }
 }

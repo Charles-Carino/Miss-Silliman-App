@@ -20,6 +20,8 @@ class CreateOrganizersTable extends Migration
             $table->string('O_LName'); //Organizer's Last Name
             $table->string('O_Position'); //Organizer's Position
             $table->integer('O_isAdmin'); //Organizer's Admin Status
+            $table->string('username');
+            $table->string('password');
             $table->timestamps();
         });
     }

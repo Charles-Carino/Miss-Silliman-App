@@ -66,15 +66,14 @@
       <nav class="navbar">
           <div class="container-fluid">
               <div class="navbar-header">
-                  <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                   <a href="javascript:void(0);" class="bars"></a>
                   <a class="navbar-brand" href="{{url('/')}}">Miss Silliman 2018</a>
               </div>
-              <div class="navbar-right">
+              <!-- <div class="navbar-right">
                   <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                   <a href="javascript:void(0);" class="bars"></a>
                   <a class="navbar-brand" href="{{url('/login')}}">Logout</a>
-              </div>
+              </div> -->
           </div>
       </nav>
       <!-- #Top Bar -->
@@ -92,18 +91,30 @@
                   </div>
               </div>
               <!-- #User Info -->
-            <div class="list-group">
-              <a href="{{url('/welcome')}}" class="list-group-item">
-                <i class="fa fa-dashboard">Home</i>
-              </a>
+            <div class="menu">
+              <ul class="list">
+                <li>
+                  <a href="{{url('/welcome')}}">
+                    <i class="material-icons">home</i>
+                    <span>Home</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{url('/maintenance')}}">
+                    <i class="material-icons">settings</i>
+                    <span>Maintenance</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{url('/tabulations_specialProjects')}}">
+                    <i class="material-icons">exit_to_app</i>
+                    <span>Logout</span>
+                  </a>
+                </li>
+              </ul>
 
-              <a href="{{url('/tabulations_specialProjects')}}" class="list-group-item">
-                <i class="fa fa-trophy">Press Launch</i>
-              </a>
 
-              <a href="{{url('/maintenance')}}" class="list-group-item">
-                <i class="fa fa-wrench">Maintenance</i>
-              </a>
+
                   <!-- end RJBS edit -->
             </div>
           <!-- #END# Left Sidebar -->

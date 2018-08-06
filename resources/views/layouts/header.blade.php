@@ -70,6 +70,11 @@
                   <a href="javascript:void(0);" class="bars"></a>
                   <a class="navbar-brand" href="{{url('/')}}">Miss Silliman 2018</a>
               </div>
+              <div class="navbar-right">
+                  <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                  <a href="javascript:void(0);" class="bars"></a>
+                  <a class="navbar-brand" href="{{url('/login')}}">Logout</a>
+              </div>
           </div>
       </nav>
       <!-- #Top Bar -->
@@ -87,6 +92,19 @@
                   </div>
               </div>
               <!-- #User Info -->
-          </aside>
+            <div class="list-group">
+              <a href="{{url('/welcome')}}" class="list-group-item">
+                <i class="fa fa-dashboard">Home</i>
+              </a>
+
+              <a href="{{url('/tabulations_specialProjects')}}" class="list-group-item">
+                <i class="fa fa-trophy">Press Launch</i>
+              </a>
+
+              <a href="{{url('/maintenance')}}" class="list-group-item">
+                <i class="fa fa-wrench">Maintenance</i>
+              </a>
+                  <!-- end RJBS edit -->
+            </div>
           <!-- #END# Left Sidebar -->
       </section>

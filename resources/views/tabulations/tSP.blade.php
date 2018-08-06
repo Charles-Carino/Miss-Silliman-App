@@ -1,29 +1,39 @@
 <?php
-    $collegeCode = ["CBA","CAS","MED","HS","CED","MASSCOMM","COPVA","GRAD","IRS","NURSING"];
+    $collegeCode = [
+        "CBA",
+        "CAS",
+        "MED",
+        "HS",
+        "CED",
+        "MASSCOMM",
+        "COPVA",
+        "GRAD",
+        "IRS",
+        "NURSING"];
     $collegeDesc = [
-        "College of Business Administration",
-        "College of Arts and Sciences",
-        "Medical School",
-        "High School",
-        "College of Engineering and Design",
-        "College of Mass Communication",
-        "College of Performing and Visual Arts",
-        "Graduate Studies",
-        "Institute of Rehabilitative Sciences",
-        "College of Nursing",
+        "COLLEGE OF BUSINESS ADMINISTRATION",
+        "COLLEGE OF ARTS AND SCIENCES",
+        "SILLIMAN UNIVERSITY MEDICAL SCHOOL",
+        "SILLIMAN UNIVERSITY HIGH SCHOOL",
+        "COLLEGE OF ENGINEERING AND DESIGN",
+        "COLLEGE OF MASS COMMUNICATION",
+        "COLLEGE OF PERFORMING AND VISUAL ARTS",
+        "GRADUATE STUDIES",
+        "INSTITUTE OF REHABILITATIVE SCIENCES",
+        "COLLEGE OF NURSING"
     ];
     $name = [
-        "Mikhaella",
-        "Christine",
-        "Oghogho",
-        "Erica",
-        "Shannel",
-        "Ivy",
-        "Chanel",
-        "Yihui",
-        "Amidala",
-        "Gabrielle"
-    ]; 
+        "Mikhaella Ponce de Leon",
+        "Christine Torcino",
+        "Oghogho Ovonlen",
+        "Erica Villagracia",
+        "Shannel Vendiola",
+        "Ivy Salaum",
+        "Chanel Pepino",
+        "Yihui Yuan",
+        "Amidala Quisumbing",
+        "Gabrielle Arrojado"
+    ];
     $picSrc = [
         "public/css/images/CBA.png",
         "public/css/images/CAS.png",
@@ -102,7 +112,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroup-sizing-lg">SCORE</span>
                                         </div>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                        <input id="scoreInput" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                         </div>
                                     </div>
                                 </div>
@@ -163,12 +173,10 @@
             </div>
               </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-            </div>
+
+          </div>
         </div>
-    </div>
-</div>
+    </div> <!-- container -->
+</section>
 
 @endsection

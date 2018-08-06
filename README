@@ -1,0 +1,23 @@
+/*
+LOG BOOK
+
+
+AUG 6, 2018 by Koya haha
+  - added MissSilliman.sql with Candidate table and College table connected :)
+  - please check Data Dictionary. there are clarifications there
+    that needs to be answered
+  - updated the migration files found at database/migrations
+    they will be updated again once Data Dictionary is now finalized.
+    also when naming the migrations for uniformity and organization,
+    please set the date of when you edited it and how many times you've edited it for
+    that day to keep track of changes. (you will need to change the names of migration files if there are edits
+    but if everything is fine, disregard this statement. will do my best to reduce
+    renaming of migration files because it's tedious to drop the database at localhost and entering
+    again the fields hehe)
+  - View and Model will be connected soon once Migrations are final :)
+
+  God bless us all :D
+
+  --end
+
+*/

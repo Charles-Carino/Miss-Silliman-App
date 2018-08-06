@@ -11,6 +11,4 @@ class Candidates extends Model
     protected $fillable = [
         'C_FName','C_MName','C_Lname','C_College', 'C_YearLevel', 'S_SY', 'C_isTop', 'C_Number', 'C_SeqTalent', 'C_SeqSpeech', 'C_AveTalent'
     ];
-
-
 }

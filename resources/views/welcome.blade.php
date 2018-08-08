@@ -166,7 +166,7 @@
                               <div class="row">
                                 <button type="submit" class="btn bg-red waves-effect">
                                     <i class="material-icons">print</i>
-                                    <span>PRINT...</span>
+                                    <span>SUBMIT</span>
                                 </button>
                               </div>
                               </form>

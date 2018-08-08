@@ -26,8 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //Auth::<Organizer/Judge> -> <type> == 'admin'
-        if(Auth::user()->U_UserType == 'organizer'){
+        if(Auth::user()->userType == 'organizer'){
             return redirect('/maintenance');
         }
         else{

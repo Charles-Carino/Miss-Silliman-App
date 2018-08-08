@@ -15,13 +15,13 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('U_FName'); //User's First Name
-          $table->string('U_MName'); //User's Middle Name
-          $table->string('U_LName'); //User's Last Name
-          $table->string('U_UserType'); //User's Type either Judge or Organizer
-          $table->string('U_Position'); //User's Position either chair, vp etc.
-          $table->string('U_Event'); //User's Event if talent, speech or final
-          $table->string('U_Roles'); //User's Role if admin or judge
+          $table->string('fName'); //User's First Name
+          $table->string('mName'); //User's Middle Name
+          $table->string('lName'); //User's Last Name
+          $table->string('userType'); //User's Type either Judge or Organizer
+          $table->string('position'); //User's Position either chair, vp etc.
+          $table->string('event'); //User's Event if talent, speech or final
+          $table->string('roles'); //User's Role if admin or judge
           $table->string('username'); //User's username
           $table->string('password'); //User's password
           $table->timestamps();

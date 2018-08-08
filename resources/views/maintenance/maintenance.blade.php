@@ -54,8 +54,8 @@
                                   <tbody>
                                     @foreach($judges as $key)
                                     <tr class="gradeX">
-                                      <td><p>{{$key->J_LName}}, {{$key->J_FName}} {{$key->J_MName}}</p></td>
-                                      <td>{{$key->J_event}}</td>
+                                      <td><p>{{$key->lName}}, {{$key->fName}} {{$key->mName}}</p></td>
+                                      <td>{{$key->event}}</td>
                                       <td>{{$key->username}}</td>
                                       <td>{{$key->password}}</td>
                                       <td class="actions">
@@ -103,11 +103,11 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-                                    @foreach($judges as $key)
+                                    @foreach($organizers as $key)
                                     <tr class="gradeX">
-                                      <td><p>{{$key->O_LName}} ,{{$key->O_FName}} {{$key->O_MName}}</p></td>
-                                      <td>{{$key->O_Position}}</td>
-                                      <td>{{$key->O_isAdmin}}</td>
+                                      <td><p>{{$key->lName}} ,{{$key->fName}} {{$key->mName}}</p></td>
+                                      <td>{{$key->position}}</td>
+                                      <td>{{$key->roles}}</td>
                                       <td>{{$key->username}}</td>
                                       <td>{{$key->password}}</td>
                                       <td class="actions">
@@ -159,7 +159,7 @@
                                       <td><img src="{{$key->image}}" alt="User" width="64px" length="64px" style="border-radius: 50%;"/></td>
                                       <td>{{$key->id}}</td>
                                       <td>{{$key->collegeName}}</td>
-                                      <td><p>{{$key->C_LName}}, {{$key->C_FName}} {{$key->C_MName}}</p></td>
+                                      <td><p>{{$key->lName}}, {{$key->fName}} {{$key->mName}}</p></td>
                                       <td class="actions">
                                         <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                         <a href="#" data-rel="{{$key->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
@@ -185,23 +185,25 @@
                   <h4 class="modal-title">Add Judge</h4>
               </div>
               <div class="modal-body">
+                <form action="{{url('/addUser')}}" method="post" enctype="multipart/form-data">
+                  @csrf
                   <div class="row">
                       <div class="col-md-4">
                           <div class="form-group">
                               <label for="field-1" class="control-label">First Name</label>
-                              <input type="text" class="form-control" id="field-1">
+                              <input type="text" class="form-control" id="field-1" name="fName">
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
                               <label for="field-2" class="control-label">Middle Name</label>
-                              <input type="text" class="form-control" id="field-2">
+                              <input type="text" class="form-control" id="field-2" name='mName'>
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
                               <label for="field-3" class="control-label">Last Name</label>
-                              <input type="text" class="form-control" id="field-3">
+                              <input type="text" class="form-control" id="field-3" name='lName'>
                           </div>
                       </div>
                   </div>
@@ -209,7 +211,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="field-4" class="control-label">Event</label>
-                            <select class="full-width form-control input-block" data-init-plugin="select2">
+                            <select class="full-width form-control input-block" data-init-plugin="select2" name='event'>
                               <option>Talent</option>
                               <option>Speech</option>
                               <option>Final</option>
@@ -221,21 +223,23 @@
                       <div class="col-md-6">
                           <div class="form-group">
                               <label for="field-5" class="control-label">Username</label>
-                              <input type="text" class="form-control" id="field-5">
+                              <input type="text" class="form-control" id="field-5" name='username'>
                           </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
                               <label for="field-6" class="control-label">Password</label>
-                              <input type="text" class="form-control" id="field-6">
+                              <input type="password" class="form-control" id="field-6" name='password'>
                           </div>
                       </div>
                   </div>
+
               </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-info waves-effect waves-light">Save changes</button>
-              </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
+                </div>
+              </form>
           </div>
       </div>
   </div><!-- /.modal -->
@@ -251,19 +255,19 @@
                       <div class="col-md-4">
                           <div class="form-group">
                               <label for="field-1" class="control-label">First Name</label>
-                              <input type="text" class="form-control" id="field-1">
+                              <input type="text" class="form-control" id="field-1" name='fName'>
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
                               <label for="field-2" class="control-label">Middle Name</label>
-                              <input type="text" class="form-control" id="field-2">
+                              <input type="text" class="form-control" id="field-2" name='mName'>
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
                               <label for="field-3" class="control-label">Last Name</label>
-                              <input type="text" class="form-control" id="field-3">
+                              <input type="text" class="form-control" id="field-3" name='lName'>
                           </div>
                       </div>
                   </div>
@@ -271,7 +275,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="field-4" class="control-label">Position</label>
-                            <select class="full-width form-control input-block" data-init-plugin="select2">
+                            <select class="full-width form-control input-block" data-init-plugin="select2" name='position'>
                               <option>Chair</option>
                               <option>Vice-Chair</option>
                               <option>Committee Head</option>

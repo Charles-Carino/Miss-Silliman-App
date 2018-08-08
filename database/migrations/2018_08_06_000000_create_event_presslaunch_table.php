@@ -15,7 +15,7 @@ class CreateEventPresslaunchTable extends Migration
     {
         Schema::enableForeignKeyConstraints();
         Schema::create('event_presslaunch', function (Blueprint $table) {
-            $table->increments('PL_ID');
+            $table->increments('id');
             $table->float('PL_RS',8,2);
             $table->integer('candidate')->unsigned();
             $table->integer('judge')->unsigned();

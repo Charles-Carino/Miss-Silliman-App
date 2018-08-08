@@ -35,10 +35,11 @@ Route::get('/login', function () {
     return view('login.login');
 });
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+Route::get('/welcome', 'JudgesController@show');
 
-Route::get('/maintenance',function(){
-  return view('maintenance.mCandidates');
-});
+Route::get('/maintenance','OrganizersController@show');
+//
+// Route::get('/signin',function(){
+//   // echo('Confirmed!');
+//   return redirect('/');
+// });

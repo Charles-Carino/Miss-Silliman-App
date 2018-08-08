@@ -19,6 +19,8 @@ class CreateJudgesTable extends Migration
             $table->string('J_MName'); //Judge's Middle Name
             $table->string('J_LName'); //Judge's Last Name
             $table->string('J_Event'); //Judge's Current Event
+            $table->string('username'); //Judge's Current Event
+            $table->string('password'); //Judge's Current Event
             $table->timestamps();
         });
     }

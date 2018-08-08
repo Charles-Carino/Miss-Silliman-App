@@ -44,9 +44,7 @@
                               <table class="table table-bordered datatable table-striped">
                                   <thead>
                                       <tr>
-                                          <th>First Name</th>
-                                          <th>Middle Name</th>
-                                          <th>Last Name</th>
+                                          <th>Name(lName, fName MI)</th>
                                           <th>Event</th>
                                           <th>Username</th>
                                           <th>Password</th>
@@ -54,7 +52,18 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-
+                                    @foreach($judges as $key)
+                                    <tr class="gradeX">
+                                      <td><p>{{$key->J_LName}}, {{$key->J_FName}} {{$key->J_MName}}</p></td>
+                                      <td>{{$key->J_event}}</td>
+                                      <td>{{$key->username}}</td>
+                                      <td>{{$key->password}}</td>
+                                      <td class="actions">
+                                        <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                        <a href="#" data-rel="{{$key->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                      </td>
+                                    </tr>
+                                    @endforeach
                                   </tbody>
                               </table>
                           </div>
@@ -85,9 +94,7 @@
                               <table class="table table-bordered datatable table-striped">
                                   <thead>
                                       <tr>
-                                          <th>First Name</th>
-                                          <th>Middle Name</th>
-                                          <th>Last Name</th>
+                                          <th>Name(lName, fName MI)</th>
                                           <th>Position</th>
                                           <th>Roles</th>
                                           <th>Username</th>
@@ -96,7 +103,19 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-
+                                    @foreach($judges as $key)
+                                    <tr class="gradeX">
+                                      <td><p>{{$key->O_LName}} ,{{$key->O_FName}} {{$key->O_MName}}</p></td>
+                                      <td>{{$key->O_Position}}</td>
+                                      <td>{{$key->O_isAdmin}}</td>
+                                      <td>{{$key->username}}</td>
+                                      <td>{{$key->password}}</td>
+                                      <td class="actions">
+                                        <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                        <a href="#" data-rel="{{$key->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                      </td>
+                                    </tr>
+                                    @endforeach
                                   </tbody>
                               </table>
                           </div>
@@ -130,14 +149,23 @@
                                         <th>Image</th>
                                         <th>Candidate No.</th>
                                         <th>College</th>
-                                        <th>First Name</th>
-                                        <th>Middle Name</th>
-                                        <th>Last Name</th>
+                                        <th>Name(lName, fName mName)</th>
                                         <th>Action</th>
                                       </tr>
                                   </thead>
                                   <tbody>
-
+                                    @foreach($candidates as $key)
+                                    <tr class="gradeX">
+                                      <td><img src="{{$key->image}}" alt="User" width="64px" length="64px" style="border-radius: 50%;"/></td>
+                                      <td>{{$key->id}}</td>
+                                      <td>{{$key->collegeName}}</td>
+                                      <td><p>{{$key->C_LName}}, {{$key->C_FName}} {{$key->C_MName}}</p></td>
+                                      <td class="actions">
+                                        <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                        <a href="#" data-rel="{{$key->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                      </td>
+                                    </tr>
+                                    @endforeach
                                   </tbody>
                               </table>
                           </div>

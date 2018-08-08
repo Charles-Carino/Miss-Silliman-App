@@ -30,7 +30,26 @@
 <script>
 $(document).ready(function() {
     $('table.datatable').DataTable();
-  } );
+    $('#list').click(function(event){
+      event.preventDefault();
+      $('#products .sub-event').removeClass('col-xs-4 col-md-4');
+      $('#products .col-input').removeClass('col-xs-8 col-md-8');
+      $('#products .item').addClass('list-group-item');
+      $('#products .col-input').addClass('col-xs-2 col-md-2');
+      $('#products .sub-event').addClass('col-xs-2 col-md-2');
+    });
+    $('#grid').click(function(event){
+      event.preventDefault();
+      $('#products .sub-event').removeClass('col-xs-2 col-md-2');
+      $('#products .col-input').removeClass('col-xs-2 col-md-2');
+      $('#products .item').removeClass('list-group-item');
+      $('#products .item').addClass('grid-group-item');
+      $('#products .col-input').addClass('col-xs-8 col-md-8');
+      $('#products .sub-event').addClass('col-xs-4 col-md-4');
+    });
+});
+
+
 </script>
 </body>
 

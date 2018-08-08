@@ -139,33 +139,36 @@
                                   </div>
                               </div>
                               <div id="products" class="row list-group">
-                                <form enctype="multipart/form-data" action="/addTalentScores" method="POST">
-                                  <input type="hidden" name="_token" value="{{ csrf_token( )}}">
+                                <form action="{{url('/addTalentScores')}}" method="post" enctype="multipart/form-data">
+                                  @csrf
+                                  <!--The judge number is still a given. I need Rommel's finished login functionalities to do adjustments.-->
+                                  <input type="hidden" name="judge" value="1" />
                                   @foreach($candidates as $key)
                                   <div class="item col-xs-3 col-lg-3">
-                                      <div class="thumbnail">
-                                          <img class="group list-group-image" src="{{$key->image}}" width="200" alt="" />
-                                          <div class="caption">
-                                              <h5 class="group inner list-group-item-heading" style="margin-bottom: 0"?>{{$key->C_FName}} {{$key->C_LName}}</h5>
-                                              <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
-                                              <div class="row">
-                                                  <div class="col-xs-4 col-md-4 sub-event">
-                                                      <p class="lead">Talent</p>
-                                                  </div>
-                                                  <div class="col-xs-8 col-md-8 col-input form-line focused">
-                                                      <input type="number" id="talent_{{$key->id}}" class="col-xs-8 col-md-8 form-control" name="number" required="" aria-required="true" aria-invalid="false">
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
+                                    <div class="thumbnail">
+                                        <img class="group list-group-image" src="{{$key->image}}" width="200" alt="" />
+                                        <div class="caption">
+                                            <h5 class="group inner list-group-item-heading" style="margin-bottom: 0"?>{{$key->C_FName}} {{$key->C_LName}}</h5>
+                                            <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
+                                            <div class="row">
+                                                <div class="col-xs-4 col-md-4 sub-event">
+                                                    <p class="lead">Talent</p>
+                                                </div>
+                                                <div class="col-xs-8 col-md-8 col-input form-line focused">
+                                                    <input type="number" name="talent_{{$key->id}}" class="col-xs-8 col-md-8 form-control" name="number" required="" aria-required="true" aria-invalid="false">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                   </div>
                                   @endforeach
                               </div>
-                                <div class="row">
-                                  <input type="submit" class="btn bg-red waves-effect">
-                                  <i class="material-icons">print</i>
-                                  <span>PRINT...</span>
-                                </div>
+                              <div class="row">
+                                <button type="submit" class="btn bg-red waves-effect">
+                                    <i class="material-icons">print</i>
+                                    <span>PRINT...</span>
+                                </button>
+                              </div>
                               </form>
                             </div>
                           </div> <!-- End row -->

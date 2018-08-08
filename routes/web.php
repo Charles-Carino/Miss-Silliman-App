@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('login.login');
+    return redirect('/welcome');
 });
 
 Route::get('/tabulations_specialProjects', function () {
@@ -22,18 +22,15 @@ Route::get('/tabulations_specialProjects', function () {
 Route::get('/tabulations_speech', function () {
     return view('tabulations.tSpeech');
 });
-
 Route::get('/tabulations_talent', function () {
     return view('tabulations.tTalent');
 });
-
 Route::get('/login', function () {
     return view('login.login');
 });
-
 Route::get('/welcome', 'JudgesController@show');
-
 Route::get('/maintenance','OrganizersController@show');
+Route::post('/addTalentScores','JudgesController@addScores');
 //
 // Route::get('/signin',function(){
 //   // echo('Confirmed!');

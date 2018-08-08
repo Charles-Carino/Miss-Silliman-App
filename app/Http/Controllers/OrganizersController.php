@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Judges;
+use App\User;
 use App\Organizers;
 use App\Candidates;
 use Illuminate\Http\Request;
@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class OrganizersController extends Controller
 {
     public function show(){
-        $judges = Judges::all();
+        $judges = User::where('userType', '=', 'judge')->get();
         $organizers = Organizers::all();
         $candidates = Candidates::all();
 

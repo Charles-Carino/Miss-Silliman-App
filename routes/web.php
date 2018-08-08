@@ -35,6 +35,8 @@ Route::get('/login', function () {
 Route::get('/welcome', 'JudgesController@show');
 Route::get('/maintenance','OrganizersController@show');
 Route::post('/addTalentScores','JudgesController@addScores');
+//Auth::routes();
+//Route::get('/home','HomeController@index');
 //
 // Route::get('/signin',function(){
 //   // echo('Confirmed!');

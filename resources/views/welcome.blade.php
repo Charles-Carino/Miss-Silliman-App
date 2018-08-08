@@ -148,7 +148,7 @@
                                     <div class="thumbnail">
                                         <img class="group list-group-image" src="{{$key->image}}" width="200" alt="" />
                                         <div class="caption">
-                                            <h5 class="group inner list-group-item-heading" style="margin-bottom: 0"?>{{$key->C_FName}} {{$key->C_LName}}</h5>
+                                            <h5 class="group inner list-group-item-heading" style="margin-bottom: 0"?>{{$key->fName}} {{$key->lName}}</h5>
                                             <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
                                             <div class="row">
                                                 <div class="col-xs-4 col-md-4 sub-event">

@@ -159,7 +159,7 @@
                                       <td><img src="{{$key->image}}" alt="User" width="64px" length="64px" style="border-radius: 50%;"/></td>
                                       <td>{{$key->id}}</td>
                                       <td>{{$key->collegeName}}</td>
-                                      <td><p>{{$key->C_LName}}, {{$key->C_FName}} {{$key->C_MName}}</p></td>
+                                      <td><p>{{$key->lName}}, {{$key->fName}} {{$key->mName}}</p></td>
                                       <td class="actions">
                                         <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                         <a href="#" data-rel="{{$key->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>

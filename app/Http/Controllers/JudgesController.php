@@ -8,7 +8,7 @@ use App\Prepageants;
 class JudgesController extends Controller
 {
     public function show(){
-      $candidates = Candidates::join('colleges','colleges.id','=','candidates.c_college')->get();
+      $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->get();
       return view('welcome',compact('candidates'));
     }
 

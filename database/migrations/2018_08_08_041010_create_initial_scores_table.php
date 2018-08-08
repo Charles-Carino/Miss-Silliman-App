@@ -38,6 +38,7 @@ class CreateInitialScoresTable extends Migration
              $table->float('SQ_SubTotal',8,2); //Standard Question Subtotal
              $table->timestamps();
          });
+    }
 
     /**
      * Reverse the migrations.

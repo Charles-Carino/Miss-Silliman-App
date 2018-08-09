@@ -25,6 +25,9 @@ class CreateCandidatesTable extends Migration
             $table->string('SY'); //Candidate's SY attended
             $table->string('isTop'); //Candidate's ranking
             $table->string('number'); //Candidate's number
+            $table->string('seqSpeech'); //Candidate's seqSpeech number
+            $table->string('seqTalent'); //Candidate's seqTalent number
+            $table->string('aveTalent'); //Candidate's aveTalent
             $table->timestamps();
 
 

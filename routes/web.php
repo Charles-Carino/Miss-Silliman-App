@@ -31,8 +31,9 @@ Route::get('/login', function () {
 Route::get('/welcome', 'JudgesController@show');
 Route::get('/maintenance','OrganizersController@show');
 Route::post('/addTalentScores','JudgesController@addScores');
-Route::post('/addUser','UserController@addJudge');
-Route::post('/addUser','UserController@addOrganizer');
+Route::post('/addJudge','UserController@addJudge');
+Route::post('/addOrganizer','UserController@addOrganizer');
+Route::post('/Candidate','CandidatesController@createCandidate');
 //
 // Route::get('/signin',function(){
 //   // echo('Confirmed!');

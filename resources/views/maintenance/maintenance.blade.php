@@ -158,7 +158,7 @@
                                     <tr class="gradeX">
                                       <td><img src="{{$key->image}}" alt="User" width="64px" length="64px" style="border-radius: 50%;"/></td>
                                       <td>{{$key->id}}</td>
-                                      <td>{{$key->collegeName}}</td>
+                                      <td>{{$key->college}}</td>
                                       <td><p>{{$key->lName}}, {{$key->fName}} {{$key->mName}}</p></td>
                                       <td class="actions">
                                         <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
@@ -185,7 +185,7 @@
                   <h4 class="modal-title">Add Judge</h4>
               </div>
               <div class="modal-body">
-                <form action="{{url('/addUser')}}" method="post" enctype="multipart/form-data">
+                <form action="{{url('/addJudge')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="row">
                       <div class="col-md-4">
@@ -251,6 +251,8 @@
                   <h4 class="modal-title">Add Organizer</h4>
               </div>
               <div class="modal-body">
+                <form action="{{url('/addOrganizer')}}" method="post" enctype="multipart/form-data">
+                  @csrf
                   <div class="row">
                       <div class="col-md-4">
                           <div class="form-group">
@@ -285,7 +287,7 @@
                     </div>
                     <div class="col-md-2">
                       <div class="checkbox checkbox-success">
-                          <input id="checkbox1" type="checkbox">
+                          <input id="checkbox1" type="checkbox" value="admin" name="roles[]">
                           <label for="checkbox1">
                               Admin
                           </label>
@@ -293,7 +295,7 @@
                     </div>
                     <div class="col-md-2">
                       <div class="checkbox checkbox-primary">
-                          <input id="checkbox2" type="checkbox">
+                          <input id="checkbox2" type="checkbox" value="judge" name="roles[]">
                           <label for="checkbox2">
                               Judge
                           </label>
@@ -304,20 +306,100 @@
                       <div class="col-md-6">
                           <div class="form-group">
                               <label for="field-5" class="control-label">Username</label>
-                              <input type="text" class="form-control" id="field-5">
+                              <input type="text" class="form-control" id="field-5" name='username'>
                           </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
                               <label for="field-6" class="control-label">Password</label>
-                              <input type="text" class="form-control" id="field-6">
+                              <input type="password" class="form-control" id="field-6" name='password'>
                           </div>
                       </div>
                   </div>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-info waves-effect waves-light">Save changes</button>
+                  <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
+                </form>
+              </div>
+          </div>
+      </div>
+  </div><!-- /.modal -->
+  <div id="candidateModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="modal-title">Add Candidate</h4>
+              </div>
+              <div class="modal-body">
+                <form action="{{url('/Candidate')}}" method="post" enctype="multipart/form-data">
+                  @csrf
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label for="field-1" class="control-label">First Name</label>
+                              <input type="text" class="form-control" id="field-1" name='fName'>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label for="field-2" class="control-label">Middle Name</label>
+                              <input type="text" class="form-control" id="field-2" name='mName'>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label for="field-3" class="control-label">Last Name</label>
+                              <input type="text" class="form-control" id="field-3" name='lName'>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">College</label>
+                            <select class="full-width form-control input-block" data-init-plugin="select2" name='position'>
+                              @foreach($colleges as $key)
+
+                                <option>{{$key->collegeName}}</option>
+
+                              @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="field-5" class="control-label">School Year</label>
+                            <input type="text" class="form-control" id="field-5" name='SY'>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="field-6" class="control-label">Candidate Number</label>
+                            <input type="text" class="form-control" id="field-6" name='number'>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="field-8" class="control-label">Username</label>
+                              <input type="text" class="form-control" id="field-8" name='username'>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="field-9" class="control-label">Password</label>
+                              <input type="password" class="form-control" id="field-9" name='password'>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
+                </form>
               </div>
           </div>
       </div>

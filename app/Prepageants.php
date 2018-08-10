@@ -1,3 +1,4 @@
+<<<<<<< current
 <?php
 
 namespace App;
@@ -10,3 +11,15 @@ class Prepageants extends Model
       'candidate', 'judge', 'Talent_RS','Talent_Prcnt'
   ];
 }
+=======
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Prepageants extends Model
+{
+    //
+}
+>>>>>>> before discard

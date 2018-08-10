@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\College;
+use App\Colleges;
 
 class CollegesController extends Controller
 {
@@ -15,9 +15,9 @@ class CollegesController extends Controller
       die();
 
       if($data['table'] == 'colleges'){
-          College::create([
+          Colleges::create([
               'collegeCode' => $data['collegeCode'],
-              'CollegeName' => $data['collegeName']
+              'collegeName' => $data['collegeName']
           ]);
       }
   }

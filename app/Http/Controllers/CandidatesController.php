@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Candidates;
-use App\College;
+use App\Colleges;
 
 class CandidatesController extends Controller
 {

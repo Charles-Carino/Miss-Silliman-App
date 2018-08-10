@@ -53,7 +53,8 @@
           <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
             <p> LOGO HERE </p>
             <!-- START Login Form -->
-            <form id="form-login" class="p-t-15" method="get" action={{url('/welcome')}}>
+            <form id="form-login" class="p-t-15" method="post" action="{{url('/signin')}}">
+              {{ csrf_field() }}
               <!-- START Form Control-->
               <div class="form-group form-group-default" style="opacity: 1">
                 <label>Username</label>

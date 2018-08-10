@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('/welcome');
-});
+Route::get('/', 'BasicController@check');
 
 Route::get('/tabulations_specialProjects', function () {
     return view('tabulations.tSP');
@@ -29,12 +27,16 @@ Route::get('/login', function () {
     return view('login.login');
 });
 Route::get('/welcome', 'JudgesController@show');
+//
 Route::get('/maintenance','OrganizersController@show');
 Route::post('/addTalentScores','JudgesController@addScores');
 Route::post('/addJudge','UserController@addJudge');
-// Route::post('/addUser','UserController@addOrganizer');
+Route::post('/addOrganizer','UserController@addOrganizer');
+Route::post('/Candidate','CandidatesController@createCandidate');
+
 //
-// Route::get('/signin',function(){
-//   // echo('Confirmed!');
-//   return redirect('/');
-// });
+Route::post('/signin','BasicController@signIn');
+Route::get('/logout', function(){
+    auth()->logout();
+    return redirect('/');
+  });

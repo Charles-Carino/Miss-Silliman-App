@@ -44,7 +44,7 @@
                               <table class="table table-bordered datatable table-striped">
                                   <thead>
                                       <tr>
-                                          <th>Name(lName, fName MI)</th>
+                                          <th>Name</th>
                                           <th>Event</th>
                                           <th>Username</th>
                                           <th>Password</th>
@@ -94,7 +94,7 @@
                               <table class="table table-bordered datatable table-striped">
                                   <thead>
                                       <tr>
-                                          <th>Name(lName, fName MI)</th>
+                                          <th>Name</th>
                                           <th>Position</th>
                                           <th>Roles</th>
                                           <th>Username</th>
@@ -149,7 +149,7 @@
                                         <th>Image</th>
                                         <th>Candidate No.</th>
                                         <th>College</th>
-                                        <th>Name(lName, fName mName)</th>
+                                        <th>Name</th>
                                         <th>Action</th>
                                       </tr>
                                   </thead>
@@ -185,7 +185,7 @@
                   <h4 class="modal-title">Add Judge</h4>
               </div>
               <div class="modal-body">
-                <form action="{{url('/addUser')}}" method="post" enctype="multipart/form-data">
+                <form action="{{url('/addJudge')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="row">
                       <div class="col-md-4">

@@ -18,7 +18,7 @@ class UserController extends Controller
         'password' => bcrypt($request['password'])
     ]);
 
-    return redirect('maintenance');
+    return redirect('/maintenance');
   }
   public function addOrganizer(Request $request){
     User::create([
@@ -26,10 +26,13 @@ class UserController extends Controller
         'mName' => $request['mName'],
         'lName' => $request['lName'],
         'userType' => 'organizer',
-        'position' => $request['position'];
-        'roles' => $request['roles'];
+        'position' => $request['position'],
+        'roles' => $request['roles'],
         'event' => $request['event'],
         'username' => $request['username'],
         'password' => bcrypt($request['password'])
     ]);
+
+    return redirect('/maintenance');
+  }
 }

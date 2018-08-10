@@ -27,12 +27,14 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::user()->userType == 'organizer'){
-            return redirect('/maintenance');
-        }
-        else{
- 
+            $judges = Judges::all();
+            $organizers = Organizers::all();
             $candidates = Candidates::all();
 
+            return view('maintenance.maintenance',compact('judges','organizers','candidates'));
+        }
+        else{
+            $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->get();
             return view('welcome',compact('candidates'));
         }
     }

@@ -18,7 +18,7 @@ class UserController extends Controller
         'password' => bcrypt($request['password'])
     ]);
 
-    return redirect('maintenance');
+    return redirect('/maintenance');
   }
 
   public function addOrganizer(Request $request){
@@ -41,6 +41,6 @@ class UserController extends Controller
         'password' => bcrypt($request['password'])
     ]);
 
-    return redirect('maintenance');
+    return redirect('/maintenance');
   }
 }

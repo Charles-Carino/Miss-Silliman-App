@@ -20,14 +20,22 @@ class UserController extends Controller
 
     return redirect('/maintenance');
   }
+
   public function addOrganizer(Request $request){
+    $rolesString = "";
+    if(isset($request['roles']))
+    {
+        $roles = $request['roles'];
+
+        $rolesString = implode(',', $roles);
+    }
     User::create([
         'fName' => $request['fName'],
         'mName' => $request['mName'],
         'lName' => $request['lName'],
         'userType' => 'organizer',
         'position' => $request['position'],
-        'roles' => $request['roles'],
+        'roles' => $rolesString,
         'event' => $request['event'],
         'username' => $request['username'],
         'password' => bcrypt($request['password'])

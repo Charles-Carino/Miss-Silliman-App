@@ -190,20 +190,20 @@
                   <div class="row">
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label for="field-1" class="control-label">First Name</label>
-                              <input type="text" class="form-control" id="field-1" name="fName">
+                              <label for="JudgeField-FName" class="control-label">First Name</label>
+                              <input type="text" class="form-control" id="JudgeField-FName" name="fName">
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label for="field-2" class="control-label">Middle Name</label>
-                              <input type="text" class="form-control" id="field-2" name='mName'>
+                              <label for="JudgeField-MName" class="control-label">Middle Name</label>
+                              <input type="text" class="form-control" id="JudgeField-MName" name='mName'>
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label for="field-3" class="control-label">Last Name</label>
-                              <input type="text" class="form-control" id="field-3" name='lName'>
+                              <label for="JudgeField-LName" class="control-label">Last Name</label>
+                              <input type="text" class="form-control" id="JudgeField-LName" name='lName'>
                           </div>
                       </div>
                   </div>
@@ -222,14 +222,14 @@
                   <div class="row">
                       <div class="col-md-6">
                           <div class="form-group">
-                              <label for="field-5" class="control-label">Username</label>
-                              <input type="text" class="form-control" id="field-5" name='username'>
+                              <label for="JudgeField-Username" class="control-label">Username</label>
+                              <input type="text" class="form-control" id="JudgeField-Username" name='username' onClick='suggestJUsername()'>
                           </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
-                              <label for="field-6" class="control-label">Password</label>
-                              <input type="password" class="form-control" id="field-6" name='password'>
+                              <label for="JudgeField-Password" class="control-label">Password</label>
+                              <input type="password" class="form-control" id="JudgeField-Password" name='password'>
                           </div>
                       </div>
                   </div>
@@ -256,20 +256,20 @@
                   <div class="row">
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label for="field-1" class="control-label">First Name</label>
-                              <input type="text" class="form-control" id="field-1" name='fName'>
+                              <label for="OrgField-FName" class="control-label">First Name</label>
+                              <input type="text" class="form-control" id="OrgField-FName" name='fName'>
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label for="field-2" class="control-label">Middle Name</label>
-                              <input type="text" class="form-control" id="field-2" name='mName'>
+                              <label for="OrgField-MName" class="control-label">Middle Name</label>
+                              <input type="text" class="form-control" id="OrgField-MName" name='mName'>
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label for="field-3" class="control-label">Last Name</label>
-                              <input type="text" class="form-control" id="field-3" name='lName'>
+                              <label for="OrgField-LName" class="control-label">Last Name</label>
+                              <input type="text" class="form-control" id="OrgField-LName" name='lName'>
                           </div>
                       </div>
                   </div>
@@ -305,14 +305,14 @@
                   <div class="row">
                       <div class="col-md-6">
                           <div class="form-group">
-                              <label for="field-5" class="control-label">Username</label>
-                              <input type="text" class="form-control" id="field-5" name='username'>
+                              <label for="OrgField-Username" class="control-label">Username</label>
+                              <input type="text" class="form-control" id="OrgField-Username" name='username' onClick="suggestOrgUsername()">
                           </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
-                              <label for="field-6" class="control-label">Password</label>
-                              <input type="password" class="form-control" id="field-6" name='password'>
+                              <label for="OrgField-Password" class="control-label">Password</label>
+                              <input type="password" class="form-control" id="OrgField-Password" name='password'>
                           </div>
                       </div>
                   </div>
@@ -404,4 +404,40 @@
           </div>
       </div>
   </div><!-- /.modal -->
+
+  
+
+<script type="text/­javascript" src="https://­ajax.googleapis.com/­ajax/libs/jquery/­3.3.1/jquery.min.js"></script>
+<script>
+
+function suggestJUsername()
+    {
+
+        const fName = document.getElementById('JudgeField-FName').value;
+        const lName = document.getElementById('JudgeField-LName').value;
+        const txt_Username = document.getElementById('JudgeField-Username');
+
+        const rand = (Math.floor(Math.random() * 10000) % 10000).toString();
+        
+        usernameString = fName[0] + lName + rand.padStart(4,'0');
+
+        txt_Username.value = usernameString.toLowerCase();
+
+    }
+
+function suggestOrgUsername()
+    {
+
+        const fName = document.getElementById('OrgField-FName').value;
+        const lName = document.getElementById('OrgField-LName').value;
+        const txt_Username = document.getElementById('OrgField-Username');
+
+        const rand = (Math.floor(Math.random() * 10000) % 10000).toString();
+        
+        usernameString = fName[0] + lName + rand.padStart(4,'0')
+
+        txt_Username.value = usernameString.toLowerCase();
+        
+    }
+</script>
 @endsection

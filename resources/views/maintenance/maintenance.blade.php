@@ -50,7 +50,7 @@
                               <table class="table table-bordered datatable table-striped">
                                   <thead>
                                       <tr>
-                                          <th>Name(lName, fName MI)</th>
+                                          <th>Name</th>
                                           <th>Event</th>
                                           <th>Username</th>
                                           <th>Password</th>
@@ -99,7 +99,7 @@
                               <table class="table table-bordered datatable table-striped">
                                   <thead>
                                       <tr>
-                                          <th>Name(lName, fName MI)</th>
+                                          <th>Name</th>
                                           <th>Position</th>
                                           <th>Roles</th>
                                           <th>Username</th>
@@ -154,7 +154,7 @@
                                         <th>Image</th>
                                         <th>Candidate No.</th>
                                         <th>College</th>
-                                        <th>Name(lName, fName mName)</th>
+                                        <th>Name</th>
                                         <th>Action</th>
                                       </tr>
                                   </thead>

@@ -13,7 +13,7 @@ class OrganizersController extends Controller
     public function show(){
         $judges = User::where('userType', '=', 'judge')->get();
         $organizers = User::where('userType', '=', 'organizer')->get();
-        $candidates = Candidates::join('Colleges','Candidates.college','=','Colleges.id','left')->get();
+        $candidates = Candidates::join('colleges','candidates.college','=','colleges.id','left')->get();
         $colleges = Colleges::all();
         $prepageants = Prepageants::all();
 

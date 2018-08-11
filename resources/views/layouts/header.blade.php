@@ -110,7 +110,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="{{url('/tabulations_specialProjects')}}">
+                  <a href="{{url('/logout')}}">
                     <i class="material-icons">exit_to_app</i>
                     <span>Logout</span>
                   </a>

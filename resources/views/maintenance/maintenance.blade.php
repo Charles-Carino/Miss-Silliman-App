@@ -445,7 +445,7 @@ function suggestJUsername()
 
 function suggestOrgUsername()
     {
-
+        
         const fName = document.getElementById('OrgField-FName').value;
         const lName = document.getElementById('OrgField-LName').value;
         const txt_Username = document.getElementById('OrgField-Username');

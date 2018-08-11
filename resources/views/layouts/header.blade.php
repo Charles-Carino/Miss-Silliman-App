@@ -39,6 +39,7 @@
 
     <!-- DataTables -->
     <link href="public/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="public/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="theme-red fixed-left">

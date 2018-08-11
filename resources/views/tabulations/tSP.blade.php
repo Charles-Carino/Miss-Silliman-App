@@ -10,7 +10,7 @@
         "GRAD",
         "IRS",
         "NURSING"];
-    $collegeName = [
+    $collegeDesc = [
         "COLLEGE OF BUSINESS ADMINISTRATION",
         "COLLEGE OF ARTS AND SCIENCES",
         "SILLIMAN UNIVERSITY MEDICAL SCHOOL",
@@ -62,19 +62,20 @@
                     @for( $i=0 ; $i<=9 ; $i++)
                         @if($i==0)
                             <li class="active">
-                                <a href=#list-{{$i}} data-toggle="tab" aria-expanded="false">{{$collegeCode[$i]}}</a>
-                            </li>
                         @else
                             <li class="">
+                        @endif
                                 <a href=#list-{{$i}} data-toggle="tab" aria-expanded="false">{{$collegeCode[$i]}}</a>
                             </li>
-                        @endif
                     @endfor
                 </ul>
                 <div class="tab-content" style="padding:100px">
                     @for( $i=0 ; $i<=9 ; $i++)
                         @if($i==0)
                             <div class="tab-pane active width-auto" id=list-{{$i}}>
+                        @else
+                            <div class="tab-pane width-auto" id=list-{{$i}}>
+                        @endif
                                 <div class="card" style="padding : 20px">
                                     <div class="align-center">
                                         <img
@@ -84,64 +85,71 @@
                                             style="height : 250px; width : 250px; border-radius : 50%">
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title">{{$collegeCode[$i]}}</h3>
+                                        <h3 class="card-title">{{$collegeDesc[$i]}}</h3>
                                         <h5 class="card-title">{{$name[$i]}}</h5>
                                         <div class="input-group input-group-lg">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroup-sizing-lg">SCORE</span>
                                         </div>
-                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                        <input type="number" min="0" max="100" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        @else
-                            <div class="tab-pane width-auto" id=list-{{$i}}>
-                                <div class="card col-sm-12" style="padding : 20px">
-                                    <div class="align-center">
-                                        <img
-                                            class="card-img-top"
-                                            src={{$picSrc[$i]}}
-                                            alt="Card image cap"
-                                            style="height : 250px; width : 250px; border-radius : 50%">
-                                    </div>
-                                    <div class="card-body">
-                                        <h3 class="card-title">{{$collegeCode[$i]}}</h3>
-                                        <h5 class="card-title">{{$name[$i]}}</h5>
-                                        <div class="input-group input-group-lg">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="inputGroup-sizing-lg">SCORE</span>
-                                        </div>
-                                        <input id="scoreInput" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
                     @endfor
                     <div class="col-md-2"></div>
                 </div>
             </div>
             <div class="col-md-3"></div>
         </div>
-        <div class="modal-footer">
-            <button id="openModal" type="button" class="btn btn-link waves-effect" data-toggle="modal" data-target="#myModal">PROCEED</button>
-        </div>
-        <div id="myModal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
-              </div>
-              <div class="modal-body">
-                <p>Some text in the modal.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
+
+
+        <div class="row col-md-12 align-center" style="padding : 50px">
+            <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
+                <button type="button" class="btn btn-link waves-effect btn-success">SAVE CHANGES</button>
+            </a>
+        </div>
+    </div> <!-- container -->
+</section>
+
+<!-- For Material Design Colors -->
+<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Score Tabulation</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>College Code</th>
+                                                <th>Candidate</th>
+                                                <th>Score</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @for($i=0;$i<=9;$i++)
+                                            <!--TODO: check for score or no score-->
+                                            <tr class="active">
+                                                <td>{{$collegeCode[$i]}}</td>
+                                                <td>{{$name[$i]}}</td>
+                                                <td><input type="number" disabled class="form-control perm" name="pp-sp-" min="0" max="100"></td>
+                                            </tr>
+                                            @endfor
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div> <!--panel-body-->
+                    </div><!--panel panel-default-->
+                </div> <!--row-->
             </div>
 
           </div>

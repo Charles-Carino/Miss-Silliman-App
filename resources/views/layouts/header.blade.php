@@ -35,9 +35,11 @@
     <!-- Custom Files -->
     <link href="public/css/helper.css" rel="stylesheet" type="text/css" />
     <link href="public/css/customStyles.css" rel="stylesheet" type="text/css" />
+    <link href="public/css/imagething.css" rel="stylesheet" type="text/css" />
 
     <!-- DataTables -->
     <link href="public/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="public/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="theme-red fixed-left">
@@ -65,15 +67,17 @@
       <!-- Top Bar -->
       <nav class="navbar">
           <div class="container-fluid">
+            <div class="navbar-links">
               <div class="navbar-header">
                   <a href="javascript:void(0);" class="bars"></a>
                   <a class="navbar-brand" href="{{url('/')}}">Miss Silliman 2018</a>
               </div>
-              <!-- <div class="navbar-right">
-                  <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                  <a href="javascript:void(0);" class="bars"></a>
-                  <a class="navbar-brand" href="{{url('/login')}}">Logout</a>
-              </div> -->
+              <div class="navbar-right navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="{{url('/login')}}">Logout</a>
+              </div>
+            </div>
           </div>
       </nav>
       <!-- #Top Bar -->

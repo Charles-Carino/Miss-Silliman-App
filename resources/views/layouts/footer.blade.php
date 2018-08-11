@@ -27,6 +27,7 @@
 <script src="public/js/fastclick.js"></script>
 <script src="public/js/jquery.blockUI.js"></script>
 
+<script src="public/js/imagething.js"></script>
 <script>
 $(document).ready(function() {
     $('table.datatable').DataTable();
@@ -47,7 +48,6 @@ $(document).ready(function() {
       $('#products .col-input').addClass('col-xs-8 col-md-8');
       $('#products .sub-event').addClass('col-xs-4 col-md-4');
     });
-
 });
 
 

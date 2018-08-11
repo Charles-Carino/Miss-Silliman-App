@@ -23,6 +23,8 @@
     <link href="public/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="public/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="public/pages/css/themes/light.css" rel="stylesheet" type="text/css" />
+    <link href="public/css/adaptablebg.css" rel="stylesheet" type="text/css" />
+
     <script type="text/javascript">
     window.onload = function()
     {
@@ -37,20 +39,26 @@
         <!-- START Login Background Pic Wrapper-->
           <div class="bg-pic" style="background-size: contain;">
             <!-- START Background Pic-->
-            <img src="public/img/demo/LoginBackground.jpg" data-src="public/img/demo/LoginBackground.jpg" data-src-retina="public/img/demo/LoginBackground.jpg" style="width: 100%" alt="" class="lazy">
+            <img class="header-land" src="public/img/demo/LoginBackground.jpg" data-src="public/img/demo/LoginBackground.jpg" data-src-retina="public/img/demo/LoginBackground.jpg" style="width: 100%" alt="" class="lazy">
+            <img class="header-portrait" src="public/css/images/logo.png" data-src="public/img/demo/LoginBackground.jpg" data-src-retina="public/img/demo/LoginBackground.jpg" style="width: 100%" alt="" class="lazy">
             <!-- END Background Pic-->
             <!-- START Background Caption-->
             <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
-              <h2 class="semi-bold text-white">
+              <h2 class="semi-bold adaptable">
                 Miss Silliman
               </h2>
             </div>
             <!-- END Background Caption-->
           </div>
         <!-- END Login Background Pic Wrapper-->
+
         <!-- START Login Right Container-->
-        <div class="login-container bg-white" style="opacity: 0.8;">
-          <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
+        <div class="col-xs-12">
+
+        <div class="col-xs-4">
+        </div>
+        <div class="login-container col-xs-4" style="margin-left : 0px">
+          <div style="padding: 20%; background-color: rgba(255,255,255,0.8);">
             <p> LOGO HERE </p>
             <!-- START Login Form -->
             <form id="form-login" class="p-t-15" method="post" action="{{url('/signin')}}">
@@ -75,7 +83,12 @@
             <!--END Login Form-->
           </div>
         </div>
+
+        <div class="col-xs-4">
+        </div>
+        </div><!--END col-md-12 -->
         <!-- END Login Right Container-->
+
       </div>
 
 

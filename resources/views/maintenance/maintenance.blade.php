@@ -22,6 +22,12 @@
                         <span class="hidden-xs">Candidates</span>
                     </a>
                 </li>
+                <li class="tab">
+                    <a href="#events" data-toggle="tab" aria-expanded="true">
+                        <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
+                        <span class="hidden-xs">Events</span>
+                    </a>
+                </li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="judge">
@@ -70,7 +76,7 @@
                           <!-- end: page -->
                       </div> <!-- end Panel -->
                   </div> <!-- container -->
-                </div>
+                </div><!-- end of judge pane -->
                 <div class="tab-pane" id="organizer">
                   <div class="container">
                       <!-- Page-Title -->
@@ -82,7 +88,6 @@
 
 
                       <div class="panel">
-
                           <div class="panel-body">
                               <div class="row">
                                   <div class="col-sm-6">
@@ -122,7 +127,7 @@
                           <!-- end: page -->
                       </div> <!-- end Panel -->
                   </div> <!-- container -->
-                </div>
+                </div><!-- end of organizer pane -->
                 <div class="tab-pane" id="candidate">
                   <div class="container">
                       <!-- Page-Title -->
@@ -172,11 +177,67 @@
                           <!-- end: page -->
                       </div> <!-- end Panel -->
                   </div> <!-- container -->
+                </div><!-- end of candidate pane -->
+                <div class="tab-pane" id="events">
+                  <div class="container">
+                      <!-- Page-Title -->
+                      <div class="row">
+                          <div class="col-sm-12">
+                              <h4 class="pull-left page-title">Events Table</h4>
+                          </div>
+                      </div>
+                      <div class="panel">
+                          <div class="panel-body">
+                              <div class="row">
+                                  <div class="col-sm-6">
+                                      <div class="m-b-30">
+                                        <button id="print" data-toggle="modal" data-target="#printModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                      </div>
+                                  </div>
+                              </div>
+                              
+                              <table id="eventsTable" class="table table-bordered table-striped datatable">
+                                  <thead>
+                                      <tr>
+                                        <th>Judge</th>
+                                        <th>Candidate</th>
+                                        <th>Special Project (Raw Score)</th>
+                                        <th>Special Project (Percentage)</th>
+                                        <th>Talent (Raw Score)</th>
+                                        <th>Talent (Percentage)</th>
+                                        <th>P Speech (Raw Score)</th>
+                                        <th>P Speech (Percentage)</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach($prepageants as $key)
+                                    <tr class="gradeX">
+                                      <td>{{$key->judge}}</td>
+                                      <td>{{$key->candidate}}</td>
+                                      <td>{{$key->SP_RS}}</td>
+                                      <td>{{$key->SP_Prcnt}}</td>
+                                      <td>{{$key->Talent_RS}}</td>
+                                      <td>{{$key->Talent_Prcnt}}</td>
+                                      <td>{{$key->PSPch_RS}}</td>
+                                      <td>{{$key->PSpch_Prcnt}}</td>
+                                      <!-- <td class="actions">
+                                        <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                        <a href="#" data-rel="{{$key->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                      </td> -->
+                                    </tr>
+                                    @endforeach
+                                  </tbody>
+                              </table>
+                          </div>
+                          <!-- end: page -->
+                      </div> <!-- end Panel -->
+                  </div> <!-- container -->
                 </div>
             </div>
         </div>
     </div>
   </section>
+  <!-- M O D A L S -->
   <div id="judgeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
       <div class="modal-dialog">
           <div class="modal-content">
@@ -190,20 +251,20 @@
                   <div class="row">
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label for="field-1" class="control-label">First Name</label>
-                              <input type="text" class="form-control" id="field-1" name="fName">
+                              <label for="JudgeField-FName" class="control-label">First Name</label>
+                              <input type="text" class="form-control" id="JudgeField-FName" name="fName">
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label for="field-2" class="control-label">Middle Name</label>
-                              <input type="text" class="form-control" id="field-2" name='mName'>
+                              <label for="JudgeField-MName" class="control-label">Middle Name</label>
+                              <input type="text" class="form-control" id="JudgeField-MName" name='mName'>
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label for="field-3" class="control-label">Last Name</label>
-                              <input type="text" class="form-control" id="field-3" name='lName'>
+                              <label for="JudgeField-LName" class="control-label">Last Name</label>
+                              <input type="text" class="form-control" id="JudgeField-LName" name='lName'>
                           </div>
                       </div>
                   </div>
@@ -222,14 +283,14 @@
                   <div class="row">
                       <div class="col-md-6">
                           <div class="form-group">
-                              <label for="field-5" class="control-label">Username</label>
-                              <input type="text" class="form-control" id="field-5" name='username'>
+                              <label for="JudgeField-Username" class="control-label">Username</label>
+                              <input type="text" class="form-control" id="JudgeField-Username" name='username' onClick='suggestJUsername()'>
                           </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
-                              <label for="field-6" class="control-label">Password</label>
-                              <input type="password" class="form-control" id="field-6" name='password'>
+                              <label for="JudgeField-Password" class="control-label">Password</label>
+                              <input type="password" class="form-control" id="JudgeField-Password" name='password'>
                           </div>
                       </div>
                   </div>
@@ -256,20 +317,20 @@
                   <div class="row">
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label for="field-1" class="control-label">First Name</label>
-                              <input type="text" class="form-control" id="field-1" name='fName'>
+                              <label for="OrgField-FName" class="control-label">First Name</label>
+                              <input type="text" class="form-control" id="OrgField-FName" name='fName'>
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label for="field-2" class="control-label">Middle Name</label>
-                              <input type="text" class="form-control" id="field-2" name='mName'>
+                              <label for="OrgField-MName" class="control-label">Middle Name</label>
+                              <input type="text" class="form-control" id="OrgField-MName" name='mName'>
                           </div>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label for="field-3" class="control-label">Last Name</label>
-                              <input type="text" class="form-control" id="field-3" name='lName'>
+                              <label for="OrgField-LName" class="control-label">Last Name</label>
+                              <input type="text" class="form-control" id="OrgField-LName" name='lName'>
                           </div>
                       </div>
                   </div>
@@ -305,14 +366,14 @@
                   <div class="row">
                       <div class="col-md-6">
                           <div class="form-group">
-                              <label for="field-5" class="control-label">Username</label>
-                              <input type="text" class="form-control" id="field-5" name='username'>
+                              <label for="OrgField-Username" class="control-label">Username</label>
+                              <input type="text" class="form-control" id="OrgField-Username" name='username' onClick="suggestOrgUsername()">
                           </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
-                              <label for="field-6" class="control-label">Password</label>
-                              <input type="password" class="form-control" id="field-6" name='password'>
+                              <label for="OrgField-Password" class="control-label">Password</label>
+                              <input type="password" class="form-control" id="OrgField-Password" name='password'>
                           </div>
                       </div>
                   </div>
@@ -335,6 +396,24 @@
               <div class="modal-body">
                 <form action="{{url('/Candidate')}}" method="post" enctype="multipart/form-data">
                   @csrf
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                            <div class="avatar-upload">
+                                <div class="avatar-edit">
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                    <label for="imageUpload"></label>
+                                </div>
+                                <div class="avatar-preview">
+                                    <div id="imagePreview" style="background-image: url(public/css/images/testImg.jpg);">
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+
+                      
+                  </div>
                   <div class="row">
                       <div class="col-md-4">
                           <div class="form-group">
@@ -404,4 +483,58 @@
           </div>
       </div>
   </div><!-- /.modal -->
+  <div id="printModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="modal-title">Print</h4>
+              </div>
+              <div class="modal-body">
+                <h1>Print.</h1>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
+                </form>
+              </div>
+          </div>
+      </div>
+  </div><!-- /.modal -->
+
+  
+
+<script src="public/js/dataTables.buttons.min.js"></script>
+<script type="text/­javascript" src="https://­ajax.googleapis.com/­ajax/libs/jquery/­3.3.1/jquery.min.js"></script>
+<script>
+function suggestJUsername()
+    {
+
+        const fName = document.getElementById('JudgeField-FName').value;
+        const lName = document.getElementById('JudgeField-LName').value;
+        const txt_Username = document.getElementById('JudgeField-Username');
+
+        const rand = (Math.floor(Math.random() * 10000) % 10000).toString();
+        
+        usernameString = fName[0] + lName + rand.padStart(4,'0');
+
+        txt_Username.value = usernameString.toLowerCase();
+
+    }
+
+function suggestOrgUsername()
+    {
+
+        const fName = document.getElementById('OrgField-FName').value;
+        const lName = document.getElementById('OrgField-LName').value;
+        const txt_Username = document.getElementById('OrgField-Username');
+
+        const rand = (Math.floor(Math.random() * 10000) % 10000).toString();
+        
+        usernameString = fName[0] + lName + rand.padStart(4,'0')
+
+        txt_Username.value = usernameString.toLowerCase();
+        
+    }
+</script>
 @endsection

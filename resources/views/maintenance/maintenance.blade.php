@@ -336,6 +336,24 @@
                 <form action="{{url('/Candidate')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                            <div class="avatar-upload">
+                                <div class="avatar-edit">
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                    <label for="imageUpload"></label>
+                                </div>
+                                <div class="avatar-preview">
+                                    <div id="imagePreview" style="background-image: url(public/css/images/testImg.jpg);">
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+
+                      
+                  </div>
+                  <div class="row">
                       <div class="col-md-4">
                           <div class="form-group">
                               <label for="field-1" class="control-label">First Name</label>
@@ -439,5 +457,6 @@ function suggestOrgUsername()
         txt_Username.value = usernameString.toLowerCase();
         
     }
+
 </script>
 @endsection

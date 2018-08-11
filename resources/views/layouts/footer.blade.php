@@ -26,6 +26,7 @@
 <script src="public/js/detect.js"></script>
 <script src="public/js/fastclick.js"></script>
 <script src="public/js/jquery.blockUI.js"></script>
+<script src="public/js/imagething.js"</script>
 
 <script>
 $(document).ready(function() {

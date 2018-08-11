@@ -1,4 +1,3 @@
-<<<<<<< current
 <?php
 
 namespace App;
@@ -13,15 +12,3 @@ class Prepageants extends Model
       'SP_Prcnt','Talent_Prcnt','PSpch_Prcnt'
   ];
 }
-=======
-<?php
-
-namespace App;
-
-use Illuminate\Database\Eloquent\Model;
-
-class Prepageants extends Model
-{
-    //
-}
->>>>>>> before discard

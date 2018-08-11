@@ -23,9 +23,9 @@
                     </a>
                 </li>
                 <li class="tab">
-                    <a href="#events" data-toggle="tab" aria-expanded="true">
+                    <a href="#reports" data-toggle="tab" aria-expanded="true">
                         <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
-                        <span class="hidden-xs">Events</span>
+                        <span class="hidden-xs">Reports</span>
                     </a>
                 </li>
             </ul>
@@ -136,8 +136,6 @@
                               <h4 class="pull-left page-title">Candidates Table</h4>
                           </div>
                       </div>
-
-
                       <div class="panel">
 
                           <div class="panel-body">
@@ -178,59 +176,156 @@
                       </div> <!-- end Panel -->
                   </div> <!-- container -->
                 </div><!-- end of candidate pane -->
-                <div class="tab-pane" id="events">
+                <div class="tab-pane" id="reports">
                   <div class="container">
                       <!-- Page-Title -->
                       <div class="row">
                           <div class="col-sm-12">
-                              <h4 class="pull-left page-title">Events Table</h4>
+                              <h2 class="pull-left page-title">Events</h2>
                           </div>
                       </div>
                       <div class="panel">
-                          <div class="panel-body">
-                              <div class="row">
-                                  <div class="col-sm-6">
-                                      <div class="m-b-30">
-                                        <button id="print" data-toggle="modal" data-target="#printModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
-                                      </div>
-                                  </div>
-                              </div>
+                        <div class="col-lg-12">
+                            <ul class="nav nav-tabs tabs">
+                                <li class="active tab">
+                                    <a href="#evt-pre" data-toggle="tab" aria-expanded="false">
+                                        <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                        <span class="hidden-xs">Prepageant</span>
+                                    </a>
+                                </li>
+                                <li class="tab">
+                                    <a href="#evt-final" data-toggle="tab" aria-expanded="false">
+                                        <span class="visible-xs"><i class="fa fa-user"></i></span>
+                                        <span class="hidden-xs">Final Night</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">  
+                                <div class="tab-pane active" id="evt-pre">
+                                    <!-- Page-Title -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4 class="pull-left page-title">Prepageant Report</h4>
+                                        </div>
+                                    </div>
+                                    <div class="panel">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="m-b-30">
+                                                        <button id="print" data-toggle="modal" data-target="#printModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
                               
-                              <table id="eventsTable" class="table table-bordered table-striped datatable">
-                                  <thead>
-                                      <tr>
-                                        <th>Judge</th>
-                                        <th>Candidate</th>
-                                        <th>Special Project (Raw Score)</th>
-                                        <th>Special Project (Percentage)</th>
-                                        <th>Talent (Raw Score)</th>
-                                        <th>Talent (Percentage)</th>
-                                        <th>P Speech (Raw Score)</th>
-                                        <th>P Speech (Percentage)</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                    @foreach($prepageants as $key)
-                                    <tr class="gradeX">
-                                      <td>{{$key->judge}}</td>
-                                      <td>{{$key->candidate}}</td>
-                                      <td>{{$key->SP_RS}}</td>
-                                      <td>{{$key->SP_Prcnt}}</td>
-                                      <td>{{$key->Talent_RS}}</td>
-                                      <td>{{$key->Talent_Prcnt}}</td>
-                                      <td>{{$key->PSPch_RS}}</td>
-                                      <td>{{$key->PSpch_Prcnt}}</td>
-                                      <!-- <td class="actions">
-                                        <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                        <a href="#" data-rel="{{$key->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                      </td> -->
-                                    </tr>
-                                    @endforeach
-                                  </tbody>
-                              </table>
-                          </div>
-                          <!-- end: page -->
-                      </div> <!-- end Panel -->
+                                            <table id="eventsTable" class="table table-bordered table-striped datatable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Judge</th>
+                                                        <th>Candidate</th>
+                                                        <th>Special Project (Raw Score)</th>
+                                                        <th>Special Project (Percentage)</th>
+                                                        <th>Talent (Raw Score)</th>
+                                                        <th>Talent (Percentage)</th>
+                                                        <th>P Speech (Raw Score)</th>
+                                                        <th>P Speech (Percentage)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($prepageants as $key)
+                                                    <tr class="gradeX">
+                                                    <td>{{$key->judge}}</td>
+                                                    <td>{{$key->candidate}}</td>
+                                                    <td>{{$key->SP_RS}}</td>
+                                                    <td>{{$key->SP_Prcnt}}</td>
+                                                    <td>{{$key->Talent_RS}}</td>
+                                                    <td>{{$key->Talent_Prcnt}}</td>
+                                                    <td>{{$key->PSPch_RS}}</td>
+                                                    <td>{{$key->PSpch_Prcnt}}</td>
+                                                    <!-- <td class="actions">
+                                                        <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                                        <a href="#" data-rel="{{$key->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                                    </td> -->
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- end: page -->
+                                    </div> <!-- end Panel -->
+                                </div> <!-- end of event-prepageant pane -->
+                                <div class="tab-pane" id="evt-final">
+                                    <!-- Page-Title -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4 class="pull-left page-title">Pageant Night Report</h4>
+                                        </div>
+                                    </div>
+                                    <div class="panel">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="m-b-30">
+                                                        <button id="print" data-toggle="modal" data-target="#printModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                              
+                                            <table id="eventsTable" class="table table-bordered table-striped datatable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Judge</th>
+                                                        <th>Candidate</th>
+                                                        <th>Production (Raw Score)</th>
+                                                        <th>Production (Percentage)</th>
+                                                        <th>Theme Wear (Raw Score)</th>
+                                                        <th>Theme Wear (Percentage)</th>
+                                                        <th>Evening Gown (Raw Score)</th>
+                                                        <th>Evening Gown (Percentage)</th>
+                                                        <th>Initial Score Subtotal</th>
+                                                        <th>Content (Raw Score)</th>
+                                                        <th>Content (Percentage)</th>
+                                                        <th>Confidence (Raw Score)</th>
+                                                        <th>Confidence (Percentage)</th>
+                                                        <th>Wit (Raw Score)</th>
+                                                        <th>Wit (Percentage)</th>
+                                                        <th>SQ Subtotal</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($initScores as $key)
+                                                    <tr class="gradeX">
+                                                        <td>{{$key->judge}}</td>
+                                                        <td>{{$key->candidate}}</td>
+                                                        <td>{{$key->IS_Production_RS}}</td>
+                                                        <td>{{$key->IS_Production_Prcnt}}</td>
+                                                        <td>{{$key->IS_ThemeWr_RS}}</td>
+                                                        <td>{{$key->IS_ThemeWr_Prcnt}}</td>
+                                                        <td>{{$key->IS_EveGown_RS}}</td>
+                                                        <td>{{$key->IS_EveGown_Prcnt}}</td>
+                                                        <td>{{$key->IS_Subtotal}}</td>
+                                                        <td>{{$key->SQ_Content_RS}}</td>
+                                                        <td>{{$key->SQ_Content_Prcnt}}</td>
+                                                        <td>{{$key->SQ_Confidence_RS}}</td>
+                                                        <td>{{$key->SQ_Confidence_Prcnt}}</td>
+                                                        <td>{{$key->SQ_Wit_RS}}</td>
+                                                        <td>{{$key->SQ_Wit_Prcnt}}</td>
+                                                        <td>{{$key->SQ_Subtotal}}</td>
+                                                        <!-- <td class="actions">
+                                                            <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                                            <a href="#" data-rel="{{$key->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                                        </td> -->
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- end: page -->
+                                    </div> <!-- end Panel -->
+                                </div> <!-- end of event-prepageant pane -->
+                            </div> <!-- end of tab-content -->
+                        </div>
+                      </div>
                   </div> <!-- container -->
                 </div>
             </div>
@@ -504,7 +599,6 @@
 
   
 
-<script src="public/js/dataTables.buttons.min.js"></script>
 <script type="text/­javascript" src="https://­ajax.googleapis.com/­ajax/libs/jquery/­3.3.1/jquery.min.js"></script>
 <script>
 function suggestJUsername()

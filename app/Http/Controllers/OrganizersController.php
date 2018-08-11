@@ -6,6 +6,7 @@ use App\Organizers;
 use App\Candidates;
 use App\Colleges;
 use App\Prepageants;
+use App\InitialScores;
 use Illuminate\Http\Request;
 
 class OrganizersController extends Controller
@@ -16,7 +17,8 @@ class OrganizersController extends Controller
         $candidates = Candidates::join('colleges','candidates.college','=','colleges.id','left')->get();
         $colleges = Colleges::all();
         $prepageants = Prepageants::all();
+        $initScores = InitialScores::all();
 
-        return view('maintenance.maintenance',compact('judges','organizers','candidates', 'colleges','prepageants'));
+        return view('maintenance.maintenance',compact('judges','organizers','candidates', 'colleges','prepageants','initScores'));
     }
 }

@@ -61,7 +61,8 @@
           <div style="padding: 20%; background-color: rgba(255,255,255,0.8);">
             <p> LOGO HERE </p>
             <!-- START Login Form -->
-            <form id="form-login" class="p-t-15" method="get" action={{url('/welcome')}}>
+            <form id="form-login" class="p-t-15" method="post" action="{{url('/signin')}}">
+              {{ csrf_field() }}
               <!-- START Form Control-->
               <div class="form-group form-group-default" style="opacity: 1">
                 <label>Username</label>

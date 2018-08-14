@@ -40,6 +40,33 @@
     <!-- DataTables -->
     <link href="public/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
     <link href="public/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- print -->
+    <link href="/css/print.css" rel="stylesheet" media="print" type="text/css">
+    <style>
+        @media screen {
+      #printSection {
+          display: none;
+      }
+    }
+
+    @media print {
+      body * {
+        visibility:hidden;
+      }
+      #printSection, #printSection * {
+        visibility:visible;
+      }
+      #printSection {
+        position:absolute;
+        left:0;
+        top:0;
+      }
+    }
+</style>
+
+
+
 </head>
 
 <body class="theme-red fixed-left">
@@ -110,7 +137,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="{{url('/tabulations_specialProjects')}}">
+                  <a href="{{url('/logout')}}">
                     <i class="material-icons">exit_to_app</i>
                     <span>Logout</span>
                   </a>

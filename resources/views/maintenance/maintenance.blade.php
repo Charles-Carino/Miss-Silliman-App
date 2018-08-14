@@ -191,11 +191,11 @@
                               <div class="row">
                                   <div class="col-sm-6">
                                       <div class="m-b-30">
-                                        <button id="print" data-toggle="modal" data-target="#printModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                        <button id="print" data-toggle="modal" data-target="#MyModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
                                       </div>
                                   </div>
                               </div>
-                              
+
                               <table id="eventsTable" class="table table-bordered table-striped datatable">
                                   <thead>
                                       <tr>
@@ -412,7 +412,7 @@
                           </div>
                       </div>
 
-                      
+
                   </div>
                   <div class="row">
                       <div class="col-md-4">
@@ -483,7 +483,7 @@
           </div>
       </div>
   </div><!-- /.modal -->
-  <div id="printModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <!-- <div id="printModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
@@ -495,14 +495,95 @@
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
+                  <button type="submit" class="btn btn-info waves-effect waves-light" onclick="myFunction()"><i class="fa fa-print"></i></button>
                 </form>
               </div>
           </div>
       </div>
-  </div><!-- /.modal -->
+  </div> -->
+  <!---------------------->
+}
 
-  
+<!---------------------->
+<!-- <div class="wrap">
+  <h1>Bootstrap Modal Example</h1>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyModal">
+    Large modal
+  </button>
+</div> -->
+ <div id="printThis">
+   <div id="MyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+      <div class="modal-dialog modal-lg">
+
+      <!-- Modal Content: begins -->
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="gridSystemModalLabel">Reports</h4>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <table>
+              <thead>
+                  <tr>
+                    <th>Judge</th>
+                    <th>Candidate</th>
+                    <th>Special Project (Raw Score)</th>
+                    <th>Special Project (Percentage)</th>
+                    <th>Talent (Raw Score)</th>
+                    <th>Talent (Percentage)</th>
+                    <th>P Speech (Raw Score)</th>
+                    <th>P Speech (Percentage)</th>
+                  </tr>
+              </thead>
+              <tbody>
+                @foreach($prepageants as $key)
+                <tr class="gradeX">
+                  <td>{{$key->judge}}</td>
+                  <td>{{$key->candidate}}</td>
+                  <td>{{$key->SP_RS}}</td>
+                  <td>{{$key->SP_Prcnt}}</td>
+                  <td>{{$key->Talent_RS}}</td>
+                  <td>{{$key->Talent_Prcnt}}</td>
+                  <td>{{$key->PSPch_RS}}</td>
+                  <td>{{$key->PSpch_Prcnt}}</td>
+                  <!-- <td class="actions">
+                    <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                    <a href="#" data-rel="{{$key->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                  </td> -->
+                </tr>
+                @endforeach
+              </tbody>
+          </table>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button id="btnPrint" type="button" class="btn btn-default">Print</button>
+        </div>
+
+      </div>
+      <!-- Modal Content: ends -->
+
+  </div>
+    </div>
+</div>
+
+
+
+  </div>
+    </div>
+</div>
+
+
+  <!-- /.modal -->
+
+
 
 <script src="public/js/dataTables.buttons.min.js"></script>
 <script type="text/­javascript" src="https://­ajax.googleapis.com/­ajax/libs/jquery/­3.3.1/jquery.min.js"></script>
@@ -515,7 +596,7 @@ function suggestJUsername()
         const txt_Username = document.getElementById('JudgeField-Username');
 
         const rand = (Math.floor(Math.random() * 10000) % 10000).toString();
-        
+
         usernameString = fName[0] + lName + rand.padStart(4,'0');
 
         txt_Username.value = usernameString.toLowerCase();
@@ -530,11 +611,34 @@ function suggestOrgUsername()
         const txt_Username = document.getElementById('OrgField-Username');
 
         const rand = (Math.floor(Math.random() * 10000) % 10000).toString();
-        
+
         usernameString = fName[0] + lName + rand.padStart(4,'0')
 
         txt_Username.value = usernameString.toLowerCase();
-        
+
     }
+  function myFunction() {
+    window.print();
+  }
+
+  document.getElementById("btnPrint").onclick = function () {
+    printElement(document.getElementById("printThis"));
+}
+
+  function printElement(elem) {
+      var domClone = elem.cloneNode(true);
+
+      var $printSection = document.getElementById("printSection");
+
+      if (!$printSection) {
+          var $printSection = document.createElement("div");
+          $printSection.id = "printSection";
+          document.body.appendChild($printSection);
+      }
+
+      $printSection.innerHTML = "";
+      $printSection.appendChild(domClone);
+      window.print();
+}
 </script>
 @endsection

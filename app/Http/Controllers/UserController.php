@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Prepageants;
+use App\PressLaunches;
 
 class UserController extends Controller
 {
@@ -18,6 +20,13 @@ class UserController extends Controller
         'password' => bcrypt($request['password'])
     ]);
 
+    $id = User::where('username',$request['username'])->first();
+    for($i = 1; $i <= 10;$i++){
+      Prepageants::create([
+        'candidate' => $i,
+        'judge' => $id->id
+      ]);
+    }
     return redirect('/maintenance');
   }
 
@@ -41,6 +50,19 @@ class UserController extends Controller
         'password' => bcrypt($request['password'])
     ]);
 
+    $id = User::where('username',$request['username'])->first();
+    for($i = 1; $i <= 10;$i++){
+      PressLaunches::create([
+        'candidate' => $i,
+        'organizer' => $id->id
+      ]);
+      if(in_array("judge",$request['roles'])){
+        Prepageants::create([
+          'candidate' => $i,
+          'judge' => $id->id
+        ]);
+      }
+    }
     return redirect('/maintenance');
   }
 }

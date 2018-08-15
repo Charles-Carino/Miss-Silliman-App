@@ -14,7 +14,6 @@ class OrganizersController extends Controller
         $organizers = User::where('userType', '=', 'organizer')->get();
         $candidates = Candidates::join('colleges','candidates.college','=','colleges.id','left')->get();
         $colleges = Colleges::all();
-
         return view('maintenance.maintenance',compact('judges','organizers','candidates', 'colleges'));
     }
 }

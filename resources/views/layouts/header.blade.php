@@ -69,11 +69,6 @@
                   <a href="javascript:void(0);" class="bars"></a>
                   <a class="navbar-brand" href="{{url('/')}}">Miss Silliman 2018</a>
               </div>
-              <!-- <div class="navbar-right">
-                  <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                  <a href="javascript:void(0);" class="bars"></a>
-                  <a class="navbar-brand" href="{{url('/login')}}">Logout</a>
-              </div> -->
           </div>
       </nav>
       <!-- #Top Bar -->
@@ -81,13 +76,12 @@
           <!-- Left Sidebar -->
           <aside id="leftsidebar" class="sidebar">
               <!-- User Info -->
-              <div class="user-info" >
-                  <div class="image">
-                      <img src="public/css/images/testImg.jpg" width="48" height="48" alt="User" />
-                  </div>
+              <div class="user-info">
                   <div class="info-container">
-                      <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Angel Doe</div>
-                      <div class="email">angelvross@su.edu.ph</div>
+                      <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <strong>{{Auth::user()->fName}} {{Auth::user()->mName}} {{Auth::user()->lName}}</strong>
+                      </div>
+                      <div class="email">{{Auth::user()->event}}</div>
                   </div>
               </div>
               <!-- #User Info -->
@@ -99,12 +93,14 @@
                     <span>Home</span>
                   </a>
                 </li>
+                @if(Auth::user()->userType == "organizer")
                 <li>
                   <a href="{{url('/maintenance')}}">
                     <i class="material-icons">settings</i>
                     <span>Maintenance</span>
                   </a>
                 </li>
+                @endif
                 <li>
                   <a href="{{url('/logout')}}">
                     <i class="material-icons">exit_to_app</i>

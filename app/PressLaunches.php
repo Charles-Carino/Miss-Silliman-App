@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Prepageants extends Model
+class PressLaunches extends Model
 {
   protected $fillable = [
-      'candidate', 'judge',
+      'candidate', 'organizer'
   ];
 }

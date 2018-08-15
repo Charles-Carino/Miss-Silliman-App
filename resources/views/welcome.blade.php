@@ -247,7 +247,7 @@
                                     </div>
                                     <div class="row input-row">
                                         <div class="col-xs-5 col-md-5 sub-event">
-                                            <p class="lead">Spontainety</p>
+                                            <p class="lead">Spontaneity</p>
                                         </div>
                                         <div class="col-xs-7 col-md-7 col-input form-line focused">
                                             <input type="number" name="spon_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="25" value="{{$key->PSpch_Spontainety}}">

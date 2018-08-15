@@ -37,7 +37,7 @@
         <!-- START Login Background Pic Wrapper-->
           <div class="bg-pic" style="background-size: contain;">
             <!-- START Background Pic-->
-            <img src="public/img/demo/LoginBackground.jpg" data-src="public/img/demo/LoginBackground.jpg" data-src-retina="public/img/demo/LoginBackground.jpg" style="max-width:100%;height:auto;" alt="" class="lazy">
+            <img src="public/img/demo/LoginBackground.jpg" data-src="public/img/demo/LoginBackground.jpg" data-src-retina="public/img/demo/LoginBackground.jpg" style="max-width:100%;height:100%;" alt="" class="lazy">
             <!-- END Background Pic-->
             <!-- START Background Caption-->
             <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">

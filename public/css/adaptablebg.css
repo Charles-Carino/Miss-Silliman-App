@@ -1,0 +1,12 @@
+@media screen and (orientation: portrait)
+{
+    .header-land { display:none; }
+    .header-portrait { display:inline-block; }
+    .adaptable { color : black; }
+}
+@media screen and (orientation: landscape)
+{
+    .header-land { display:inline-block; }
+    .header-portrait { display:none; }
+    .adaptable { color : white; }
+}

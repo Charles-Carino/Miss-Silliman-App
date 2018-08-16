@@ -76,8 +76,7 @@
                         </a>
                     </li> -->
                 </ul>
-                <div class="tab-content col-lg-12">
-                    <div class="tab-pane" id="candidateInfo">
+                <div class="tab-content col-lg-12"><div class="tab-pane" id="candidateInfo">
                       <div class="col-lg-4">
                           <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
                             <div class="info-box-4">
@@ -115,10 +114,9 @@
                                   <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">Angel Ross</div>
                               </div>
                             </div>
-                        </a>
-                      </div>
+                          </div>
+                      </div> <!-- container -->
                     </div>
-
                     @if(Auth::user()->event == "Talent")
                     <div class="tab-pane active" id="prePageant_talent">
                       <h3>Talent</h3>
@@ -400,14 +398,14 @@
                           <div class="content">
                               <div class="container">
                                 <div class="col-lg-12">
-                                    <ul class="nav nav-tabs tabs tabs-top">
+                                    <!-- <ul class="nav nav-tabs tabs tabs-top">
                                         <li class="">
                                             <a href="#candidateInfo" data-toggle="tab" aria-expanded="false">
                                                 <span class="visible-xs"><i class="fa fa-home"></i></span>
                                                 <span class="hidden-xs">Participant</span>
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul> -->
 
                                   <div class="tab-content col-lg-12">
                                         <div class="tab-pane active" id="candidateInfo">

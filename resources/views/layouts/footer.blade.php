@@ -27,6 +27,7 @@
 <script src="public/js/fastclick.js"></script>
 <script src="public/js/jquery.blockUI.js"></script>
 
+<script src="public/js/imagething.js"></script>
 <script>
 $(document).ready(function() {
 
@@ -57,7 +58,7 @@ $(document).ready(function() {
       $('.total').removeClass('col-xs-1 col-md-1');
       $('.total').addClass('col-xs-5 col-md-5');
     });
-
+    
     $(".form-line").on("input",".input_1",function(){
         var totalSum = 0;
         $(".input_1").each(function(){

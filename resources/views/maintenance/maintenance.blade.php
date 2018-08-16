@@ -181,7 +181,7 @@
                       <!-- Page-Title -->
                       <div class="row">
                           <div class="col-sm-12">
-                              <h2 class="pull-left page-title">Events</h2>
+                              <h2 class="pull-left page-title">Reports</h2>
                           </div>
                       </div>
                       <div class="panel">
@@ -196,7 +196,7 @@
                                 <li class="tab">
                                     <a href="#evt-final" data-toggle="tab" aria-expanded="false">
                                         <span class="visible-xs"><i class="fa fa-user"></i></span>
-                                        <span class="hidden-xs">Final Night</span>
+                                        <span class="hidden-xs">Pageant Night</span>
                                     </a>
                                 </li>
                             </ul>
@@ -213,7 +213,7 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="m-b-30">
-                                                        <button id="print" data-toggle="modal" data-target="#printModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                        <button id="btnPrint_PP" data-toggle="modal" data-target="#PPModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -266,7 +266,7 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="m-b-30">
-                                                        <button id="print" data-toggle="modal" data-target="#printModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                        <button id="btnPrint_FN" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -507,7 +507,7 @@
                           </div>
                       </div>
 
-                      
+
                   </div>
                   <div class="row">
                       <div class="col-md-4">
@@ -578,7 +578,7 @@
           </div>
       </div>
   </div><!-- /.modal -->
-  <div id="printModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <!-- <div id="printModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
@@ -590,14 +590,111 @@
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
+                  <button type="submit" class="btn btn-info waves-effect waves-light" onclick="myFunction()"><i class="fa fa-print"></i></button>
                 </form>
               </div>
           </div>
       </div>
-  </div><!-- /.modal -->
+  </div> -->
+  <!---------------------->
 
-  
+<!---------------------->
+<!-- <div class="wrap">
+  <h1>Bootstrap Modal Example</h1>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyModal">
+    Large modal
+  </button>
+</div> -->
+<div id="printPP">
+    <table style="
+        border: 1px solid black;
+        border-collapse: collapse;
+        width : 100%;"
+        id="printPP">
+        <tr>
+            <th>Judge</th>
+            <th>Candidate</th>
+            <th>Special Project (Raw Score)</th>
+            <th>Special Project (Percentage)</th>
+            <th>Talent (Raw Score)</th>
+            <th>Talent (Percentage)</th>
+            <th>P Speech (Raw Score)</th>
+            <th>P Speech (Percentage)</th>
+        </tr>
+        @foreach($prepageants as $key)
+        <tr class="gradeX">
+            <td>{{$key->judge}}</td>
+            <td>{{$key->candidate}}</td>
+            <td>{{$key->SP_RS}}</td>
+            <td>{{$key->SP_Prcnt}}</td>
+            <td>{{$key->Talent_RS}}</td>
+            <td>{{$key->Talent_Prcnt}}</td>
+            <td>{{$key->PSPch_RS}}</td>
+            <td>{{$key->PSpch_Prcnt}}</td>
+        </tr>
+        @endforeach
+    </table>
+</div>
+
+
+<div id="printFN" hidden="true">
+    <table style="
+        border: 1px solid black;
+        border-collapse: collapse;
+        width : 100%;">
+        <thead>
+            <tr>
+                <th>Judge</th>
+                <th>Candidate</th>
+                <th>Production (Raw Score)</th>
+                <th>Production (Percentage)</th>
+                <th>Theme Wear (Raw Score)</th>
+                <th>Theme Wear (Percentage)</th>
+                <th>Evening Gown (Raw Score)</th>
+                <th>Evening Gown (Percentage)</th>
+                <th>Initial Score Subtotal</th>
+                <th>Content (Raw Score)</th>
+                <th>Content (Percentage)</th>
+                <th>Confidence (Raw Score)</th>
+                <th>Confidence (Percentage)</th>
+                <th>Wit (Raw Score)</th>
+                <th>Wit (Percentage)</th>
+                <th>SQ Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($initScores as $key)
+            <tr class="gradeX">
+                <td>{{$key->judge}}</td>
+                <td>{{$key->candidate}}</td>
+                <td>{{$key->IS_Production_RS}}</td>
+                <td>{{$key->IS_Production_Prcnt}}</td>
+                <td>{{$key->IS_ThemeWr_RS}}</td>
+                <td>{{$key->IS_ThemeWr_Prcnt}}</td>
+                <td>{{$key->IS_EveGown_RS}}</td>
+                <td>{{$key->IS_EveGown_Prcnt}}</td>
+                <td>{{$key->IS_Subtotal}}</td>
+                <td>{{$key->SQ_Content_RS}}</td>
+                <td>{{$key->SQ_Content_Prcnt}}</td>
+                <td>{{$key->SQ_Confidence_RS}}</td>
+                <td>{{$key->SQ_Confidence_Prcnt}}</td>
+                <td>{{$key->SQ_Wit_RS}}</td>
+                <td>{{$key->SQ_Wit_Prcnt}}</td>
+                <td>{{$key->SQ_Subtotal}}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+  </div>
+    </div>
+</div>
+
+
+  <!-- /.modal -->
+
+
 
 <script type="text/­javascript" src="https://­ajax.googleapis.com/­ajax/libs/jquery/­3.3.1/jquery.min.js"></script>
 <script>
@@ -609,14 +706,14 @@ function suggestJUsername()
         const txt_Username = document.getElementById('JudgeField-Username');
 
         const rand = (Math.floor(Math.random() * 10000) % 10000).toString();
-        
+
         usernameString = fName[0] + lName + rand.padStart(4,'0');
 
         txt_Username.value = usernameString.toLowerCase();
 
     }
 
-function suggestOrgUsername()
+    function suggestOrgUsername()
     {
 
         const fName = document.getElementById('OrgField-FName').value;
@@ -624,11 +721,46 @@ function suggestOrgUsername()
         const txt_Username = document.getElementById('OrgField-Username');
 
         const rand = (Math.floor(Math.random() * 10000) % 10000).toString();
-        
+
         usernameString = fName[0] + lName + rand.padStart(4,'0')
 
         txt_Username.value = usernameString.toLowerCase();
-        
+
+    }
+
+    function myFunction() {
+        window.print();
+    }
+
+    document.getElementById("btnPrint_PP").onclick = function () {
+        $printPP = document.getElementById("printPP");
+        $printPP.hidden = false;
+        printElement($printPP);
+        $printPP.hidden = true;
+    }
+
+
+    document.getElementById("btnPrint_FN").onclick = function () {
+        $printFN = document.getElementById("printFN");
+        $printFN.hidden = false;
+        printElement($printFN);
+        $printFN.hidden = true;
+    }
+
+    function printElement(elem) {
+        var domClone = elem.cloneNode(true);
+
+        var $printSection = document.getElementById("printSection");
+
+        if (!$printSection) {
+            var $printSection = document.createElement("div");
+            $printSection.id = "printSection";
+            document.body.appendChild($printSection);
+        }
+
+        $printSection.innerHTML = "";
+        $printSection.appendChild(domClone);
+        window.print();
     }
 </script>
 @endsection

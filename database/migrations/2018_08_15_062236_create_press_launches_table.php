@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCollegesTable extends Migration
+class CreatePressLaunchesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateCollegesTable extends Migration
      */
     public function up()
     {
-        Schema::create('colleges', function (Blueprint $table) {
+        Schema::create('press_launches', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('collegeName')->nullable(); //Complete College Name
-            $table->string('collegeCode')->nullable(); //Complete College Name
+            $table->integer('candidate')->unsigned();
+            $table->integer('organizer')->unsigned();
+            $table->integer('PL_RS')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateCollegesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('colleges');
+        Schema::dropIfExists('press_launches');
     }
 }

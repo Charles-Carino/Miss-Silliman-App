@@ -18,13 +18,19 @@ class CreatePrepageantsTable extends Migration
               $table->increments('id');
               $table->integer('candidate')->unsigned(); //Candidate
               $table->integer('judge')->unsigned(); //Judge
-              $table->float('SP_RS',8,2); //Raw score of Special Project
-              $table->float('Talent_RS',8,2); //Talent Raw Score
-              $table->float('PSPch_RS',8,2); //Platform Speech Raw Score
-              $table->float('SP_Prcnt',8,2); //Special Projects Percentage
-              $table->float('Talent_Prcnt',8,2); //Talent Percentage
-              $table->float('PSpch_Prcnt',8,2); //Platform Speach Percentage
-              $table->float('sub_total',8,2); //Partial score of the Prepageant
+              $table->decimal('SP_RS',8,2)->nullable(); //Raw score of Special Project
+              $table->decimal('Talent_Confidence',8,2)->nullable(); //Talent Raw Score
+              $table->decimal('Talent_Mastery',8,2)->nullable(); //Talent Raw Score
+              $table->decimal('Talent_StagePresence',8,2)->nullable(); //Talent Raw Score
+              $table->decimal('Talent_OverallImpact',8,2)->nullable(); //Talent Raw Score
+              $table->decimal('PSpch_Content',8,2)->nullable(); //Platform Speech Raw Score
+              $table->decimal('PSpch_Delivery',8,2)->nullable(); //Platform Speech Raw Score
+              $table->decimal('PSpch_Spontainety',8,2)->nullable(); //Platform Speech Raw Score
+              $table->decimal('PSpch_Defense',8,2)->nullable(); //Platform Speech Raw Score
+              $table->decimal('SP_Prcnt',8,2)->nullable(); //Special Projects Percentage
+              $table->decimal('Talent_Prcnt',8,2)->nullable(); //Talent Percentage
+              $table->decimal('PSpch_Prcnt',8,2)->nullable(); //Platform Speach Percentage
+              $table->decimal('sub_total',8,2)->nullable(); //Partial score of the Prepageant
 
               $table->timestamps();
         });

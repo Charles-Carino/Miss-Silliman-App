@@ -24,7 +24,7 @@
         "public/css/images/IRS.png",
         "public/css/images/NURSING.png",
     ];
-    // dd($candidates);
+    $explode = explode(",",Auth::user()->roles);
 ?>
 @extends('layouts.master')
 @section('content')
@@ -48,24 +48,11 @@
                             <span class="hidden-xs">Press Launch</span>
                         </a>
                     </li>
+                    @elseif(Auth::user()->userType == "organizer" && in_array("judge",$explode))
                     <li class="tab">
                         <a href="#prePageant_specialProjects" data-toggle="tab" aria-expanded="false">
                             <span class="visible-xs"><i class="fa fa-user"></i></span>
                             <span class="hidden-xs">Special Projects</span>
-                        </a>
-                    </li>
-                    @elseif(Auth::user()->event=="Talent")
-                    <li class="active tab">
-                        <a href="#prePageant_talent" data-toggle="tab" aria-expanded="true">
-                            <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
-                            <span class="hidden-xs">Talent</span>
-                        </a>
-                    </li>
-                    @elseif(Auth::user()->event=="Speech")
-                    <li class="active tab">
-                        <a href="#prePageant_speech" data-toggle="tab" aria-expanded="true">
-                            <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
-                            <span class="hidden-xs">Speech</span>
                         </a>
                     </li>
                     @endif
@@ -76,7 +63,8 @@
                         </a>
                     </li> -->
                 </ul>
-                <div class="tab-content col-lg-12"><div class="tab-pane" id="candidateInfo">
+                <div class="tab-content col-lg-12">
+                  <div class="tab-pane" id="candidateInfo">
                       <div class="col-lg-4">
                           <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
                             <div class="info-box-4">
@@ -114,9 +102,8 @@
                                   <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">Angel Ross</div>
                               </div>
                             </div>
-                          </div>
-                      </div> <!-- container -->
-                    </div>
+                        </div>
+                    </div> <!-- container -->
                     @if(Auth::user()->event == "Talent")
                     <div class="tab-pane active" id="prePageant_talent">
                       <h3>Talent</h3>
@@ -398,15 +385,6 @@
                           <div class="content">
                               <div class="container">
                                 <div class="col-lg-12">
-                                    <!-- <ul class="nav nav-tabs tabs tabs-top">
-                                        <li class="">
-                                            <a href="#candidateInfo" data-toggle="tab" aria-expanded="false">
-                                                <span class="visible-xs"><i class="fa fa-home"></i></span>
-                                                <span class="hidden-xs">Participant</span>
-                                            </a>
-                                        </li>
-                                    </ul> -->
-
                                   <div class="tab-content col-lg-12">
                                         <div class="tab-pane active" id="candidateInfo">
                                           @for( $i=0 ; $i<=9 ; $i++)
@@ -424,8 +402,7 @@
                                                 </div>
                                             </a>
                                           </div>
-
-                                        @else
+                                          @else
                                             <div class="col-lg-4">
                                                 <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
                                                   <div class="info-box-4">
@@ -449,10 +426,10 @@
                       </div>
                     </div>
                 </div>
+                </div>
             </div>
           </div> <!-- container -->
       </div> <!-- content -->
-  </div>
 </section>
 
 <!-- For Material Design Colors -->

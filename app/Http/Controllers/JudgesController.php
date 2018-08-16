@@ -11,19 +11,26 @@ class JudgesController extends Controller
 {
     public function show(){
       $check = Prepageants::where('judge',Auth::user()->id)->first();
-      $org = User::where('id',Auth::user()->id)->first();
-      if(!$check && !$org){
+      $user = User::where('id',Auth::user()->id)->first();
+      // dd($user);
+      if(!$check && !$user){
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->get();
+          return view('welcome',compact('candidates'));
       }
-      else if($org){
+      else if($user->userType == "organizer"){
           $PL = Candidates::join('colleges','colleges.id','=','candidates.college')->join('press_launches','press_launches.candidate','=','candidates.id')->where('organizer',Auth::user()->id)->get();
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('prepageants','prepageants.candidate','=','candidates.id')->where('judge',Auth::user()->id)->get();
           return view('welcome',compact('PL','candidates'));
       }
+      else if($user->userType == "judge"){
+        if($user->event == "Talent")
+          $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('prepageants','prepageants.candidate','=','candidates.id')->where('judge',Auth::user()->id)->orderBy("seqTalent")->get();
+        else if($user->event == "Speech")
+          $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('prepageants','prepageants.candidate','=','candidates.id')->where('judge',Auth::user()->id)->orderBy("seqSpeech")->get();
+        return view('welcome',compact('candidates'));
+      }
 
-      else
-          $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('prepageants','prepageants.candidate','=','candidates.id')->where('judge',Auth::user()->id)->get();
-      return view('welcome',compact('candidates'));
+
     }
 
     public function addScores(Request $request){

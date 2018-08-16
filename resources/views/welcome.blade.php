@@ -341,6 +341,7 @@
                       </div>
                       </form>
                     </div>
+                    @elseif(Auth::user()->userType == "organizer" && in_array("judge",Auth::user()->roles))
                     <div class="tab-pane" id="prePageant_specialProjects">
                       <h3>Special Projects</h3>
                       <div class="well well-sm">

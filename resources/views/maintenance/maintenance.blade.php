@@ -247,19 +247,15 @@
                                                         <table id="eventsTable-SP" class="table table-bordered table-striped datatable">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Judge</th>
                                                                     <th>Candidate</th>
-                                                                    <th>Special Project (Raw Score)</th>
-                                                                    <th>Special Project (Percentage)</th>
+                                                                    <th>Special Project (Total)</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($prepageants as $key)
+                                                                @foreach($reports as $key)
                                                                 <tr class="gradeX">
-                                                                    <td>{{$key->judge}}</td>
-                                                                    <td>{{$key->candidate}} -- {{strtoupper($key->lName)}}, {{$key->fName}} [{{$key->collegeCode}}]</td>
-                                                                    <td>{{$key->SP_RS}}</td>
-                                                                    <td>{{$key->SP_Prcnt}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td class="numfield">{{$key->SP}}</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
@@ -273,24 +269,24 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
                                                         <table id="eventsTable-talent" class="table table-bordered table-striped datatable">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Judge</th>
                                                                     <th>Candidate</th>
-                                                                    <th>Talent (Raw Score)</th>
-                                                                    <th>Talent (Percentage)</th>
+                                                                    <th>Judge 1</th>
+                                                                    <th>Judge 2</th>
+                                                                    <th>Judge 3</th>
+                                                                    <th>Average</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($prepageants as $key)
+                                                                @foreach($reports as $key)
                                                                 <tr class="gradeX">
-                                                                <td>{{$key->judge}}</td>
-                                                                <td>{{$key->candidate}} -- {{strtoupper($key->lName)}}, {{$key->fName}} [{{$key->collegeCode}}]</td>
-                                                                <td>{{$key->Talent_RS}}</td>
-                                                                <td>{{$key->Talent_Prcnt}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td class="numfield">{{$key->judge1}}</td>
+                                                                    <td class="numfield">{{$key->judge2}}</td>
+                                                                    <td class="numfield">{{$key->judge3}}</td>
+                                                                    <td class="numfield">{{$key->AverageTalent}}</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
@@ -304,24 +300,24 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
                                                         <table id="eventsTable-speech" class="table table-bordered table-striped datatable">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Judge</th>
                                                                     <th>Candidate</th>
-                                                                    <th>P Speech (Raw Score)</th>
-                                                                    <th>P Speech (Percentage)</th>
+                                                                    <th>Judge 4</th>
+                                                                    <th>Judge 5</th>
+                                                                    <th>Judge 6</th>
+                                                                    <th>Average</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($prepageants as $key)
+                                                                @foreach($reports as $key)
                                                                 <tr class="gradeX">
-                                                                    <td>{{$key->judge}}</td>
-                                                                    <td>{{$key->candidate}} -- {{strtoupper($key->lName)}}, {{$key->fName}} [{{$key->collegeCode}}]</td>
-                                                                    <td>{{$key->PSPch_RS}}</td>
-                                                                    <td>{{$key->PSpch_Prcnt}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td class="numfield">{{$key->judge4}}</td>
+                                                                    <td class="numfield">{{$key->judge5}}</td>
+                                                                    <td class="numfield">{{$key->judge6}}</td>
+                                                                    <td class="numfield">{{$key->AverageSpeech}}</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
@@ -678,80 +674,6 @@
     Large modal
   </button>
 </div> -->
-<div id="printPP">
-    <table>
-        <tr>
-            <th class="bordered">Judge</th>
-            <th class="bordered">Candidate</th>
-            <th class="bordered">Special Project (Raw Score)</th>
-            <th class="bordered">Special Project (Percentage)</th>
-            <th class="bordered">Talent (Raw Score)</th>
-            <th class="bordered">Talent (Percentage)</th>
-            <th class="bordered">P Speech (Raw Score)</th>
-            <th class="bordered">P Speech (Percentage)</th>
-        </tr>
-        @foreach($prepageants as $key)
-        <tr class="gradeX">
-            <td class="bordered">{{$key->judge}}</td>
-            <td class="bordered">{{$key->candidate}} -- {{strtoupper($key->lName)}} [{{$key->collegeCode}}]</td>
-            <td class="bordered numfield">{{$key->SP_RS}}</td>
-            <td class="bordered percentField">{{$key->SP_Prcnt}}</td>
-            <td class="bordered numfield">{{$key->Talent_RS}}</td>
-            <td class="bordered percentField">{{$key->Talent_Prcnt}}</td>
-            <td class="bordered numfield">{{$key->PSPch_RS}}</td>
-            <td class="bordered percentField">{{$key->PSpch_Prcnt}}</td>
-        </tr>
-        @endforeach
-    </table>
-</div>
-
-
-<div id="printFN" hidden>
-    <table>
-        <thead>
-            <tr>
-                <th class="bordered">Judge</th>
-                <th class="bordered">Candidate</th>
-                <th class="bordered">Production (Raw Score)</th>
-                <th class="bordered">Production (Percentage)</th>
-                <th class="bordered">Theme Wear (Raw Score)</th>
-                <th class="bordered">Theme Wear (Percentage)</th>
-                <th class="bordered">Evening Gown (Raw Score)</th>
-                <th class="bordered">Evening Gown (Percentage)</th>
-                <th class="bordered">Initial Score Subtotal</th>
-                <th class="bordered">Content (Raw Score)</th>
-                <th class="bordered">Content (Percentage)</th>
-                <th class="bordered">Confidence (Raw Score)</th>
-                <th class="bordered">Confidence (Percentage)</th>
-                <th class="bordered">Wit (Raw Score)</th>
-                <th class="bordered">Wit (Percentage)</th>
-                <th class="bordered">SQ Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($initScores as $key)
-            <tr class="gradeX">
-                <td class="bordered">{{$key->judge}}</td>
-                <td class="bordered">{{$key->candidate}}</td>
-                <td class="bordered numfield">{{$key->IS_Production_RS}}</td>
-                <td class="bordered percentField">{{$key->IS_Production_Prcnt}}</td>
-                <td class="bordered numfield">{{$key->IS_ThemeWr_RS}}</td>
-                <td class="bordered percentField">{{$key->IS_ThemeWr_Prcnt}}</td>
-                <td class="bordered numfield">{{$key->IS_EveGown_RS}}</td>
-                <td class="bordered percentField">{{$key->IS_EveGown_Prcnt}}</td>
-                <td class="bordered numfield">{{$key->IS_Subtotal}}</td>
-                <td class="bordered numfield">{{$key->SQ_Content_RS}}</td>
-                <td class="bordered percentField">{{$key->SQ_Content_Prcnt}}</td>
-                <td class="bordered numfield">{{$key->SQ_Confidence_RS}}</td>
-                <td class="bordered percentField">{{$key->SQ_Confidence_Prcnt}}</td>
-                <td class="bordered numfield">{{$key->SQ_Wit_RS}}</td>
-                <td class="bordered percentField">{{$key->SQ_Wit_Prcnt}}</td>
-                <td class="bordered numfield">{{$key->SQ_Subtotal}}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
 
 
   </div>
@@ -800,24 +722,21 @@ function suggestJUsername()
     }
 
     document.getElementById("btnPrint_PP_SP").onclick = function () {
-        $printPP = document.getElementById("printPP");
+        $printPP = document.getElementById("eventsTable-SP");
         $printPP.hidden = false;
         printElement($printPP);
-        $printPP.hidden = true;
     }
 
     document.getElementById("btnPrint_PP_talent").onclick = function () {
-        $printPP = document.getElementById("printPP");
+        $printPP = document.getElementById("eventsTable-talent");
         $printPP.hidden = false;
         printElement($printPP);
-        $printPP.hidden = true;
     }
 
     document.getElementById("btnPrint_PP_speech").onclick = function () {
-        $printPP = document.getElementById("printPP");
+        $printPP = document.getElementById("eventsTable-speech");
         $printPP.hidden = false;
         printElement($printPP);
-        $printPP.hidden = true;
     }
 
 
@@ -825,7 +744,6 @@ function suggestJUsername()
         $printFN = document.getElementById("printFN");
         $printFN.hidden = false;
         printElement($printFN);
-        $printFN.hidden = true;
     }
 
     function printElement(elem) {

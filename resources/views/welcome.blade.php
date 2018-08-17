@@ -64,77 +64,39 @@
                     </li> -->
                 </ul>
                 <div class="tab-content col-lg-12">
-                  <div class="tab-pane" id="candidateInfo">
-                      <div class="col-lg-4">
-                          <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
-                            <div class="info-box-4">
-                              <div class="icon">
-                                  <img src="public/css/images/testImg.jpg" width="72" height="72" alt="User" style="border-radius: 50%;"/>
-                              </div>
-                              <div class="content">
-                                  <div class="text">College of Computer Studies</div>
-                                  <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">Angel Ross</div>
-                              </div>
-                            </div>
-                        </a>
-                      </div>
-                      <div class="col-lg-4">
-                          <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
-                            <div class="info-box-4">
-                              <div class="icon">
-                                  <img src="public/css/images/testImg.jpg" width="72" height="72" alt="User" style="border-radius: 50%;"/>
-                              </div>
-                              <div class="content">
-                                  <div class="text">College of Computer Studies</div>
-                                  <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">Angel Ross</div>
-                              </div>
-                            </div>
-                        </a>
-                      </div>
-                      <div class="col-lg-4">
-                          <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
-                            <div class="info-box-4">
-                              <div class="icon">
-                                  <img src="public/css/images/testImg.jpg" width="72" height="72" alt="User" style="border-radius: 50%;"/>
-                              </div>
-                              <div class="content">
-                                  <div class="text">College of Computer Studies</div>
-                                  <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">Angel Ross</div>
-                              </div>
-                            </div>
-                        </div>
-                    </div> <!-- container -->
                     @if(Auth::user()->event == "Talent")
                     <div class="tab-pane active" id="prePageant_talent">
                       <h3>Talent</h3>
                       <div class="well well-sm">
                           <strong>Display</strong>
                           <div class="btn-group">
-                              <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span
-                                  class="glyphicon glyphicon-th"></span>Grid</a>
+                              <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span class="glyphicon glyphicon-th"></span>Grid</a>
                               <a href="#" id="list" class="btn btn-default btn-sm preList"><span class="glyphicon glyphicon-th-list">
                               </span>List</a>
                           </div>
                       </div>
-                      <div id="products" class="row list-group">
+                      <div id="products" class="row-fluid list-group">
                         <form action="{{url('/addScores')}}" method="post" enctype="multipart/form-data">
                           @csrf
                           <input type="hidden" name="judge" value="{{Auth::user()->id}}" />
-
+                          <input type="hidden" name="event" value="{{Auth::user()->event}}" />
                           @foreach($candidates as $key)
+                          @if($key->seqTalent == 9)
+                          <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3" style="clear: left;">
+                          @else
                           <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3">
-                            <input type="hidden" name="event" value="{{Auth::user()->event}}" />
+                          @endif
                             <div class="thumbnail">
                                 <img class="group list-group-image" src="{{$key->image}}" width="200"/>
                                 <div class="caption">
-                                    <h5 class="group inner list-group-item-heading" style="margin-bottom: 0"?>{{$key->fName}} {{$key->lName}}</h5>
+                                    <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
                                     <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
                                     <div class="row input-row">
                                         <div class="col-xs-5 col-md-5 sub-event">
                                             <p class="lead">Confidence</p>
                                         </div>
                                         <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                            <input type="number" name="confidence_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="25" value="{{$key->Talent_Confidence}}">
+                                            <input type="number" name="confidence_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="25" value="{{$key->Talent_Confidence}}" {{$key->read}}>
                                         </div>
                                     </div>
                                     <div class="row input-row">
@@ -142,7 +104,7 @@
                                             <p class="lead">Mastery</p>
                                         </div>
                                         <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                            <input type="number" name="mastery_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="25" value="{{$key->Talent_Mastery}}">
+                                            <input type="number" name="mastery_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="25" value="{{$key->Talent_Mastery}}" {{$key->read}}>
                                         </div>
                                     </div>
                                     <div class="row input-row">
@@ -150,7 +112,7 @@
                                             <p class="lead">Stage Presence</p>
                                         </div>
                                         <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                            <input type="number" name="stage_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="25" value="{{$key->Talent_StagePresence}}">
+                                            <input type="number" name="stage_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="25" value="{{$key->Talent_StagePresence}}" {{$key->read}}>
                                         </div>
                                     </div>
                                     <div class="row input-row">
@@ -158,7 +120,7 @@
                                             <p class="lead">Overall Impact</p>
                                         </div>
                                         <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                            <input type="number" name="impact_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="25" value="{{$key->Talent_OverallImpact}}">
+                                            <input type="number" name="impact_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="25" value="{{$key->Talent_OverallImpact}}" {{$key->read}}>
                                         </div>
                                     </div>
                                     <div class="row input-row">
@@ -169,9 +131,9 @@
                                             <input id="input_total{{$key->id}}" type="number" name="talentTotal_{{$key->id}}" class="col-xs-7 col-md-7 form-control" name="number" required="" aria-required="true" aria-invalid="false" readonly step='0.01' placeholder="0.00" value="{{$key->Talent_Confidence+$key->Talent_Mastery+$key->Talent_StagePresence+$key->Talent_OverallImpact}}">
                                         </div>
                                     </div>
-                                    <div style="width:100px;margin:auto;">
-                                      <div class="row" style="margin:auto;">
-                                        <button type="button" class="btn" data-rel="{{Auth::user()->id}}|{{$key->id}}">Save</button>
+                                    <div style="width:100px;margin:10px auto;">
+                                      <div class="row">
+                                        <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}|{{Auth::user()->event}}" style="margin:0 auto;display:block;">Save</button>
                                       </div>
                                     </div>
                                 </div>
@@ -205,21 +167,25 @@
                         <form action="{{url('/addScores')}}" method="post" enctype="multipart/form-data">
                           @csrf
                           <input type="hidden" name="judge" value="{{Auth::user()->id}}" />
-
                           @foreach($candidates as $key)
+                          <input type="hidden" name="event" value="{{Auth::user()->event}}" />
+                          @if($key->seqSpeech == 5)
+                          <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3" style="clear:left;">
+                          @else
                           <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3">
+                          @endif
                             <input type="hidden" name="event" value="{{Auth::user()->event}}" />
                             <div class="thumbnail">
                                 <img class="group list-group-image" src="{{$key->image}}" width="200"/>
                                 <div class="caption">
-                                    <h5 class="group inner list-group-item-heading" style="margin-bottom: 0"?>{{$key->fName}} {{$key->lName}}</h5>
+                                    <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
                                     <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
                                     <div class="row input-row">
                                         <div class="col-xs-5 col-md-5 sub-event">
                                             <p class="lead">Content</p>
                                         </div>
                                         <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                            <input type="number" name="content_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="25" value="{{$key->PSpch_Content}}">
+                                            <input type="number" name="content_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="25" value="{{$key->PSpch_Content}}" {{$key->read}}>
                                         </div>
                                     </div>
                                     <div class="row input-row">
@@ -227,7 +193,7 @@
                                             <p class="lead">Delivery</p>
                                         </div>
                                         <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                            <input type="number" name="delivery_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="25" value="{{$key->PSpch_Delivery}}">
+                                            <input type="number" name="delivery_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="25" value="{{$key->PSpch_Delivery}}" {{$key->read}}>
                                         </div>
                                     </div>
                                     <div class="row input-row">
@@ -235,7 +201,7 @@
                                             <p class="lead">Spontaneity</p>
                                         </div>
                                         <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                            <input type="number" name="spon_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="25" value="{{$key->PSpch_Spontainety}}">
+                                            <input type="number" name="spon_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="25" value="{{$key->PSpch_Spontainety}}" {{$key->read}}>
                                         </div>
                                     </div>
                                     <div class="row input-row">
@@ -243,7 +209,7 @@
                                             <p class="lead">Defense</p>
                                         </div>
                                         <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                            <input type="number" name="defense_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="25" value="{{$key->PSpch_Defense}}">
+                                            <input type="number" name="defense_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="25" value="{{$key->PSpch_Defense}}" {{$key->read}}>
                                         </div>
                                     </div>
                                     <div class="row input-row">
@@ -256,7 +222,7 @@
                                     </div>
                                     <div style="width:100px;margin:auto;">
                                       <div class="row" style="margin:auto;">
-                                        <button type="button" class="btn" data-rel="{{Auth::user()->id}}|{{$key->id}}">Save</button>
+                                        <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}">Save</button>
                                       </div>
                                     </div>
                                 </div>
@@ -296,7 +262,7 @@
                             <div class="thumbnail">
                                 <img class="group list-group-image" src="{{$key->image}}" width="200"/>
                                 <div class="caption">
-                                    <h5 class="group inner list-group-item-heading" style="margin-bottom: 0"?>{{$key->fName}} {{$key->lName}}</h5>
+                                    <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
                                     <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
                                     <div class="row input-row">
                                         <div class="col-xs-5 col-md-5 sub-event">
@@ -348,14 +314,14 @@
                             <div class="thumbnail">
                                 <img class="group list-group-image" src="{{$key->image}}" width="200"/>
                                 <div class="caption">
-                                    <h5 class="group inner list-group-item-heading" style="margin-bottom: 0"?>{{$key->fName}} {{$key->lName}}</h5>
+                                    <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
                                     <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
                                     <div class="row input-row">
                                         <div class="col-xs-5 col-md-5 sub-event">
                                             <p class="lead">Score</p>
                                         </div>
                                         <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                            <input type="number" name="score_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="100" value="{{$key->SP_RS}}">
+                                            <input type="number" name="score_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="100" value="{{$key->SP_RS}}" {{$key->read}}>
                                         </div>
                                     </div>
                                     <div style="width:100px;margin:auto;">

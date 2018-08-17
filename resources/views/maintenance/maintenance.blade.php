@@ -344,7 +344,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                
                                                 <table id="eventsTable" class="table table-bordered table-striped datatable">
                                                     <thead>
                                                         <tr>

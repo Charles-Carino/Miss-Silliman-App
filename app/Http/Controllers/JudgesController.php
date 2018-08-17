@@ -12,7 +12,6 @@ class JudgesController extends Controller
     public function show(){
       $check = Prepageants::where('judge',Auth::user()->id)->first();
       $user = User::where('id',Auth::user()->id)->first();
-      // dd($user);
       if(!$check && !$user){
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->get();
           return view('welcome',compact('candidates'));
@@ -34,10 +33,12 @@ class JudgesController extends Controller
     }
 
     public function addScores(Request $request){
+      // die("Hello");
       $check = Prepageants::where('judge',$request['judge'])->get();
         if($request['event'] == "Talent"){
           foreach($check as $key){
             $i = $key->candidate;
+            // dd("Hello");
             Prepageants::where('id',$key->id)->update([
                 'candidate' => $i,
                 'judge' => $request['judge'],
@@ -45,6 +46,7 @@ class JudgesController extends Controller
                 'Talent_Mastery' => $request['mastery_'.$key->id],
                 'Talent_StagePresence' => $request['stage_'.$key->id],
                 'Talent_OverallImpact' => $request['impact_'.$key->id],
+                'read' => 'readonly'
             ]);
           }
         }else if($request['event'] == "Speech"){
@@ -57,6 +59,7 @@ class JudgesController extends Controller
                 'PSpch_Delivery' => $request['delivery_'.$key->id],
                 'PSpch_Spontainety' => $request['spon_'.$key->id],
                 'PSpch_Defense' => $request['defense_'.$key->id],
+                'read' => 'readonly'
             ]);
           }
         }else if($request['event'] == "Special Projects"){
@@ -66,6 +69,7 @@ class JudgesController extends Controller
                 'candidate' => $i,
                 'judge' => $request['judge'],
                 'SP_RS' => $request['input_'.$key->id],
+                'read' => 'readonly'
             ]);
           }
         }else if($request['event'] == "Press Launch"){
@@ -76,6 +80,7 @@ class JudgesController extends Controller
                 'candidate' => $i,
                 'organizer' => $request['judge'],
                 'PL_RS' => $request['press_'.$key->id],
+                'read' => 'readonly'
             ]);
           }
         }

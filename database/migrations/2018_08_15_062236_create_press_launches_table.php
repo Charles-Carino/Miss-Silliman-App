@@ -18,6 +18,7 @@ class CreatePressLaunchesTable extends Migration
             $table->integer('candidate')->unsigned();
             $table->integer('organizer')->unsigned();
             $table->integer('PL_RS')->nullable();
+            $table->string('read')->nullable();
             $table->timestamps();
         });
     }

@@ -245,19 +245,13 @@
                 <form action="{{url('/addJudge')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="row">
-                      <div class="col-md-4">
+                      <div class="col-xs-6 col-md-6">
                           <div class="form-group">
                               <label for="JudgeField-FName" class="control-label">First Name</label>
                               <input type="text" class="form-control" id="JudgeField-FName" name="fName">
                           </div>
                       </div>
-                      <div class="col-md-4">
-                          <div class="form-group">
-                              <label for="JudgeField-MName" class="control-label">Middle Name</label>
-                              <input type="text" class="form-control" id="JudgeField-MName" name='mName'>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
+                      <div class="col-xs-6 col-md-6">
                           <div class="form-group">
                               <label for="JudgeField-LName" class="control-label">Last Name</label>
                               <input type="text" class="form-control" id="JudgeField-LName" name='lName'>
@@ -311,19 +305,13 @@
                 <form action="{{url('/addOrganizer')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="row">
-                      <div class="col-md-4">
+                      <div class="col-md-6">
                           <div class="form-group">
                               <label for="OrgField-FName" class="control-label">First Name</label>
                               <input type="text" class="form-control" id="OrgField-FName" name='fName'>
                           </div>
                       </div>
-                      <div class="col-md-4">
-                          <div class="form-group">
-                              <label for="OrgField-MName" class="control-label">Middle Name</label>
-                              <input type="text" class="form-control" id="OrgField-MName" name='mName'>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
+                      <div class="col-md-6">
                           <div class="form-group">
                               <label for="OrgField-LName" class="control-label">Last Name</label>
                               <input type="text" class="form-control" id="OrgField-LName" name='lName'>
@@ -360,13 +348,13 @@
                     </div>
                   </div>
                   <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-xs-6 col-md-6">
                           <div class="form-group">
                               <label for="OrgField-Username" class="control-label">Username</label>
                               <input type="text" class="form-control" id="OrgField-Username" name='username' onClick="suggestOrgUsername()">
                           </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-xs-6 col-md-6">
                           <div class="form-group">
                               <label for="OrgField-Password" class="control-label">Password</label>
                               <input type="password" class="form-control" id="OrgField-Password" name='password'>
@@ -411,19 +399,13 @@
 
                   </div>
                   <div class="row">
-                      <div class="col-md-4">
+                      <div class="col-xs-6 col-md-6">
                           <div class="form-group">
                               <label for="field-1" class="control-label">First Name</label>
                               <input type="text" class="form-control" id="field-1" name='fName'>
                           </div>
                       </div>
-                      <div class="col-md-4">
-                          <div class="form-group">
-                              <label for="field-2" class="control-label">Middle Name</label>
-                              <input type="text" class="form-control" id="field-2" name='mName'>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
+                      <div class="col-xs-6 col-md-6">
                           <div class="form-group">
                               <label for="field-3" class="control-label">Last Name</label>
                               <input type="text" class="form-control" id="field-3" name='lName'>

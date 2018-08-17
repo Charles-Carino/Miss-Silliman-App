@@ -31,6 +31,7 @@ class CreatePrepageantsTable extends Migration
               $table->decimal('Talent_Prcnt',8,2)->nullable(); //Talent Percentage
               $table->decimal('PSpch_Prcnt',8,2)->nullable(); //Platform Speach Percentage
               $table->decimal('sub_total',8,2)->nullable(); //Partial score of the Prepageant
+              $table->string('read')->nullable();
 
               $table->timestamps();
         });

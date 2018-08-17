@@ -58,96 +58,18 @@ $(document).ready(function() {
       $('.total').removeClass('col-xs-1 col-md-1');
       $('.total').addClass('col-xs-5 col-md-5');
     });
-    
-    $(".form-line").on("input",".input_1",function(){
-        var totalSum = 0;
-        $(".input_1").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total1").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_2",function(){
-        var totalSum = 0;
-        $(".input_2").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total2").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_3",function(){
-        var totalSum = 0;
-        $(".input_3").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total3").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_4",function(){
-        var totalSum = 0;
-        $(".input_4").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total4").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_5",function(){
-        var totalSum = 0;
-        $(".input_5").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total5").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_6",function(){
-        var totalSum = 0;
-        $(".input_6").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total6").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_7",function(){
-        var totalSum = 0;
-        $(".input_7").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total7").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_8",function(){
-        var totalSum = 0;
-        $(".input_8").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total8").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_9",function(){
-        var totalSum = 0;
-        $(".input_9").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total9").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_10",function(){
-        var totalSum = 0;
-        $(".input_10").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total10").attr('value',totalSum);
+
+    $(".form-line").on("input",".form-control",function(){
+      var totalSum = 0;
+      var getParam = $(this).attr("class");
+      var paramArr = getParam.split(' ');
+      rowID = paramArr[3].slice(-2);
+      $(".input_"+rowID).each(function(){
+          var inputVal = $(this).val();
+          if($.isNumeric(inputVal))
+            totalSum += parseFloat(inputVal);
+      });
+      $("#input_total"+rowID).attr('value',totalSum);
     });
 
     $("button").click(function(){
@@ -155,28 +77,31 @@ $(document).ready(function() {
       var paramArr = getParam.split('|');
       var judge = paramArr[0];
       var rowID = paramArr[1];
+      var judgeEvent = paramArr[2];
       var values = [];
 
-      for(var i = 1; i < 5; i++)
+      for(var i = 0; i < 5; i++)
         values[i] = $("#row"+rowID).find("input")[i]['value'];
 
-      console.log(values);
-        $.ajax({
-          url: "{{url('/saveCandidate')}}",
-          type: 'post',
-          postType: 'json',
-          data: {
-            "_token": "{{csrf_token()}}",
-            "values": values,
-            "row": rowID,
-            "judge": judge,
-            "event": $("#row"+rowID).find("input")[0]['value'],
-          },
-          success:function(data){
-              $(this).html('<div class="alert alert-success"><strong>Record added!</strong>.</p></div>')
-          },
-          async:false
-        });
+      $.ajax({
+        url: "{{url('/saveCandidate')}}",
+        type: 'post',
+        postType: 'json',
+        data: {
+          "_token": "{{csrf_token()}}",
+          "values": values,
+          "row": rowID,
+          "judge": judge,
+          "event": judgeEvent,
+        },
+        success:function(data){
+            $("#row"+rowID+" .caption").append('<div id="input_success" class="alert alert-success"><p style="color:white;text-align:center;">Record added!</p></div>').fadeIn(2000);
+            $("#input_success").fadeOut(1500,function(){
+              $("div").remove('#input_success');
+            });
+        },
+        async:false
+      });
     });
 });
 </script>

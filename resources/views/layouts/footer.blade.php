@@ -79,8 +79,9 @@ $(document).ready(function() {
       var rowID = paramArr[1];
       var judgeEvent = paramArr[2];
       var values = [];
+      var limit = $("#row"+rowID).find("input").length;
 
-      for(var i = 0; i < 5; i++)
+      for(var i = 0; i < limit; i++)
         values[i] = $("#row"+rowID).find("input")[i]['value'];
 
       $.ajax({
@@ -95,8 +96,8 @@ $(document).ready(function() {
           "event": judgeEvent,
         },
         success:function(data){
-            $("#row"+rowID+" .caption").append('<div id="input_success" class="alert alert-success"><p style="color:white;text-align:center;">Record added!</p></div>').fadeIn(2500);
-            $("#input_success").fadeOut(2500,function(){
+            $("#row"+rowID+" .caption").append('<div id="input_success" class="alert alert-success"><p style="color:white;text-align:center;">Record saved!</p></div>').slideDown(1000);
+            $("#input_success").slideUp(1000,function(){
               $("div").remove('#input_success');
             });
         },

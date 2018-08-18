@@ -157,10 +157,7 @@ class OrganizersController extends Controller
         where
         	t0.candidates=t1.candidates and t1.candidates=t2.candidates and
         	t2.candidates=t3.candidates and t3.candidates=t4.candidates and
-        	t4.candidates=t5.candidates and t5.candidates=t6.candidates
-
-        order by TotalPrepageant desc;
-	"));
+        	t4.candidates=t5.candidates and t5.candidates=t6.candidates"));
         return view('maintenance.maintenance',compact('judges','organizers','candidates', 'colleges','prepageants','initScores','prePajFinal', 'reports'));
-    }
+      }
 }

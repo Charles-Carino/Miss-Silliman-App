@@ -21,13 +21,13 @@
                 <li class="active tab">
                     <a href="#judge" data-toggle="tab" aria-expanded="false">
                         <span class="visible-xs"><i class="fa fa-legal"></i></span>
-                        <span class="hidden-xs">Judge</span>
+                        <span class="hidden-xs">Judges</span>
                     </a>
                 </li>
                 <li class="tab">
                     <a href="#organizer" data-toggle="tab" aria-expanded="false">
                         <span class="visible-xs"><i class="fa fa-group"></i></span>
-                        <span class="hidden-xs">Organizer</span>
+                        <span class="hidden-xs">Organizers</span>
                     </a>
                 </li>
                 <li class="tab">

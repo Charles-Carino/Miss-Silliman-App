@@ -10,16 +10,17 @@ use App\PressLaunches;
 class JudgesController extends Controller
 {
     public function show(){
-      $check = Prepageants::where('judge',Auth::user()->id)->first();
+      $check = Prepageants::where('judge',Auth::user()->id);
       $user = User::where('id',Auth::user()->id)->first();
       if(!$check && !$user){
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->get();
           return view('welcome',compact('candidates'));
       }
       else if($user->userType == "organizer"){
-          $PL = Candidates::join('colleges','colleges.id','=','candidates.college')->join('press_launches','press_launches.candidate','=','candidates.id')->where('organizer',Auth::user()->id)->get();
+          $press = Candidates::join('colleges','colleges.id','=','candidates.college')->join('press_launches','press_launches.candidate','=','candidates.id')->where('organizer',Auth::user()->id)->get();
+          // dd($press);
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('prepageants','prepageants.candidate','=','candidates.id')->where('judge',Auth::user()->id)->get();
-          return view('welcome',compact('PL','candidates'));
+          return view('welcome',compact('press','candidates'));
       }
       else if($user->userType == "judge"){
         if($user->event == "Talent")
@@ -63,12 +64,13 @@ class JudgesController extends Controller
             ]);
           }
         }else if($request['event'] == "Special Projects"){
+          // dd($request);
           foreach($check as $key){
             $i = $key->candidate;
             Prepageants::where('id',$key->id)->update([
                 'candidate' => $i,
                 'judge' => $request['judge'],
-                'SP_RS' => $request['input_'.$key->id],
+                'SP_RS' => $request['score_'.$key->id],
                 'read' => 'readonly'
             ]);
           }
@@ -80,7 +82,6 @@ class JudgesController extends Controller
                 'candidate' => $i,
                 'organizer' => $request['judge'],
                 'PL_RS' => $request['press_'.$key->id],
-                'read' => 'readonly'
             ]);
           }
         }

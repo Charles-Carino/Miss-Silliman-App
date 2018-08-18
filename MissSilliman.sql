@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table misssilliman.migrations: ~7 rows (approximately)
+-- Dumping data for table misssilliman.migrations: ~8 rows (approximately)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_10_12_100000_create_password_resets_table', 1),
@@ -245,7 +245,7 @@ CREATE TABLE IF NOT EXISTS `prepageants` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table misssilliman.prepageants: ~19 rows (approximately)
+-- Dumping data for table misssilliman.prepageants: ~90 rows (approximately)
 /*!40000 ALTER TABLE `prepageants` DISABLE KEYS */;
 INSERT INTO `prepageants` (`id`, `candidate`, `judge`, `SP_RS`, `Talent_Confidence`, `Talent_Mastery`, `Talent_StagePresence`, `Talent_OverallImpact`, `PSpch_Content`, `PSpch_Delivery`, `PSpch_Spontainety`, `PSpch_Defense`, `SP_Prcnt`, `Talent_Prcnt`, `PSpch_Prcnt`, `sub_total`, `read`, `created_at`, `updated_at`) VALUES
 	(1, 1, 19, NULL, 23.00, 20.00, 18.00, 22.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-15 09:27:13', '2018-08-15 09:59:29'),
@@ -404,10 +404,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table misssilliman.users: ~11 rows (approximately)
+-- Dumping data for table misssilliman.users: ~12 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `fName`, `mName`, `lName`, `userType`, `position`, `event`, `roles`, `username`, `password`, `created_at`, `updated_at`, `remember_token`) VALUES
-	(16, 'Charles', NULL, 'Carino', 'organizer', 'Chair', NULL, 'admin', 'charlescarino4', '$2y$10$tfbBZV4sT16KS8f1kRxeYOuPFF1Az/bPF//HfxbNRhjlsMOUh/a7y', '2018-08-15 08:11:42', '2018-08-15 08:11:42', '3EWrW8EMLK375U1cdYuGUYUcBgiveHVMNjAPVSMNcFmoytVATJ3nW4dSDJV2'),
+	(16, 'Charles', NULL, 'Carino', 'organizer', 'Chair', NULL, 'admin,judge', 'charlescarino4', '$2y$10$tfbBZV4sT16KS8f1kRxeYOuPFF1Az/bPF//HfxbNRhjlsMOUh/a7y', '2018-08-15 08:11:42', '2018-08-15 08:11:42', 'WkHixqE7hZxO3n5Vim4LjRmZb1Uictp0DQ5gxTYtAWmTLdmIydYljaAx2JcP'),
 	(17, 'Ginno', NULL, 'Bacang', 'organizer', 'Committee Head', NULL, 'admin,judge', 'Babygirl123', '$2y$10$aKR4tV0MHkKHh1Q/528ate9MO5NsDGzu6thrOpb7SzM3x/gLjDvKe', '2018-08-15 09:21:41', '2018-08-15 09:21:41', '7SswW2br6wC98e7GIQKjehucXAA5PWJoDNMXvTg6oxebt1H1FyxB7xAM8hFJ'),
 	(18, 'Jovelyn', NULL, 'Teramoto', 'organizer', 'Others', NULL, 'admin,judge', 'Pabibo123', '$2y$10$SSA5Z9RyhY3k7NV5EK6Fl.stsJ.wOfwlMn06O.tYHsg4gSpHFTUAq', '2018-08-15 09:22:58', '2018-08-15 09:22:58', 'nwmTPBNNTjSSaa0gsceHOTNgGLKh8ZzfND1oA7B8YTJrdVXxAINbmsVajupO'),
 	(19, 'Julia', NULL, 'Baretto', 'judge', NULL, 'Talent', 'judge', 'JuliaB', '$2y$10$Hwd3UN27JJjV29N.53X41e0cWazMR/PMkQE7pfClkG1zqc641pRve', '2018-08-15 09:27:13', '2018-08-15 09:27:13', NULL),
@@ -418,7 +418,7 @@ INSERT INTO `users` (`id`, `fName`, `mName`, `lName`, `userType`, `position`, `e
 	(24, 'Jun', NULL, 'Fortun', 'judge', NULL, 'Talent', NULL, 'Veryfortunate', '$2y$10$QD0kEl8Fh2b2a4VrLHEhFu3E8VsehBY2fCb8Fb80hCQ0zVxVNU.JO', '2018-08-15 09:31:20', '2018-08-15 09:31:20', NULL),
 	(25, 'Bernard', NULL, 'Tolip', 'judge', NULL, 'Speech', NULL, 'Bernard123', '$2y$10$ttlCC2z1EqH85fpd5k.8KexX/WXU8CTTWibHT./A7mCW9RPVE9Bva', '2018-08-15 09:31:53', '2018-08-15 09:31:53', NULL),
 	(26, 'Cardo', NULL, 'Dalisay', 'judge', NULL, 'Speech', NULL, 'Angprobinsyano', '$2y$10$6RTw2LYQKgG6VRhwD9rszOsshhLrMovB0SdldJfkSgrDzJdFFFtsG', '2018-08-15 09:33:31', '2018-08-15 09:33:31', NULL),
-	(27, 'Lorem', NULL, 'Ipsum', 'judge', NULL, 'Talent', NULL, 'lorem', '$2y$10$bOSAY.zeW8.zA58do9Qlg.U0mJ.2Mj5Uu8JvTxEuT9aB5Of32i142', '2018-08-16 17:20:36', '2018-08-16 17:20:36', 'VO4OVtFgal365eXJmbgErSrmDvcXi8I9VyAFgyyx2YeI8Prq2eVQIYJhRLOY');
+	(27, 'Lorem', NULL, 'Ipsum', 'judge', NULL, 'Talent', NULL, 'lorem', '$2y$10$bOSAY.zeW8.zA58do9Qlg.U0mJ.2Mj5Uu8JvTxEuT9aB5Of32i142', '2018-08-16 17:20:36', '2018-08-16 17:20:36', 'bNRB2IcPG6ZQh9qdyAW5qX9mp3bjwhoC3SGFGTMt3d8n5d4Dhp77FNAQSQq7');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

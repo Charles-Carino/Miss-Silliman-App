@@ -25,6 +25,7 @@
         "public/css/images/NURSING.png",
     ];
     $explode = explode(",",Auth::user()->roles);
+    // dd(in_array("judge",$explode));
 ?>
 @extends('layouts.master')
 @section('content')
@@ -48,14 +49,14 @@
                             <span class="hidden-xs">Press Launch</span>
                         </a>
                     </li>
-                    @endif
-                    @if(Auth::user()->userType == "organizer" && in_array("judge",$explode))
+                    @if(in_array("judge",$explode))
                     <li class="tab">
                         <a href="#prePageant_specialProjects" data-toggle="tab" aria-expanded="false">
                             <span class="visible-xs"><i class="fa fa-user"></i></span>
                             <span class="hidden-xs">Special Projects</span>
                         </a>
                     </li>
+                    @endif
                     @endif
                     <!-- <li class="tab">
                         <a href="#finals" data-toggle="tab" aria-expanded="false">
@@ -67,7 +68,19 @@
                 <div class="tab-content col-lg-12">
                     @if(Auth::user()->event == "Talent")
                     <div class="tab-pane active" id="prePageant_talent">
-                      <h3>Talent</h3>
+                      <div class="row">
+                        <div class="col-xs-1 col-md-1">
+                          <h3>Talent</h3>
+                        </div>
+                        @if($candidates[0]->read == "readonly")
+                        <div class="col-xs-11 col-md-11">
+                          <button id="ranking" type="button" class="btn btn-danger waves-effect" style="float: right;">
+                              <i class="material-icons">person</i>
+                              <span>Ranking</span>
+                          </button>
+                        </div>
+                        @endif
+                      </div>
                       <div class="well well-sm">
                           <strong>Display</strong>
                           <div class="btn-group">
@@ -132,10 +145,8 @@
                                             <input id="input_total{{$key->id}}" type="number" name="talentTotal_{{$key->id}}" class="col-xs-7 col-md-7 form-control" name="number" required="" aria-required="true" aria-invalid="false" readonly step='0.01' placeholder="0.00" value="{{$key->Talent_Confidence+$key->Talent_Mastery+$key->Talent_StagePresence+$key->Talent_OverallImpact}}">
                                         </div>
                                     </div>
-                                    <div style="width:100px;margin:10px auto;">
-                                      <div class="row">
-                                        <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}|{{Auth::user()->event}}" style="margin:0 auto;display:block;">Save</button>
-                                      </div>
+                                    <div class="row">
+                                      <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}|{{Auth::user()->event}}" style="margin:0 auto;display:block;">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -144,11 +155,27 @@
                       </div>
                       <div style="width:120px;margin:auto;">
                         <div class="row" style="margin:auto;">
-                          <button type="submit" class="btn bg-red waves-effect">
+                          <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">
                               <i class="material-icons">done</i>
-                              <span>SUBMIT</span>
+                              <span>CONFIRM</span>
                           </button>
                         </div>
+                      </div>
+                      <div class="modal fade" id="confirmSubmit" tabindex="-1" role="dialog">
+                          <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h4 class="modal-title" id="defaultModalLabel">Confirm Submit</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                      Are you sure to submit? Once its confirmed, the scores will not be edited any longer.
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="submit" class="btn btn-link waves-effect">SUBMIT</button>
+                                      <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                                  </div>
+                              </div>
+                          </div>
                       </div>
                       </form>
                     </div>
@@ -168,8 +195,8 @@
                         <form action="{{url('/addScores')}}" method="post" enctype="multipart/form-data">
                           @csrf
                           <input type="hidden" name="judge" value="{{Auth::user()->id}}" />
-                          @foreach($candidates as $key)
                           <input type="hidden" name="event" value="{{Auth::user()->event}}" />
+                          @foreach($candidates as $key)
                           @if($key->seqSpeech == 5)
                           <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3" style="clear:left;">
                           @else
@@ -221,10 +248,8 @@
                                             <input id="input_total{{$key->id}}" type="number" name="speechTotal_{{$key->id}}" class="col-xs-7 col-md-7 form-control" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' readonly value="{{$key->PSpch_Content+$key->PSpch_Delivery+$key->PSpch_Spontainety+$key->PSpch_Defense}}">
                                         </div>
                                     </div>
-                                    <div style="width:100px;margin:auto;">
-                                      <div class="row" style="margin:auto;">
-                                        <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}">Save</button>
-                                      </div>
+                                    <div class="row">
+                                      <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}|{{Auth::user()->event}}" style="margin:0 auto;display:block;">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -233,11 +258,27 @@
                       </div>
                       <div style="width:120px;margin:auto;">
                         <div class="row" style="margin:auto;">
-                          <button type="submit" class="btn bg-red waves-effect">
+                          <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">
                               <i class="material-icons">done</i>
-                              <span>SUBMIT</span>
+                              <span>CONFIRM</span>
                           </button>
                         </div>
+                      </div>
+                      <div class="modal fade" id="confirmSubmit" tabindex="-1" role="dialog">
+                          <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h4 class="modal-title" id="defaultModalLabel">Confirm Submit</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                      Are you sure to submit? Once its confirmed, the scores will not be edited any longer.
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="submit" class="btn btn-link waves-effect">SUBMIT</button>
+                                      <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                                  </div>
+                              </div>
+                          </div>
                       </div>
                       </form>
                     </div>
@@ -258,9 +299,9 @@
                         <form action="{{url('/addScores')}}" method="post" enctype="multipart/form-data">
                           @csrf
                           <input type="hidden" name="judge" value="{{Auth::user()->id}}" />
-                          <input type="hidden" name="event" value="Press Launch" />
-                          @foreach($PL as $key)
-                          <div class="item col-xs-3 col-lg-3">
+                          <input type="hidden" name="event" value="Press Launch"/>
+                          @foreach($press as $key)
+                          <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3">
                             <div class="thumbnail">
                                 <img class="group list-group-image" src="{{$key->image}}" width="200"/>
                                 <div class="caption">
@@ -274,10 +315,8 @@
                                             <input type="number" name="press_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="100" value="{{$key->PL_RS}}">
                                         </div>
                                     </div>
-                                    <div style="width:100px;margin:auto;">
-                                      <div class="row" style="margin:auto;">
-                                        <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}">Save</button>
-                                      </div>
+                                    <div class="row">
+                                      <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}|Press Launch" style="margin:0 auto;display:block;">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -294,43 +333,38 @@
                       </div>
                       </form>
                     </div>
-                    @if(in_array("judge",$explode))
-                        <div class="tab-pane" id="prePageant_specialProjects">
-                        <h3>Special Projects</h3>
-                        <div class="well well-sm">
-                            <strong>Display</strong>
-                            <div class="btn-group">
-                                <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span
-                                    class="glyphicon glyphicon-th"></span>Grid</a>
-                                <a href="#" id="list" class="btn btn-default btn-sm preList"><span class="glyphicon glyphicon-th-list">
-                                </span>List</a>
-                            </div>
-                        </div>
-                        <div id="products" class="row list-group">
-                            <form action="{{url('/addScores')}}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="judge" value="{{Auth::user()->id}}" />
-                            <input type="hidden" name="event" value="Special Projects" />
-                            @foreach($candidates as $key)
-                            <div class="item col-xs-3 col-lg-3">
-                                <div class="thumbnail">
-                                    <img class="group list-group-image" src="{{$key->image}}" width="200"/>
-                                    <div class="caption">
-                                        <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
-                                        <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
-                                        <div class="row input-row">
-                                            <div class="col-xs-5 col-md-5 sub-event">
-                                                <p class="lead">Score</p>
-                                            </div>
-                                            <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                                <input type="number" name="score_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="100" value="{{$key->SP_RS}}" {{$key->read}}>
-                                            </div>
-                                        </div>
-                                        <div style="width:100px;margin:auto;">
-                                        <div class="row" style="margin:auto;">
-                                            <button type="button" class="btn" data-rel="{{Auth::user()->id}}|{{$key->id}}">Save</button>
+                    @if(in_array("judge",$explode) == "true")
+                    <div class="tab-pane" id="prePageant_specialProjects">
+                      <h3>Special Projects</h3>
+                      <div class="well well-sm">
+                          <strong>Display</strong>
+                          <div class="btn-group">
+                              <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span
+                                  class="glyphicon glyphicon-th"></span>Grid</a>
+                              <a href="#" id="list" class="btn btn-default btn-sm preList"><span class="glyphicon glyphicon-th-list">
+                              </span>List</a>
+                          </div>
+                      </div>
+                      <div id="products" class="row list-group">
+                        <form action="{{url('/addScores')}}" method="post" enctype="multipart/form-data">
+                          @csrf
+                          <input type="hidden" name="judge" value="{{Auth::user()->id}}" />
+                          <input type="hidden" name="event" value="Special Projects" />
+                          @foreach($candidates as $key)
+                          <div class="item col-xs-3 col-lg-3">
+                            <div class="thumbnail">
+                                <img class="group list-group-image" src="{{$key->image}}" width="200"/>
+                                <div class="caption">
+                                    <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
+                                    <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
+                                    <div class="row input-row">
+                                        <div class="col-xs-5 col-md-5 sub-event">
+                                            <p class="lead">Score</p>
                                         </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                      <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}|{{Auth::user()->event}}" style="margin:0 auto;display:block;">Save</button>
                                     </div>
                                 </div>
                             </div>

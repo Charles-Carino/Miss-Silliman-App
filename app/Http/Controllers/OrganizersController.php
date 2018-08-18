@@ -28,7 +28,8 @@ class OrganizersController extends Controller
 
 
         $reports = DB::select(DB::raw("select
-        	t0.id,
+			t0.id,
+			t0.cCode,
             t0.candidates,
             t0.SP as 'SP',
         	t1.talent as 'judge1',
@@ -46,9 +47,10 @@ class OrganizersController extends Controller
 
         from
         /*special project*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
-        		,sum(pre.SP_RS) SP
+				,sum(pre.SP_RS) SP
+				,col.`collegeCode` cCode
         	from prepageants pre
         	left join candidates can on can.id=pre.candidate
         	left join colleges col on col.id=can.college
@@ -57,7 +59,7 @@ class OrganizersController extends Controller
         /*end*/
         	,
         /*talent judge1*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
         		,Talent_Confidence
         		,Talent_Mastery
@@ -73,7 +75,7 @@ class OrganizersController extends Controller
         /*end*/
         	,
         /*talent judge2*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
         		,Talent_Confidence
         		,Talent_Mastery
@@ -89,7 +91,7 @@ class OrganizersController extends Controller
         /*end*/
         	,
         /*talent judge3*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
         		,Talent_Confidence
         		,Talent_Mastery
@@ -105,7 +107,7 @@ class OrganizersController extends Controller
         /*end*/
         	,
         /*speech judge4*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
         		,PSpch_Content
         		,PSpch_Delivery
@@ -121,7 +123,7 @@ class OrganizersController extends Controller
         /*end*/
         	,
         /*speech judge5*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
         		,PSpch_Content
         		,PSpch_Delivery
@@ -137,7 +139,7 @@ class OrganizersController extends Controller
         /*end*/
         	,
         /*speech judge6*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
         		,PSpch_Content
         		,PSpch_Delivery

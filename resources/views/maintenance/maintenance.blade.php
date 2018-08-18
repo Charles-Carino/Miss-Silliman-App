@@ -250,6 +250,7 @@
                                                             </caption> 
                                                             <thead>
                                                                 <tr>
+                                                                    <th>College</th>
                                                                     <th>Candidate</th>
                                                                     <th>Special Project (Total)</th>
                                                                 </tr>
@@ -257,6 +258,7 @@
                                                             <tbody>
                                                                 @foreach($reports as $key)
                                                                 <tr class="gradeX">
+                                                                    <td>{{$key->cCode}}</td>
                                                                     <td>{{$key->candidates}}</td>
                                                                     <td class="numfield">{{$key->SP}}</td>
                                                                 </tr>
@@ -278,6 +280,7 @@
                                                             </caption> 
                                                             <thead>
                                                                 <tr>
+                                                                    <th>College</th>
                                                                     <th>Candidate</th>
                                                                     <th>Talent Judge 1</th>
                                                                     <th>Talent Judge 2</th>
@@ -288,6 +291,7 @@
                                                             <tbody>
                                                                 @foreach($reports as $key)
                                                                 <tr class="gradeX">
+                                                                    <td>{{$key->cCode}}</td>
                                                                     <td>{{$key->candidates}}</td>
                                                                     <td class="numfield">{{$key->judge1}}</td>
                                                                     <td class="numfield">{{$key->judge2}}</td>
@@ -312,6 +316,7 @@
                                                             </caption> 
                                                             <thead>
                                                                 <tr>
+                                                                    <th>College</th>
                                                                     <th>Candidate</th>
                                                                     <th>Speech Judge 1</th>
                                                                     <th>Speech Judge 2</th>
@@ -322,6 +327,7 @@
                                                             <tbody>
                                                                 @foreach($reports as $key)
                                                                 <tr class="gradeX">
+                                                                    <td>{{$key->cCode}}</td>
                                                                     <td>{{$key->candidates}}</td>
                                                                     <td class="numfield">{{$key->judge4}}</td>
                                                                     <td class="numfield">{{$key->judge5}}</td>

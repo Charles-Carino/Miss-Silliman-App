@@ -48,7 +48,8 @@
                             <span class="hidden-xs">Press Launch</span>
                         </a>
                     </li>
-                    @elseif(Auth::user()->userType == "organizer" && in_array("judge",$explode))
+                    @endif
+                    @if(Auth::user()->userType == "organizer" && in_array("judge",$explode))
                     <li class="tab">
                         <a href="#prePageant_specialProjects" data-toggle="tab" aria-expanded="false">
                             <span class="visible-xs"><i class="fa fa-user"></i></span>
@@ -240,7 +241,8 @@
                       </div>
                       </form>
                     </div>
-                    @elseif(Auth::user()->userType == "organizer")
+                    @endif
+                    @if(Auth::user()->userType == "organizer")
                     <div class="tab-pane active" id="pressLaunch">
                       <h3>Press Launch</h3>
                       <div class="well well-sm">
@@ -292,58 +294,59 @@
                       </div>
                       </form>
                     </div>
-                    @elseif(Auth::user()->userType == "organizer" && in_array("judge",Auth::user()->roles))
-                    <div class="tab-pane" id="prePageant_specialProjects">
-                      <h3>Special Projects</h3>
-                      <div class="well well-sm">
-                          <strong>Display</strong>
-                          <div class="btn-group">
-                              <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span
-                                  class="glyphicon glyphicon-th"></span>Grid</a>
-                              <a href="#" id="list" class="btn btn-default btn-sm preList"><span class="glyphicon glyphicon-th-list">
-                              </span>List</a>
-                          </div>
-                      </div>
-                      <div id="products" class="row list-group">
-                        <form action="{{url('/addScores')}}" method="post" enctype="multipart/form-data">
-                          @csrf
-                          <input type="hidden" name="judge" value="{{Auth::user()->id}}" />
-                          <input type="hidden" name="event" value="Special Projects" />
-                          @foreach($candidates as $key)
-                          <div class="item col-xs-3 col-lg-3">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="{{$key->image}}" width="200"/>
-                                <div class="caption">
-                                    <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
-                                    <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
-                                    <div class="row input-row">
-                                        <div class="col-xs-5 col-md-5 sub-event">
-                                            <p class="lead">Score</p>
+                    @if(in_array("judge",$explode))
+                        <div class="tab-pane" id="prePageant_specialProjects">
+                        <h3>Special Projects</h3>
+                        <div class="well well-sm">
+                            <strong>Display</strong>
+                            <div class="btn-group">
+                                <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span
+                                    class="glyphicon glyphicon-th"></span>Grid</a>
+                                <a href="#" id="list" class="btn btn-default btn-sm preList"><span class="glyphicon glyphicon-th-list">
+                                </span>List</a>
+                            </div>
+                        </div>
+                        <div id="products" class="row list-group">
+                            <form action="{{url('/addScores')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="judge" value="{{Auth::user()->id}}" />
+                            <input type="hidden" name="event" value="Special Projects" />
+                            @foreach($candidates as $key)
+                            <div class="item col-xs-3 col-lg-3">
+                                <div class="thumbnail">
+                                    <img class="group list-group-image" src="{{$key->image}}" width="200"/>
+                                    <div class="caption">
+                                        <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
+                                        <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
+                                        <div class="row input-row">
+                                            <div class="col-xs-5 col-md-5 sub-event">
+                                                <p class="lead">Score</p>
+                                            </div>
+                                            <div class="col-xs-7 col-md-7 col-input form-line focused">
+                                                <input type="number" name="score_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="100" value="{{$key->SP_RS}}" {{$key->read}}>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                            <input type="number" name="score_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="100" value="{{$key->SP_RS}}" {{$key->read}}>
+                                        <div style="width:100px;margin:auto;">
+                                        <div class="row" style="margin:auto;">
+                                            <button type="button" class="btn" data-rel="{{Auth::user()->id}}|{{$key->id}}">Save</button>
                                         </div>
-                                    </div>
-                                    <div style="width:100px;margin:auto;">
-                                      <div class="row" style="margin:auto;">
-                                        <button type="button" class="btn" data-rel="{{Auth::user()->id}}|{{$key->id}}">Save</button>
-                                      </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                          </div>
-                          @endforeach
-                      </div>
-                      <div style="width:120px;margin:auto;">
-                        <div class="row" style="margin:auto;">
-                          <button type="submit" class="btn bg-red waves-effect">
-                              <i class="material-icons">done</i>
-                              <span>SUBMIT</span>
-                          </button>
+                            @endforeach
                         </div>
-                      </div>
-                      </form>
-                    </div>
+                        <div style="width:120px;margin:auto;">
+                            <div class="row" style="margin:auto;">
+                            <button type="submit" class="btn bg-red waves-effect">
+                                <i class="material-icons">done</i>
+                                <span>SUBMIT</span>
+                            </button>
+                            </div>
+                        </div>
+                        </form>
+                        </div>
+                    @endif
                     @endif
                     <div class="tab-pane" id="finals">
                       <div class="row clearfix">

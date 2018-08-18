@@ -245,6 +245,9 @@
                                                             </div>
                                                         </div> 
                                                         <table id="eventsTable-SP" class="table table-bordered table-striped datatable">
+                                                            <caption id="tblCaption_SP" hidden>
+                                                                <h4 class="page-title">Special Project</h4>
+                                                            </caption> 
                                                             <thead>
                                                                 <tr>
                                                                     <th>Candidate</th>
@@ -270,6 +273,9 @@
                                                             </div>
                                                         </div>
                                                         <table id="eventsTable-talent" class="table table-bordered table-striped datatable">
+                                                            <caption id="tblCaption_Talent" hidden>
+                                                                <h4 class="page-title">Talent</h4>
+                                                            </caption> 
                                                             <thead>
                                                                 <tr>
                                                                     <th>Candidate</th>
@@ -301,6 +307,9 @@
                                                             </div>
                                                         </div>
                                                         <table id="eventsTable-speech" class="table table-bordered table-striped datatable">
+                                                            <caption id="tblCaption_Speech" hidden>
+                                                                <h4 class="page-title">Speech</h4>
+                                                            </caption> 
                                                             <thead>
                                                                 <tr>
                                                                     <th>Candidate</th>
@@ -345,6 +354,9 @@
                                                     </div>
                                                 </div>
                                                 <table id="eventsTable" class="table table-bordered table-striped datatable">
+                                                    <caption id="tblCaption_PageantNight" hidden>
+                                                        <h4 class="page-title">Pageant Night</h4>
+                                                    </caption> 
                                                     <thead>
                                                         <tr>
                                                             <th>Judge</th>
@@ -722,27 +734,35 @@ function suggestJUsername()
 
     document.getElementById("btnPrint_PP_SP").onclick = function () {
         $printPP = document.getElementById("eventsTable-SP");
-        $printPP.hidden = false;
+        $caption = document.getElementById("tblCaption_SP");
+        $caption.hidden = false;
         printElement($printPP);
+        $caption.hidden = true;
     }
 
     document.getElementById("btnPrint_PP_talent").onclick = function () {
         $printPP = document.getElementById("eventsTable-talent");
-        $printPP.hidden = false;
+        $caption = document.getElementById("tblCaption_Talent");
+        $caption.hidden = false;
         printElement($printPP);
+        $caption.hidden = true;
     }
 
     document.getElementById("btnPrint_PP_speech").onclick = function () {
         $printPP = document.getElementById("eventsTable-speech");
-        $printPP.hidden = false;
+        $caption = document.getElementById("tblCaption_Speech");
+        $caption.hidden = false;
         printElement($printPP);
+        $caption.hidden = true;
     }
 
 
     document.getElementById("btnPrint_FN").onclick = function () {
         $printFN = document.getElementById("printFN");
-        $printFN.hidden = false;
-        printElement($printFN);
+        $caption = document.getElementById("tblCaption_PageantNight");
+        $caption.hidden = false;
+        printElement($printPP);
+        $caption.hidden = true;
     }
 
     function printElement(elem) {

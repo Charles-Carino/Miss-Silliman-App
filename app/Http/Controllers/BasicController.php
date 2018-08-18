@@ -12,12 +12,8 @@ class BasicController extends Controller
       $this->middleware('guest',['except' => 'destroy','except' => 'check']);
     }
     public function check(){
-        if(Auth::check()){
-            if(Auth::user()->userType=="organizer")
-              return redirect('/maintenance');
-            else
-              return redirect('/welcome');
-        }
+        if(Auth::check())
+            return redirect('/welcome');
         else
             return redirect('/login');
     }

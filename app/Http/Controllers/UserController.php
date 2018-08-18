@@ -56,7 +56,7 @@ class UserController extends Controller
         'candidate' => $i,
         'organizer' => $id->id
       ]);
-      if(in_array("judge",$request['roles'])){
+      if(in_array("judge",explode(",",$id->roles))){
         Prepageants::create([
           'candidate' => $i,
           'judge' => $id->id

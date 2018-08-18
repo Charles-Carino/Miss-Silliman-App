@@ -54,8 +54,7 @@
         <!-- END Login Background Pic Wrapper-->
 
         <!-- START Login Right Container-->
-        <div class="col-xs-12">
-
+        <div class="col-xs-12" style="display: flex;justify-content: center;">
           <div class="col-xs-4">
           </div>
           <div class="login-container col-xs-4" style="margin-left : 0px">

@@ -68,9 +68,9 @@
                 <div class="tab-content col-lg-12">
                     @if(Auth::user()->event == "Talent")
                     <div class="tab-pane active" id="prePageant_talent">
+                          <h3>Talent</h3>
                       <div class="row">
                         <div class="col-xs-1 col-md-1">
-                          <h3>Talent</h3>
                         </div>
                         @if($candidates[0]->read == "readonly")
                         <div class="col-xs-11 col-md-11">
@@ -96,7 +96,8 @@
                           <input type="hidden" name="event" value="{{Auth::user()->event}}" />
                           @foreach($candidates as $key)
                           @if($key->seqTalent == 9)
-                          <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3" style="clear: left;">
+                          <!-- <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3" style="clear: left;"> -->
+                          <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3">
                           @else
                           <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3">
                           @endif
@@ -198,7 +199,8 @@
                           <input type="hidden" name="event" value="{{Auth::user()->event}}" />
                           @foreach($candidates as $key)
                           @if($key->seqSpeech == 5)
-                          <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3" style="clear:left;">
+                          <!-- <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3" style="clear:left;"> -->
+                          <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3">
                           @else
                           <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3">
                           @endif

@@ -20,25 +20,25 @@
             <ul class="nav nav-tabs tabs">
                 <li class="active tab">
                     <a href="#judge" data-toggle="tab" aria-expanded="false">
-                        <span class="visible-xs"><i class="fa fa-home"></i></span>
+                        <span class="visible-xs"><i class="fa fa-legal"></i></span>
                         <span class="hidden-xs">Judge</span>
                     </a>
                 </li>
                 <li class="tab">
                     <a href="#organizer" data-toggle="tab" aria-expanded="false">
-                        <span class="visible-xs"><i class="fa fa-user"></i></span>
+                        <span class="visible-xs"><i class="fa fa-group"></i></span>
                         <span class="hidden-xs">Organizer</span>
                     </a>
                 </li>
                 <li class="tab">
                     <a href="#candidate" data-toggle="tab" aria-expanded="true">
-                        <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
+                        <span class="visible-xs"><i class="fa fa-female"></i></span>
                         <span class="hidden-xs">Candidates</span>
                     </a>
                 </li>
                 <li class="tab">
                     <a href="#reports" data-toggle="tab" aria-expanded="true">
-                        <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
+                        <span class="visible-xs"><i class="fa fa-archive"></i></span>
                         <span class="hidden-xs">Reports</span>
                     </a>
                 </li>
@@ -218,19 +218,19 @@
                                                 <ul class="nav nav-tabs tabs">
                                                     <li class="active tab">
                                                         <a href="#evt-pre-sp" data-toggle="tab">
-                                                            <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                                            <span class="visible-xs"><i class="fa fa-star"></i></span>
                                                             <span class="hidden-xs">Special Projects</span>
                                                         </a>
                                                     </li>
                                                     <li class="tab">
                                                         <a href="#evt-pre-talent" data-toggle="tab">
-                                                            <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                                            <span class="visible-xs"><i class="fa fa-street-view"></i></span>
                                                             <span class="hidden-xs">Talent</span>
                                                         </a>
                                                     </li>
                                                     <li class="tab">
                                                         <a href="#evt-pre-speech" data-toggle="tab">
-                                                            <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                                            <span class="visible-xs"><i class="fa fa-bullhorn"></i></span>
                                                             <span class="hidden-xs">Speech</span>
                                                         </a>
                                                     </li>

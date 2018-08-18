@@ -279,9 +279,9 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th>Candidate</th>
-                                                                    <th>Judge 1</th>
-                                                                    <th>Judge 2</th>
-                                                                    <th>Judge 3</th>
+                                                                    <th>Talent Judge 1</th>
+                                                                    <th>Talent Judge 2</th>
+                                                                    <th>Talent Judge 3</th>
                                                                     <th>Average</th>
                                                                 </tr>
                                                             </thead>
@@ -313,9 +313,9 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th>Candidate</th>
-                                                                    <th>Judge 4</th>
-                                                                    <th>Judge 5</th>
-                                                                    <th>Judge 6</th>
+                                                                    <th>Speech Judge 1</th>
+                                                                    <th>Speech Judge 2</th>
+                                                                    <th>Speech Judge 3</th>
                                                                     <th>Average</th>
                                                                 </tr>
                                                             </thead>

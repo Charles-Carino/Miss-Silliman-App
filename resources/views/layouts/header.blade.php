@@ -42,7 +42,8 @@
     <link href="public/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <!-- print -->
-    <link href="/css/print.css" rel="stylesheet" media="print" type="text/css">
+    <!-- <link href="/css/print.css" rel="stylesheet" media="print" type="text/css"> -->
+    
     <style>
         @media screen {
       #printSection {

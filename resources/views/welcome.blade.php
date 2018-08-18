@@ -276,7 +276,7 @@
                                     </div>
                                     <div style="width:100px;margin:auto;">
                                       <div class="row" style="margin:auto;">
-                                        <button type="button" class="btn" data-rel="{{Auth::user()->id}}|{{$key->id}}">Save</button>
+                                        <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}">Save</button>
                                       </div>
                                     </div>
                                 </div>

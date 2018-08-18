@@ -95,8 +95,8 @@ $(document).ready(function() {
           "event": judgeEvent,
         },
         success:function(data){
-            $("#row"+rowID+" .caption").append('<div id="input_success" class="alert alert-success"><p style="color:white;text-align:center;">Record added!</p></div>').fadeIn(2000);
-            $("#input_success").fadeOut(1500,function(){
+            $("#row"+rowID+" .caption").append('<div id="input_success" class="alert alert-success"><p style="color:white;text-align:center;">Record added!</p></div>').fadeIn(2500);
+            $("#input_success").fadeOut(2500,function(){
               $("div").remove('#input_success');
             });
         },

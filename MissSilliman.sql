@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS `candidates` (
   `SY` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `isTop` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `number` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `seqSpeech` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `seqTalent` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `seqSpeech` int(11) DEFAULT NULL,
+  `seqTalent` int(11) DEFAULT NULL,
   `aveTalent` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -39,16 +39,16 @@ CREATE TABLE IF NOT EXISTS `candidates` (
 -- Dumping data for table misssilliman.candidates: ~10 rows (approximately)
 /*!40000 ALTER TABLE `candidates` DISABLE KEYS */;
 INSERT INTO `candidates` (`id`, `image`, `fName`, `mName`, `lName`, `college`, `yearLevel`, `SY`, `isTop`, `number`, `seqSpeech`, `seqTalent`, `aveTalent`, `created_at`, `updated_at`) VALUES
-	(1, 'public/css/images/CBA.png', 'Mikhaella', '', 'Ponce de Leon', 1, '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-	(2, 'public/css/images/CED.png', 'Shannel', '', 'Vendiola', 2, '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-	(3, 'public/css/images/MED.png', 'Oghogho', '', 'Ovonlen', 3, '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-	(4, 'public/css/images/HS.png', 'Erica', '', 'Villagracia', 4, '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-	(5, 'public/css/images/MC.png', 'Ivy', '', 'Salaum', 5, '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-	(6, 'public/css/images/COPVA.png', 'Chanel', '', 'Pepino', 6, '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-	(7, 'public/css/images/GRAD.png', 'Yihui', '', 'Yuan', 7, '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-	(8, 'public/css/images/CAS.png', 'Christine', '', 'Torcino', 8, '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-	(9, 'public/css/images/IRS.png', 'Amidala', '', 'Quisumbing', 9, '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-	(10, 'public/css/images/NURSING.png', 'Gabrielle', '', 'Arrojado', 10, '', '', '', '', NULL, NULL, NULL, NULL, NULL);
+	(1, 'public/css/images/CBA.png', 'Mikhaella', '', 'Ponce de Leon', 1, '', '', '', '', 6, 1, NULL, NULL, NULL),
+	(2, 'public/css/images/CED.png', 'Shannel', '', 'Vendiola', 2, '', '', '', '', 7, 2, NULL, NULL, NULL),
+	(3, 'public/css/images/MED.png', 'Oghogho', '', 'Ovonlen', 3, '', '', '', '', 8, 3, NULL, NULL, NULL),
+	(4, 'public/css/images/HS.png', 'Erica', '', 'Villagracia', 4, '', '', '', '', 9, 4, NULL, NULL, NULL),
+	(5, 'public/css/images/MC.png', 'Ivy', '', 'Salaum', 5, '', '', '', '', 10, 5, NULL, NULL, NULL),
+	(6, 'public/css/images/COPVA.png', 'Chanel', '', 'Pepino', 6, '', '', '', '', 5, 10, NULL, NULL, NULL),
+	(7, 'public/css/images/GRAD.png', 'Yihui', '', 'Yuan', 7, '', '', '', '', 4, 9, NULL, NULL, NULL),
+	(8, 'public/css/images/CAS.png', 'Christine', '', 'Torcino', 8, '', '', '', '', 2, 7, NULL, NULL, NULL),
+	(9, 'public/css/images/IRS.png', 'Amidala', '', 'Quisumbing', 9, '', '', '', '', 3, 8, NULL, NULL, NULL),
+	(10, 'public/css/images/NURSING.png', 'Gabrielle', '', 'Arrojado', 10, '', '', '', '', 1, 6, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `candidates` ENABLE KEYS */;
 
 -- Dumping structure for table misssilliman.colleges
@@ -239,12 +239,13 @@ CREATE TABLE IF NOT EXISTS `prepageants` (
   `Talent_Prcnt` decimal(8,2) DEFAULT NULL,
   `PSpch_Prcnt` decimal(8,2) DEFAULT NULL,
   `sub_total` decimal(8,2) DEFAULT NULL,
+  `read` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table misssilliman.prepageants: ~101 rows (approximately)
+-- Dumping data for table misssilliman.prepageants: ~19 rows (approximately)
 /*!40000 ALTER TABLE `prepageants` DISABLE KEYS */;
 INSERT INTO `prepageants` (`id`, `candidate`, `judge`, `SP_RS`, `Talent_Confidence`, `Talent_Mastery`, `Talent_StagePresence`, `Talent_OverallImpact`, `PSpch_Content`, `PSpch_Delivery`, `PSpch_Spontainety`, `PSpch_Defense`, `SP_Prcnt`, `Talent_Prcnt`, `PSpch_Prcnt`, `sub_total`, `created_at`, `updated_at`) VALUES
 	(1, 1, 1, 0.00, 25.00, 25.00, 25.00, 25.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.40, 0.00, 0.00, NULL, '2018-08-13 03:59:00'),
@@ -411,16 +412,23 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table misssilliman.users: ~6 rows (approximately)
+-- Dumping data for table misssilliman.users: ~11 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `fName`, `mName`, `lName`, `userType`, `position`, `event`, `roles`, `username`, `password`, `created_at`, `updated_at`, `remember_token`) VALUES
-	(8, 'Marianne', NULL, 'Yao', 'judge', NULL, 'Talent', NULL, 'marianne', '$2y$10$Vmm1kI/m05PQ3FrF/p9P9uPcEJ7d/0DtUamNe7PLf2wPW4/1.I2p2', '2018-08-14 07:38:50', '2018-08-14 07:38:50', 'QtxTiceiWpqXzB1E3CfjEdZTgBW10gq1SHUMqvW04S99VFOrZqlNR3WqOygT'),
-	(9, 'Charles', NULL, 'Carino', 'judge', NULL, 'Talent', NULL, 'charles', '$2y$10$oxorCII/cYOirq8.bxW9Ee9Qz23n1ZB6l.xccfdQLSBpVgTFQ45G2', '2018-08-14 08:18:48', '2018-08-14 08:18:48', 'd2CAGmFJzzPZNdkZudVXukMBRkI2ZM1EZlPHhja7zkE2gAyXDNdGCKiyMsti'),
-	(10, 'mari', NULL, 'cruz', 'judge', NULL, 'Talent', NULL, 'mari', '$2y$10$WgQSEO.3vn4ZrKVDP1BtOOogaUAzDqBLvWk2gpIxEdl5pxWoy6scu', '2018-08-14 08:41:34', '2018-08-14 08:41:34', 'fjssAOZY7UQ7a8ATXqB8GRolt0vn5KIPlWjWMwLMIflBpGf8ERlKYSZZqGU3'),
-	(11, 'leo', NULL, 'leon', 'judge', NULL, 'Speech', NULL, 'leo', '$2y$10$6r45Opm70wmsDqFfz2o0remCelG.3j/uVQveY6FP7BiRqgLDWKdeG', '2018-08-14 08:44:10', '2018-08-14 08:44:10', 'Si7jTcCqdSjpli85nejMdtKWsQ5jUXKTIjASyvXrC7R0ZwQaNR0eREasqWtH'),
-	(16, 'Charles', NULL, 'Carino', 'organizer', 'Chair', NULL, 'admin,judge', 'charlescarino4', '$2y$10$tfbBZV4sT16KS8f1kRxeYOuPFF1Az/bPF//HfxbNRhjlsMOUh/a7y', '2018-08-15 08:11:42', '2018-08-15 08:11:42', NULL);
+	(16, 'Charles', NULL, 'Carino', 'organizer', 'Chair', NULL, 'admin', 'charlescarino4', '$2y$10$tfbBZV4sT16KS8f1kRxeYOuPFF1Az/bPF//HfxbNRhjlsMOUh/a7y', '2018-08-15 08:11:42', '2018-08-15 08:11:42', '3EWrW8EMLK375U1cdYuGUYUcBgiveHVMNjAPVSMNcFmoytVATJ3nW4dSDJV2'),
+	(17, 'Ginno', NULL, 'Bacang', 'organizer', 'Committee Head', NULL, 'admin,judge', 'Babygirl123', '$2y$10$aKR4tV0MHkKHh1Q/528ate9MO5NsDGzu6thrOpb7SzM3x/gLjDvKe', '2018-08-15 09:21:41', '2018-08-15 09:21:41', '7SswW2br6wC98e7GIQKjehucXAA5PWJoDNMXvTg6oxebt1H1FyxB7xAM8hFJ'),
+	(18, 'Jovelyn', NULL, 'Teramoto', 'organizer', 'Others', NULL, 'admin,judge', 'Pabibo123', '$2y$10$SSA5Z9RyhY3k7NV5EK6Fl.stsJ.wOfwlMn06O.tYHsg4gSpHFTUAq', '2018-08-15 09:22:58', '2018-08-15 09:22:58', 'nwmTPBNNTjSSaa0gsceHOTNgGLKh8ZzfND1oA7B8YTJrdVXxAINbmsVajupO'),
+	(19, 'Julia', NULL, 'Baretto', 'judge', NULL, 'Talent', 'judge', 'JuliaB', '$2y$10$Hwd3UN27JJjV29N.53X41e0cWazMR/PMkQE7pfClkG1zqc641pRve', '2018-08-15 09:27:13', '2018-08-15 09:27:13', NULL),
+	(20, 'Rudy', NULL, 'Duterte', 'judge', NULL, 'Speech', NULL, 'Rudyboi', '$2y$10$ESQkm1FRg49uhsN0ktCph.FNgEJvXbO0toypMVWVO0JNVpqgmn.N6', '2018-08-15 09:27:28', '2018-08-15 09:27:28', 'u3uxBnlNmonJi5rlYcYdkuVi6Ftz1Nt3QmckL2KNhyHOctVbY9JwywrkxOKM'),
+	(21, 'Dana', NULL, 'Chua', 'judge', NULL, 'Talent', 'judge', 'Dana123', '$2y$10$OWTHdmgvEBiEvHApTds.huRXwdEyDNxcIgGZopB7TrCk9KRmnx7ES', '2018-08-15 09:28:18', '2018-08-15 09:28:18', 'Sz23Tfqf29MTOuklcEkiDRAFBDW8VTttvglW4LZ626ZmEq9mByACMQPgk2UV'),
+	(22, 'Joshua', NULL, 'Garcia', 'judge', NULL, 'Talent', 'judge', 'JoshuaG', '$2y$10$FAJDFYvonVfGccvyTYXSxuJ8H1OHLm.UNpqwpGSDe8YR0ls.pOqHi', '2018-08-15 09:28:21', '2018-08-15 09:28:21', NULL),
+	(23, 'Chloe', NULL, 'Moretz', 'judge', NULL, 'Speech', NULL, 'ChloeM', '$2y$10$xgnrTz0ux3NXcIKqGFx1CekBGl1LCj9DccZksI0F5rgW8qHeX1IXi', '2018-08-15 09:30:07', '2018-08-15 09:30:07', NULL),
+	(24, 'Jun', NULL, 'Fortun', 'judge', NULL, 'Talent', NULL, 'Veryfortunate', '$2y$10$QD0kEl8Fh2b2a4VrLHEhFu3E8VsehBY2fCb8Fb80hCQ0zVxVNU.JO', '2018-08-15 09:31:20', '2018-08-15 09:31:20', NULL),
+	(25, 'Bernard', NULL, 'Tolip', 'judge', NULL, 'Speech', NULL, 'Bernard123', '$2y$10$ttlCC2z1EqH85fpd5k.8KexX/WXU8CTTWibHT./A7mCW9RPVE9Bva', '2018-08-15 09:31:53', '2018-08-15 09:31:53', NULL),
+	(26, 'Cardo', NULL, 'Dalisay', 'judge', NULL, 'Speech', NULL, 'Angprobinsyano', '$2y$10$6RTw2LYQKgG6VRhwD9rszOsshhLrMovB0SdldJfkSgrDzJdFFFtsG', '2018-08-15 09:33:31', '2018-08-15 09:33:31', NULL),
+	(27, 'Lorem', NULL, 'Ipsum', 'judge', NULL, 'Talent', NULL, 'lorem', '$2y$10$bOSAY.zeW8.zA58do9Qlg.U0mJ.2Mj5Uu8JvTxEuT9aB5Of32i142', '2018-08-16 17:20:36', '2018-08-16 17:20:36', 'VO4OVtFgal365eXJmbgErSrmDvcXi8I9VyAFgyyx2YeI8Prq2eVQIYJhRLOY');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

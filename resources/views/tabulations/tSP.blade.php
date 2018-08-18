@@ -23,16 +23,16 @@
         "COLLEGE OF NURSING"
     ];
     $name = [
-        "Mikhaella Ponce de Leon",
-        "Christine Torcino",
-        "Oghogho Ovonlen",
-        "Erica Villagracia",
-        "Shannel Vendiola",
-        "Ivy Salaum",
-        "Chanel Pepino",
-        "Yihui Yuan",
-        "Amidala Quisumbing",
-        "Gabrielle Arrojado"
+        "Mikhaella",
+        "Christine",
+        "Oghogho",
+        "Erica",
+        "Shannel",
+        "Ivy",
+        "Chanel",
+        "Yihui",
+        "Amidala",
+        "Gabrielle"
     ];
     $picSrc = [
         "public/css/images/CBA.png",
@@ -53,7 +53,7 @@
 <section class="content">
     <div class="container">
         <div class="row col-md-12 align-center">
-            <h1> SPECIAL PROJECTS </h1>
+            <h1> PRESS LAUNCH </h1>
         </div>
         <div class="row col-md-12">
             <div class="col-md-3"></div>
@@ -152,9 +152,74 @@
                 </div> <!--row-->
             </div>
 
-          </div>
+
+        <div class="row col-md-12 align-center" style="padding : 50px">
+            <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
+                <button type="button" class="btn btn-link waves-effect btn-success">SAVE CHANGES</button>
+            </a>
         </div>
     </div> <!-- container -->
 </section>
+
+<!-- For Material Design Colors -->
+<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+              <div class="row">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Score Tabulation</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>College Code</th>
+                                        <th>Candidate</th>
+                                        <th>Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for($i=0;$i<=9;$i++)
+                                    <!--TODO: check for score or no score-->
+                                    <tr class="active">
+                                        <td>{{$collegeCode[$i]}}</td>
+                                        <td>{{$name[$i]}}</td>
+                                        <td><input type="number" disabled class="form-control perm" name="pp-sp-" min="0" max="100"></td>
+                                    </tr>
+                                    @endfor
+                                    <tr class="success">
+                                        <td>College Code</td>
+                                        <td>Success</td>
+                                        <td>has score</td>
+                                    </tr>
+                                    <tr>
+                                        <td>College Code</td>
+                                        <td>Name</td>
+                                        <td>Column content</td>
+                                    </tr>
+                                    <tr class="danger">
+                                        <td>College Code</td>
+                                        <td>Name</td>
+                                        <td>No score</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

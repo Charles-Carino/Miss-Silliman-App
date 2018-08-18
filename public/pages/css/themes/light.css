@@ -10815,8 +10815,8 @@ Responsive Util
 .login-wrapper .login-container {
   width: 35%;
   height: 50%;
-  display: unset;
-  position: unset;
+  display: block;
+  position: fixed;
   margin-left: 30%;
   margin-top: 10%;
   float: left;

@@ -111,5 +111,11 @@
     <!-- <script src="public/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script> -->
     <!-- END VENDOR JS -->
     <script src="public/pages/js/pages.min.js"></script>
+    <script>
+    $(function()
+    {
+      $('#form-login').validate()
+    })
+    </script>
   </body>
 </html>

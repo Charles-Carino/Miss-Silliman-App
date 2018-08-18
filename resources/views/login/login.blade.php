@@ -19,10 +19,11 @@
     <link href="public/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="public/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="public/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="public/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="public/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <!-- <link href="public/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" media="screen" /> -->
+    <!-- <link href="public/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" /> -->
     <link href="public/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="public/pages/css/themes/light.css" rel="stylesheet" type="text/css" />
+    
     <link href="public/css/adaptablebg.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
@@ -55,37 +56,37 @@
         <!-- START Login Right Container-->
         <div class="col-xs-12">
 
-        <div class="col-xs-4">
-        </div>
-        <div class="login-container col-xs-4" style="margin-left : 0px">
-          <div style="padding: 20%; background-color: rgba(255,255,255,0.8);">
-            <p> LOGO HERE </p>
-            <!-- START Login Form -->
-            <form id="form-login" class="p-t-15" method="post" action="{{url('/signin')}}">
-              {{ csrf_field() }}
-              <!-- START Form Control-->
-              <div class="form-group form-group-default" style="opacity: 1">
-                <label>Username</label>
-                <div class="controls">
-                  <input type="text" name="username" class="form-control" required>
-                </div>
-              </div>
-              <!-- END Form Control-->
-              <!-- START Form Control-->
-              <div class="form-group form-group-default">
-                <label>Password</label>
-                <div class="controls">
-                  <input type="password" class="form-control" name="password" required>
-                </div>
-              </div>
-              <button class="btn btn-primary btn-cons m-t-10" type="submit">Sign in</button>
-            </form>
-            <!--END Login Form-->
+          <div class="col-xs-4">
           </div>
-        </div>
+          <div class="login-container col-xs-4" style="margin-left : 0px">
+            <div style="padding: 20%; background-color: rgba(255,255,255,0.8);">
+              <p> LOGO HERE </p>
+              <!-- START Login Form -->
+              <form id="form-login" class="p-t-15" method="post" action="{{url('/signin')}}">
+                {{ csrf_field() }}
+                <!-- START Form Control-->
+                <div class="form-group form-group-default" style="opacity: 1">
+                  <label>Username</label>
+                  <div class="controls">
+                    <input type="text" name="username" class="form-control" required>
+                  </div>
+                </div>
+                <!-- END Form Control-->
+                <!-- START Form Control-->
+                <div class="form-group form-group-default">
+                  <label>Password</label>
+                  <div class="controls">
+                    <input type="password" class="form-control" name="password" required>
+                  </div>
+                </div>
+                <button class="btn btn-primary btn-cons m-t-10" type="submit">Sign in</button>
+              </form>
+              <!--END Login Form-->
+            </div>
+          </div>
 
-        <div class="col-xs-4">
-        </div>
+          <div class="col-xs-4">
+          </div>
         </div><!--END col-md-12 -->
         <!-- END Login Right Container-->
 
@@ -94,20 +95,20 @@
 
     <!-- BEGIN VENDOR JS -->
     <script src="public/plugins/pace/pace.min.js" type="text/javascript"></script>
-    <script src="public/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="public/plugins/modernizr.custom.js" type="text/javascript"></script>
-    <script src="public/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="public/plugins/tether/js/tether.min.js" type="text/javascript"></script>
+    <!-- <script src="public/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script> -->
+    <!-- <script src="public/plugins/modernizr.custom.js" type="text/javascript"></script> -->
+    <!-- <script src="public/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script> -->
+    <!-- <script src="public/plugins/tether/js/tether.min.js" type="text/javascript"></script> -->
     <script src="public/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="public/plugins/jquery/jquery-easy.js" type="text/javascript"></script>
-    <script src="public/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
-    <script src="public/plugins/jquery-ios-list/jquery.ioslist.min.js" type="text/javascript"></script>
-    <script src="public/plugins/jquery-actual/jquery.actual.min.js"></script>
+    <!-- <script src="public/plugins/jquery/jquery-easy.js" type="text/javascript"></script> -->
+    <!-- <script src="public/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script> -->
+    <!-- <script src="public/plugins/jquery-ios-list/jquery.ioslist.min.js" type="text/javascript"></script> -->
+    <!-- <script src="public/plugins/jquery-actual/jquery.actual.min.js"></script> -->
     <script src="public/plugins/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-    <script type="text/javascript" src="public/plugins/select2/js/select2.full.min.js"></script>
-    <script type="text/javascript" src="public/plugins/classie/classie.js"></script>
-    <script src="public/plugins/switchery/js/switchery.min.js" type="text/javascript"></script>
-    <script src="public/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <!-- <script type="text/javascript" src="public/plugins/select2/js/select2.full.min.js"></script> -->
+    <!-- <script type="text/javascript" src="public/plugins/classie/classie.js"></script> -->
+    <!-- <script src="public/plugins/switchery/js/switchery.min.js" type="text/javascript"></script> -->
+    <!-- <script src="public/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script> -->
     <!-- END VENDOR JS -->
     <script src="public/pages/js/pages.min.js"></script>
   </body>

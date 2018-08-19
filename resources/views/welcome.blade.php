@@ -44,7 +44,7 @@
                             </div>
                             @if($candidates[0]->read == "readonly")
                             <div class="col-xs-8 col-md-8">
-                              <button id="btnRanking" data-toggle="modal" data-target="#ranking" type="button" class="btn btn-xs btn-danger waves-effect" style="float: right;">
+                              <button data-toggle="modal" data-target="#ranking" type="button" class="btn btn-xs btn-danger waves-effect btnRanking" style="float: right;">
                                   <i class="material-icons">person</i>
                                   <span>Ranking</span>
                               </button>
@@ -124,7 +124,7 @@
                           <div class="row" style="margin:auto;">
                             <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">
                                 <i class="material-icons">done</i>
-                                <span>CONFIRM</span>
+                                <span>FINALIZE</span>
                             </button>
                           </div>
                         </div>
@@ -163,7 +163,7 @@
                           </div>
                           @if($candidates[0]->read == "readonly")
                           <div class="col-xs-8 col-md-8">
-                            <button id="btnRanking" data-toggle="modal" data-target="#ranking" type="button" class="btn btn-xs btn-danger waves-effect" style="float: right;">
+                            <button data-toggle="modal" data-target="#ranking" type="button" class="btn btn-xs btn-danger waves-effect btnRanking" style="float: right;">
                                 <i class="material-icons">person</i>
                                 <span>Ranking</span>
                             </button>
@@ -244,7 +244,7 @@
                         <div class="row" style="margin:auto;">
                           <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">
                               <i class="material-icons">done</i>
-                              <span>CONFIRM</span>
+                              <span>FINALIZE</span>
                           </button>
                         </div>
                       </div>
@@ -281,9 +281,9 @@
                               <a href="#" id="list" class="btn btn-default btn-sm preList"><span class="glyphicon glyphicon-th-list">
                               </span>List</a>
                           </div>
-                          @if($candidates[0]->read == "readonly")
+                          @if($press[0]->read == "readonly")
                           <div class="col-xs-8 col-md-8">
-                            <button id="btnRanking" data-toggle="modal" data-target="#ranking" type="button" class="btn btn-xs btn-danger waves-effect" style="float: right;">
+                            <button data-toggle="modal" data-rel="pl" data-target="#ranking" type="button" class="btn btn-xs btn-danger waves-effect btnRanking" style="float: right;">
                                 <i class="material-icons">person</i>
                                 <span>Ranking</span>
                             </button>
@@ -297,7 +297,7 @@
                           <input type="hidden" name="judge" value="{{Auth::user()->id}}" />
                           <input type="hidden" name="event" value="Press Launch"/>
                           @foreach($press as $key)
-                          <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3">
+                          <div id="plrow{{$key->id}}" class="item col-xs-3 col-lg-3">
                             <div class="thumbnail">
                                 <img class="group list-group-image" src="{{$key->image}}" width="200"/>
                                 <div class="caption">
@@ -311,22 +311,26 @@
                                             <input type="number" name="press_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="100" value="{{$key->PL_RS}}">
                                         </div>
                                     </div>
+                                    @if($key->read != "readonly")
                                     <div class="row">
                                       <button type="button" class="btn bg-red input" data-rel="{{Auth::user()->id}}|{{$key->id}}|Press Launch" style="margin:0 auto;display:block;">Save</button>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                           </div>
                           @endforeach
                       </div>
+                      @if($press[0]->read != "readonly")
                       <div style="width:120px;margin:auto;">
                         <div class="row" style="margin:auto;">
                           <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">
                               <i class="material-icons">done</i>
-                              <span>CONFIRM</span>
+                              <span>FINALIZE</span>
                           </button>
                         </div>
                       </div>
+                      @endif
                       <div class="modal fade" id="confirmSubmit" tabindex="-1" role="dialog">
                           <div class="modal-dialog" role="document">
                               <div class="modal-content">
@@ -361,7 +365,7 @@
                           </div>
                           @if($candidates[0]->read == "readonly")
                           <div class="col-xs-8 col-md-8">
-                            <button id="btnRanking" data-toggle="modal" data-target="#ranking" type="button" class="btn btn-xs btn-danger waves-effect" style="float: right;">
+                            <button data-toggle="modal" data-rel="sp" data-target="#ranking" type="button" class="btn btn-xs btn-danger waves-effect btnRanking" style="float: right;">
                                 <i class="material-icons">person</i>
                                 <span>Ranking</span>
                             </button>
@@ -375,7 +379,7 @@
                           <input type="hidden" name="judge" value="{{Auth::user()->id}}" />
                           <input type="hidden" name="event" value="Special Projects" />
                           @foreach($candidates as $key)
-                          <div class="item col-xs-3 col-lg-3">
+                          <div id="sprow{{$key->id}}" class="item col-xs-3 col-lg-3">
                             <div class="thumbnail">
                                 <img class="group list-group-image" src="{{$key->image}}" width="200"/>
                                 <div class="caption">
@@ -389,23 +393,27 @@
                                             <input type="number" name="score_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="100" value="{{$key->SP_RS}}" {{$key->read}}>
                                         </div>
                                     </div>
+                                    @if($key->read != "readonly")
                                     <div class="row">
-                                      <button type="button" class="btn bg-red input" data-rel="{{Auth::user()->id}}|{{$key->id}}|{{Auth::user()->event}}" style="margin:0 auto;display:block;">Save</button>
+                                      <button type="button" class="btn bg-red input" data-rel="{{Auth::user()->id}}|{{$key->id}}|Special Projects" style="margin:0 auto;display:block;">Save</button>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                           </div>
                           @endforeach
                       </div>
+                      @if($candidates[0]->read != "readonly")
                       <div style="width:120px;margin:auto;">
                         <div class="row" style="margin:auto;">
-                          <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect confirm">
+                          <button type="button" data-toggle="modal" data-target="#submitSP" class="btn bg-red waves-effect">
                               <i class="material-icons">done</i>
-                              <span>CONFIRM</span>
+                              <span>FINALIZE</span>
                           </button>
                         </div>
                       </div>
-                      <div class="modal fade" id="confirmSubmit" tabindex="-1" role="dialog">
+                      @endif
+                      <div class="modal fade" id="submitSP" tabindex="-1" role="dialog">
                           <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                   <div class="modal-header">
@@ -557,7 +565,7 @@
                               <div class="row" style="margin:auto;">
                                 <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">
                                     <i class="material-icons">done</i>
-                                    <span>CONFIRM</span>
+                                    <span>FINALIZE</span>
                                 </button>
                               </div>
                             </div>
@@ -670,7 +678,7 @@
                                 <div class="row" style="margin:auto;">
                                   <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">
                                       <i class="material-icons">done</i>
-                                      <span>CONFIRM</span>
+                                      <span>FINALIZE</span>
                                   </button>
                                 </div>
                               </div>
@@ -783,7 +791,7 @@
                                 <div class="row" style="margin:auto;">
                                   <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">
                                       <i class="material-icons">done</i>
-                                      <span>CONFIRM</span>
+                                      <span>FINALIZE</span>
                                   </button>
                                 </div>
                               </div>
@@ -896,7 +904,7 @@
                                 <div class="row" style="margin:auto;">
                                   <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">
                                       <i class="material-icons">done</i>
-                                      <span>CONFIRM</span>
+                                      <span>FINALIZE</span>
                                   </button>
                                 </div>
                               </div>
@@ -1009,7 +1017,7 @@
                                 <div class="row" style="margin:auto;">
                                   <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">
                                       <i class="material-icons">done</i>
-                                      <span>CONFIRM</span>
+                                      <span>FINALIZE</span>
                                   </button>
                                 </div>
                               </div>
@@ -1114,7 +1122,7 @@
                                 <div class="row" style="margin:auto;">
                                   <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">
                                       <i class="material-icons">done</i>
-                                      <span>CONFIRM</span>
+                                      <span>FINALIZE</span>
                                   </button>
                                 </div>
                               </div>
@@ -1160,26 +1168,37 @@
                               <tr>
                                 <th>Candidate</th>
                                 <th>College</th>
+                                @if(Auth::user()->userType == "organizer")
+                                  <th class="sprs">Score</th>
+                                  <th class="plrs">Score</th>
+                                @else
                                 <th>Score</th>
+                                @endif
                               </tr>
                           </thead>
                           <tbody>
-                            @foreach($candidates as $key)
-                            <tr class="gradeX">
-                              <td><p>{{$key->lName}}, {{$key->fName}} {{$key->mName}}</p></td>
-                              <td>{{$key->collegeName}}</td>
-                              @if(Auth::user()->event == "Talent")
-                                <td><p>{{$key->Talent_Confidence+$key->Talent_Mastery+$key->Talent_StagePresence+$key->Talent_OverallImpact}}</p></td>
-                              @elseif(Auth::user()->event == "Speech")
-                                <td><p>{{$key->PSpch_Content+$key->PSpch_Delivery+$key->PSpch_Spontainety+$key->PSpch_Defense}}</p></td>
-                              @elseif(Auth::user()->userType == "organizer")
-                                <td><p>{{$key->PL_RS}}</p></td>
-                              @endif
-                              @if(in_array("judge",$explode) == "true")
-                                <td><p>{{$key->SP_RS}}</p></td>
-                              @endif
-                            </tr>
-                            @endforeach
+                            @if(Auth::user()->userType == "judge")
+                              @foreach($candidates as $key)
+                              <tr class="gradeX">
+                                <td><p>{{$key->lName}}, {{$key->fName}} {{$key->mName}}</p></td>
+                                <td>{{$key->collegeName}}</td>
+                                @if(Auth::user()->event == "Talent")
+                                  <td><p>{{$key->Talent_Confidence+$key->Talent_Mastery+$key->Talent_StagePresence+$key->Talent_OverallImpact}}</p></td>
+                                @elseif(Auth::user()->event == "Speech")
+                                  <td><p>{{$key->PSpch_Content+$key->PSpch_Delivery+$key->PSpch_Spontainety+$key->PSpch_Defense}}</p></td>
+                                @endif
+                              </tr>
+                              @endforeach
+                            @elseif(Auth::user()->userType == "organizer")
+                              @foreach($press as $key)
+                              <tr class="gradeX">
+                                <td><p>{{$key->lName}}, {{$key->fName}} {{$key->mName}}</p></td>
+                                <td>{{$key->collegeName}}</td>
+                                  <td class="sprs"><p>{{$key->SP_RS}}</p></td>
+                                  <td class="plrs"><p>{{$key->PL_RS}}</p></td>
+                              </tr>
+                              @endforeach
+                            @endif
                           </tbody>
                       </table>
                   </div>

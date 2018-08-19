@@ -17,8 +17,7 @@ class JudgesController extends Controller
           return view('welcome',compact('candidates'));
       }
       else if($user->userType == "organizer"){
-          $press = Candidates::join('colleges','colleges.id','=','candidates.college')->join('press_launches','press_launches.candidate','=','candidates.id')->where('organizer',Auth::user()->id)->get();
-          // dd($press);
+          $press = Candidates::join('colleges','colleges.id','=','candidates.college')->join('press_launches','press_launches.candidate','=','candidates.id')->join('prepageants','prepageants.candidate','=','candidates.id')->where('organizer',Auth::user()->id)->where('prepageants.judge',Auth::user()->id)->get();
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('prepageants','prepageants.candidate','=','candidates.id')->where('judge',Auth::user()->id)->get();
           return view('welcome',compact('press','candidates'));
       }
@@ -82,6 +81,7 @@ class JudgesController extends Controller
                 'candidate' => $i,
                 'organizer' => $request['judge'],
                 'PL_RS' => $request['press_'.$key->id],
+                'read' => 'readonly'
             ]);
           }
         }

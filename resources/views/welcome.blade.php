@@ -307,8 +307,8 @@
                             <strong>Display</strong>
                           </div>
                           <div class="col-xs-3 col-md-3 btn-group">
-                              <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span
-                                  class="glyphicon glyphicon-th"></span>Grid</a>
+                              <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span class="glyphicon glyphicon-th">
+                              </span>Grid</a>
                               <a href="#" id="list" class="btn btn-default btn-sm preList"><span class="glyphicon glyphicon-th-list">
                               </span>List</a>
                           </div>
@@ -349,6 +349,7 @@
                             </div>
                           </div>
                           @endforeach
+                        </form>
                       </div>
                       <div style="width:120px;margin:auto;">
                         <div class="row" style="margin:auto;">
@@ -374,7 +375,6 @@
                               </div>
                           </div>
                       </div>
-                      </form>
                     </div>
                     @if(in_array("judge",$explode) == "true")
                     <div class="tab-pane" id="prePageant_specialProjects">

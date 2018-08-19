@@ -32,6 +32,10 @@
 $(document).ready(function() {
 
     $('table.datatable').DataTable();
+    $('table.datatable reports').DataTable({
+      'paging': false,
+      'searching': false
+    });
     $('.input-row').css('margin-bottom','5px');
     $('.preList').click(function(event){
       event.preventDefault();
@@ -102,10 +106,12 @@ $(document).ready(function() {
         async:false
       });
     });
-    $('row').on( 'click', '.add', function () {
+    $('panel').on( 'click', '.add', function () {
       $("#judgeForm").find("input[type=text]").val("");
+      $("#JudgeField-Username").attr("onClick='suggestJUsername()'");
+      $("#JudgeField-Username").removeAttr('readonly');
     });
-    
+
     $('#judgeTable tbody').on( 'click', '.edit', function () {
       var judge = $("#judgeTable").DataTable();
       var data = judge.row($(this).parents('tr')).data();
@@ -114,6 +120,8 @@ $(document).ready(function() {
       $('#JudgeField-LName').val(split[0]);
       $("#JudgeField-Event").val(data[1]);
       $("#JudgeField-Username").val(data[2]);
+      $("#JudgeField-Username").removeAttr('onClick');
+      $("#JudgeField-Username").attr('readonly',true);
       $(".editMode").val("edit");
     });
 

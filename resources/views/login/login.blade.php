@@ -40,12 +40,12 @@
         <!-- START Login Background Pic Wrapper-->
           <div class="bg-pic" style="background-size: contain;">
             <!-- START Background Pic-->
-            <img class="header-land" src="public/img/demo/LoginBackground.jpg" data-src="public/img/demo/LoginBackground.jpg" data-src-retina="public/img/demo/LoginBackground.jpg" style="width: 100%" alt="" class="lazy">
-            <img class="header-portrait" src="public/css/images/logo.png" data-src="public/img/demo/LoginBackground.jpg" data-src-retina="public/img/demo/LoginBackground.jpg" style="width: 100%" alt="" class="lazy">
+            <img class="header-land" src="public/img/demo/LoginBackground.jpg" data-src="public/img/demo/LoginBackground.jpg" data-src-retina="public/img/demo/LoginBackground.jpg" style="max-width: 100%;height:auto;" alt="" class="lazy">
+            <img class="header-portrait" src="public/css/images/logo.png" data-src="public/img/demo/LoginBackground.jpg" data-src-retina="public/img/demo/LoginBackground.jpg" style="max-width: 100%;height:auto;" alt="" class="lazy">
             <!-- END Background Pic-->
             <!-- START Background Caption-->
             <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
-              <h2 class="semi-bold adaptable">
+              <h2 class="semi-bold adaptable" style="color:#dc3545;">
                 Miss Silliman
               </h2>
             </div>
@@ -59,7 +59,7 @@
           </div>
           <div class="login-container col-xs-4" style="margin-left : 0px">
             <div style="padding: 20%; background-color: rgba(255,255,255,0.8);">
-              <p> LOGO HERE </p>
+              <p> LOGIN </p>
               <!-- START Login Form -->
               <form id="form-login" class="p-t-15" method="post" action="{{url('/signin')}}">
                 {{ csrf_field() }}

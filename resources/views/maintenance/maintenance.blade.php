@@ -2,6 +2,12 @@
   $active = '';
   if(!in_array("admin",$explode))
     $active = 'active';
+
+  $talent = App\User::where('event','Talent')->get();
+  $speech = App\User::where('event','Speech')->get();
+  $orgs = App\User::where('userType','organizer')->get();
+
+  // dd($talent);
 ?>
 @extends('layouts.master')
 
@@ -112,7 +118,7 @@
                               <div class="row">
                                   <div class="col-sm-6">
                                       <div class="m-b-30">
-                                          <button id="add" data-toggle="modal" data-target="#organizerModal" class="btn btn-primary waves-effect waves-light">Add <i class="fa fa-plus"></i></button>
+                                          <button data-toggle="modal" data-target="#organizerModal" class="btn btn-primary waves-effect waves-light add">Add <i class="fa fa-plus"></i></button>
                                       </div>
                                   </div>
                               </div>
@@ -159,7 +165,7 @@
                               <div class="row">
                                   <div class="col-sm-6">
                                       <div class="m-b-30">
-                                          <button id="add" data-toggle="modal" data-target="#candidateModal" class="btn btn-primary waves-effect waves-light">Add <i class="fa fa-plus"></i></button>
+                                          <button data-toggle="modal" data-target="#candidateModal" class="btn btn-primary waves-effect waves-light add">Add <i class="fa fa-plus"></i></button>
                                       </div>
                                   </div>
                               </div>
@@ -248,27 +254,35 @@
                                               </div>
                                           </div>
                                       </div>
-                                      <table id="eventsTable-SP" class="table table-bordered table-striped datatable">
-                                          <caption id="tblCaption_SP" hidden>
-                                              <h4 class="page-title">Special Project</h4>
-                                          </caption> 
-                                          <thead>
-                                              <tr>
-                                                  <th>College</th>
-                                                  <th>Candidate</th>
-                                                  <th>Special Project (Total)</th>
-                                              </tr>
-                                          </thead>
-                                          <tbody>
-                                              @foreach($reports as $key)
-                                              <tr class="gradeX">
-                                                  <td>{{$key->cCode}}</td>
-                                                  <td>{{$key->candidates}}</td>
-                                                  <td class="numfield">{{$key->SP}}</td>
-                                              </tr>
-                                              @endforeach
-                                          </tbody>
-                                      </table>
+                                      <div id="eventsTable-SP">
+                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                        <h4 style="font-weight:normal;">Special Project Results</h4>
+                                        <table class="table table-bordered table-striped reports">
+                                            <thead>
+                                                <tr>
+                                                    <th>College</th>
+                                                    <th>Candidate</th>
+                                                    <th>Special Project (Total)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($reports as $key)
+                                                <tr class="gradeX">
+                                                    <td>{{$key->cCode}}</td>
+                                                    <td>{{$key->candidates}}</td>
+                                                    <td class="numfield">{{$key->SP}}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                          @foreach($orgs as $key)
+                                          <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                          </div>
+                                          @endforeach
+                                        </div>
+                                      </div>
                                   </div><!--end of special projects pane-->
                                   <div class="tab-pane" id="evt-pre-talent">
                                       <div class="row">
@@ -278,11 +292,11 @@
                                               </div>
                                           </div>
                                       </div>
-                                      <table id="eventsTable-talent" class="table table-bordered table-striped datatable">
-                                          <caption id="tblCaption_Talent" hidden>
-                                              <h4 class="page-title">Talent</h4>
-                                          </caption> 
-                                          <thead>
+                                      <div id="eventsTable-talent">
+                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                        <h4 style="font-weight:normal;">Talent Results</h4>
+                                        <table class="table table-bordered table-striped reports">
+                                            <thead>
                                               <tr>
                                                   <th>College</th>
                                                   <th>Candidate</th>
@@ -291,8 +305,8 @@
                                                   <th>Talent Judge 3</th>
                                                   <th>Average</th>
                                               </tr>
-                                          </thead>
-                                          <tbody>
+                                            </thead>
+                                            <tbody>
                                               @foreach($reports as $key)
                                               <tr class="gradeX">
                                                   <td>{{$key->cCode}}</td>
@@ -303,8 +317,16 @@
                                                   <td class="numfield">{{$key->AverageTalent}}</td>
                                               </tr>
                                               @endforeach
-                                          </tbody>
-                                      </table>
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                          @foreach($talent as $key)
+                                          <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                          </div>
+                                          @endforeach
+                                        </div>
+                                      </div>
                                   </div><!--end of talent pane-->
                                   <div class="tab-pane" id="evt-pre-speech">
                                       <div class="row">
@@ -314,12 +336,11 @@
                                               </div>
                                           </div>
                                       </div>
-                                      
-                                      <table id="eventsTable-speech" class="table table-bordered table-striped datatable">
-                                          <caption id="tblCaption_Speech" hidden>
-                                              <h4 class="page-title">Speech</h4>
-                                          </caption> 
-                                          <thead>
+                                      <div id="eventsTable-speech">
+                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                        <h4 style="font-weight:normal;">Speech Results</h4>
+                                        <table class="table table-bordered table-striped reports">
+                                            <thead>
                                               <tr>
                                                   <th>College</th>
                                                   <th>Candidate</th>
@@ -328,20 +349,28 @@
                                                   <th>Speech Judge 3</th>
                                                   <th>Average</th>
                                               </tr>
-                                          </thead>
-                                          <tbody>
-                                              @foreach($reports as $key)
-                                              <tr class="gradeX">
-                                                  <td>{{$key->cCode}}</td>
-                                                  <td>{{$key->candidates}}</td>
-                                                  <td class="numfield">{{$key->judge4}}</td>
-                                                  <td class="numfield">{{$key->judge5}}</td>
-                                                  <td class="numfield">{{$key->judge6}}</td>
-                                                  <td class="numfield">{{$key->AverageSpeech}}</td>
-                                              </tr>
-                                              @endforeach
-                                          </tbody>
-                                      </table>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($reports as $key)
+                                                <tr class="gradeX">
+                                                    <td>{{$key->cCode}}</td>
+                                                    <td>{{$key->candidates}}</td>
+                                                    <td class="numfield">{{$key->judge4}}</td>
+                                                    <td class="numfield">{{$key->judge5}}</td>
+                                                    <td class="numfield">{{$key->judge6}}</td>
+                                                    <td class="numfield">{{$key->AverageSpeech}}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                          @foreach($speech as $key)
+                                          <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                          </div>
+                                          @endforeach
+                                        </div>
+                                      </div>
                                   </div><!--end of speech pane-->
                               </div>
                                 <!-- end: page -->
@@ -735,26 +764,17 @@ function suggestJUsername()
 
     document.getElementById("btnPrint_PP_SP").onclick = function () {
         $printPP = document.getElementById("eventsTable-SP");
-        $caption = document.getElementById("tblCaption_SP");
-        $caption.hidden = false;
         printElement($printPP);
-        $caption.hidden = true;
     }
 
     document.getElementById("btnPrint_PP_talent").onclick = function () {
         $printPP = document.getElementById("eventsTable-talent");
-        $caption = document.getElementById("tblCaption_Talent");
-        $caption.hidden = false;
         printElement($printPP);
-        $caption.hidden = true;
     }
 
     document.getElementById("btnPrint_PP_speech").onclick = function () {
         $printPP = document.getElementById("eventsTable-speech");
-        $caption = document.getElementById("tblCaption_Speech");
-        $caption.hidden = false;
         printElement($printPP);
-        $caption.hidden = true;
     }
 
 

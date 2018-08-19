@@ -210,6 +210,9 @@
                       </div>
                       <ul class="nav nav-tabs tabs tabs-top">
                           <li class="active">
+                              <a href="#evt-pressLaunch" data-toggle="tab" aria-expanded="false">Press Launch</a>
+                          </li>
+                          <li class="">
                               <a href="#evt-pre" data-toggle="tab" aria-expanded="false">Prepageant</a>
                           </li>
                           <li class="">
@@ -217,7 +220,56 @@
                           </li>
                       </ul>
                       <div class="tab-content col-lg-12">
-                        <div class="tab-pane active" id="evt-pre">
+                        <div class="tab-pane active" id="evt-pressLaunch">
+                            <!-- Page-Title -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h4 class="pull-left page-title">Press Launch Report</h4>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="m-b-30">
+                                                <button id="btnPrint_pressLaunch" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="eventsTable-pressLaunch">
+                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                        <h4 style="font-weight:normal;">Press Launch Results</h4>
+                                        <table class="table table-bordered table-striped reports">
+                                            <thead>
+                                                <tr>
+                                                    <th>College</th>
+                                                    <th>Candidate</th>
+                                                    <th>Press Launch</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($pressLaunchScores as $key)
+                                                <tr class="gradeX">
+                                                    <td>{{$key->collegeCode}}</td>
+                                                    <td>{{strtoupper($key->lName)}}, {{$key->fName}}</td>
+                                                    <td class="numfield">{{$key->PL_RS}}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                          @foreach($orgs as $key)
+                                          <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                          </div>
+                                          @endforeach
+                                        </div>
+                                    </div>			
+                                </div>
+                                <!-- end: page -->
+                            </div> <!-- end Panel -->
+                        </div> <!-- end of event-final pane -->
+                        <div class="tab-pane" id="evt-pre">
                             <!-- Page-Title -->
                             <div class="row">
                                 <div class="col-sm-12">
@@ -688,34 +740,6 @@
           </div>
       </div>
   </div><!-- /.modal -->
-  <!-- <div id="printModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  <h4 class="modal-title">Print</h4>
-              </div>
-              <div class="modal-body">
-                <h1>Print.</h1>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-info waves-effect waves-light" onclick="myFunction()"><i class="fa fa-print"></i></button>
-                </form>
-              </div>
-          </div>
-      </div>
-  </div> -->
-  <!---------------------->
-
-<!---------------------->
-<!-- <div class="wrap">
-  <h1>Bootstrap Modal Example</h1>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyModal">
-    Large modal
-  </button>
-</div> -->
-
 
   </div>
     </div>
@@ -730,7 +754,6 @@
 <script>
 function suggestJUsername()
     {
-
         const fName = document.getElementById('JudgeField-FName').value;
         const lName = document.getElementById('JudgeField-LName').value;
         const txt_Username = document.getElementById('JudgeField-Username');
@@ -774,6 +797,11 @@ function suggestJUsername()
 
     document.getElementById("btnPrint_PP_speech").onclick = function () {
         $printPP = document.getElementById("eventsTable-speech");
+        printElement($printPP);
+    }
+
+    document.getElementById("btnPrint_pressLaunch").onclick = function () {
+        $printPP = document.getElementById("eventsTable-pressLaunch");
         printElement($printPP);
     }
 

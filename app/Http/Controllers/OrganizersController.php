@@ -7,6 +7,7 @@ use App\Candidates;
 use App\Colleges;
 use App\Prepageants;
 use App\InitialScores;
+use App\PressLaunches;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -20,13 +21,17 @@ class OrganizersController extends Controller
         $colleges = Colleges::all();
         $prepageants = Prepageants::join('candidates','prepageants.candidate','=','candidates.id','left')
                                     ->join('colleges','candidates.college','=','colleges.id','left')
-                                    ->get();
+									->get();
+									
         $initScores = InitialScores::join('candidates','initial_scores.candidate','=','candidates.id','left')
                                     ->join('colleges','candidates.college','=','colleges.id','left')
-                                    ->get();
-
-
-
+									->get();
+									
+        $pressLaunchScores = PressLaunches::join('users','users.id','=','press_launches.organizer','left')
+									->join('candidates','press_launches.candidate','=','candidates.id','left')
+									->join('colleges','candidates.college','=','colleges.id','left')								
+									->get();
+									
         $reports = DB::select(DB::raw("select
 			t0.id,
 			t0.cCode,
@@ -159,6 +164,6 @@ class OrganizersController extends Controller
         	t2.candidates=t3.candidates and t3.candidates=t4.candidates and
         	t4.candidates=t5.candidates and t5.candidates=t6.candidates"));
           
-        return view('maintenance.maintenance',compact('judges','organizers','candidates', 'colleges','prepageants','initScores','prePajFinal', 'reports'));
+        return view('maintenance.maintenance',compact('judges','organizers','candidates', 'colleges','pressLaunchScores','prepageants','initScores','prePajFinal', 'reports'));
       }
 }

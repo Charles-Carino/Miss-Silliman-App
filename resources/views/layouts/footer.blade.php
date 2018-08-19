@@ -72,7 +72,7 @@ $(document).ready(function() {
       $("#input_total"+rowID).attr('value',totalSum);
     });
 
-    $("button").click(function(){
+    $(".input").click(function(){
       var getParam = $(this).attr("data-rel");
       var paramArr = getParam.split('|');
       var judge = paramArr[0];
@@ -96,13 +96,35 @@ $(document).ready(function() {
           "event": judgeEvent,
         },
         success:function(data){
-            $("#row"+rowID+" .caption").append('<div id="input_success" class="alert alert-success"><p style="color:white;text-align:center;">Record saved!</p></div>').slideDown(1000);
-            $("#input_success").slideUp(1000,function(){
-              $("div").remove('#input_success');
-            });
+            $("#row"+rowID+" .caption #input_success").remove();
+            $("#row"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Record saved!</p></div>').show(2000);
         },
         async:false
       });
+    });
+    $('row').on( 'click', '.add', function () {
+      $("#judgeForm").find("input[type=text]").val("");
+    });
+    
+    $('#judgeTable tbody').on( 'click', '.edit', function () {
+      var judge = $("#judgeTable").DataTable();
+      var data = judge.row($(this).parents('tr')).data();
+      var split = data[0].split(',');
+      $('#JudgeField-FName').val(split[1]);
+      $('#JudgeField-LName').val(split[0]);
+      $("#JudgeField-Event").val(data[1]);
+      $("#JudgeField-Username").val(data[2]);
+      $(".editMode").val("edit");
+    });
+
+    $('#organizerTable tbody').on( 'click', 'a .edit', function () {
+      var org = $("#organizerTable").DataTable();
+      var data = org.row($(this).parents('tr')).data();
+      var split = data[0].split(',');
+      $('#OrgField-FName').val(split[1]);
+      $('#OrgField-LName').val(split[0]);
+      $("#OrgField-Event").val(data[1]);
+      $("#OrgField-Username").val(data[3]);
     });
 });
 </script>

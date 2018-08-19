@@ -67,7 +67,7 @@ class OrganizersController extends Controller
         	from prepageants pre
         	left join candidates can on can.id=pre.candidate
         	left join colleges col on col.id=can.college
-        	WHERE pre.judge = 1
+        	WHERE pre.judge = 2
         	group by candidates
         	ORDER BY can.id) t1
         /*end*/
@@ -83,7 +83,7 @@ class OrganizersController extends Controller
         	from prepageants pre
         	left join candidates can on can.id=pre.candidate
         	left join colleges col on col.id=can.college
-        	WHERE pre.judge = 2
+        	WHERE pre.judge = 3
         	group by candidates
         	ORDER BY can.id) t2
         /*end*/
@@ -99,7 +99,7 @@ class OrganizersController extends Controller
         	from prepageants pre
         	left join candidates can on can.id=pre.candidate
         	left join colleges col on col.id=can.college
-        	WHERE pre.judge = 3
+        	WHERE pre.judge = 4
         	group by candidates
         	ORDER BY can.id) t3
         /*end*/
@@ -115,7 +115,7 @@ class OrganizersController extends Controller
         	from prepageants pre
         	left join candidates can on can.id=pre.candidate
         	left join colleges col on col.id=can.college
-        	WHERE pre.judge = 4 #replace with judge id ie: 4,5 or 6
+        	WHERE pre.judge = 5 #replace with judge id ie: 4,5 or 6
         	group by candidates
         	ORDER BY can.id) t4
         /*end*/
@@ -131,7 +131,7 @@ class OrganizersController extends Controller
         	from prepageants pre
         	left join candidates can on can.id=pre.candidate
         	left join colleges col on col.id=can.college
-        	WHERE pre.judge = 5 #replace with judge id ie: 4,5 or 6
+        	WHERE pre.judge = 6 #replace with judge id ie: 4,5 or 6
         	group by candidates
         	ORDER BY can.id) t5
         /*end*/
@@ -147,7 +147,7 @@ class OrganizersController extends Controller
         	from prepageants pre
         	left join candidates can on can.id=pre.candidate
         	left join colleges col on col.id=can.college
-        	WHERE pre.judge = 6 #replace with judge id ie: 4,5 or 6
+        	WHERE pre.judge = 7 #replace with judge id ie: 4,5 or 6
         	group by candidates
         	ORDER BY can.id) t6
         /*end*/

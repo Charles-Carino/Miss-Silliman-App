@@ -68,26 +68,27 @@
                 <div class="tab-content col-lg-12">
                     @if(Auth::user()->event == "Talent")
                     <div class="tab-pane active" id="prePageant_talent">
-                      <div class="row">
-                        <div class="col-xs-1 col-md-1">
-                          <h3>Talent</h3>
-                        </div>
-                        @if($candidates[0]->read == "readonly")
-                        <div class="col-xs-11 col-md-11">
-                          <button id="ranking" type="button" class="btn btn-danger waves-effect" style="float: right;">
-                              <i class="material-icons">person</i>
-                              <span>Ranking</span>
-                          </button>
-                        </div>
-                        @endif
-                      </div>
+                      <h3>Talent</h3>
                       <div class="well well-sm">
-                          <strong>Display</strong>
-                          <div class="btn-group">
-                              <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span class="glyphicon glyphicon-th"></span>Grid</a>
+                        <div class="row">
+                          <div class="col-xs-1 col-md-1">
+                            <strong>Display</strong>
+                          </div>
+                          <div class="col-xs-3 col-md-3 btn-group">
+                              <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span
+                                  class="glyphicon glyphicon-th"></span>Grid</a>
                               <a href="#" id="list" class="btn btn-default btn-sm preList"><span class="glyphicon glyphicon-th-list">
                               </span>List</a>
                           </div>
+                          @if($candidates[0]->read == "readonly")
+                          <div class="col-xs-8 col-md-8">
+                            <button id="btnRanking" data-toggle="modal" data-target="#ranking" type="button" class="btn btn-xs btn-danger waves-effect" style="float: right;">
+                                <i class="material-icons">person</i>
+                                <span>Ranking</span>
+                            </button>
+                          </div>
+                          @endif
+                        </div>
                       </div>
                       <div id="products" class="row-fluid list-group">
                         <form action="{{url('/addScores')}}" method="post" enctype="multipart/form-data">
@@ -101,7 +102,7 @@
                           <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3">
                           @endif
                             <div class="thumbnail">
-                                <img class="group list-group-image" src="{{$key->image}}" width="200"/>
+                                <a class="canInfo" href="#defaultModal" data-toggle="modal"><img data-rel="img{{$key->id}}" class="group list-group-image" src="{{$key->image}}" width="200"/></a>
                                 <div class="caption">
                                     <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
                                     <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
@@ -146,7 +147,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                      <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}|{{Auth::user()->event}}" style="margin:0 auto;display:block;">Save</button>
+                                      <button type="button" class="btn bg-red input" data-rel="{{Auth::user()->id}}|{{$key->id}}|{{Auth::user()->event}}" style="margin:0 auto;display:block;">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -183,13 +184,25 @@
                     <div class="tab-pane active" id="prePageant_speech">
                       <h3>Speech</h3>
                       <div class="well well-sm">
-                          <strong>Display</strong>
-                          <div class="btn-group">
+                        <div class="row">
+                          <div class="col-xs-1 col-md-1">
+                            <strong>Display</strong>
+                          </div>
+                          <div class="col-xs-3 col-md-3 btn-group">
                               <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span
                                   class="glyphicon glyphicon-th"></span>Grid</a>
                               <a href="#" id="list" class="btn btn-default btn-sm preList"><span class="glyphicon glyphicon-th-list">
                               </span>List</a>
                           </div>
+                          @if($candidates[0]->read == "readonly")
+                          <div class="col-xs-8 col-md-8">
+                            <button id="btnRanking" data-toggle="modal" data-target="#ranking" type="button" class="btn btn-xs btn-danger waves-effect" style="float: right;">
+                                <i class="material-icons">person</i>
+                                <span>Ranking</span>
+                            </button>
+                          </div>
+                          @endif
+                        </div>
                       </div>
                       <div id="products" class="row list-group">
                         <form action="{{url('/addScores')}}" method="post" enctype="multipart/form-data">
@@ -249,7 +262,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                      <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}|{{Auth::user()->event}}" style="margin:0 auto;display:block;">Save</button>
+                                      <button type="button" class="btn bg-red input" data-rel="{{Auth::user()->id}}|{{$key->id}}|{{Auth::user()->event}}" style="margin:0 auto;display:block;">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -286,13 +299,25 @@
                     <div class="tab-pane active" id="pressLaunch">
                       <h3>Press Launch</h3>
                       <div class="well well-sm">
-                          <strong>Display</strong>
-                          <div class="btn-group">
+                        <div class="row">
+                          <div class="col-xs-1 col-md-1">
+                            <strong>Display</strong>
+                          </div>
+                          <div class="col-xs-3 col-md-3 btn-group">
                               <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span
                                   class="glyphicon glyphicon-th"></span>Grid</a>
                               <a href="#" id="list" class="btn btn-default btn-sm preList"><span class="glyphicon glyphicon-th-list">
                               </span>List</a>
                           </div>
+                          @if($candidates[0]->read == "readonly")
+                          <div class="col-xs-8 col-md-8">
+                            <button id="btnRanking" data-toggle="modal" data-target="#ranking" type="button" class="btn btn-xs btn-danger waves-effect" style="float: right;">
+                                <i class="material-icons">person</i>
+                                <span>Ranking</span>
+                            </button>
+                          </div>
+                          @endif
+                        </div>
                       </div>
                       <div id="products" class="row list-group">
                         <form action="{{url('/addScores')}}" method="post" enctype="multipart/form-data">
@@ -315,7 +340,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                      <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}|Press Launch" style="margin:0 auto;display:block;">Save</button>
+                                      <button type="button" class="btn bg-red input" data-rel="{{Auth::user()->id}}|{{$key->id}}|Press Launch" style="margin:0 auto;display:block;">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -324,11 +349,27 @@
                       </div>
                       <div style="width:120px;margin:auto;">
                         <div class="row" style="margin:auto;">
-                          <button type="submit" class="btn bg-red waves-effect">
+                          <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">
                               <i class="material-icons">done</i>
-                              <span>SUBMIT</span>
+                              <span>CONFIRM</span>
                           </button>
                         </div>
+                      </div>
+                      <div class="modal fade" id="confirmSubmit" tabindex="-1" role="dialog">
+                          <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h4 class="modal-title" id="defaultModalLabel">Confirm Submit</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                      Are you sure to submit? Once its confirmed, the scores will not be edited any longer.
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="submit" class="btn btn-link waves-effect">SUBMIT</button>
+                                      <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                                  </div>
+                              </div>
+                          </div>
                       </div>
                       </form>
                     </div>
@@ -336,13 +377,25 @@
                     <div class="tab-pane" id="prePageant_specialProjects">
                       <h3>Special Projects</h3>
                       <div class="well well-sm">
-                          <strong>Display</strong>
-                          <div class="btn-group">
+                        <div class="row">
+                          <div class="col-xs-1 col-md-1">
+                            <strong>Display</strong>
+                          </div>
+                          <div class="col-xs-3 col-md-3 btn-group">
                               <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span
                                   class="glyphicon glyphicon-th"></span>Grid</a>
                               <a href="#" id="list" class="btn btn-default btn-sm preList"><span class="glyphicon glyphicon-th-list">
                               </span>List</a>
                           </div>
+                          @if($candidates[0]->read == "readonly")
+                          <div class="col-xs-8 col-md-8">
+                            <button id="btnRanking" data-toggle="modal" data-target="#ranking" type="button" class="btn btn-xs btn-danger waves-effect" style="float: right;">
+                                <i class="material-icons">person</i>
+                                <span>Ranking</span>
+                            </button>
+                          </div>
+                          @endif
+                        </div>
                       </div>
                       <div id="products" class="row list-group">
                         <form action="{{url('/addScores')}}" method="post" enctype="multipart/form-data">
@@ -365,7 +418,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                      <button type="button" class="btn bg-red" data-rel="{{Auth::user()->id}}|{{$key->id}}|{{Auth::user()->event}}" style="margin:0 auto;display:block;">Save</button>
+                                      <button type="button" class="btn bg-red input" data-rel="{{Auth::user()->id}}|{{$key->id}}|{{Auth::user()->event}}" style="margin:0 auto;display:block;">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -374,11 +427,27 @@
                       </div>
                       <div style="width:120px;margin:auto;">
                         <div class="row" style="margin:auto;">
-                          <button type="submit" class="btn bg-red waves-effect">
+                          <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">
                               <i class="material-icons">done</i>
-                              <span>SUBMIT</span>
+                              <span>CONFIRM</span>
                           </button>
                         </div>
+                      </div>
+                      <div class="modal fade" id="confirmSubmit" tabindex="-1" role="dialog">
+                          <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h4 class="modal-title" id="defaultModalLabel">Confirm Submit</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                      Are you sure to submit? Once its confirmed, the scores will not be edited any longer.
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="submit" class="btn btn-link waves-effect">SUBMIT</button>
+                                      <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                                  </div>
+                              </div>
+                          </div>
                       </div>
                       </form>
                     </div>
@@ -442,7 +511,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="defaultModalLabel">Angel Ross</h4> <!-- Should be modified-->
+                <h4 class="modal-title" id="defaultModalLabel">""</h4> <!-- Should be modified-->
             </div>
             <div class="modal-body">
               <div class="row">
@@ -508,9 +577,48 @@
                 </div>
               </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ranking" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="defaultModalLabel">Ranking</h4> <!-- Should be modified-->
+            </div>
+            <div class="modal-body">
+              <div class="panel">
+                  <div class="panel-body">
+                      <table class="table table-bordered table-striped datatable">
+                          <thead>
+                              <tr>
+                                <th>Candidate</th>
+                                <th>College</th>
+                                <th>Score</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            @foreach($candidates as $key)
+                            <tr class="gradeX">
+                              <td><p>{{$key->lName}}, {{$key->fName}} {{$key->mName}}</p></td>
+                              <td>{{$key->collegeName}}</td>
+                              @if(Auth::user()->event == "Talent")
+                                <td><p>{{$key->Talent_Confidence+$key->Talent_Mastery+$key->Talent_StagePresence+$key->Talent_OverallImpact}}</p></td>
+                              @elseif(Auth::user()->event == "Speech")
+                                <td><p>{{$key->PSpch_Content+$key->PSpch_Delivery+$key->PSpch_Spontainety+$key->PSpch_Defense}}</p></td>
+                              @elseif(Auth::user()->userType == "organizer")
+                                <td><p>{{$key->PL_RS}}</p></td>
+                              @endif
+                              @if(in_array("judge",$explode) == "true")
+                                <td><p>{{$key->SP_RS}}</p></td>
+                              @endif
+                            </tr>
+                            @endforeach
+                          </tbody>
+                      </table>
+                  </div>
+                  <!-- end: page -->
+              </div> <!-- end Panel -->
             </div>
         </div>
     </div>

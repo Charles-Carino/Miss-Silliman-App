@@ -10,23 +10,35 @@ use App\PressLaunches;
 class UserController extends Controller
 {
   public function addJudge(Request $request){
-    User::create([
+    if($request['editMode'] == 'edit'){
+      User::where('username',$request['username'])->update([
         'fName' => $request['fName'],
         'mName' => $request['mName'],
         'lName' => $request['lName'],
-        'userType' => 'judge',
         'event' => $request['event'],
         'username' => $request['username'],
         'password' => bcrypt($request['password'])
-    ]);
-
-    $id = User::where('username',$request['username'])->first();
-    for($i = 1; $i <= 10;$i++){
-      Prepageants::create([
-        'candidate' => $i,
-        'judge' => $id->id
       ]);
+    }else{
+      User::create([
+          'fName' => $request['fName'],
+          'mName' => $request['mName'],
+          'lName' => $request['lName'],
+          'userType' => 'judge',
+          'event' => $request['event'],
+          'username' => $request['username'],
+          'password' => bcrypt($request['password'])
+      ]);
+
+      $id = User::where('username',$request['username'])->first();
+      for($i = 1; $i <= 10;$i++){
+        Prepageants::create([
+          'candidate' => $i,
+          'judge' => $id->id
+        ]);
+      }
     }
+
     return redirect('/maintenance');
   }
 

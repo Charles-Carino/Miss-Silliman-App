@@ -1,3 +1,8 @@
+<?php $explode = explode(",",Auth::user()->roles);
+  $active = '';
+  if(!in_array("admin",$explode))
+    $active = 'active';
+?>
 @extends('layouts.master')
 
 @section('content')
@@ -18,6 +23,7 @@
     <div class="row clearfix">
         <div class="col-lg-12">
             <ul class="nav nav-tabs tabs">
+                @if(in_array("admin",$explode) == "true")
                 <li class="active tab">
                     <a href="#judge" data-toggle="tab" aria-expanded="false">
                         <span class="visible-xs"><i class="fa fa-home"></i></span>
@@ -42,8 +48,10 @@
                         <span class="hidden-xs">Reports</span>
                     </a>
                 </li>
+                @endif
             </ul>
             <div class="tab-content">
+                @if(in_array("admin",$explode) == "true")
                 <div class="tab-pane active" id="judge">
                   <div class="container">
                       <!-- Page-Title -->
@@ -57,11 +65,11 @@
                               <div class="row">
                                   <div class="col-sm-6">
                                       <div class="m-b-30">
-                                          <button id="add" data-toggle="modal" data-target="#judgeModal" class="btn btn-primary waves-effect waves-light">Add <i class="fa fa-plus"></i></button>
+                                          <button data-toggle="modal" data-target="#judgeModal" class="btn btn-primary waves-effect waves-light add">Add <i class="fa fa-plus"></i></button>
                                       </div>
                                   </div>
                               </div>
-                              <table class="table table-bordered datatable table-striped">
+                              <table id="judgeTable" class="table table-bordered datatable table-striped">
                                   <thead>
                                       <tr>
                                           <th>Name</th>
@@ -73,11 +81,11 @@
                                   <tbody>
                                     @foreach($judges as $key)
                                     <tr class="gradeX">
-                                      <td><p>{{$key->lName}}, {{$key->fName}} {{$key->mName}}</p></td>
+                                      <td>{{$key->lName}}, {{$key->fName}} {{$key->mName}}</td>
                                       <td>{{$key->event}}</td>
                                       <td>{{$key->username}}</td>
                                       <td class="actions">
-                                        <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                        <a class="edit" data-rel="{{$key->id}}" data-toggle="modal" data-target="#judgeModal" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                                         <a href="#" data-rel="{{$key->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                       </td>
                                     </tr>
@@ -108,7 +116,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <table class="table table-bordered datatable table-striped">
+                              <table id="organizerTable" class="table table-bordered datatable table-striped">
                                   <thead>
                                       <tr>
                                           <th>Name</th>
@@ -121,12 +129,12 @@
                                   <tbody>
                                     @foreach($organizers as $key)
                                     <tr class="gradeX">
-                                      <td><p>{{$key->lName}} ,{{$key->fName}} {{$key->mName}}</p></td>
+                                      <td>{{$key->lName}} ,{{$key->fName}} {{$key->mName}}</td>
                                       <td>{{$key->position}}</td>
                                       <td>{{$key->roles}}</td>
                                       <td>{{$key->username}}</td>
                                       <td class="actions">
-                                        <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                        <a href="#" data-rel="{{$key->id}}" data-toggle="modal" data-target="#organizerModal" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                                         <a href="#" data-rel="{{$key->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                       </td>
                                     </tr>
@@ -147,7 +155,6 @@
                           </div>
                       </div>
                       <div class="panel">
-
                           <div class="panel-body">
                               <div class="row">
                                   <div class="col-sm-6">
@@ -156,7 +163,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <table class="table table-bordered table-striped datatable">
+                              <table id="candidateTable" class="table table-bordered table-striped datatable">
                                   <thead>
                                       <tr>
                                         <th>Image</th>
@@ -174,7 +181,7 @@
                                       <td>{{$key->collegeName}}</td>
                                       <td><p>{{$key->lName}}, {{$key->fName}} {{$key->mName}}</p></td>
                                       <td class="actions">
-                                        <a href="#" data-rel="{{$key->id}}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                        <a href="#" data-rel="{{$key->id}}" data-toggle="modal" data-target="#candidateModal" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                                         <a href="#" data-rel="{{$key->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                       </td>
                                     </tr>
@@ -186,7 +193,8 @@
                       </div> <!-- end Panel -->
                   </div> <!-- container -->
                 </div><!-- end of candidate pane -->
-                <div class="tab-pane" id="reports">
+                @endif
+                <div class="tab-pane {{$active}}" id="reports">
                   <div class="container">
                       <!-- Page-Title -->
                       <div class="row">
@@ -194,209 +202,201 @@
                               <h2 class="pull-left page-title">Reports</h2>
                           </div>
                       </div>
-                      <div class="panel">
-                        <div class="col-lg-12">
-                            <div class="tabs-vertical-env col-md-12">
-                                <ul class="nav tabs-vertical">
-                                    <li class="active">
-                                        <a href="#evt-pre" data-toggle="tab" aria-expanded="false">Prepageant</a>
-                                    </li>
-                                    <li class="">
-                                        <a href="#evt-final" data-toggle="tab" aria-expanded="false">Pageant Night</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="evt-pre">
-                                        <!-- Page-Title -->
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <h4 class="pull-left page-title">Prepageant Report</h4>
-                                            </div>
-                                        </div>
-                                        <div class="panel col-sm-12">
-                                            <div class="panel-body">
-                                                <ul class="nav nav-tabs tabs">
-                                                    <li class="active tab">
-                                                        <a href="#evt-pre-sp" data-toggle="tab">
-                                                            <span class="visible-xs"><i class="fa fa-home"></i></span>
-                                                            <span class="hidden-xs">Special Projects</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="tab">
-                                                        <a href="#evt-pre-talent" data-toggle="tab">
-                                                            <span class="visible-xs"><i class="fa fa-home"></i></span>
-                                                            <span class="hidden-xs">Talent</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="tab">
-                                                        <a href="#evt-pre-speech" data-toggle="tab">
-                                                            <span class="visible-xs"><i class="fa fa-home"></i></span>
-                                                            <span class="hidden-xs">Speech</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                                <div class = "tab-content">
-                                                    <div class="tab-pane active" id="evt-pre-sp">
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <div class="m-b-30">
-                                                                    <button id="btnPrint_PP_SP" data-toggle="modal" data-target="#PPModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <table id="eventsTable-SP" class="table table-bordered table-striped datatable">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Candidate</th>
-                                                                    <th>Special Project (Total)</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @foreach($reports as $key)
-                                                                <tr class="gradeX">
-                                                                    <td>{{$key->candidates}}</td>
-                                                                    <td class="numfield">{{$key->SP}}</td>
-                                                                </tr>
-                                                                @endforeach
-                                                            </tbody>
-                                                        </table>
-                                                    </div><!--end of special projects pane-->
-                                                    <div class="tab-pane" id="evt-pre-talent">
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <div class="m-b-30">
-                                                                    <button id="btnPrint_PP_talent" data-toggle="modal" data-target="#PPModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <table id="eventsTable-talent" class="table table-bordered table-striped datatable">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Candidate</th>
-                                                                    <th>Judge 1</th>
-                                                                    <th>Judge 2</th>
-                                                                    <th>Judge 3</th>
-                                                                    <th>Average</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @foreach($reports as $key)
-                                                                <tr class="gradeX">
-                                                                    <td>{{$key->candidates}}</td>
-                                                                    <td class="numfield">{{$key->judge1}}</td>
-                                                                    <td class="numfield">{{$key->judge2}}</td>
-                                                                    <td class="numfield">{{$key->judge3}}</td>
-                                                                    <td class="numfield">{{$key->AverageTalent}}</td>
-                                                                </tr>
-                                                                @endforeach
-                                                            </tbody>
-                                                        </table>
-                                                    </div><!--end of talent pane-->
-                                                    <div class="tab-pane" id="evt-pre-speech">
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <div class="m-b-30">
-                                                                    <button id="btnPrint_PP_speech" data-toggle="modal" data-target="#PPModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <table id="eventsTable-speech" class="table table-bordered table-striped datatable">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Candidate</th>
-                                                                    <th>Judge 4</th>
-                                                                    <th>Judge 5</th>
-                                                                    <th>Judge 6</th>
-                                                                    <th>Average</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @foreach($reports as $key)
-                                                                <tr class="gradeX">
-                                                                    <td>{{$key->candidates}}</td>
-                                                                    <td class="numfield">{{$key->judge4}}</td>
-                                                                    <td class="numfield">{{$key->judge5}}</td>
-                                                                    <td class="numfield">{{$key->judge6}}</td>
-                                                                    <td class="numfield">{{$key->AverageSpeech}}</td>
-                                                                </tr>
-                                                                @endforeach
-                                                            </tbody>
-                                                        </table>
-                                                    </div><!--end of speech pane-->
-                                                </div>
-                                            </div>
-                                            <!-- end: page -->
-                                        </div> <!-- end Panel -->
-                                    </div> <!-- end of event-prepageant pane -->
-                                    <div class="tab-pane" id="evt-final">
-                                        <!-- Page-Title -->
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <h4 class="pull-left page-title">Pageant Night Report</h4>
-                                            </div>
-                                        </div>
-                                        <div class="panel">
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <div class="m-b-30">
-                                                            <button id="btnPrint_FN" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <table id="eventsTable" class="table table-bordered table-striped datatable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Judge</th>
-                                                            <th>Candidate</th>
-                                                            <th>Production (Raw Score)</th>
-                                                            <th>Production (Percentage)</th>
-                                                            <th>Theme Wear (Raw Score)</th>
-                                                            <th>Theme Wear (Percentage)</th>
-                                                            <th>Evening Gown (Raw Score)</th>
-                                                            <th>Evening Gown (Percentage)</th>
-                                                            <th>Initial Score Subtotal</th>
-                                                            <th>Content (Raw Score)</th>
-                                                            <th>Content (Percentage)</th>
-                                                            <th>Confidence (Raw Score)</th>
-                                                            <th>Confidence (Percentage)</th>
-                                                            <th>Wit (Raw Score)</th>
-                                                            <th>Wit (Percentage)</th>
-                                                            <th>SQ Subtotal</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach($initScores as $key)
-                                                        <tr class="gradeX">
-                                                            <td>{{$key->judge}}</td>
-                                                            <td>{{$key->candidate}}</td>
-                                                            <td>{{$key->IS_Production_RS}}</td>
-                                                            <td>{{$key->IS_Production_Prcnt}}</td>
-                                                            <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                            <td>{{$key->IS_ThemeWr_Prcnt}}</td>
-                                                            <td>{{$key->IS_EveGown_RS}}</td>
-                                                            <td>{{$key->IS_EveGown_Prcnt}}</td>
-                                                            <td>{{$key->IS_Subtotal}}</td>
-                                                            <td>{{$key->SQ_Content_RS}}</td>
-                                                            <td>{{$key->SQ_Content_Prcnt}}</td>
-                                                            <td>{{$key->SQ_Confidence_RS}}</td>
-                                                            <td>{{$key->SQ_Confidence_Prcnt}}</td>
-                                                            <td>{{$key->SQ_Wit_RS}}</td>
-                                                            <td>{{$key->SQ_Wit_Prcnt}}</td>
-                                                            <td>{{$key->SQ_Subtotal}}</td>
-                                                        </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- end: page -->
-                                        </div> <!-- end Panel -->
-                                    </div> <!-- end of event-final pane -->
-                                </div> <!-- end of tab-content -->
+                      <ul class="nav nav-tabs tabs tabs-top">
+                          <li class="active">
+                              <a href="#evt-pre" data-toggle="tab" aria-expanded="false">Prepageant</a>
+                          </li>
+                          <li class="">
+                              <a href="#evt-final" data-toggle="tab" aria-expanded="false">Pageant Night</a>
+                          </li>
+                      </ul>
+                      <div class="tab-content col-lg-12">
+                        <div class="tab-pane active" id="evt-pre">
+                            <!-- Page-Title -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h4 class="pull-left page-title">Prepageant Report</h4>
+                                </div>
                             </div>
-                        </div>
-                      </div>
+                            <div class="panel">
+                              <ul class="nav nav-tabs tabs">
+                                  <li class="active tab">
+                                      <a href="#evt-pre-sp" data-toggle="tab">
+                                          <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                          <span class="hidden-xs">Special Projects</span>
+                                      </a>
+                                  </li>
+                                  <li class="tab">
+                                      <a href="#evt-pre-talent" data-toggle="tab">
+                                          <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                          <span class="hidden-xs">Talent</span>
+                                      </a>
+                                  </li>
+                                  <li class="tab">
+                                      <a href="#evt-pre-speech" data-toggle="tab">
+                                          <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                          <span class="hidden-xs">Speech</span>
+                                      </a>
+                                  </li>
+                              </ul>
+                              <div class="tab-content">
+                                  <div class="tab-pane active" id="evt-pre-sp">
+                                      <div class="row">
+                                          <div class="col-sm-6">
+                                              <div class="m-b-30">
+                                                  <button id="btnPrint_PP_SP" data-toggle="modal" data-target="#PPModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <table id="eventsTable-SP" class="table table-bordered table-striped datatable">
+                                          <thead>
+                                              <tr>
+                                                  <th>Candidate</th>
+                                                  <th>Special Project (Total)</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              @foreach($reports as $key)
+                                              <tr class="gradeX">
+                                                  <td>{{$key->candidates}}</td>
+                                                  <td class="numfield">{{$key->SP}}</td>
+                                              </tr>
+                                              @endforeach
+                                          </tbody>
+                                      </table>
+                                  </div><!--end of special projects pane-->
+                                  <div class="tab-pane" id="evt-pre-talent">
+                                      <div class="row">
+                                          <div class="col-sm-6">
+                                              <div class="m-b-30">
+                                                  <button id="btnPrint_PP_talent" data-toggle="modal" data-target="#PPModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <table id="eventsTable-talent" class="table table-bordered table-striped datatable">
+                                          <thead>
+                                              <tr>
+                                                  <th>Candidate</th>
+                                                  <th>Judge 1</th>
+                                                  <th>Judge 2</th>
+                                                  <th>Judge 3</th>
+                                                  <th>Average</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              @foreach($reports as $key)
+                                              <tr class="gradeX">
+                                                  <td>{{$key->candidates}}</td>
+                                                  <td class="numfield">{{$key->judge1}}</td>
+                                                  <td class="numfield">{{$key->judge2}}</td>
+                                                  <td class="numfield">{{$key->judge3}}</td>
+                                                  <td class="numfield">{{$key->AverageTalent}}</td>
+                                              </tr>
+                                              @endforeach
+                                          </tbody>
+                                      </table>
+                                  </div><!--end of talent pane-->
+                                  <div class="tab-pane" id="evt-pre-speech">
+                                      <div class="row">
+                                          <div class="col-sm-6">
+                                              <div class="m-b-30">
+                                                  <button id="btnPrint_PP_speech" data-toggle="modal" data-target="#PPModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <table id="eventsTable-speech" class="table table-bordered table-striped datatable">
+                                          <thead>
+                                              <tr>
+                                                  <th>Candidate</th>
+                                                  <th>Judge 4</th>
+                                                  <th>Judge 5</th>
+                                                  <th>Judge 6</th>
+                                                  <th>Average</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              @foreach($reports as $key)
+                                              <tr class="gradeX">
+                                                  <td>{{$key->candidates}}</td>
+                                                  <td class="numfield">{{$key->judge4}}</td>
+                                                  <td class="numfield">{{$key->judge5}}</td>
+                                                  <td class="numfield">{{$key->judge6}}</td>
+                                                  <td class="numfield">{{$key->AverageSpeech}}</td>
+                                              </tr>
+                                              @endforeach
+                                          </tbody>
+                                      </table>
+                                  </div><!--end of speech pane-->
+                              </div>
+                                <!-- end: page -->
+                            </div> <!-- end Panel -->
+                        </div> <!-- end of event-prepageant pane -->
+                        <div class="tab-pane" id="evt-final">
+                            <!-- Page-Title -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h4 class="pull-left page-title">Pageant Night Report</h4>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="m-b-30">
+                                                <button id="btnPrint_FN" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <table id="eventsTable" class="table table-bordered table-striped datatable">
+                                        <thead>
+                                            <tr>
+                                                <th>Judge</th>
+                                                <th>Candidate</th>
+                                                <th>Production (Raw Score)</th>
+                                                <th>Production (Percentage)</th>
+                                                <th>Theme Wear (Raw Score)</th>
+                                                <th>Theme Wear (Percentage)</th>
+                                                <th>Evening Gown (Raw Score)</th>
+                                                <th>Evening Gown (Percentage)</th>
+                                                <th>Initial Score Subtotal</th>
+                                                <th>Content (Raw Score)</th>
+                                                <th>Content (Percentage)</th>
+                                                <th>Confidence (Raw Score)</th>
+                                                <th>Confidence (Percentage)</th>
+                                                <th>Wit (Raw Score)</th>
+                                                <th>Wit (Percentage)</th>
+                                                <th>SQ Subtotal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($initScores as $key)
+                                            <tr class="gradeX">
+                                                <td>{{$key->judge}}</td>
+                                                <td>{{$key->candidate}}</td>
+                                                <td>{{$key->IS_Production_RS}}</td>
+                                                <td>{{$key->IS_Production_Prcnt}}</td>
+                                                <td>{{$key->IS_ThemeWr_RS}}</td>
+                                                <td>{{$key->IS_ThemeWr_Prcnt}}</td>
+                                                <td>{{$key->IS_EveGown_RS}}</td>
+                                                <td>{{$key->IS_EveGown_Prcnt}}</td>
+                                                <td>{{$key->IS_Subtotal}}</td>
+                                                <td>{{$key->SQ_Content_RS}}</td>
+                                                <td>{{$key->SQ_Content_Prcnt}}</td>
+                                                <td>{{$key->SQ_Confidence_RS}}</td>
+                                                <td>{{$key->SQ_Confidence_Prcnt}}</td>
+                                                <td>{{$key->SQ_Wit_RS}}</td>
+                                                <td>{{$key->SQ_Wit_Prcnt}}</td>
+                                                <td>{{$key->SQ_Subtotal}}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end: page -->
+                            </div> <!-- end Panel -->
+                        </div> <!-- end of event-final pane -->
+                      </div> <!-- end of tab-content -->
                   </div> <!-- container -->
                 </div>
             </div>
@@ -409,10 +409,10 @@
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  <h4 class="modal-title">Add Judge</h4>
+                  <h4 class="modal-title">Judge</h4>
               </div>
               <div class="modal-body">
-                <form action="{{url('/addJudge')}}" method="post" enctype="multipart/form-data">
+                <form id="judgeForm" action="{{url('/addJudge')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="row">
                       <div class="col-md-4">
@@ -438,7 +438,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="field-4" class="control-label">Event</label>
-                            <select class="full-width form-control input-block" data-init-plugin="select2" name='event'>
+                            <select id="JudgeField-Event" class="full-width form-control input-block" data-init-plugin="select2" name='event'>
                               <option>Talent</option>
                               <option>Speech</option>
                               <option>Final</option>
@@ -466,6 +466,7 @@
                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
                 </div>
+                <input type='hidden' class='editMode' name='editMode' value=''/>
               </form>
           </div>
       </div>
@@ -475,7 +476,7 @@
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  <h4 class="modal-title">Add Organizer</h4>
+                  <h4 class="modal-title">Organizer</h4>
               </div>
               <div class="modal-body">
                 <form action="{{url('/addOrganizer')}}" method="post" enctype="multipart/form-data">
@@ -513,14 +514,6 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                      <div class="checkbox checkbox-success">
-                          <input id="checkbox1" type="checkbox" value="admin" name="roles[]">
-                          <label for="checkbox1">
-                              Admin
-                          </label>
-                      </div>
-                    </div>
-                    <div class="col-md-2">
                       <div class="checkbox checkbox-primary">
                           <input id="checkbox2" type="checkbox" value="judge" name="roles[]">
                           <label for="checkbox2">
@@ -547,8 +540,9 @@
               <div class="modal-footer">
                   <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                   <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button>
-                </form>
               </div>
+              <input type='hidden' class='editMode' name='editMode' value=''/>
+            </form>
           </div>
       </div>
   </div><!-- /.modal -->

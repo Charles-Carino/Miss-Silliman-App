@@ -8,7 +8,6 @@ use App\PressLaunches;
 class PrepageantsController extends Controller
 {
     public function save(Request $request){
-      // dd($request);
         if($request['event'] == "Talent"){
           Prepageants::where('id',$request['row'])->update([
               'Talent_Confidence' => $request['values'][0],

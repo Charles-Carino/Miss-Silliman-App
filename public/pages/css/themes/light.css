@@ -7048,7 +7048,6 @@ body.rtl .checkbox label::after {
   margin-bottom: 10px;
 }
 .form-group label:not(.error) {
-  font-family: 'Montserrat';
   font-size: 10.5px;
   letter-spacing: 0.06em;
   text-transform: uppercase;

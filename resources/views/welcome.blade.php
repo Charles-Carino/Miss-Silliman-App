@@ -105,7 +105,7 @@
                                 <a class="canInfo" href="#defaultModal" data-toggle="modal"><img data-rel="img{{$key->id}}" class="group list-group-image" src="{{$key->image}}" width="200"/></a>
                                 <div class="caption">
                                     <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
-                                    <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
+                                    <hr />
                                     <div class="row input-row">
                                         <div class="col-xs-5 col-md-5 sub-event">
                                             <p class="lead">Confidence</p>
@@ -138,12 +138,12 @@
                                             <input type="number" name="impact_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="25" value="{{$key->Talent_OverallImpact}}" {{$key->read}}>
                                         </div>
                                     </div>
-                                    <div class="row input-row">
+                                    <div class="row input-row" style="border-top: 1px solid #ccc; padding-top: 10px; background: #eee; margin-bottom: 10px;">
                                         <div class="col-xs-5 col-md-5 sub-event total">
-                                            <p class="lead">Total</p>
+                                            <p class="lead" style="font-weight:bold; padding-top:10px;">Total</p>
                                         </div>
                                         <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                            <input id="input_total{{$key->id}}" type="number" name="talentTotal_{{$key->id}}" class="col-xs-7 col-md-7 form-control" name="number" required="" aria-required="true" aria-invalid="false" readonly step='0.01' placeholder="0.00" value="{{$key->Talent_Confidence+$key->Talent_Mastery+$key->Talent_StagePresence+$key->Talent_OverallImpact}}">
+                                            <input id="input_total{{$key->id}}" type="number" name="talentTotal_{{$key->id}}" class="col-xs-7 col-md-7 form-control" name="number" required="" aria-required="true" aria-invalid="false" readonly step='0.01' placeholder="0.00" value="{{$key->Talent_Confidence+$key->Talent_Mastery+$key->Talent_StagePresence+$key->Talent_OverallImpact}}" style="font-size:18px;">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -220,7 +220,7 @@
                                 <img class="group list-group-image" src="{{$key->image}}" width="200"/>
                                 <div class="caption">
                                     <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
-                                    <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
+                                    <hr />
                                     <div class="row input-row">
                                         <div class="col-xs-5 col-md-5 sub-event">
                                             <p class="lead">Content</p>
@@ -253,12 +253,12 @@
                                             <input type="number" name="defense_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="25" value="{{$key->PSpch_Defense}}" {{$key->read}}>
                                         </div>
                                     </div>
-                                    <div class="row input-row">
+                                    <div class="row input-row" style="border-top: 1px solid #ccc; padding-top: 10px; background: #eee; margin-bottom: 10px;">
                                         <div class="col-xs-5 col-md-5 sub-event total">
-                                            <p class="lead">Total</p>
+                                            <p class="lead" style="font-weight:bold; padding-top:10px;">Total</p>
                                         </div>
                                         <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                            <input id="input_total{{$key->id}}" type="number" name="speechTotal_{{$key->id}}" class="col-xs-7 col-md-7 form-control" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' readonly value="{{$key->PSpch_Content+$key->PSpch_Delivery+$key->PSpch_Spontainety+$key->PSpch_Defense}}">
+                                            <input id="input_total{{$key->id}}" type="number" name="speechTotal_{{$key->id}}" class="col-xs-7 col-md-7 form-control" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' readonly value="{{$key->PSpch_Content+$key->PSpch_Delivery+$key->PSpch_Spontainety+$key->PSpch_Defense}}" style="font-size:18px;">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -330,7 +330,7 @@
                                 <img class="group list-group-image" src="{{$key->image}}" width="200"/>
                                 <div class="caption">
                                     <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
-                                    <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
+                                    <hr />
                                     <div class="row input-row">
                                         <div class="col-xs-5 col-md-5 sub-event">
                                             <p class="lead">Score</p>
@@ -408,7 +408,7 @@
                                 <img class="group list-group-image" src="{{$key->image}}" width="200"/>
                                 <div class="caption">
                                     <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
-                                    <p class="group inner list-group-item-text" style="margin-top: 0;font-size:10px;">{{$key->collegeCode}}</p>
+                                    <hr />
                                     <div class="row input-row">
                                         <div class="col-xs-5 col-md-5 sub-event">
                                             <p class="lead">Score</p>

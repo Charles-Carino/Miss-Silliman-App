@@ -15,14 +15,14 @@
     $picSrc = [
         "public/css/images/CBA.png",
         "public/css/images/CAS.png",
-        "public/css/images/MED.png",
-        "public/css/images/HS.png",
+        "public/css/images/SUMS.png",
+        "public/css/images/SUHS.png",
         "public/css/images/CED.png",
-        "public/css/images/MC.png",
+        "public/css/images/CMC.png",
         "public/css/images/COPVA.png",
         "public/css/images/GRAD.png",
         "public/css/images/IRS.png",
-        "public/css/images/NURSING.png",
+        "public/css/images/SUCN.png",
     ];
     $explode = explode(",",Auth::user()->roles);
     // dd(in_array("judge",$explode));

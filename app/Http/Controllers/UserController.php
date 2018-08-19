@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Prepageants;
 use App\PressLaunches;
+use App\InitialScores;
 
 class UserController extends Controller
 {
@@ -20,6 +21,7 @@ class UserController extends Controller
         'password' => bcrypt($request['password'])
       ]);
     }else{
+      dump($request);
       User::create([
           'fName' => $request['fName'],
           'mName' => $request['mName'],
@@ -29,13 +31,22 @@ class UserController extends Controller
           'username' => $request['username'],
           'password' => bcrypt($request['password'])
       ]);
-
-      $id = User::where('username',$request['username'])->first();
-      for($i = 1; $i <= 10;$i++){
-        Prepageants::create([
-          'candidate' => $i,
-          'judge' => $id->id
-        ]);
+      if($request['event'] == "Final"){
+        $id = User::where('username',$request['username'])->first();
+        for($i = 1; $i <= 10;$i++){
+          InitialScores::create([
+            'candidate' => $i,
+            'judge' => $id->id
+          ]);
+        }
+      }else{
+        $id = User::where('username',$request['username'])->first();
+        for($i = 1; $i <= 10;$i++){
+          Prepageants::create([
+            'candidate' => $i,
+            'judge' => $id->id
+          ]);
+        }
       }
     }
 

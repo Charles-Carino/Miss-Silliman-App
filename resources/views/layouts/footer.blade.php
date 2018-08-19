@@ -32,9 +32,20 @@
 $(document).ready(function() {
 
     $('table.datatable').DataTable();
-    $('table.datatable reports').DataTable({
+    $('table.specialprojects').DataTable({
       'paging': false,
-      'searching': false
+      'searching': false,
+      'order': [1,"desc"]
+    });
+    $('table.reports').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [4,"desc"]
+    });
+    $('table.ranking').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [2,"desc"]
     });
     $('.input-row').css('margin-bottom','5px');
     $('.preList').click(function(event){
@@ -67,13 +78,63 @@ $(document).ready(function() {
       var totalSum = 0;
       var getParam = $(this).attr("class");
       var paramArr = getParam.split(' ');
-      rowID = paramArr[3].slice(-2);
-      $(".input_"+rowID).each(function(){
-          var inputVal = $(this).val();
-          if($.isNumeric(inputVal))
-            totalSum += parseFloat(inputVal);
-      });
-      $("#input_total"+rowID).attr('value',totalSum);
+      rowID = paramArr[4].slice(6);
+      prodID = paramArr[4].slice(11);
+      themeID = paramArr[4].slice(12);
+      eveID = paramArr[4].slice(14);
+      seqID = paramArr[4].slice(10);
+      initID = paramArr[4].slice(11);
+      sqID = paramArr[4].slice(9);
+      if(paramArr[0] == 'production'){
+        $(".prod_input_"+prodID).each(function(){
+            var inputVal = $(this).val();
+            if($.isNumeric(inputVal))
+              totalSum += parseFloat(inputVal);
+        });
+        $("#prodTotal"+prodID).attr('value',totalSum);
+      }else if(paramArr[0] == 'themewear'){
+        $(".theme_input_"+themeID).each(function(){
+            var inputVal = $(this).val();
+            if($.isNumeric(inputVal))
+              totalSum += parseFloat(inputVal);
+        });
+        $("#themeTotal"+themeID).attr('value',totalSum);
+      }else if(paramArr[0] == 'eveninggown'){
+        $(".evening_input_"+eveID).each(function(){
+            var inputVal = $(this).val();
+            if($.isNumeric(inputVal))
+              totalSum += parseFloat(inputVal);
+        });
+        $("#eveningTotal"+eveID).attr('value',totalSum);
+      }else if(paramArr[0] == 'seqintrvw'){
+        $(".seq_input_"+seqID).each(function(){
+            var inputVal = $(this).val();
+            if($.isNumeric(inputVal))
+              totalSum += parseFloat(inputVal);
+        });
+        $("#seqTotal"+seqID).attr('value',totalSum);
+      }else if(paramArr[0] == 'initintrvw'){
+        $(".init_input_"+initID).each(function(){
+            var inputVal = $(this).val();
+            if($.isNumeric(inputVal))
+              totalSum += parseFloat(inputVal);
+        });
+        $("#initTotal"+initID).attr('value',totalSum);
+      }else if(paramArr[0] == 'stanquestion'){
+        $(".sq_input_"+sqID).each(function(){
+            var inputVal = $(this).val();
+            if($.isNumeric(inputVal))
+              totalSum += parseFloat(inputVal);
+        });
+        $("#sqTotal"+sqID).attr('value',totalSum);
+      }else{
+        $(".input_"+rowID).each(function(){
+            var inputVal = $(this).val();
+            if($.isNumeric(inputVal))
+              totalSum += parseFloat(Number(inputVal).toFixed(2));
+        });
+        $("#input_total"+rowID).attr('value',totalSum);
+      }
     });
 
     $(".input").click(function(){

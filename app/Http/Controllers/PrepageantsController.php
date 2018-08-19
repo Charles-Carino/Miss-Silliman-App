@@ -31,6 +31,8 @@ class PrepageantsController extends Controller
           PressLaunches::where('id',$request['row'])->update([
               'PL_RS' => $request['values'][0],
           ]);
+        }else if($request['event'] == "Production"){
+          dd($request);
         }
     }
 }

@@ -27,7 +27,8 @@ class JudgesController extends Controller
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('prepageants','prepageants.candidate','=','candidates.id')->where('judge',Auth::user()->id)->orderBy("seqTalent")->get();
         else if($user->event == "Speech")
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('prepageants','prepageants.candidate','=','candidates.id')->where('judge',Auth::user()->id)->orderBy("seqSpeech")->get();
-
+        else
+          $candidates = $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('initial_scores','initial_scores.candidate','=','candidates.id')->where('judge',Auth::user()->id)->get();
         return view('welcome',compact('candidates'));
       }
 
@@ -35,12 +36,10 @@ class JudgesController extends Controller
     }
 
     public function addScores(Request $request){
-      // die("Hello");
       $check = Prepageants::where('judge',$request['judge'])->get();
         if($request['event'] == "Talent"){
           foreach($check as $key){
             $i = $key->candidate;
-            // dd("Hello");
             Prepageants::where('id',$key->id)->update([
                 'candidate' => $i,
                 'judge' => $request['judge'],

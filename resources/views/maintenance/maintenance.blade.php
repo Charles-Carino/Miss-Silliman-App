@@ -7,7 +7,6 @@
   $speech = App\User::where('event','Speech')->get();
   $orgs = App\User::where('userType','organizer')->get();
 
-  // dd($talent);
 ?>
 @extends('layouts.master')
 
@@ -257,7 +256,7 @@
                                       <div id="eventsTable-SP">
                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                         <h4 style="font-weight:normal;">Special Project Results</h4>
-                                        <table class="table table-bordered table-striped reports">
+                                        <table class="table table-bordered table-striped specialprojects">
                                             <thead>
                                                 <tr>
                                                     <th>Candidate</th>

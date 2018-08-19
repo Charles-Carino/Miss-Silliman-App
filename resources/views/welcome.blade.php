@@ -105,7 +105,7 @@
                             <div class="thumbnail">
                                 <a class="canInfo" href="#defaultModal" data-toggle="modal"><img data-rel="img{{$key->id}}" class="group list-group-image" src="{{$key->image}}" width="200"/></a>
                                 <div class="caption">
-                                    <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
+                                        <h5 class="group inner list-group-item-heading" style="margin-bottom: 0">{{$key->fName}} {{$key->lName}}</h5>
                                     <hr />
                                     <div class="row input-row">
                                         <div class="col-xs-5 col-md-5 sub-event">
@@ -415,7 +415,6 @@
                                     <div class="row input-row">
                                         <div class="col-xs-5 col-md-5 sub-event">
                                             <p class="lead">Score</p>
-                                        </div>
                                         </div>
                                     </div>
                                     <div class="row">

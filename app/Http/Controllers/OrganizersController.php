@@ -20,7 +20,7 @@ class OrganizersController extends Controller
         $candidates = Candidates::join('colleges','candidates.college','=','colleges.id','left')->get();
         $colleges = Colleges::all();
         $prepageants = Prepageants::join('candidates','prepageants.candidate','=','candidates.id','left')
-                                    ->join('colleges','candidates.college','=','colleges.id','left')
+									->join('colleges','candidates.college','=','colleges.id','left')
 									->get();
 									
         $initScores = InitialScores::join('candidates','initial_scores.candidate','=','candidates.id','left')
@@ -29,7 +29,8 @@ class OrganizersController extends Controller
 									
         $pressLaunchScores = PressLaunches::join('users','users.id','=','press_launches.organizer','left')
 									->join('candidates','press_launches.candidate','=','candidates.id','left')
-									->join('colleges','candidates.college','=','colleges.id','left')								
+									->join('colleges','candidates.college','=','colleges.id','left')	
+									->orderby('PL_RS','desc')							
 									->get();
 									
         $reports = DB::select(DB::raw("select

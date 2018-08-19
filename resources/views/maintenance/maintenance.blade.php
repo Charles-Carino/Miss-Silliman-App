@@ -3,9 +3,41 @@
   if(!in_array("admin",$explode))
     $active = 'active';
 
-  $talent = App\User::where('event','Talent')->get();
-  $speech = App\User::where('event','Speech')->get();
-  $orgs = App\User::where('userType','organizer')->get();
+  $talent = App\User::where('event','Talent')
+                ->orderby('id')
+                ->get();
+  $speech = App\User::where('event','Speech')
+                ->orderby('id')
+                ->get();
+  $orgs = App\User::where('userType','organizer')
+                ->orderby('id')
+                ->get();
+ 
+
+    function bySP($a,$b)
+    {
+        if ($a->SP==$b->SP) return 0;
+        return ( $a->SP > $b->SP ) ?-1 : 1;
+    }
+
+    function byAveTalent($a,$b)
+    {
+        if ($a->AverageTalent==$b->AverageTalent) return 0;
+        return ( $a->AverageTalent > $b->AverageTalent ) ?-1 : 1;
+    }
+
+    function byAveSpeech($a,$b)
+    {
+        if ($a->AverageSpeech==$b->AverageSpeech) return 0;
+        return ( $a->AverageSpeech > $b->AverageSpeech ) ?-1 : 1;
+    }
+
+    uasort($reports,"bySP");
+    $report_SP = $reports;
+    uasort($reports,"byAveTalent");
+    $report_Talent = $reports;
+    uasort($reports,"byAveSpeech");
+    $report_Speech = $reports;
 
   // dd($talent);
 ?>
@@ -261,6 +293,7 @@
                                           @foreach($orgs as $key)
                                           <div class="col-xs-4 col-md-4" style="margin-top:50px;">
                                             <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                            <h6 style="text-align:center">Organizer</h6>
                                           </div>
                                           @endforeach
                                         </div>
@@ -268,7 +301,7 @@
                                 </div>
                                 <!-- end: page -->
                             </div> <!-- end Panel -->
-                        </div> <!-- end of event-final pane -->
+                        </div> <!-- end of event-press launch pane -->
                         <div class="tab-pane" id="evt-pre">
                             <!-- Page-Title -->
                             <div class="row">
@@ -318,7 +351,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($reports as $key)
+                                                @foreach($report_SP as $key)
                                                 <tr class="gradeX">
                                                     <td>{{$key->cCode}}</td>
                                                     <td>{{$key->candidates}}</td>
@@ -331,6 +364,7 @@
                                           @foreach($orgs as $key)
                                           <div class="col-xs-4 col-md-4" style="margin-top:50px;">
                                             <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                            <h6 style="text-align:center">Organizer</h6>
                                           </div>
                                           @endforeach
                                         </div>
@@ -352,14 +386,14 @@
                                               <tr>
                                                   <th>College</th>
                                                   <th>Candidate</th>
-                                                  <th>Talent Judge 1</th>
-                                                  <th>Talent Judge 2</th>
-                                                  <th>Talent Judge 3</th>
+                                                  <th>{{$talent[0]->fName}}, {{$talent[0]->lName}}</th>
+                                                  <th>{{$talent[1]->fName}}, {{$talent[1]->lName}}</th>
+                                                  <th>{{$talent[2]->fName}}, {{$talent[2]->lName}}</th>
                                                   <th>Average</th>
                                               </tr>
                                             </thead>
                                             <tbody>
-                                              @foreach($reports as $key)
+                                              @foreach($report_Talent as $key)
                                               <tr class="gradeX">
                                                   <td>{{$key->cCode}}</td>
                                                   <td>{{$key->candidates}}</td>
@@ -375,6 +409,7 @@
                                           @foreach($talent as $key)
                                           <div class="col-xs-4 col-md-4" style="margin-top:50px;">
                                             <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                            <h6 style="text-align:center">Talent Judge</h6>
                                           </div>
                                           @endforeach
                                         </div>
@@ -396,14 +431,14 @@
                                               <tr>
                                                   <th>College</th>
                                                   <th>Candidate</th>
-                                                  <th>Speech Judge 1</th>
-                                                  <th>Speech Judge 2</th>
-                                                  <th>Speech Judge 3</th>
+                                                  <th>{{$speech[0]->fName}}, {{$speech[0]->lName}}</th>
+                                                  <th>{{$speech[1]->fName}}, {{$speech[1]->lName}}</th>
+                                                  <th>{{$speech[2]->fName}}, {{$speech[2]->lName}}</th>
                                                   <th>Average</th>
                                               </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($reports as $key)
+                                                @foreach($report_Speech as $key)
                                                 <tr class="gradeX">
                                                     <td>{{$key->cCode}}</td>
                                                     <td>{{$key->candidates}}</td>
@@ -419,6 +454,7 @@
                                           @foreach($speech as $key)
                                           <div class="col-xs-4 col-md-4" style="margin-top:50px;">
                                             <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                            <h6 style="text-align:center">Speech Judge</h6>
                                           </div>
                                           @endforeach
                                         </div>

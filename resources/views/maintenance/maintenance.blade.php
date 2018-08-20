@@ -328,6 +328,12 @@
                                           <span class="hidden-xs">Speech</span>
                                       </a>
                                   </li>
+                                  <li class="tab">
+                                      <a href="#evt-pre-summ" data-toggle="tab">
+                                          <span class="visible-xs"><i class="fa fa-bullhorn"></i></span>
+                                          <span class="hidden-xs">Summary</span>
+                                      </a>
+                                  </li>
                               </ul>
                               <div class="tab-content">
                                   <div class="tab-pane active" id="evt-pre-sp">
@@ -459,11 +465,80 @@
                                         </div>
                                       </div>
                                   </div><!--end of speech pane-->
+                                  <div class="tab-pane" id="evt-pre-summ"  style="overflow-x:auto">
+                                      <div class="row">
+                                          <div class="col-sm-6">
+                                              <div class="m-b-30">
+                                                  <button id="btnPrint_PP_speech" data-toggle="modal" data-target="#PPModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div id="eventsTable-speech">
+                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                        <h4 style="font-weight:normal;">Prepageant Results</h4>
+                                        <table class="table table-bordered table-striped reports">
+                                            <thead>
+                                              <tr>
+                                                  <th>College</th>
+                                                  <th>Candidate</th>
+                                                  <th>Special Projects</th>
+                                                  <th>{{$talent[0]->fName}}, {{$talent[0]->lName}}</th>
+                                                  <th>{{$talent[1]->fName}}, {{$talent[1]->lName}}</th>
+                                                  <th>{{$talent[2]->fName}}, {{$talent[2]->lName}}</th>
+                                                  <th>Average Talent Points</th>
+                                                  <th>{{$speech[0]->fName}}, {{$speech[0]->lName}}</th>
+                                                  <th>{{$speech[1]->fName}}, {{$speech[1]->lName}}</th>
+                                                  <th>{{$speech[2]->fName}}, {{$speech[2]->lName}}</th>
+                                                  <th>Average Speech Points</th>
+                                                  <th>16 of Special Projects</th>
+                                                  <th>34% of Talent Points</th>
+                                                  <th>50% of Speech Points</th>
+                                                  <th>Total Points</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($report_Speech as $key)
+                                                <tr class="gradeX">
+                                                    <td>{{$key->cCode}}</td>
+                                                    <td>{{$key->candidates}}</td>
+                                                    <td class="numfield">{{$key->SP}}</td>
+                                                    <td class="numfield">{{$key->judge1}}</td>
+                                                    <td class="numfield">{{$key->judge2}}</td>
+                                                    <td class="numfield">{{$key->judge3}}</td>
+                                                    <td class="numfield">{{$key->AverageTalent}}</td>
+                                                    <td class="numfield">{{$key->judge4}}</td>
+                                                    <td class="numfield">{{$key->judge5}}</td>
+                                                    <td class="numfield">{{$key->judge6}}</td>
+                                                    <td class="numfield">{{$key->AverageSpeech}}</td>
+                                                    <td class="numfield">{{$key->SP_sixteen}}</td>
+                                                    <td class="numfield">{{$key->Talent_34}}</td>
+                                                    <td class="numfield">{{$key->Speech_50}}</td>
+                                                    <td class="numfield">{{$key->TotalPrepageant}}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                          @foreach($talent as $key)
+                                          <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                            <h6 style="text-align:center">Talent Judge</h6>
+                                          </div>
+                                          @endforeach
+                                          @foreach($speech as $key)
+                                          <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                            <h6 style="text-align:center">Speech Judge</h6>
+                                          </div>
+                                          @endforeach
+                                        </div>
+                                      </div>
+                                  </div><!--end of speech pane-->
                               </div>
                                 <!-- end: page -->
                             </div> <!-- end Panel -->
                         </div> <!-- end of event-prepageant pane -->
-                        <div class="tab-pane" id="evt-final">
+                        <div class="tab-pane" id="evt-final" style="overflow-x:auto">
                             <!-- Page-Title -->
                             <div class="row">
                                 <div class="col-sm-12">
@@ -479,27 +554,21 @@
                                             </div>
                                         </div>
                                     </div>
-                                      <table id="eventsTable" class="table table-bordered table-striped datatable">
-                                          <caption id="tblCaption_PageantNight" hidden>
-                                              <h4 class="page-title">Pageant Night</h4>
-                                          </caption> 
+                                    <div id="printFN">
+                                      <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                      <h4 style="font-weight:normal;">Pageant Night Results</h4>
+                                      <table class="table table-bordered table-striped reports">
                                           <thead>
                                               <tr>
                                                   <th>Judge</th>
                                                   <th>Candidate</th>
                                                   <th>Production (Raw Score)</th>
-                                                  <th>Production (Percentage)</th>
                                                   <th>Theme Wear (Raw Score)</th>
-                                                  <th>Theme Wear (Percentage)</th>
                                                   <th>Evening Gown (Raw Score)</th>
-                                                  <th>Evening Gown (Percentage)</th>
                                                   <th>Initial Score Subtotal</th>
                                                   <th>Content (Raw Score)</th>
-                                                  <th>Content (Percentage)</th>
                                                   <th>Confidence (Raw Score)</th>
-                                                  <th>Confidence (Percentage)</th>
                                                   <th>Wit (Raw Score)</th>
-                                                  <th>Wit (Percentage)</th>
                                                   <th>SQ Subtotal</th>
                                               </tr>
                                           </thead>
@@ -509,23 +578,18 @@
                                                   <td>{{$key->judge}}</td>
                                                   <td>{{$key->candidate}}</td>
                                                   <td>{{$key->IS_Production_RS}}</td>
-                                                  <td>{{$key->IS_Production_Prcnt}}</td>
                                                   <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                  <td>{{$key->IS_ThemeWr_Prcnt}}</td>
                                                   <td>{{$key->IS_EveGown_RS}}</td>
-                                                  <td>{{$key->IS_EveGown_Prcnt}}</td>
                                                   <td>{{$key->IS_Subtotal}}</td>
                                                   <td>{{$key->SQ_Content_RS}}</td>
-                                                  <td>{{$key->SQ_Content_Prcnt}}</td>
                                                   <td>{{$key->SQ_Confidence_RS}}</td>
-                                                  <td>{{$key->SQ_Confidence_Prcnt}}</td>
                                                   <td>{{$key->SQ_Wit_RS}}</td>
-                                                  <td>{{$key->SQ_Wit_Prcnt}}</td>
                                                   <td>{{$key->SQ_Subtotal}}</td>
                                               </tr>
                                               @endforeach
                                           </tbody>
-                                      </table>														
+                                      </table>	
+                                      </div>													
                                   </div>
                                 <!-- end: page -->
                             </div> <!-- end Panel -->
@@ -774,8 +838,7 @@
               </div>
           </div>
       </div>
-  </div><!-- /.modal -->
-
+  </div><!-- /.modal --> 
   </div>
     </div>
 </div>
@@ -842,11 +905,8 @@ function suggestJUsername()
 
 
     document.getElementById("btnPrint_FN").onclick = function () {
-        $printFN = document.getElementById("printFN");
-        $caption = document.getElementById("tblCaption_PageantNight");
-        $caption.hidden = false;
+        $printPP = document.getElementById("printFN");
         printElement($printPP);
-        $caption.hidden = true;
     }
 
     function printElement(elem) {

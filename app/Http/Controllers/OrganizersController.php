@@ -46,9 +46,9 @@ class OrganizersController extends Controller
             t5.speech as 'judge5',
             t6.speech as 'judge6',
         	(t4.speech+t5.speech+t6.speech)/3 as AverageSpeech,
-        	(t0.SP*.16) as 'SP16%',
-        	((t1.talent+t2.talent+t3.talent)/3)*.34 as 'Talent34%',
-        	((t4.speech+t5.speech+t6.speech)/3)*.50 as 'Speech50%',
+        	(t0.SP*.16) as 'SP_sixteen',
+        	((t1.talent+t2.talent+t3.talent)/3)*.34 as 'Talent_34',
+        	((t4.speech+t5.speech+t6.speech)/3)*.50 as 'Speech_50',
         	(t0.SP*.16)+((t1.talent+t2.talent+t3.talent)/3)*.34+((t4.speech+t5.speech+t6.speech)/3)*.50 as 'TotalPrepageant'
 
         from
@@ -164,7 +164,7 @@ class OrganizersController extends Controller
         	t0.candidates=t1.candidates and t1.candidates=t2.candidates and
         	t2.candidates=t3.candidates and t3.candidates=t4.candidates and
         	t4.candidates=t5.candidates and t5.candidates=t6.candidates"));
-          
+		  
         return view('maintenance.maintenance',compact('judges','organizers','candidates', 'colleges','pressLaunchScores','prepageants','initScores','prePajFinal', 'reports'));
       }
 }

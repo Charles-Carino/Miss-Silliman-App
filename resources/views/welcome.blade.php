@@ -178,7 +178,8 @@
                           <input type="hidden" name="event" value="{{Auth::user()->event}}" />
                           @foreach($candidates as $key)
                           @if($key->seqSpeech == 5)
-                          <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3" style="clear:left;">
+                          <!-- <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3" style="clear:left;"> -->
+                          <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3">
                           @else
                           <div id="row{{$key->id}}" class="item col-xs-3 col-lg-3">
                           @endif
@@ -267,7 +268,8 @@
                       </div>
                       </form>
                     </div>
-                    @elseif(Auth::user()->userType == "organizer")
+                    @endif
+                    @if(Auth::user()->userType == "organizer")
                     <div class="tab-pane active" id="pressLaunch">
                       <h3>Press Launch</h3>
                       <div class="well well-sm">
@@ -276,8 +278,8 @@
                             <strong>Display</strong>
                           </div>
                           <div class="col-xs-3 col-md-3 btn-group">
-                              <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span
-                                  class="glyphicon glyphicon-th"></span>Grid</a>
+                              <a href="#" id="grid" class="btn btn-default btn-sm preGrid"><span class="glyphicon glyphicon-th">
+                              </span>Grid</a>
                               <a href="#" id="list" class="btn btn-default btn-sm preList"><span class="glyphicon glyphicon-th-list">
                               </span>List</a>
                           </div>
@@ -320,6 +322,7 @@
                             </div>
                           </div>
                           @endforeach
+                        </form>
                       </div>
                       @if($press[0]->read != "readonly")
                       <div style="width:120px;margin:auto;">
@@ -347,7 +350,6 @@
                               </div>
                           </div>
                       </div>
-                      </form>
                     </div>
                     @if(in_array("judge",$explode) == "true")
                     <div class="tab-pane" id="prePageant_specialProjects">
@@ -388,9 +390,6 @@
                                     <div class="row input-row">
                                         <div class="col-xs-5 col-md-5 sub-event">
                                             <p class="lead">Score</p>
-                                        </div>
-                                        <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                            <input type="number" name="score_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="100" value="{{$key->SP_RS}}" {{$key->read}}>
                                         </div>
                                     </div>
                                     @if($key->read != "readonly")

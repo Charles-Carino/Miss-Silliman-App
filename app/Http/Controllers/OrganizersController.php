@@ -7,6 +7,7 @@ use App\Candidates;
 use App\Colleges;
 use App\Prepageants;
 use App\InitialScores;
+use App\PressLaunches;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -19,16 +20,22 @@ class OrganizersController extends Controller
         $candidates = Candidates::join('colleges','candidates.college','=','colleges.id','left')->get();
         $colleges = Colleges::all();
         $prepageants = Prepageants::join('candidates','prepageants.candidate','=','candidates.id','left')
-                                    ->join('colleges','candidates.college','=','colleges.id','left')
-                                    ->get();
+									->join('colleges','candidates.college','=','colleges.id','left')
+									->get();
+									
         $initScores = InitialScores::join('candidates','initial_scores.candidate','=','candidates.id','left')
                                     ->join('colleges','candidates.college','=','colleges.id','left')
-                                    ->get();
-
-
-
+									->get();
+									
+        $pressLaunchScores = PressLaunches::join('users','users.id','=','press_launches.organizer','left')
+									->join('candidates','press_launches.candidate','=','candidates.id','left')
+									->join('colleges','candidates.college','=','colleges.id','left')	
+									->orderby('PL_RS','desc')							
+									->get();
+									
         $reports = DB::select(DB::raw("select
-        	t0.id,
+			t0.id,
+			t0.cCode,
             t0.candidates,
             t0.SP as 'SP',
         	t1.talent as 'judge1',
@@ -46,9 +53,10 @@ class OrganizersController extends Controller
 
         from
         /*special project*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
-        		,sum(pre.SP_RS) SP
+				,sum(pre.SP_RS) SP
+				,col.`collegeCode` cCode
         	from prepageants pre
         	left join candidates can on can.id=pre.candidate
         	left join colleges col on col.id=can.college
@@ -57,7 +65,7 @@ class OrganizersController extends Controller
         /*end*/
         	,
         /*talent judge1*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
         		,Talent_Confidence
         		,Talent_Mastery
@@ -73,7 +81,7 @@ class OrganizersController extends Controller
         /*end*/
         	,
         /*talent judge2*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
         		,Talent_Confidence
         		,Talent_Mastery
@@ -89,7 +97,7 @@ class OrganizersController extends Controller
         /*end*/
         	,
         /*talent judge3*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
         		,Talent_Confidence
         		,Talent_Mastery
@@ -105,7 +113,7 @@ class OrganizersController extends Controller
         /*end*/
         	,
         /*speech judge4*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
         		,PSpch_Content
         		,PSpch_Delivery
@@ -121,7 +129,7 @@ class OrganizersController extends Controller
         /*end*/
         	,
         /*speech judge5*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
         		,PSpch_Content
         		,PSpch_Delivery
@@ -137,7 +145,7 @@ class OrganizersController extends Controller
         /*end*/
         	,
         /*speech judge6*/
-        	(select can.id,concat(upper(can.lName),', ',can.fName,' - ',col.`collegeCode`) candidates
+        	(select can.id,concat(upper(can.lName),', ',can.fName) candidates
         		,pre.judge
         		,PSpch_Content
         		,PSpch_Delivery
@@ -157,6 +165,6 @@ class OrganizersController extends Controller
         	t2.candidates=t3.candidates and t3.candidates=t4.candidates and
         	t4.candidates=t5.candidates and t5.candidates=t6.candidates"));
           
-        return view('maintenance.maintenance',compact('judges','organizers','candidates', 'colleges','prepageants','initScores','prePajFinal', 'reports'));
+        return view('maintenance.maintenance',compact('judges','organizers','candidates', 'colleges','pressLaunchScores','prepageants','initScores','prePajFinal', 'reports'));
       }
 }

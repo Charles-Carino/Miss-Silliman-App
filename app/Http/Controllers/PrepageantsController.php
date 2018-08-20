@@ -23,14 +23,16 @@ class PrepageantsController extends Controller
             'PSpch_Defense' => $request['values'][4],
           ]);
         }else if($request['event'] == "Special Projects"){
+            // dd($request);
             Prepageants::where('id',$request['row'])->update([
-                'judge' => $request['judge'],
                 'SP_RS' => $request['values'][0],
             ]);
         }else if($request['event'] == "Press Launch"){
           PressLaunches::where('id',$request['row'])->update([
               'PL_RS' => $request['values'][0],
           ]);
+        }else if($request['event'] == "Production"){
+          dd($request);
         }
     }
 }

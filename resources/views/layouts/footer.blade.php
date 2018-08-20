@@ -32,9 +32,20 @@
 $(document).ready(function() {
 
     $('table.datatable').DataTable();
-    $('table.datatable reports').DataTable({
+    $('table.specialprojects').DataTable({
       'paging': false,
-      'searching': false
+      'searching': false,
+      'order': [1,"desc"]
+    });
+    $('table.reports').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [4,"desc"]
+    });
+    $('table.ranking').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [2,"desc"]
     });
     $('.input-row').css('margin-bottom','5px');
     $('.preList').click(function(event){
@@ -65,15 +76,66 @@ $(document).ready(function() {
 
     $(".form-line").on("input",".form-control",function(){
       var totalSum = 0;
-      var getParam = $(this).attr("class");
-      var paramArr = getParam.split(' ');
-      rowID = paramArr[3].slice(-2);
-      $(".input_"+rowID).each(function(){
-          var inputVal = $(this).val();
-          if($.isNumeric(inputVal))
-            totalSum += parseFloat(inputVal);
-      });
-      $("#input_total"+rowID).attr('value',totalSum);
+      var getParam = $(this).attr("class").split('input_');
+      // console.log(getParam);
+      // return false;
+      rowID = getParam[1];
+      // prodID = final[4].slice(11);
+      // themeID = final[4].slice(12);
+      // eveID = final[4].slice(14);
+      // seqID = final[4].slice(10);
+      // initID = final[4].slice(11);
+      // sqID = final[4].slice(9);
+      // if(paramArr[0] == 'production'){
+      //   $(".prod_input_"+prodID).each(function(){
+      //       var inputVal = $(this).val();
+      //       if($.isNumeric(inputVal))
+      //         totalSum += parseFloat(inputVal);
+      //   });
+      //   $("#prodTotal"+prodID).attr('value',totalSum);
+      // }else if(paramArr[0] == 'themewear'){
+      //   $(".theme_input_"+themeID).each(function(){
+      //       var inputVal = $(this).val();
+      //       if($.isNumeric(inputVal))
+      //         totalSum += parseFloat(inputVal);
+      //   });
+      //   $("#themeTotal"+themeID).attr('value',totalSum);
+      // }else if(paramArr[0] == 'eveninggown'){
+      //   $(".evening_input_"+eveID).each(function(){
+      //       var inputVal = $(this).val();
+      //       if($.isNumeric(inputVal))
+      //         totalSum += parseFloat(inputVal);
+      //   });
+      //   $("#eveningTotal"+eveID).attr('value',totalSum);
+      // }else if(paramArr[0] == 'seqintrvw'){
+      //   $(".seq_input_"+seqID).each(function(){
+      //       var inputVal = $(this).val();
+      //       if($.isNumeric(inputVal))
+      //         totalSum += parseFloat(inputVal);
+      //   });
+      //   $("#seqTotal"+seqID).attr('value',totalSum);
+      // }else if(paramArr[0] == 'initintrvw'){
+      //   $(".init_input_"+initID).each(function(){
+      //       var inputVal = $(this).val();
+      //       if($.isNumeric(inputVal))
+      //         totalSum += parseFloat(inputVal);
+      //   });
+      //   $("#initTotal"+initID).attr('value',totalSum);
+      // }else if(paramArr[0] == 'stanquestion'){
+      //   $(".sq_input_"+sqID).each(function(){
+      //       var inputVal = $(this).val();
+      //       if($.isNumeric(inputVal))
+      //         totalSum += parseFloat(inputVal);
+      //   });
+      //   $("#sqTotal"+sqID).attr('value',totalSum);
+      // }else{
+        $(".input_"+rowID).each(function(){
+            var inputVal = $(this).val();
+            if($.isNumeric(inputVal))
+              totalSum += parseFloat(inputVal);
+        });
+        $("#input_total"+rowID).attr('value',totalSum);
+      // }
     });
 
     $(".input").click(function(){
@@ -83,10 +145,20 @@ $(document).ready(function() {
       var rowID = paramArr[1];
       var judgeEvent = paramArr[2];
       var values = [];
-      var limit = $("#row"+rowID).find("input").length;
 
-      for(var i = 0; i < limit; i++)
-        values[i] = $("#row"+rowID).find("input")[i]['value'];
+      if(judgeEvent == "Special Projects"){
+        var limit = $("#sprow"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#sprow"+rowID).find("input")[i]['value'];
+      }else if(judgeEvent == "Press Launch"){
+        var limit = $("#plrow"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#plrow"+rowID).find("input")[i]['value'];
+      }else{
+        var limit = $("#row"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#row"+rowID).find("input")[i]['value'];
+      }
 
       $.ajax({
         url: "{{url('/saveCandidate')}}",
@@ -100,8 +172,17 @@ $(document).ready(function() {
           "event": judgeEvent,
         },
         success:function(data){
-            $("#row"+rowID+" .caption #input_success").remove();
-            $("#row"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Record saved!</p></div>').show(2000);
+            if(judgeEvent == "Special Projects"){
+              $("#sprow"+rowID+" .caption #input_success").remove();
+              $("#sprow"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }else if(judgeEvent == "Press Launch"){
+              $("#plrow"+rowID+" .caption #input_success").remove();
+              $("#plrow"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }else{
+              $("#row"+rowID+" .caption #input_success").remove();
+              $("#row"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }
+
         },
         async:false
       });
@@ -133,6 +214,45 @@ $(document).ready(function() {
       $('#OrgField-LName').val(split[0]);
       $("#OrgField-Event").val(data[1]);
       $("#OrgField-Username").val(data[3]);
+    });
+    //
+    // $("button.btnRanking").on('show.bs.modal',function(e){
+    //     var button = e.relatedTarget;
+    //     if($(this).hasAttr("data-rel")){
+    //       alert("true");
+    //     }else{
+    //       alert("fales");
+    //     }
+    //     // e.preventDefault();
+    //     // alert(this.hasAttr("data-rel"));
+    // });
+
+    $("button.btnRanking").click(function(e){
+      // e.stopPropagation();
+
+      var x = $(this).attr("data-rel");
+      if(x == "pl"){
+        $("table.ranking").dataTable().fnDestroy();
+        $(".ranking").find("th.sprs,td.sprs").hide();
+        $(".ranking").find("th.plrs,td.plrs").show();
+        refreshTable(3);
+
+      }
+      else if(x == 'sp'){
+        $("table.ranking").dataTable().fnDestroy();
+        $(".ranking").find("th.plrs,td.plrs").hide();
+        $(".ranking").find("th.sprs,td.sprs").show();
+        refreshTable(2);
+
+      }
+
+      function refreshTable(col){
+        $('table.ranking').DataTable({
+          'paging': false,
+          'searching': false,
+          'order': [col,"desc"]
+        });
+      }
     });
 });
 </script>

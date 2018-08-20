@@ -35,17 +35,20 @@ $(document).ready(function() {
     $('table.specialprojects').DataTable({
       'paging': false,
       'searching': false,
-      'order': [1,"desc"]
+      'order': [1,"desc"],
+      "info":     false
     });
     $('table.reports').DataTable({
       'paging': false,
       'searching': false,
-      'order': [4,"desc"]
+      'order': [4,"desc"],
+      "info":     false
     });
     $('table.ranking').DataTable({
       'paging': false,
       'searching': false,
-      'order': [2,"desc"]
+      'order': [2,"desc"],
+      "info":     false
     });
     $('.input-row').css('margin-bottom','5px');
     $('.preList').click(function(event){
@@ -129,20 +132,18 @@ $(document).ready(function() {
       //   });
       //   $("#sqTotal"+sqID).attr('value',totalSum);
       // }else{
-        // var max = $(this).attr('max');
-        // var min = $(this).attr('min');
-        // var num = $(this).val();
-        // console.log(num,min,max);
-        // if(num<min || num>max){
-        //   if(num>max){
-        //     $(this).css("background-color","#f2dede");
-        //     $(this).select();
-        //   }else{
-        //     $(this).css("background-color","#f2dede");
-        //     $(this).select();
-        //   }
-        // }else
-        //     $(this).css("background-color","");
+      var max = $(this).attr('max');
+      var min = $(this).attr('min');
+      var num =  $(this).val();
+      //console.log(num);
+      if(parseFloat(num)<min || parseFloat(num)>max ){
+          $(this).css("background-color","#f2dede");
+          $(this).val('').focus();
+          $(this).animate(function(){
+              $(this).removeAttr("style").an;
+          },1000);
+      }else
+          $(this).removeAttr("style");
         $(".input_"+rowID).each(function(){
             var inputVal = $(this).val();
             if($.isNumeric(inputVal))

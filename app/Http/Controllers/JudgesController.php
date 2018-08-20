@@ -81,7 +81,7 @@ class JudgesController extends Controller
                 'candidate' => $i,
                 'organizer' => $request['judge'],
                 'PL_RS' => $request['press_'.$key->id],
-                'read' => 'readonly'
+                'readPL' => 'readonly'
             ]);
           }
         }

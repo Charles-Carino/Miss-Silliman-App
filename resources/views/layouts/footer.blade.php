@@ -129,6 +129,20 @@ $(document).ready(function() {
       //   });
       //   $("#sqTotal"+sqID).attr('value',totalSum);
       // }else{
+        // var max = $(this).attr('max');
+        // var min = $(this).attr('min');
+        // var num = $(this).val();
+        // console.log(num,min,max);
+        // if(num<min || num>max){
+        //   if(num>max){
+        //     $(this).css("background-color","#f2dede");
+        //     $(this).select();
+        //   }else{
+        //     $(this).css("background-color","#f2dede");
+        //     $(this).select();
+        //   }
+        // }else
+        //     $(this).css("background-color","");
         $(".input_"+rowID).each(function(){
             var inputVal = $(this).val();
             if($.isNumeric(inputVal))
@@ -215,17 +229,6 @@ $(document).ready(function() {
       $("#OrgField-Event").val(data[1]);
       $("#OrgField-Username").val(data[3]);
     });
-    //
-    // $("button.btnRanking").on('show.bs.modal',function(e){
-    //     var button = e.relatedTarget;
-    //     if($(this).hasAttr("data-rel")){
-    //       alert("true");
-    //     }else{
-    //       alert("fales");
-    //     }
-    //     // e.preventDefault();
-    //     // alert(this.hasAttr("data-rel"));
-    // });
 
     $("button.btnRanking").click(function(e){
       // e.stopPropagation();

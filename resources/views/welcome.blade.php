@@ -281,7 +281,7 @@
                               <a href="#" id="list" class="btn btn-default btn-sm preList"><span class="glyphicon glyphicon-th-list">
                               </span>List</a>
                           </div>
-                          @if($press[0]->read == "readonly")
+                          @if($press[0]->readPL == "readonly")
                           <div class="col-xs-8 col-md-8">
                             <button data-toggle="modal" data-rel="pl" data-target="#ranking" type="button" class="btn btn-xs btn-danger waves-effect btnRanking" style="float: right;">
                                 <i class="material-icons">person</i>
@@ -311,7 +311,7 @@
                                             <input type="number" name="press_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="100" value="{{$key->PL_RS}}">
                                         </div>
                                     </div>
-                                    @if($key->read != "readonly")
+                                    @if($key->readPL != "readonly")
                                     <div class="row">
                                       <button type="button" class="btn bg-red input" data-rel="{{Auth::user()->id}}|{{$key->id}}|Press Launch" style="margin:0 auto;display:block;">Save</button>
                                     </div>
@@ -321,7 +321,7 @@
                           </div>
                           @endforeach
                       </div>
-                      @if($press[0]->read != "readonly")
+                      @if($press[0]->readPL != "readonly")
                       <div style="width:120px;margin:auto;">
                         <div class="row" style="margin:auto;">
                           <button type="button" data-toggle="modal" data-target="#confirmSubmit" class="btn bg-red waves-effect">

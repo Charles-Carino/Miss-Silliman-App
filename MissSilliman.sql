@@ -141,14 +141,14 @@ CREATE DEFINER=`SU`@`%` PROCEDURE `init_prepageant`()
 BEGIN
 	DECLARE j int;
     DECLARE c int;
-    
+
     SET j=1;
     TRUNCATE prepageants;
-    
+
     #j1-3 = judges for talent
     #j4-6 = judges for speech
     #j7 = special project c/o organizer
-    
+
     WHILE j <=12  DO
     	SET c=1;
     	IF j<=3 THEN
@@ -157,27 +157,27 @@ BEGIN
 	        	SET c = c + 1;
 	        END WHILE;
         END IF;
-               
+
         IF j>3 AND j<=6 THEN
 	        WHILE c <= 10 DO
 	        	INSERT INTO prepageants (candidate,judge,PSpch_Prcnt) VALUES (c, j,.40);
 	        	SET c = c + 1;
 	        END WHILE;
 		END IF;
-		
+
 		IF j=7 THEN
 	        WHILE c <= 10 DO
 	        	INSERT INTO prepageants (candidate,judge,SP_Prcnt) VALUES (c, j,.20);
 	        	SET c = c + 1;
 	        END WHILE;
 		END IF;
-		
-		
-		SET j = j + 1;       
+
+
+		SET j = j + 1;
     END WHILE;
-    
+
     SELECT * FROM prepageants;
-    
+
 END//
 DELIMITER ;
 

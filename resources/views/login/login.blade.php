@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta charset="utf-8" />
-    <title>Pages - Admin Dashboard UI Kit - Lock Screen</title>
+    <title>Miss Silliman Application</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <link rel="apple-touch-icon" href="public/pages/ico/60.png">
     <link rel="apple-touch-icon" sizes="76x76" href="public/pages/ico/76.png">
@@ -57,7 +57,7 @@
           <p> LOGO HERE </p>
           <p class="p-t-35">Log into your pages account</p>
           <!-- START Login Form -->
-          <form id="form-login" class="p-t-15" method="get" action={{url('/welcome')}}>
+          <form id="form-login" class="p-t-15" method="get" action="{{url('/welcome')}}">
             <!-- START Form Control-->
             <div class="form-group form-group-default" style="opacity: 1">
               <label>Username</label>
@@ -99,6 +99,11 @@
     <script src="public/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
     <!-- END VENDOR JS -->
     <script src="public/pages/js/pages.min.js"></script>
+    <script>
+    $(function()
+    {
+      $('#form-login').validate()
+    })
+    </script>
   </body>
 </html>
-

@@ -1,27 +1,16 @@
 <?php
     $collegeCode = ["CBA","CAS","MED","HS","CED","MASSCOMM","COPVA","GRAD","IRS","NURSING"];
-    $collegeName = [
-        "COLLEGE OF BUSINESS ADMINISTRATION",
-        "COLLEGE OF ARTS AND SCIENCES",
-        "SENIOR HIGH SCHOOL",
-        "COLLEGE OF ENGINEERING AND DESIGN",
-        "COLLEGE OF MASS COMMUNICATION",
-        "COLLEGE OF PERFORMING AND VISUAL ARTS",
-        "GRADUATE STUDIES",
-        "INSTITUTE OF REHABILITATIVE STUDIES",
-        "COLLEGE OF NURSING"
-    ];
     $name = [
-        "Mikhaella Ponce de Leon",
-        "Christine Torcino",
-        "Oghogho Ovonlen",
-        "Erica Villagracia",
-        "Shannel Vendiola",
-        "Ivy Salaum",
-        "Chanel Pepino",
-        "Yihui Yuan",
-        "Amidala Quisumbing",
-        "Gabrielle Arrojado"
+        "Mikhaella",
+        "Christine",
+        "Oghogho",
+        "Erica",
+        "Shannel",
+        "Ivy",
+        "Chanel",
+        "Yihui",
+        "Amidala",
+        "Gabrielle"
     ];
     $picSrc = [
         "public/css/images/CBA.png",
@@ -101,7 +90,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroup-sizing-lg">SCORE</span>
                                         </div>
-                                        <input id="scoreInput" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                         </div>
                                     </div>
                                 </div>
@@ -113,29 +102,76 @@
             </div>
             <div class="col-md-3"></div>
         </div>
-        <div class="modal-footer">
-            <button id="openModal" type="button" class="btn btn-link waves-effect" data-toggle="modal" data-target="#myModal">PROCEED</button>
-        </div>
-        <div id="myModal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
-              </div>
-              <div class="modal-body">
-                <p>Some text in the modal.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
 
-          </div>
+
+        <div class="row col-md-12 align-center" style="padding : 50px">
+            <a data-toggle="modal" data-target="#defaultModal" style="text-decoration:none;">
+                <button type="button" class="btn btn-link waves-effect btn-success">SAVE CHANGES</button>
+            </a>
         </div>
     </div> <!-- container -->
 </section>
+
+<!-- For Material Design Colors -->
+<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+              <div class="row">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Score Tabulation</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>College Code</th>
+                                        <th>Candidate</th>
+                                        <th>Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for($i=0;$i<=9;$i++)
+                                    <!--TODO: check for score or no score-->
+                                    <tr class="active">
+                                        <td>{{$collegeCode[$i]}}</td>
+                                        <td>{{$name[$i]}}</td>
+                                        <td><input type="number" disabled class="form-control perm" name="pp-sp-" min="0" max="100"></td>
+                                    </tr>
+                                    @endfor
+                                    <tr class="success">
+                                        <td>College Code</td>
+                                        <td>Success</td>
+                                        <td>has score</td>
+                                    </tr>
+                                    <tr>
+                                        <td>College Code</td>
+                                        <td>Name</td>
+                                        <td>Column content</td>
+                                    </tr>
+                                    <tr class="danger">
+                                        <td>College Code</td>
+                                        <td>Name</td>
+                                        <td>No score</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

@@ -85,7 +85,7 @@
               <div class="user-info" >
                   <div class="image">
                       <img src="public/css/images/testImg.jpg" width="48" height="48" alt="User" />
-                  </div>
+                  </div>·
                   <div class="info-container">
                       <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Angel Doe</div>
                       <div class="email">angelvross@su.edu.ph</div>

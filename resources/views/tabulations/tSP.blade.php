@@ -31,7 +31,7 @@
 <section class="content">
     <div class="container">
         <div class="row col-md-12 align-center">
-            <h1> SPECIAL PROJECTS </h1>
+            <h1> PRESS LAUNCH </h1>
         </div>
         <div class="row col-md-12">
             <div class="col-md-3"></div>

@@ -24,6 +24,12 @@
         "public/css/images/IRS.png",
         "public/css/images/NURSING.png",
     ];
+
+    //if organizer:: show readable dashboard with summary
+    //if organizer admin:: show maintenance
+    //if judge:: if prepageant:: show prepageant tab only || else show final tab only
+      //if judge talent:: show talent UI || else show speech UI
+    //if judge organizer:: show readable dashboard and press launch
 ?>
 @extends('layouts.master')
 

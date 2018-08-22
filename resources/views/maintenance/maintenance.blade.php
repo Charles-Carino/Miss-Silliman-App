@@ -528,7 +528,7 @@
                                 <!-- end: page -->
                             </div> <!-- end Panel -->
                         </div> <!-- end of event-prepageant pane -->
-                        <div class="tab-pane" id="evt-final" style="overflow-x:auto">
+                        <div class="tab-pane" id="evt-final">
                             <!-- Page-Title -->
                             <div class="row">
                                 <div class="col-sm-12">
@@ -542,64 +542,196 @@
                                 <li class="tab">
                                     <a href="#evt-pn-stdQuestion" data-toggle="tab" aria-expanded="false">Standard Question</a>
                                 </li>
+                                <li class="tab">
+                                    <a href="#evt-pn-summ" data-toggle="tab" aria-expanded="false">Summary</a>
+                                </li>
                             </ul>
                             <div class="tab-content col-lg-12">
                                 <div class="tab-pane active" id="evt-pn-initialScore">
-                                </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h5 class="pull-left page-title">Initial Score Report</h5>
+                                        </div>
+                                    </div>
+                                    <ul class="nav nav-tabs tabs tabs-top">
+                                        <li class="active tab">
+                                            <a href="#evt-pn-initialScore-prod" data-toggle="tab" aria-expanded="false">Production Number</a>
+                                        </li>
+                                        <li class="tab">
+                                            <a href="#evt-pn-initialScore-theme" data-toggle="tab" aria-expanded="false">Theme Wear</a>
+                                        </li>
+                                        <li class="tab">
+                                            <a href="#evt-pn-initialScore-eveGown" data-toggle="tab" aria-expanded="false">Evening Gown</a>
+                                        </li>
+                                        <li class="tab">
+                                            <a href="#evt-pn-initialScore-seqInt" data-toggle="tab" aria-expanded="false">Sequential Interview</a>
+                                        </li>
+                                        <li class="tab">
+                                            <a href="#evt-pn-initialScore-initInt" data-toggle="tab" aria-expanded="false">Initial Interview</a>
+                                        </li>
+                                        <li class="tab">
+                                            <a href="#evt-pn-initialScore-summ" data-toggle="tab" aria-expanded="false">Summary</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content col-lg-12">
+                                        <div class="tab-pane active" id="evt-pn-initialScore-prod">
+                                            <div class="panel">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="m-b-30">
+                                                                <button id="btnPrint-pn-initialScore-prod" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="print-pn-initialscore-prod">
+                                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                                        <h4 style="font-weight:normal;">Production Number Results</h4>
+                                                        <table class="table table-bordered table-striped reports">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Judge</th>
+                                                                    <th>Candidate</th>
+                                                                    <th>Confidence</th>
+                                                                    <th>Mastery</th>
+                                                                    <th>Stage Presence</th>
+                                                                    <th>Overall Impact</th>
+                                                                    <th>Total</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach($initScores as $key)
+                                                                <tr class="gradeX">
+                                                                    <td>{{$key->judge}}</td>
+                                                                    <td>{{$key->candidate}}</td>
+                                                                    <td>{{$key->IS_Production_RS}}</td>
+                                                                    <td>{{$key->IS_ThemeWr_RS}}</td>
+                                                                    <td>{{$key->IS_EveGown_RS}}</td>
+                                                                    <td>{{$key->IS_Subtotal}}</td>
+                                                                    <td>{{$key->SQ_Content_RS}}</td>
+                                                                    <td>{{$key->SQ_Confidence_RS}}</td>
+                                                                    <td>{{$key->SQ_Wit_RS}}</td>
+                                                                    <td>{{$key->SQ_Subtotal}}</td>
+                                                                </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>	
+                                                    </div>													
+                                                </div>
+                                                <!-- end: page -->
+                                            </div> <!-- end Panel -->
+                                        </div><!--end of production number pane-->
+                                        <div class="tab-pane" id="evt-pn-initialScore-theme">
+                                            <div class="panel">
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="m-b-30">
+                                                                    <button id="btnPrint-pn-initialScore-theme" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="print-pn-initialscore-theme">
+                                                            <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                                            <h4 style="font-weight:normal;">Theme Wear Results</h4>
+                                                            <table class="table table-bordered table-striped reports">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Judge</th>
+                                                                        <th>Candidate</th>
+                                                                        <th>Grace</th>
+                                                                        <th>Projection</th>
+                                                                        <th>Poise</th>
+                                                                        <th>Relevance</th>
+                                                                        <th>Total</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach($initScores as $key)
+                                                                    <tr class="gradeX">
+                                                                        <td>{{$key->judge}}</td>
+                                                                        <td>{{$key->candidate}}</td>
+                                                                        <td>{{$key->IS_Production_RS}}</td>
+                                                                        <td>{{$key->IS_ThemeWr_RS}}</td>
+                                                                        <td>{{$key->IS_EveGown_RS}}</td>
+                                                                        <td>{{$key->IS_Subtotal}}</td>
+                                                                        <td>{{$key->SQ_Content_RS}}</td>
+                                                                        <td>{{$key->SQ_Confidence_RS}}</td>
+                                                                        <td>{{$key->SQ_Wit_RS}}</td>
+                                                                        <td>{{$key->SQ_Subtotal}}</td>
+                                                                    </tr>
+                                                                    @endforeach
+                                                                </tbody>
+                                                            </table>	
+                                                        </div>													
+                                                    </div>
+                                                    <!-- end: page -->
+                                                </div> <!-- end Panel -->
+                                            </div><!--end of theme wear pane-->
+                                        <div class="tab-pane" id="evt-pn-initialScore-eveGown">
+                                            evegown
+                                        </div><!--end of evening gown pane-->
+                                        <div class="tab-pane" id="evt-pn-initialScore-seqInt">
+                                            seqInt
+                                        </div><!--end of sequentialInterview pane-->
+                                        <div class="tab-pane" id="evt-pn-initialScore-initInt">
+                                            initInt
+                                        </div><!--end of initialInterview pane-->
+                                        <div class="tab-pane" id="evt-pn-initialScore-summ">
+                                            summ
+                                        </div><!--end of summary pane-->
+                                    </div>
+                                </div><!--end of initialScore pane-->
                                 <div class="tab-pane" id="evt-pn-stdQuestion">
-                                </div>
+
+                                </div><!--end of stdQuestion pane-->
+                                <div class="tab-pane" id="evt-pn-summ">
+                                    <div class="panel">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="m-b-30">
+                                                        <button id="btnPrint_FN" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="printFN">
+                                                <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                                <h4 style="font-weight:normal;">Pageant Night -- Initial Score Results</h4>
+                                                <table class="table table-bordered table-striped reports">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Judge</th>
+                                                            <th>Candidate</th>
+                                                            <th>Production (Raw Score)</th>
+                                                            <th>Theme Wear (Raw Score)</th>
+                                                            <th>Evening Gown (Raw Score)</th>
+                                                            <th>Initial Score Subtotal</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($initScores as $key)
+                                                        <tr class="gradeX">
+                                                            <td>{{$key->judge}}</td>
+                                                            <td>{{$key->candidate}}</td>
+                                                            <td>{{$key->IS_Production_RS}}</td>
+                                                            <td>{{$key->IS_ThemeWr_RS}}</td>
+                                                            <td>{{$key->IS_EveGown_RS}}</td>
+                                                            <td>{{$key->IS_Subtotal}}</td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>	
+                                            </div>													
+                                        </div>
+                                        <!-- end: page -->
+                                    </div> <!-- end Panel -->
+                                </div><!--end of summary pane-->
                             </div>
 
 
 
-                            <div class="panel">
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="m-b-30">
-                                                <button id="btnPrint_FN" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="printFN">
-                                      <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
-                                      <h4 style="font-weight:normal;">Pageant Night Results</h4>
-                                      <table class="table table-bordered table-striped reports">
-                                          <thead>
-                                              <tr>
-                                                  <th>Judge</th>
-                                                  <th>Candidate</th>
-                                                  <th>Production (Raw Score)</th>
-                                                  <th>Theme Wear (Raw Score)</th>
-                                                  <th>Evening Gown (Raw Score)</th>
-                                                  <th>Initial Score Subtotal</th>
-                                                  <th>Content (Raw Score)</th>
-                                                  <th>Confidence (Raw Score)</th>
-                                                  <th>Wit (Raw Score)</th>
-                                                  <th>SQ Subtotal</th>
-                                              </tr>
-                                          </thead>
-                                          <tbody>
-                                              @foreach($initScores as $key)
-                                              <tr class="gradeX">
-                                                  <td>{{$key->judge}}</td>
-                                                  <td>{{$key->candidate}}</td>
-                                                  <td>{{$key->IS_Production_RS}}</td>
-                                                  <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                  <td>{{$key->IS_EveGown_RS}}</td>
-                                                  <td>{{$key->IS_Subtotal}}</td>
-                                                  <td>{{$key->SQ_Content_RS}}</td>
-                                                  <td>{{$key->SQ_Confidence_RS}}</td>
-                                                  <td>{{$key->SQ_Wit_RS}}</td>
-                                                  <td>{{$key->SQ_Subtotal}}</td>
-                                              </tr>
-                                              @endforeach
-                                          </tbody>
-                                      </table>	
-                                      </div>													
-                                  </div>
-                                <!-- end: page -->
-                            </div> <!-- end Panel -->
+                            
                         </div> <!-- end of event-final pane -->
                       </div> <!-- end of tab-content -->
                   </div> <!-- container -->
@@ -910,20 +1042,20 @@ function suggestJUsername()
         printElement($printPP);
     }
 
-    document.getElementById("btnPrint_pressLaunch").onclick = function () {
-        $printPP = document.getElementById("eventsTable-pressLaunch");
-        printElement($printPP);
-    }
-
     document.getElementById("btnPrint_PP_summ").onclick = function () {
         $printPP = document.getElementById("eventsTable-summary");
         printElement($printPP);
     }
 
-    document.getElementById("btnPrint_FN").onclick = function () {
-        $printFN = document.getElementById("printFN");
-        printElement($printFN);
-    }
+document.getElementById("btnPrint-pn-initialScore-prod").onclick = function () {
+    $printFN = document.getElementById("print-pn-initialscore-prod");
+    printElement($printFN);
+}
+
+document.getElementById("btnPrint-pn-initialScore-theme").onclick = function () {
+    $printFN = document.getElementById("print-pn-initialscore-theme");
+    printElement($printFN);
+}
 
     function printElement(elem) {
         var domClone = elem.cloneNode(true);

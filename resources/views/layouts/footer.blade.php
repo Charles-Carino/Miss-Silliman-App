@@ -35,17 +35,32 @@ $(document).ready(function() {
     $('table.specialprojects').DataTable({
       'paging': false,
       'searching': false,
-      'order': [1,"desc"]
+      'order': [2,"desc"],
+      "info":     false
     });
-    $('table.reports').DataTable({
+    $('table.prepReports').DataTable({
       'paging': false,
       'searching': false,
-      'order': [4,"desc"]
+      'order': [5,"desc"],
+      "info": false
     });
     $('table.ranking').DataTable({
       'paging': false,
       'searching': false,
-      'order': [2,"desc"]
+      'order': [2,"desc"],
+      "info":     false
+    });
+    $('table.finalreports').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [9,"desc"],
+      "info":     false
+    });
+    $('table.finalscorereports').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [4,"desc"],
+      "info":     false
     });
     $('.input-row').css('margin-bottom','5px');
     $('.preList').click(function(event){
@@ -129,6 +144,18 @@ $(document).ready(function() {
       //   });
       //   $("#sqTotal"+sqID).attr('value',totalSum);
       // }else{
+      var max = $(this).attr('max');
+      var min = $(this).attr('min');
+      var num =  $(this).val();
+      //console.log(num);
+      if(parseFloat(num)<min || parseFloat(num)>max ){
+          $(this).css("background-color","#f2dede");
+          $(this).val('').focus();
+          $(this).animate(function(){
+              $(this).removeAttr("style").an;
+          },1000);
+      }else
+          $(this).removeAttr("style");
         $(".input_"+rowID).each(function(){
             var inputVal = $(this).val();
             if($.isNumeric(inputVal))
@@ -215,17 +242,6 @@ $(document).ready(function() {
       $("#OrgField-Event").val(data[1]);
       $("#OrgField-Username").val(data[3]);
     });
-    //
-    // $("button.btnRanking").on('show.bs.modal',function(e){
-    //     var button = e.relatedTarget;
-    //     if($(this).hasAttr("data-rel")){
-    //       alert("true");
-    //     }else{
-    //       alert("fales");
-    //     }
-    //     // e.preventDefault();
-    //     // alert(this.hasAttr("data-rel"));
-    // });
 
     $("button.btnRanking").click(function(e){
       // e.stopPropagation();

@@ -12,8 +12,10 @@
   $orgs = App\User::where('userType','organizer')
                 ->orderby('id')
                 ->get();
+    $finalJudges = App\User::where('event','Final')
+                ->orderby('id')
+                ->get();
  
-
     function bySP($a,$b)
     {
         if ($a->SP==$b->SP) return 0;
@@ -32,14 +34,31 @@
         return ( $a->AverageSpeech > $b->AverageSpeech ) ?-1 : 1;
     }
 
-    uasort($reports,"bySP");
     $report_SP = $reports;
-    uasort($reports,"byAveTalent");
     $report_Talent = $reports;
-    uasort($reports,"byAveSpeech");
     $report_Speech = $reports;
-
+    $obj = (object) array(
+    'can1' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can2' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can3' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can4' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can5' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can6' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can7' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can8' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can9' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can10' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    );
+    $obj2 = [(object) array('fName' => 'Maam', 'lName' => 'Yao'),
+            (object) array('fName' => 'Charles', 'lName' => 'Carino'),
+            (object) array('fName' => 'Rommel', 'lName' => 'Gallofin'),
+            (object) array('fName' => 'Dan', 'lName' => 'Chin'),
+            (object) array('fName' => 'Seth', 'lName' => 'Cornelio'),
+            (object) array('fName' => 'Angel', 'lName' => 'Ross'),
+            (object) array('fName' => 'And', 'lName' => 'Others')];
 ?>
+
+
 @extends('layouts.master')
 
 @section('content')
@@ -240,13 +259,13 @@
                           </div>
                       </div>
                       <ul class="nav nav-tabs tabs tabs-top">
-                          <li class="active">
+                          <li class="active tab">
                               <a href="#evt-pressLaunch" data-toggle="tab" aria-expanded="false">Press Launch</a>
                           </li>
-                          <li class="">
+                          <li class="tab">
                               <a href="#evt-pre" data-toggle="tab" aria-expanded="false">Prepageant</a>
                           </li>
-                          <li class="">
+                          <li class="tab">
                               <a href="#evt-final" data-toggle="tab" aria-expanded="false">Pageant Night</a>
                           </li>
                       </ul>
@@ -296,7 +315,7 @@
                                           </div>
                                           @endforeach
                                         </div>
-                                    </div>			
+                                    </div>
                                 </div>
                                 <!-- end: page -->
                             </div> <!-- end Panel -->
@@ -356,7 +375,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($report_SP as $key)
+                                                @foreach($reports as $key)
                                                 <tr class="gradeX">
                                                     <td>{{$key->cCode}}</td>
                                                     <td>{{$key->candidates}}</td>
@@ -386,28 +405,28 @@
                                       <div id="eventsTable-talent">
                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                         <h4 style="font-weight:normal;">Talent Results</h4>
-                                        <table class="table table-bordered table-striped reports">
+                                        <table class="table table-bordered table-striped prepReports">
                                             <thead>
-                                              <tr>
-                                                  <th>College</th>
-                                                  <th>Candidate</th>
-                                                  <th>{{$talent[0]->fName}}, {{$talent[0]->lName}}</th>
-                                                  <th>{{$talent[1]->fName}}, {{$talent[1]->lName}}</th>
-                                                  <th>{{$talent[2]->fName}}, {{$talent[2]->lName}}</th>
-                                                  <th>Average</th>
-                                              </tr>
+                                                <tr>
+                                                    <th>College</th>
+                                                    <th>Candidate</th>
+                                                    <th>{{$talent[0]->fName}} {{$talent[0]->lName}}</th>
+                                                    <th>{{$talent[1]->fName}} {{$talent[1]->lName}}</th>
+                                                    <th>{{$talent[2]->fName}} {{$talent[2]->lName}}</th>
+                                                    <th>Average</th>
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                              @foreach($report_Talent as $key)
-                                              <tr class="gradeX">
-                                                  <td>{{$key->cCode}}</td>
-                                                  <td>{{$key->candidates}}</td>
-                                                  <td class="numfield">{{$key->judge1}}</td>
-                                                  <td class="numfield">{{$key->judge2}}</td>
-                                                  <td class="numfield">{{$key->judge3}}</td>
-                                                  <td class="numfield">{{$key->AverageTalent}}</td>
-                                              </tr>
-                                              @endforeach
+                                                @foreach($reports as $key)
+                                                <tr class="gradeX">
+                                                    <td>{{$key->cCode}}</td>
+                                                    <td>{{$key->candidates}}</td>
+                                                    <td class="numfield">{{$key->judge1}}</td>
+                                                    <td class="numfield">{{$key->judge2}}</td>
+                                                    <td class="numfield">{{$key->judge3}}</td>
+                                                    <td class="numfield">{{$key->AverageTalent}}</td>
+                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                         <div class="row">
@@ -431,19 +450,19 @@
                                       <div id="eventsTable-speech">
                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                         <h4 style="font-weight:normal;">Speech Results</h4>
-                                        <table class="table table-bordered table-striped reports">
+                                        <table class="table table-bordered table-striped prepReports">
                                             <thead>
                                               <tr>
                                                   <th>College</th>
                                                   <th>Candidate</th>
-                                                  <th>{{$speech[0]->fName}}, {{$speech[0]->lName}}</th>
-                                                  <th>{{$speech[1]->fName}}, {{$speech[1]->lName}}</th>
-                                                  <th>{{$speech[2]->fName}}, {{$speech[2]->lName}}</th>
+                                                  <th>{{$speech[0]->fName}} {{$speech[0]->lName}}</th>
+                                                  <th>{{$speech[1]->fName}} {{$speech[1]->lName}}</th>
+                                                  <th>{{$speech[2]->fName}} {{$speech[2]->lName}}</th>
                                                   <th>Average</th>
                                               </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($report_Speech as $key)
+                                                @foreach($reports as $key)
                                                 <tr class="gradeX">
                                                     <td>{{$key->cCode}}</td>
                                                     <td>{{$key->candidates}}</td>
@@ -469,39 +488,33 @@
                                       <div class="row">
                                           <div class="col-sm-6">
                                               <div class="m-b-30">
-                                                  <button id="btnPrint_PP_speech" data-toggle="modal" data-target="#PPModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                  <button id="btnPrint_PP_summ" data-toggle="modal" data-target="#PPModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
                                               </div>
                                           </div>
                                       </div>
-                                      <div id="eventsTable-speech">
+                                      <div id="eventsTable-summary">
                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                         <h4 style="font-weight:normal;">Prepageant Results</h4>
-                                        <table class="table table-bordered table-striped reports">
+                                        <table class="table table-bordered table-striped">
                                             <thead>
                                               <tr>
                                                   <th>College</th>
                                                   <th>Candidate</th>
-                                                  <th>Special Projects</th>
-                                                  <th>{{$talent[0]->fName}}, {{$talent[0]->lName}}</th>
-                                                  <th>{{$talent[1]->fName}}, {{$talent[1]->lName}}</th>
-                                                  <th>{{$talent[2]->fName}}, {{$talent[2]->lName}}</th>
+                                                  <th>{{$talent[0]->fName}} {{$talent[0]->lName}}</th>
+                                                  <th>{{$talent[1]->fName}} {{$talent[1]->lName}}</th>
+                                                  <th>{{$talent[2]->fName}} {{$talent[2]->lName}}</th>
                                                   <th>Average Talent Points</th>
-                                                  <th>{{$speech[0]->fName}}, {{$speech[0]->lName}}</th>
-                                                  <th>{{$speech[1]->fName}}, {{$speech[1]->lName}}</th>
-                                                  <th>{{$speech[2]->fName}}, {{$speech[2]->lName}}</th>
+                                                  <th>{{$speech[0]->fName}} {{$speech[0]->lName}}</th>
+                                                  <th>{{$speech[1]->fName}} {{$speech[1]->lName}}</th>
+                                                  <th>{{$speech[2]->fName}} {{$speech[2]->lName}}</th>
                                                   <th>Average Speech Points</th>
-                                                  <th>16 of Special Projects</th>
-                                                  <th>34% of Talent Points</th>
-                                                  <th>50% of Speech Points</th>
-                                                  <th>Total Points</th>
                                               </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($report_Speech as $key)
+                                                @foreach($reports as $key)
                                                 <tr class="gradeX">
                                                     <td>{{$key->cCode}}</td>
                                                     <td>{{$key->candidates}}</td>
-                                                    <td class="numfield">{{$key->SP}}</td>
                                                     <td class="numfield">{{$key->judge1}}</td>
                                                     <td class="numfield">{{$key->judge2}}</td>
                                                     <td class="numfield">{{$key->judge3}}</td>
@@ -510,10 +523,6 @@
                                                     <td class="numfield">{{$key->judge5}}</td>
                                                     <td class="numfield">{{$key->judge6}}</td>
                                                     <td class="numfield">{{$key->AverageSpeech}}</td>
-                                                    <td class="numfield">{{$key->SP_sixteen}}</td>
-                                                    <td class="numfield">{{$key->Talent_34}}</td>
-                                                    <td class="numfield">{{$key->Speech_50}}</td>
-                                                    <td class="numfield">{{$key->TotalPrepageant}}</td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -538,61 +547,483 @@
                                 <!-- end: page -->
                             </div> <!-- end Panel -->
                         </div> <!-- end of event-prepageant pane -->
-                        <div class="tab-pane" id="evt-final" style="overflow-x:auto">
+                        <div class="tab-pane" id="evt-final">
                             <!-- Page-Title -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h4 class="pull-left page-title">Pageant Night Report</h4>
                                 </div>
                             </div>
-                            <div class="panel">
-                                <div class="panel-body">
+                            <ul class="nav nav-tabs tabs tabs-top">
+                                <li class="active tab">
+                                    <a href="#evt-pn-initialScore" data-toggle="tab" aria-expanded="false">Initial Score</a>
+                                </li>
+                                <li class="tab">
+                                    <a href="#evt-pn-stdQuestion" data-toggle="tab" aria-expanded="false">Standard Question</a>
+                                </li>
+                                <li class="tab">
+                                    <a href="#evt-pn-summ" data-toggle="tab" aria-expanded="false">Summary</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content col-lg-12">
+                                <div class="tab-pane active" id="evt-pn-initialScore">
+                                    <ul class="nav nav-tabs tabs tabs-top">
+                                        <li class="active tab">
+                                            <a href="#evt-pn-initialScore-prod" data-toggle="tab" aria-expanded="false">Production Number</a>
+                                        </li>
+                                        <li class="tab">
+                                            <a href="#evt-pn-initialScore-theme" data-toggle="tab" aria-expanded="false">Themed Wear</a>
+                                        </li>
+                                        <li class="tab">
+                                            <a href="#evt-pn-initialScore-eveGown" data-toggle="tab" aria-expanded="false">Evening Gown</a>
+                                        </li>
+                                        <li class="tab">
+                                            <a href="#evt-pn-initialScore-seqInt" data-toggle="tab" aria-expanded="false">Sequential Interview</a>
+                                        </li>
+                                        <li class="tab">
+                                            <a href="#evt-pn-initialScore-initInt" data-toggle="tab" aria-expanded="false">Initial Interview</a>
+                                        </li>
+                                        <li class="tab">
+                                            <a href="#evt-pn-initialScore-summ" data-toggle="tab" aria-expanded="false">Summary</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content col-lg-12">
+                                        <div class="tab-pane active" id="evt-pn-initialScore-prod">
+                                            <div class="panel">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="m-b-30">
+                                                                <button id="btnPrint-pn-initialScore-prod" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="print-pn-initialscore-prod" style="overflow-x : auto">
+                                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                                        <h4 style="font-weight:normal;">Production Number Results</h4>
+                                                        <table class="table table-bordered table-striped finalreports">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>College</th>
+                                                                    <th>Candidate</th>
+                                                                    <th>{{$finalJudges[0]->fName}} {{$finalJudges[0]->lName}}</th>
+                                                                    <th>{{$finalJudges[1]->fName}} {{$finalJudges[1]->lName}}</th>
+                                                                    <th>{{$finalJudges[2]->fName}} {{$finalJudges[2]->lName}}</th>
+                                                                    <th>{{$finalJudges[3]->fName}} {{$finalJudges[3]->lName}}</th>
+                                                                    <th>{{$finalJudges[4]->fName}} {{$finalJudges[4]->lName}}</th>
+                                                                    <th>{{$finalJudges[5]->fName}} {{$finalJudges[5]->lName}}</th>
+                                                                    <th>{{$finalJudges[6]->fName}} {{$finalJudges[6]->lName}}</th>
+                                                                    <th>Average</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach($initialScores as $key)
+                                                                <tr class="gradeX">
+                                                                    <td>{{$key->cCode}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td class="numfield">{{$key->j1_Production}}</td>
+                                                                    <td class="numfield">{{$key->j2_Production}}</td>
+                                                                    <td class="numfield">{{$key->j3_Production}}</td>
+                                                                    <td class="numfield">{{$key->j4_Production}}</td>
+                                                                    <td class="numfield">{{$key->j5_Production}}</td>
+                                                                    <td class="numfield">{{$key->j6_Production}}</td>
+                                                                    <td class="numfield">{{$key->j7_Production}}</td>
+                                                                    <td class="numfield">{{$key->AverageProduction}}</td>
+                                                                </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                        @foreach($finalJudges as $key)
+                                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                            <h6 style="text-align:center">Judge</h6>
+                                                        </div>
+                                                        @endforeach	
+                                                    </div>													
+                                                </div>
+                                                <!-- end: page -->
+                                            </div> <!-- end Panel -->
+                                        </div><!--end of production number pane-->
+                                        <div class="tab-pane" id="evt-pn-initialScore-theme">
+                                            <div class="panel">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="m-b-30">
+                                                                <button id="btnPrint-pn-initialScore-theme" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="print-pn-initialscore-theme" style="overflow-x : auto">
+                                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                                        <h4 style="font-weight:normal;">Themed Wear Results</h4>
+                                                        <table class="table table-bordered table-striped finalreports">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>College</th>
+                                                                    <th>Candidate</th>
+                                                                    <th>{{$finalJudges[0]->fName}} {{$finalJudges[0]->lName}}</th>
+                                                                    <th>{{$finalJudges[1]->fName}} {{$finalJudges[1]->lName}}</th>
+                                                                    <th>{{$finalJudges[2]->fName}} {{$finalJudges[2]->lName}}</th>
+                                                                    <th>{{$finalJudges[3]->fName}} {{$finalJudges[3]->lName}}</th>
+                                                                    <th>{{$finalJudges[4]->fName}} {{$finalJudges[4]->lName}}</th>
+                                                                    <th>{{$finalJudges[5]->fName}} {{$finalJudges[5]->lName}}</th>
+                                                                    <th>{{$finalJudges[6]->fName}} {{$finalJudges[6]->lName}}</th>
+                                                                    <th>Average</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach($initialScores as $key)
+                                                                <tr class="gradeX">
+                                                                    <td>{{$key->cCode}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td class="numfield">{{$key->j1_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->j2_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->j3_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->j4_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->j5_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->j6_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->j7_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->AverageThemeWr}}</td>
+                                                                </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                        @foreach($finalJudges as $key)
+                                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                            <h6 style="text-align:center">Judge</h6>
+                                                        </div>
+                                                        @endforeach		
+                                                    </div>													
+                                                </div>
+                                                <!-- end: page -->
+                                            </div> <!-- end Panel -->
+                                        </div><!--end of theme wear pane-->
+                                        <div class="tab-pane" id="evt-pn-initialScore-eveGown">
+                                            <div class="panel">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="m-b-30">
+                                                                <button id="btnPrint-pn-initialScore-eveGown" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="print-pn-initialscore-eveGown" style="overflow-x : auto">
+                                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                                        <h4 style="font-weight:normal;">Evening Gown Results</h4>
+                                                        <table class="table table-bordered table-striped finalreports">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>College</th>
+                                                                    <th>Candidate</th>
+                                                                    <th>{{$finalJudges[0]->fName}} {{$finalJudges[0]->lName}}</th>
+                                                                    <th>{{$finalJudges[1]->fName}} {{$finalJudges[1]->lName}}</th>
+                                                                    <th>{{$finalJudges[2]->fName}} {{$finalJudges[2]->lName}}</th>
+                                                                    <th>{{$finalJudges[3]->fName}} {{$finalJudges[3]->lName}}</th>
+                                                                    <th>{{$finalJudges[4]->fName}} {{$finalJudges[4]->lName}}</th>
+                                                                    <th>{{$finalJudges[5]->fName}} {{$finalJudges[5]->lName}}</th>
+                                                                    <th>{{$finalJudges[6]->fName}} {{$finalJudges[6]->lName}}</th>
+                                                                    <th>Average</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach($initialScores as $key)
+                                                                <tr class="gradeX">
+                                                                    <td>{{$key->cCode}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td class="numfield">{{$key->j1_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->j2_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->j3_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->j4_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->j5_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->j6_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->j7_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->AverageEveGown}}</td>
+                                                                </tr>
+                                                                @endforeach
+                                                            </tbody>oreach
+                                                            </tbody>
+                                                        </table>	
+                                                        @foreach($finalJudges as $key)
+                                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                            <h6 style="text-align:center">Judge</h6>
+                                                        </div>
+                                                        @endforeach	
+                                                    </div>													
+                                                </div>
+                                                <!-- end: page -->
+                                            </div> <!-- end Panel -->
+                                        </div><!--end of evening gown pane-->
+                                        <div class="tab-pane" id="evt-pn-initialScore-seqInt">
+                                            <div class="panel">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="m-b-30">
+                                                                <button id="btnPrint-pn-initialScore-seqInt" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="print-pn-initialscore-seqInt" style="overflow-x : auto">
+                                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                                        <h4 style="font-weight:normal;">Sequential Interview Results</h4>
+                                                        <table class="table table-bordered table-striped finalreports">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>College</th>
+                                                                    <th>Candidate</th>
+                                                                    <th>{{$finalJudges[0]->fName}} {{$finalJudges[0]->lName}}</th>
+                                                                    <th>{{$finalJudges[1]->fName}} {{$finalJudges[1]->lName}}</th>
+                                                                    <th>{{$finalJudges[2]->fName}} {{$finalJudges[2]->lName}}</th>
+                                                                    <th>{{$finalJudges[3]->fName}} {{$finalJudges[3]->lName}}</th>
+                                                                    <th>{{$finalJudges[4]->fName}} {{$finalJudges[4]->lName}}</th>
+                                                                    <th>{{$finalJudges[5]->fName}} {{$finalJudges[5]->lName}}</th>
+                                                                    <th>{{$finalJudges[6]->fName}} {{$finalJudges[6]->lName}}</th>
+                                                                    <th>Average</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach($initialScores as $key)
+                                                                <tr class="gradeX">
+                                                                    <td>{{$key->cCode}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td class="numfield">{{$key->j1_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j2_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j3_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j4_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j5_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j6_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j7_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->AverageSeqIntrvw}}</td>
+                                                                </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>	
+                                                        @foreach($finalJudges as $key)
+                                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                            <h6 style="text-align:center">Judge</h6>
+                                                        </div>
+                                                        @endforeach	
+                                                    </div>													
+                                                </div>
+                                                <!-- end: page -->
+                                            </div> <!-- end Panel -->
+                                        </div><!--end of sequentialInterview pane-->
+                                        <div class="tab-pane" id="evt-pn-initialScore-initInt">
+                                            <div class="panel">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="m-b-30">
+                                                                <button id="btnPrint-pn-initialScore-initInt" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="print-pn-initialscore-initInt" style="overflow-x : auto">
+                                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                                        <h4 style="font-weight:normal;">Initial Interview Results</h4>
+                                                        <table class="table table-bordered table-striped finalreports">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>College</th>
+                                                                    <th>Candidate</th>
+                                                                    <th>{{$finalJudges[0]->fName}} {{$finalJudges[0]->lName}}</th>
+                                                                    <th>{{$finalJudges[1]->fName}} {{$finalJudges[1]->lName}}</th>
+                                                                    <th>{{$finalJudges[2]->fName}} {{$finalJudges[2]->lName}}</th>
+                                                                    <th>{{$finalJudges[3]->fName}} {{$finalJudges[3]->lName}}</th>
+                                                                    <th>{{$finalJudges[4]->fName}} {{$finalJudges[4]->lName}}</th>
+                                                                    <th>{{$finalJudges[5]->fName}} {{$finalJudges[5]->lName}}</th>
+                                                                    <th>{{$finalJudges[6]->fName}} {{$finalJudges[6]->lName}}</th>
+                                                                    <th>Average</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach($initialScores as $key)
+                                                                <tr class="gradeX">
+                                                                    <td>{{$key->cCode}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td class="numfield">{{$key->j1_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j2_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j3_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j4_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j5_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j6_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j7_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->AverageInitIntrvw}}</td>
+                                                                </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>	
+                                                        @foreach($finalJudges as $key)
+                                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                            <h6 style="text-align:center">Judge</h6>
+                                                        </div>
+                                                        @endforeach	
+                                                    </div>													
+                                                </div>
+                                                <!-- end: page -->
+                                            </div> <!-- end Panel -->
+                                        </div><!--end of initialInterview pane-->
+                                        <div class="tab-pane" id="evt-pn-initialScore-summ">
+                                            <div class="panel">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="m-b-30">
+                                                                <button id="btnPrint-pn-initialScore-summ" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="print-pn-initialscore-summ" style="overflow-x : auto">
+                                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                                        <h4 style="font-weight:normal;">Overall Initial Scores</h4>
+                                                        <table class="table table-bordered table-striped reports">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>College</th>
+                                                                    <th>Candidate</th>
+                                                                    <th>Press Launch (10%)</th>
+                                                                    <th>Pre-Pageant (30%)</th>
+                                                                    <th>Pageant Night (60%)</th>
+                                                                    <th>Total</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach($initScores as $key)
+                                                                <tr class="gradeX">
+                                                                    <td>{{$key->judge}}</td>
+                                                                    <td>{{$key->candidate}}</td>
+                                                                    <td>{{$key->IS_Production_RS}}</td>
+                                                                    <td>{{$key->IS_ThemeWr_RS}}</td>
+                                                                    <td>{{$key->IS_EveGown_RS}}</td>
+                                                                    <td>{{$key->SQ_Subtotal}}</td>
+                                                                </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>	
+                                                        @foreach($finalJudges as $key)
+                                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                            <h6 style="text-align:center">Judge</h6>
+                                                        </div>
+                                                        @endforeach	
+                                                    </div>													
+                                                </div>
+                                                <!-- end: page -->
+                                            </div> <!-- end Panel -->
+                                        </div><!--end of summary pane-->
+                                    </div>
+                                </div><!--end of initialScore pane-->
+                                <div class="tab-pane" id="evt-pn-stdQuestion">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="m-b-30">
-                                                <button id="btnPrint_FN" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                <button id="btnPrint-pn-stdQuestion" data-toggle="modal" data-target="#PPModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="printFN">
-                                      <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
-                                      <h4 style="font-weight:normal;">Pageant Night Results</h4>
-                                      <table class="table table-bordered table-striped reports">
-                                          <thead>
-                                              <tr>
-                                                  <th>Judge</th>
-                                                  <th>Candidate</th>
-                                                  <th>Production (Raw Score)</th>
-                                                  <th>Theme Wear (Raw Score)</th>
-                                                  <th>Evening Gown (Raw Score)</th>
-                                                  <th>Initial Score Subtotal</th>
-                                                  <th>Content (Raw Score)</th>
-                                                  <th>Confidence (Raw Score)</th>
-                                                  <th>Wit (Raw Score)</th>
-                                                  <th>SQ Subtotal</th>
-                                              </tr>
-                                          </thead>
-                                          <tbody>
-                                              @foreach($initScores as $key)
-                                              <tr class="gradeX">
-                                                  <td>{{$key->judge}}</td>
-                                                  <td>{{$key->candidate}}</td>
-                                                  <td>{{$key->IS_Production_RS}}</td>
-                                                  <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                  <td>{{$key->IS_EveGown_RS}}</td>
-                                                  <td>{{$key->IS_Subtotal}}</td>
-                                                  <td>{{$key->SQ_Content_RS}}</td>
-                                                  <td>{{$key->SQ_Confidence_RS}}</td>
-                                                  <td>{{$key->SQ_Wit_RS}}</td>
-                                                  <td>{{$key->SQ_Subtotal}}</td>
-                                              </tr>
-                                              @endforeach
-                                          </tbody>
-                                      </table>	
-                                      </div>													
-                                  </div>
-                                <!-- end: page -->
-                            </div> <!-- end Panel -->
+                                    <div id="print-pn-stdQuestion">
+                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                        <h4 style="font-weight:normal;">Standard Question Results</h4>
+                                        <table class="table table-bordered table-striped finalreports">
+                                            <thead>
+                                                <tr>
+                                                    <th>College</th>
+                                                    <th>Candidate</th>
+                                                    <th>{{$finalJudges[0]->fName}} {{$finalJudges[0]->lName}}</th>
+                                                    <th>{{$finalJudges[1]->fName}} {{$finalJudges[1]->lName}}</th>
+                                                    <th>{{$finalJudges[2]->fName}} {{$finalJudges[2]->lName}}</th>
+                                                    <th>{{$finalJudges[3]->fName}} {{$finalJudges[3]->lName}}</th>
+                                                    <th>{{$finalJudges[4]->fName}} {{$finalJudges[4]->lName}}</th>
+                                                    <th>{{$finalJudges[5]->fName}} {{$finalJudges[5]->lName}}</th>
+                                                    <th>{{$finalJudges[6]->fName}} {{$finalJudges[6]->lName}}</th>
+                                                    <th>Average</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($obj as $key)
+                                                <tr class="gradeX">
+                                                    <td>{{$key->College}}</td>
+                                                    <td>{{$key->Candidate}}</td>
+                                                    <td class="numfield">{{$key->Judge1}}</td>
+                                                    <td class="numfield">{{$key->Judge2}}</td>
+                                                    <td class="numfield">{{$key->Judge3}}</td>
+                                                    <td class="numfield">{{$key->Judge4}}</td>
+                                                    <td class="numfield">{{$key->Judge5}}</td>
+                                                    <td class="numfield">{{$key->Judge6}}</td>
+                                                    <td class="numfield">{{$key->Judge7}}</td>
+                                                    <td class="numfield">5</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                        @foreach($finalJudges as $key)
+                                            <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                <h6 style="text-align:center">Judge</h6>
+                                            </div>
+                                        @endforeach	
+                                        </div>
+                                    </div>
+                                </div><!--end of stdQuestion pane-->
+                                <div class="tab-pane" id="evt-pn-summ">
+                                    <div class="panel">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="m-b-30">
+                                                        <button id="btnPrint-pn-summ" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="print-pn-summ">
+                                                <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                                <h4 style="font-weight:normal;">Pageant Night -- Final Score</h4>
+                                                <table class="table table-bordered table-striped finalscorereports">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>College</th>
+                                                            <th>Candidate</th>
+                                                            <th>Initial Score</th>
+                                                            <th>Standard Question</th>
+                                                            <th>Total</th>
+                                                        </tr>
+                                                    </thead> 
+                                                    <tbody>
+                                                        @foreach($initScores as $key)
+                                                        <tr class="gradeX">
+                                                            <td>{{$key->judge}}</td>
+                                                            <td>{{$key->candidate}}</td>
+                                                            <td>{{$key->IS_Production_RS}}</td>
+                                                            <td>{{$key->IS_Production_RS}}</td>
+                                                            <td>{{$key->IS_Production_RS}}</td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>	
+                                                @foreach($finalJudges as $key)
+                                                <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                    <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                    <h6 style="text-align:center">Judge</h6>
+                                                </div>
+                                                @endforeach	
+                                            </div>													
+                                        </div>
+                                        <!-- end: page -->
+                                    </div> <!-- end Panel -->
+                                </div><!--end of summary pane-->
+                                </div>
+                            </div>
+
+
+
+                            
                         </div> <!-- end of event-final pane -->
                       </div> <!-- end of tab-content -->
                   </div> <!-- container -->
@@ -838,7 +1269,7 @@
               </div>
           </div>
       </div>
-  </div><!-- /.modal --> 
+  </div><!-- /.modal -->
   </div>
     </div>
 </div>
@@ -903,11 +1334,50 @@ function suggestJUsername()
         printElement($printPP);
     }
 
-
-    document.getElementById("btnPrint_FN").onclick = function () {
-        $printPP = document.getElementById("printFN");
+    document.getElementById("btnPrint_PP_summ").onclick = function () {
+        $printPP = document.getElementById("eventsTable-summary");
         printElement($printPP);
     }
+
+document.getElementById("btnPrint-pn-initialScore-prod").onclick = function () {
+    $printFN = document.getElementById("print-pn-initialscore-prod");
+    printElement($printFN);
+}
+
+document.getElementById("btnPrint-pn-initialScore-theme").onclick = function () {
+    $printFN = document.getElementById("print-pn-initialscore-theme");
+    printElement($printFN);
+}
+
+document.getElementById("btnPrint-pn-initialScore-eveGown").onclick = function () {
+    $printFN = document.getElementById("print-pn-initialscore-eveGown");
+    printElement($printFN);
+}
+
+document.getElementById("btnPrint-pn-initialScore-seqInt").onclick = function () {
+    $printFN = document.getElementById("print-pn-initialscore-seqInt");
+    printElement($printFN);
+}
+
+document.getElementById("btnPrint-pn-initialScore-initInt").onclick = function () {
+    $printFN = document.getElementById("print-pn-initialscore-initInt");
+    printElement($printFN);
+}
+
+document.getElementById("btnPrint-pn-initialScore-summ").onclick = function () {
+    $printFN = document.getElementById("print-pn-initialscore-summ");
+    printElement($printFN);
+}
+
+document.getElementById("btnPrint-pn-stdQuestion").onclick = function () {
+    $printFN = document.getElementById("print-pn-stdQuestion");
+    printElement($printFN);
+}
+
+document.getElementById("btnPrint-pn-summ").onclick = function () {
+    $printFN = document.getElementById("print-pn-summ");
+    printElement($printFN);
+}
 
     function printElement(elem) {
         var domClone = elem.cloneNode(true);

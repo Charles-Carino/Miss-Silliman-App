@@ -240,13 +240,13 @@
                           </div>
                       </div>
                       <ul class="nav nav-tabs tabs tabs-top">
-                          <li class="active">
+                          <li class="active tab">
                               <a href="#evt-pressLaunch" data-toggle="tab" aria-expanded="false">Press Launch</a>
                           </li>
-                          <li class="">
+                          <li class="tab">
                               <a href="#evt-pre" data-toggle="tab" aria-expanded="false">Prepageant</a>
                           </li>
-                          <li class="">
+                          <li class="tab">
                               <a href="#evt-final" data-toggle="tab" aria-expanded="false">Pageant Night</a>
                           </li>
                       </ul>
@@ -296,7 +296,7 @@
                                           </div>
                                           @endforeach
                                         </div>
-                                    </div>			
+                                    </div>
                                 </div>
                                 <!-- end: page -->
                             </div> <!-- end Panel -->
@@ -386,28 +386,28 @@
                                       <div id="eventsTable-talent">
                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                         <h4 style="font-weight:normal;">Talent Results</h4>
-                                        <table class="table table-bordered table-striped reports">
+                                        <table class="table table-bordered table-striped prepReports">
                                             <thead>
-                                              <tr>
-                                                  <th>College</th>
-                                                  <th>Candidate</th>
-                                                  <th>{{$talent[0]->fName}}, {{$talent[0]->lName}}</th>
-                                                  <th>{{$talent[1]->fName}}, {{$talent[1]->lName}}</th>
-                                                  <th>{{$talent[2]->fName}}, {{$talent[2]->lName}}</th>
-                                                  <th>Average</th>
-                                              </tr>
+                                                <tr>
+                                                    <th>College</th>
+                                                    <th>Candidate</th>
+                                                    <th>{{$talent[0]->fName}} {{$talent[0]->lName}}</th>
+                                                    <th>{{$talent[1]->fName}} {{$talent[1]->lName}}</th>
+                                                    <th>{{$talent[2]->fName}} {{$talent[2]->lName}}</th>
+                                                    <th>Average</th>
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                              @foreach($report_Talent as $key)
-                                              <tr class="gradeX">
-                                                  <td>{{$key->cCode}}</td>
-                                                  <td>{{$key->candidates}}</td>
-                                                  <td class="numfield">{{$key->judge1}}</td>
-                                                  <td class="numfield">{{$key->judge2}}</td>
-                                                  <td class="numfield">{{$key->judge3}}</td>
-                                                  <td class="numfield">{{$key->AverageTalent}}</td>
-                                              </tr>
-                                              @endforeach
+                                                @foreach($reports as $key)
+                                                <tr class="gradeX">
+                                                    <td>{{$key->cCode}}</td>
+                                                    <td>{{$key->candidates}}</td>
+                                                    <td class="numfield">{{$key->judge1}}</td>
+                                                    <td class="numfield">{{$key->judge2}}</td>
+                                                    <td class="numfield">{{$key->judge3}}</td>
+                                                    <td class="numfield">{{$key->AverageTalent}}</td>
+                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                         <div class="row">
@@ -431,14 +431,14 @@
                                       <div id="eventsTable-speech">
                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                         <h4 style="font-weight:normal;">Speech Results</h4>
-                                        <table class="table table-bordered table-striped reports">
+                                        <table class="table table-bordered table-striped prepReports">
                                             <thead>
                                               <tr>
                                                   <th>College</th>
                                                   <th>Candidate</th>
-                                                  <th>{{$speech[0]->fName}}, {{$speech[0]->lName}}</th>
-                                                  <th>{{$speech[1]->fName}}, {{$speech[1]->lName}}</th>
-                                                  <th>{{$speech[2]->fName}}, {{$speech[2]->lName}}</th>
+                                                  <th>{{$speech[0]->fName}} {{$speech[0]->lName}}</th>
+                                                  <th>{{$speech[1]->fName}} {{$speech[1]->lName}}</th>
+                                                  <th>{{$speech[2]->fName}} {{$speech[2]->lName}}</th>
                                                   <th>Average</th>
                                               </tr>
                                             </thead>
@@ -514,6 +514,65 @@
                                                     <td class="numfield">{{$key->Talent_34}}</td>
                                                     <td class="numfield">{{$key->Speech_50}}</td>
                                                     <td class="numfield">{{$key->TotalPrepageant}}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                          @foreach($talent as $key)
+                                          <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                            <h6 style="text-align:center">Talent Judge</h6>
+                                          </div>
+                                          @endforeach
+                                          @foreach($speech as $key)
+                                          <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                            <h6 style="text-align:center">Speech Judge</h6>
+                                          </div>
+                                          @endforeach
+                                        </div>
+                                      </div>
+                                  </div><!--end of speech pane-->
+                                  <div class="tab-pane" id="evt-pre-summ"  style="overflow-x:auto">
+                                      <div class="row">
+                                          <div class="col-sm-6">
+                                              <div class="m-b-30">
+                                                  <button id="btnPrint_PP_summ" data-toggle="modal" data-target="#PPModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div id="eventsTable-summary">
+                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                        <h4 style="font-weight:normal;">Prepageant Results</h4>
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                              <tr>
+                                                  <th>College</th>
+                                                  <th>Candidate</th>
+                                                  <th>{{$talent[0]->fName}} {{$talent[0]->lName}}</th>
+                                                  <th>{{$talent[1]->fName}} {{$talent[1]->lName}}</th>
+                                                  <th>{{$talent[2]->fName}} {{$talent[2]->lName}}</th>
+                                                  <th>Average Talent Points</th>
+                                                  <th>{{$speech[0]->fName}} {{$speech[0]->lName}}</th>
+                                                  <th>{{$speech[1]->fName}} {{$speech[1]->lName}}</th>
+                                                  <th>{{$speech[2]->fName}} {{$speech[2]->lName}}</th>
+                                                  <th>Average Speech Points</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($reports as $key)
+                                                <tr class="gradeX">
+                                                    <td>{{$key->cCode}}</td>
+                                                    <td>{{$key->candidates}}</td>
+                                                    <td class="numfield">{{$key->judge1}}</td>
+                                                    <td class="numfield">{{$key->judge2}}</td>
+                                                    <td class="numfield">{{$key->judge3}}</td>
+                                                    <td class="numfield">{{$key->AverageTalent}}</td>
+                                                    <td class="numfield">{{$key->judge4}}</td>
+                                                    <td class="numfield">{{$key->judge5}}</td>
+                                                    <td class="numfield">{{$key->judge6}}</td>
+                                                    <td class="numfield">{{$key->AverageSpeech}}</td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -838,7 +897,7 @@
               </div>
           </div>
       </div>
-  </div><!-- /.modal --> 
+  </div><!-- /.modal -->
   </div>
     </div>
 </div>
@@ -903,10 +962,19 @@ function suggestJUsername()
         printElement($printPP);
     }
 
+    document.getElementById("btnPrint_pressLaunch").onclick = function () {
+        $printPP = document.getElementById("eventsTable-pressLaunch");
+        printElement($printPP);
+    }
+
+    document.getElementById("btnPrint_PP_summ").onclick = function () {
+        $printPP = document.getElementById("eventsTable-summary");
+        printElement($printPP);
+    }
 
     document.getElementById("btnPrint_FN").onclick = function () {
-        $printPP = document.getElementById("printFN");
-        printElement($printPP);
+        $printFN = document.getElementById("printFN");
+        printElement($printFN);
     }
 
     function printElement(elem) {

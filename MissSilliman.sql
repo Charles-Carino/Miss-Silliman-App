@@ -12,11 +12,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Dumping database structure for misssilliman
-CREATE DATABASE IF NOT EXISTS `misssilliman` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `misssilliman`;
+-- Dumping database structure for misssilliman-prepageant
+CREATE DATABASE IF NOT EXISTS `misssilliman-prepageant` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `misssilliman-prepageant`;
 
--- Dumping structure for table misssilliman.candidates
+-- Dumping structure for table misssilliman-prepageant.candidates
 CREATE TABLE IF NOT EXISTS `candidates` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `candidates` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table misssilliman.candidates: ~10 rows (approximately)
+-- Dumping data for table misssilliman-prepageant.candidates: ~10 rows (approximately)
 /*!40000 ALTER TABLE `candidates` DISABLE KEYS */;
 INSERT INTO `candidates` (`id`, `image`, `fName`, `mName`, `lName`, `college`, `yearLevel`, `SY`, `isTop`, `number`, `seqSpeech`, `seqTalent`, `aveTalent`, `created_at`, `updated_at`) VALUES
 	(1, 'public/css/images/CBA.png', 'Mikhaella', '', 'Ponce de Leon', 1, '', '', '', '', 6, 1, NULL, NULL, NULL),
@@ -51,7 +51,7 @@ INSERT INTO `candidates` (`id`, `image`, `fName`, `mName`, `lName`, `college`, `
 	(10, 'public/css/images/SUCN.png', 'Gabrielle', '', 'Arrojado', 10, '', '', '', '', 1, 6, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `candidates` ENABLE KEYS */;
 
--- Dumping structure for table misssilliman.colleges
+-- Dumping structure for table misssilliman-prepageant.colleges
 CREATE TABLE IF NOT EXISTS `colleges` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `collegeName` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `colleges` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table misssilliman.colleges: ~10 rows (approximately)
+-- Dumping data for table misssilliman-prepageant.colleges: ~10 rows (approximately)
 /*!40000 ALTER TABLE `colleges` DISABLE KEYS */;
 INSERT INTO `colleges` (`id`, `collegeName`, `collegeCode`, `created_at`, `updated_at`) VALUES
 	(1, 'College of Business Administration', 'CBA', NULL, NULL),
@@ -76,7 +76,7 @@ INSERT INTO `colleges` (`id`, `collegeName`, `collegeCode`, `created_at`, `updat
 	(10, 'College of Nursing', 'CN', NULL, NULL);
 /*!40000 ALTER TABLE `colleges` ENABLE KEYS */;
 
--- Dumping structure for table misssilliman.initial_scores
+-- Dumping structure for table misssilliman-prepageant.initial_scores
 CREATE TABLE IF NOT EXISTS `initial_scores` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `candidate` int(10) unsigned DEFAULT NULL,
@@ -118,70 +118,13 @@ CREATE TABLE IF NOT EXISTS `initial_scores` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table misssilliman.initial_scores: ~10 rows (approximately)
+-- Dumping data for table misssilliman-prepageant.initial_scores: ~0 rows (approximately)
 /*!40000 ALTER TABLE `initial_scores` DISABLE KEYS */;
-INSERT INTO `initial_scores` (`id`, `candidate`, `judge`, `IS_Production_Confidence`, `IS_Production_Mastery`, `IS_Production_StagePresence`, `IS_Production_OverallImpact`, `IS_ThemeWr_Grace`, `IS_ThemeWr_Projection`, `IS_ThemeWr_Poise`, `IS_ThemeWr_Relevance`, `IS_EveGown_Grace`, `IS_EveGown_Projection`, `IS_EveGown_Poise`, `IS_EveGown_Regal`, `IS_SeqIntrvw_Content`, `IS_SeqIntrvw_Wit`, `IS_SeqIntrvw_Delivery`, `IS_SeqIntrvw_Confidence`, `IS_InitIntrvw_Content`, `IS_InitIntrvw_Wit`, `IS_InitIntrvw_Delivery`, `IS_InitIntrvw_Confidence`, `IS_Production_Prcnt`, `IS_ThemeWr_Prcnt`, `IS_EveGown_Prcnt`, `IS_SeqIntrvw_Prcnt`, `IS_InitIntrvw_Prcnt`, `IS_SubTotal`, `SQ_Content`, `SQ_Confidence`, `SQ_Wit`, `SQ_Content_Prcnt`, `SQ_Confidence_Prcnt`, `SQ_Wit_Prcnt`, `SQ_SubTotal`, `read`, `created_at`, `updated_at`) VALUES
-	(1, 1, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(2, 2, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(3, 3, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(4, 4, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(5, 5, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(6, 6, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(7, 7, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(8, 8, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(9, 9, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(10, 10, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `initial_scores` ENABLE KEYS */;
 
--- Dumping structure for procedure misssilliman.init_prepageant
-DELIMITER //
-CREATE DEFINER=`SU`@`%` PROCEDURE `init_prepageant`()
-BEGIN
-	DECLARE j int;
-    DECLARE c int;
-
-    SET j=1;
-    TRUNCATE prepageants;
-
-    #j1-3 = judges for talent
-    #j4-6 = judges for speech
-    #j7 = special project c/o organizer
-
-    WHILE j <=12  DO
-    	SET c=1;
-    	IF j<=3 THEN
-	    	WHILE c <= 10 DO
-	        	INSERT INTO prepageants (candidate,judge,Talent_Prcnt) VALUES (c, j,.40);
-	        	SET c = c + 1;
-	        END WHILE;
-        END IF;
-
-        IF j>3 AND j<=6 THEN
-	        WHILE c <= 10 DO
-	        	INSERT INTO prepageants (candidate,judge,PSpch_Prcnt) VALUES (c, j,.40);
-	        	SET c = c + 1;
-	        END WHILE;
-		END IF;
-
-		IF j=7 THEN
-	        WHILE c <= 10 DO
-	        	INSERT INTO prepageants (candidate,judge,SP_Prcnt) VALUES (c, j,.20);
-	        	SET c = c + 1;
-	        END WHILE;
-		END IF;
-
-
-		SET j = j + 1;
-    END WHILE;
-
-    SELECT * FROM prepageants;
-
-END//
-DELIMITER ;
-
--- Dumping structure for table misssilliman.migrations
+-- Dumping structure for table misssilliman-prepageant.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -189,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table misssilliman.migrations: ~7 rows (approximately)
+-- Dumping data for table misssilliman-prepageant.migrations: ~8 rows (approximately)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_10_12_100000_create_password_resets_table', 1),
@@ -202,7 +145,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(10, '2018_08_15_062236_create_press_launches_table', 2);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
--- Dumping structure for table misssilliman.password_resets
+-- Dumping structure for table misssilliman-prepageant.password_resets
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -210,11 +153,11 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table misssilliman.password_resets: ~0 rows (approximately)
+-- Dumping data for table misssilliman-prepageant.password_resets: ~0 rows (approximately)
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
--- Dumping structure for table misssilliman.prepageants
+-- Dumping structure for table misssilliman-prepageant.prepageants
 CREATE TABLE IF NOT EXISTS `prepageants` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `candidate` int(10) unsigned NOT NULL,
@@ -238,109 +181,109 @@ CREATE TABLE IF NOT EXISTS `prepageants` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table misssilliman.prepageants: ~70 rows (approximately)
+-- Dumping data for table misssilliman-prepageant.prepageants: ~65 rows (approximately)
 /*!40000 ALTER TABLE `prepageants` DISABLE KEYS */;
 INSERT INTO `prepageants` (`id`, `candidate`, `judge`, `SP_RS`, `Talent_Confidence`, `Talent_Mastery`, `Talent_StagePresence`, `Talent_OverallImpact`, `PSpch_Content`, `PSpch_Delivery`, `PSpch_Spontainety`, `PSpch_Defense`, `SP_Prcnt`, `Talent_Prcnt`, `PSpch_Prcnt`, `sub_total`, `read`, `created_at`, `updated_at`) VALUES
-	(1, 1, 1, 100.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:11:47', '2018-08-18 03:34:04'),
-	(2, 2, 1, 99.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:11:47', '2018-08-18 03:34:04'),
-	(3, 3, 1, 98.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:11:47', '2018-08-18 03:34:04'),
-	(4, 4, 1, 97.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:11:47', '2018-08-18 03:34:04'),
-	(5, 5, 1, 96.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:11:47', '2018-08-18 03:34:04'),
-	(6, 6, 1, 95.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:11:47', '2018-08-18 03:34:04'),
-	(7, 7, 1, 94.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:11:47', '2018-08-18 03:34:04'),
-	(8, 8, 1, 93.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:11:47', '2018-08-18 03:34:04'),
-	(9, 9, 1, 92.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:11:47', '2018-08-18 03:34:04'),
-	(10, 10, 1, 91.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:11:47', '2018-08-18 03:34:04'),
-	(11, 1, 2, NULL, 20.00, 23.00, 25.00, 22.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:34', '2018-08-19 08:12:51'),
-	(12, 2, 2, NULL, 22.00, 13.00, 20.00, 25.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:34', '2018-08-19 08:12:51'),
-	(13, 3, 2, NULL, 24.00, 20.00, 23.00, 22.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:34', '2018-08-19 08:12:51'),
-	(14, 4, 2, NULL, 23.00, 18.00, 23.00, 21.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:34', '2018-08-19 08:12:51'),
-	(15, 5, 2, NULL, 23.00, 18.00, 19.00, 22.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:34', '2018-08-19 08:12:51'),
-	(16, 6, 2, NULL, 25.00, 25.00, 25.00, 25.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:34', '2018-08-19 08:12:51'),
-	(17, 7, 2, NULL, 18.00, 22.00, 20.00, 23.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:34', '2018-08-19 08:12:51'),
-	(18, 8, 2, NULL, 18.00, 22.00, 19.00, 18.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:34', '2018-08-19 08:12:51'),
-	(19, 9, 2, NULL, 23.00, 21.00, 22.00, 19.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:34', '2018-08-19 08:12:51'),
-	(20, 10, 2, NULL, 22.00, 23.00, 19.00, 22.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:34', '2018-08-19 08:12:51'),
-	(21, 1, 3, NULL, 25.00, 24.00, 23.00, 22.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:43', '2018-08-19 08:01:22'),
-	(22, 2, 3, NULL, 25.00, 24.00, 23.00, 22.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:43', '2018-08-19 08:01:22'),
-	(23, 3, 3, NULL, 19.00, 20.00, 21.00, 22.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:43', '2018-08-19 08:01:22'),
-	(24, 4, 3, NULL, 22.00, 20.00, 21.00, 25.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:43', '2018-08-19 08:01:22'),
-	(25, 5, 3, NULL, 25.00, 24.00, 23.00, 23.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:43', '2018-08-19 08:01:22'),
-	(26, 6, 3, NULL, 22.00, 22.00, 21.00, 23.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:43', '2018-08-19 08:01:22'),
-	(27, 7, 3, NULL, 20.00, 23.00, 24.00, 21.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:43', '2018-08-19 08:01:22'),
-	(28, 8, 3, NULL, 21.00, 23.00, 24.00, 25.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:43', '2018-08-19 08:01:22'),
-	(29, 9, 3, NULL, 22.00, 23.00, 24.00, 25.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:43', '2018-08-19 08:01:22'),
-	(30, 10, 3, NULL, 22.00, 23.00, 24.00, 25.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:19:43', '2018-08-19 08:01:22'),
-	(31, 1, 4, NULL, 22.00, 23.00, 18.00, 21.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:12', '2018-08-17 16:59:20'),
-	(32, 2, 4, NULL, 20.00, 20.00, 22.00, 25.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:12', '2018-08-17 16:59:20'),
-	(33, 3, 4, NULL, 23.00, 19.00, 20.00, 23.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:12', '2018-08-17 16:59:20'),
-	(34, 4, 4, NULL, 23.00, 20.00, 21.00, 23.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:12', '2018-08-17 16:59:20'),
-	(35, 5, 4, NULL, 21.00, 22.00, 18.00, 21.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:12', '2018-08-17 16:59:20'),
-	(36, 6, 4, NULL, 23.00, 20.00, 21.00, 22.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:12', '2018-08-17 16:59:20'),
-	(37, 7, 4, NULL, 23.00, 19.00, 21.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:12', '2018-08-17 16:59:20'),
-	(38, 8, 4, NULL, 23.00, 21.00, 22.00, 23.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:12', '2018-08-17 16:59:20'),
-	(39, 9, 4, NULL, 23.00, 19.00, 21.00, 23.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:12', '2018-08-17 16:59:20'),
-	(40, 10, 4, NULL, 22.00, 21.00, 22.00, 23.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:12', '2018-08-17 16:59:20'),
-	(41, 1, 5, NULL, NULL, NULL, NULL, NULL, 23.00, 22.00, 18.00, 22.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:26', '2018-08-19 08:12:29'),
-	(42, 2, 5, NULL, NULL, NULL, NULL, NULL, 22.00, 17.00, 22.00, 21.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:26', '2018-08-19 08:12:29'),
-	(43, 3, 5, NULL, NULL, NULL, NULL, NULL, 24.00, 23.00, 22.00, 23.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:26', '2018-08-19 08:12:29'),
-	(44, 4, 5, NULL, NULL, NULL, NULL, NULL, 17.00, 18.00, 22.00, 18.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:26', '2018-08-19 08:12:29'),
-	(45, 5, 5, NULL, NULL, NULL, NULL, NULL, 19.00, 18.00, 21.00, 22.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:26', '2018-08-19 08:12:29'),
-	(46, 6, 5, NULL, NULL, NULL, NULL, NULL, 20.00, 22.00, 23.00, 21.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:26', '2018-08-19 08:12:29'),
-	(47, 7, 5, NULL, NULL, NULL, NULL, NULL, 24.00, 18.00, 18.00, 21.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:26', '2018-08-19 08:12:29'),
-	(48, 8, 5, NULL, NULL, NULL, NULL, NULL, 21.00, 19.00, 19.00, 22.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:26', '2018-08-19 08:12:29'),
-	(49, 9, 5, NULL, NULL, NULL, NULL, NULL, 18.00, 17.00, 22.00, 23.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:26', '2018-08-19 08:12:29'),
-	(50, 10, 5, NULL, NULL, NULL, NULL, NULL, 18.00, 19.00, 24.00, 22.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:26', '2018-08-19 08:12:29'),
-	(51, 1, 6, NULL, NULL, NULL, NULL, NULL, 22.00, 23.00, 22.00, 21.00, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:44', '2018-08-17 17:19:16'),
-	(52, 2, 6, NULL, NULL, NULL, NULL, NULL, 23.00, 24.00, 22.00, 23.00, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:44', '2018-08-17 17:19:16'),
-	(53, 3, 6, NULL, NULL, NULL, NULL, NULL, 24.00, 22.00, 21.00, 23.00, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:44', '2018-08-17 17:19:16'),
-	(54, 4, 6, NULL, NULL, NULL, NULL, NULL, 22.00, 23.00, 22.00, 21.00, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:44', '2018-08-17 17:19:16'),
-	(55, 5, 6, NULL, NULL, NULL, NULL, NULL, 20.00, 19.00, 20.00, 20.00, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:44', '2018-08-17 17:19:16'),
-	(56, 6, 6, NULL, NULL, NULL, NULL, NULL, 22.00, 21.00, 23.00, 20.00, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:44', '2018-08-17 17:19:16'),
-	(57, 7, 6, NULL, NULL, NULL, NULL, NULL, 23.00, 18.00, 22.00, 21.00, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:44', '2018-08-17 17:19:16'),
-	(58, 8, 6, NULL, NULL, NULL, NULL, NULL, 22.00, 22.00, 19.00, 18.00, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:44', '2018-08-17 17:19:16'),
-	(59, 9, 6, NULL, NULL, NULL, NULL, NULL, 23.00, 18.00, 22.00, 21.00, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:44', '2018-08-17 17:19:16'),
-	(60, 10, 6, NULL, NULL, NULL, NULL, NULL, 21.00, 18.00, 19.00, 22.00, NULL, NULL, NULL, NULL, '', '2018-08-17 15:20:44', '2018-08-17 17:19:16'),
-	(61, 1, 7, NULL, NULL, NULL, NULL, NULL, 20.00, 22.00, 19.00, 21.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:57', '2018-08-19 08:10:52'),
-	(62, 2, 7, NULL, NULL, NULL, NULL, NULL, 21.00, 21.00, 20.00, 22.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:57', '2018-08-19 08:10:52'),
-	(63, 3, 7, NULL, NULL, NULL, NULL, NULL, 22.00, 20.00, 21.00, 23.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:57', '2018-08-19 08:10:52'),
-	(64, 4, 7, NULL, NULL, NULL, NULL, NULL, 23.00, 19.00, 22.00, 22.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:57', '2018-08-19 08:10:52'),
-	(65, 5, 7, NULL, NULL, NULL, NULL, NULL, 20.00, 18.00, 23.00, 21.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:57', '2018-08-19 08:10:52'),
-	(66, 6, 7, NULL, NULL, NULL, NULL, NULL, 19.00, 23.00, 18.00, 20.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:57', '2018-08-19 08:10:52'),
-	(67, 7, 7, NULL, NULL, NULL, NULL, NULL, 18.00, 22.00, 23.00, 19.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:57', '2018-08-19 08:10:52'),
-	(68, 8, 7, NULL, NULL, NULL, NULL, NULL, 23.00, 22.00, 25.00, 24.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:57', '2018-08-19 08:10:52'),
-	(69, 9, 7, NULL, NULL, NULL, NULL, NULL, 24.00, 20.00, 20.00, 23.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:57', '2018-08-19 08:10:52'),
-	(70, 10, 7, NULL, NULL, NULL, NULL, NULL, 25.00, 25.00, 20.00, 21.00, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:20:57', '2018-08-19 08:10:52');
+	(1, 1, 1, 4.80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:11:47', '2018-08-20 07:56:21'),
+	(2, 2, 1, 5.60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:11:47', '2018-08-20 07:56:21'),
+	(3, 3, 1, 6.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:11:47', '2018-08-20 07:56:21'),
+	(4, 4, 1, 7.20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:11:47', '2018-08-20 07:56:21'),
+	(5, 5, 1, 7.60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:11:47', '2018-08-20 07:56:21'),
+	(6, 6, 1, 7.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:11:47', '2018-08-20 07:56:21'),
+	(7, 7, 1, 5.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:11:47', '2018-08-20 07:56:21'),
+	(8, 8, 1, 8.60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:11:47', '2018-08-20 07:56:21'),
+	(9, 9, 1, 7.80, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:11:47', '2018-08-20 07:56:21'),
+	(10, 10, 1, 12.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'readonly', '2018-08-17 15:11:47', '2018-08-20 07:56:21'),
+	(11, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:35:52', '2018-08-20 07:14:01'),
+	(12, 2, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:35:52', '2018-08-20 07:14:01'),
+	(13, 3, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:35:52', '2018-08-20 07:14:01'),
+	(14, 4, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:35:52', '2018-08-20 07:14:01'),
+	(15, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:35:52', '2018-08-20 07:14:01'),
+	(16, 6, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:35:52', '2018-08-20 07:14:01'),
+	(17, 7, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:35:52', '2018-08-20 07:14:01'),
+	(18, 8, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:35:52', '2018-08-20 07:14:01'),
+	(19, 9, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:35:52', '2018-08-20 07:14:01'),
+	(20, 10, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:35:52', '2018-08-20 07:14:01'),
+	(21, 1, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:36:47', '2018-08-20 07:14:18'),
+	(22, 2, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:36:47', '2018-08-20 07:14:18'),
+	(23, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:36:47', '2018-08-20 07:14:18'),
+	(24, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:36:47', '2018-08-20 07:14:18'),
+	(25, 5, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:36:47', '2018-08-20 07:14:18'),
+	(26, 6, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:36:47', '2018-08-20 07:14:18'),
+	(27, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:36:47', '2018-08-20 07:14:18'),
+	(28, 8, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:36:47', '2018-08-20 07:14:18'),
+	(29, 9, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:36:47', '2018-08-20 07:14:18'),
+	(30, 10, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:36:47', '2018-08-20 07:14:18'),
+	(31, 1, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:37:44', '2018-08-20 07:07:37'),
+	(32, 2, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:37:44', '2018-08-20 07:07:37'),
+	(33, 3, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:37:44', '2018-08-20 07:07:37'),
+	(34, 4, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:37:44', '2018-08-20 07:07:37'),
+	(35, 5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:37:44', '2018-08-20 07:07:37'),
+	(36, 6, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:37:44', '2018-08-20 07:07:37'),
+	(37, 7, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:37:44', '2018-08-20 07:07:37'),
+	(38, 8, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:37:44', '2018-08-20 07:07:37'),
+	(39, 9, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:37:44', '2018-08-20 07:07:37'),
+	(40, 10, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:37:44', '2018-08-20 07:07:37'),
+	(41, 1, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:07', '2018-08-20 07:13:26'),
+	(42, 2, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:07', '2018-08-20 07:13:26'),
+	(43, 3, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:07', '2018-08-20 07:13:26'),
+	(44, 4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:07', '2018-08-20 07:13:26'),
+	(45, 5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:07', '2018-08-20 07:13:26'),
+	(46, 6, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:07', '2018-08-20 07:13:26'),
+	(47, 7, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:07', '2018-08-20 07:13:26'),
+	(48, 8, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:07', '2018-08-20 07:13:26'),
+	(49, 9, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:07', '2018-08-20 07:13:26'),
+	(50, 10, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:07', '2018-08-20 07:13:26'),
+	(51, 1, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:40', '2018-08-20 07:14:36'),
+	(52, 2, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:40', '2018-08-20 07:14:36'),
+	(53, 3, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:40', '2018-08-20 07:14:36'),
+	(54, 4, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:40', '2018-08-20 07:14:36'),
+	(55, 5, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:40', '2018-08-20 07:14:36'),
+	(56, 6, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:40', '2018-08-20 07:14:36'),
+	(57, 7, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:40', '2018-08-20 07:14:36'),
+	(58, 8, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:40', '2018-08-20 07:14:36'),
+	(59, 9, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:40', '2018-08-20 07:14:36'),
+	(60, 10, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:39:40', '2018-08-20 07:14:36'),
+	(61, 1, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:40:45', '2018-08-20 07:13:52'),
+	(62, 2, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:40:45', '2018-08-20 07:13:52'),
+	(63, 3, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:40:45', '2018-08-20 07:13:52'),
+	(64, 4, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:40:45', '2018-08-20 07:13:52'),
+	(65, 5, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:40:45', '2018-08-20 07:13:52'),
+	(66, 6, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:40:45', '2018-08-20 07:13:52'),
+	(67, 7, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:40:45', '2018-08-20 07:13:52'),
+	(68, 8, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:40:45', '2018-08-20 07:13:52'),
+	(69, 9, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:40:45', '2018-08-20 07:13:52'),
+	(70, 10, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-20 06:40:45', '2018-08-20 07:13:52');
 /*!40000 ALTER TABLE `prepageants` ENABLE KEYS */;
 
--- Dumping structure for table misssilliman.press_launches
+-- Dumping structure for table misssilliman-prepageant.press_launches
 CREATE TABLE IF NOT EXISTS `press_launches` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `candidate` int(10) unsigned NOT NULL,
   `organizer` int(10) unsigned NOT NULL,
   `PL_RS` int(11) DEFAULT NULL,
-  `read` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `readPL` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table misssilliman.press_launches: ~10 rows (approximately)
+-- Dumping data for table misssilliman-prepageant.press_launches: ~10 rows (approximately)
 /*!40000 ALTER TABLE `press_launches` DISABLE KEYS */;
-INSERT INTO `press_launches` (`id`, `candidate`, `organizer`, `PL_RS`, `read`, `created_at`, `updated_at`) VALUES
-	(1, 1, 1, 92, NULL, '2018-08-17 15:07:58', '2018-08-18 08:45:03'),
-	(2, 2, 1, 90, NULL, '2018-08-17 15:11:47', '2018-08-18 08:45:04'),
-	(3, 3, 1, 89, NULL, '2018-08-17 15:11:47', '2018-08-18 08:45:05'),
-	(4, 4, 1, 91, NULL, '2018-08-17 15:11:47', '2018-08-18 08:45:06'),
-	(5, 5, 1, 90, NULL, '2018-08-17 15:11:47', '2018-08-18 06:08:50'),
-	(6, 6, 1, 93, NULL, '2018-08-17 15:11:47', '2018-08-18 06:08:50'),
-	(7, 7, 1, 92, NULL, '2018-08-17 15:11:47', '2018-08-18 06:08:50'),
-	(8, 8, 1, 91, NULL, '2018-08-17 15:11:47', '2018-08-18 06:08:50'),
-	(9, 9, 1, 92, NULL, '2018-08-17 15:11:47', '2018-08-18 06:08:50'),
-	(10, 10, 1, 92, NULL, '2018-08-17 15:11:47', '2018-08-18 06:08:50');
+INSERT INTO `press_launches` (`id`, `candidate`, `organizer`, `PL_RS`, `readPL`, `created_at`, `updated_at`) VALUES
+	(1, 1, 1, NULL, NULL, '2018-08-17 15:07:58', '2018-08-20 23:21:26'),
+	(2, 2, 1, NULL, NULL, '2018-08-17 15:11:47', '2018-08-20 23:08:37'),
+	(3, 3, 1, NULL, NULL, '2018-08-17 15:11:47', '2018-08-20 23:08:38'),
+	(4, 4, 1, NULL, NULL, '2018-08-17 15:11:47', '2018-08-18 08:45:06'),
+	(5, 5, 1, NULL, NULL, '2018-08-17 15:11:47', '2018-08-18 06:08:50'),
+	(6, 6, 1, NULL, NULL, '2018-08-17 15:11:47', '2018-08-18 06:08:50'),
+	(7, 7, 1, NULL, NULL, '2018-08-17 15:11:47', '2018-08-18 06:08:50'),
+	(8, 8, 1, NULL, NULL, '2018-08-17 15:11:47', '2018-08-18 06:08:50'),
+	(9, 9, 1, NULL, NULL, '2018-08-17 15:11:47', '2018-08-18 06:08:50'),
+	(10, 10, 1, NULL, NULL, '2018-08-17 15:11:47', '2018-08-18 06:08:50');
 /*!40000 ALTER TABLE `press_launches` ENABLE KEYS */;
 
--- Dumping structure for table misssilliman.users
+-- Dumping structure for table misssilliman-prepageant.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `fName` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -356,19 +299,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table misssilliman.users: ~9 rows (approximately)
+-- Dumping data for table misssilliman-prepageant.users: ~6 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `fName`, `mName`, `lName`, `userType`, `position`, `event`, `roles`, `username`, `password`, `created_at`, `updated_at`, `remember_token`) VALUES
-	(1, 'admin', NULL, 'admin', 'organizer', 'Chair', NULL, 'admin,judge', 'admin', '$2y$10$hahFnqrK4H5NgJ7wvAOAsucR2Y8Vp8V6oZ98cEtwG3u.q1loeRRhe', '2018-08-17 15:11:47', '2018-08-17 15:11:47', 'FbucVQHNVVe0FOVk30bkzNqthwNHAPQW6ttlJRQuz61iNUomUMZxae4U84qU'),
-	(2, 'Judge1', NULL, 'Judge1', 'judge', NULL, 'Talent', NULL, 'judge1', '$2y$10$/KcC.cTjtYqJuZyOX0yExur/0fQKROTW1eCoILMXiCJSIBf01DbvK', '2018-08-17 15:19:34', '2018-08-18 23:54:00', 'DsOdQs3dkxHgnMDQmqPNlKbZwu8JA1MM3prkCOjQojYfulHN2YS7QDlpxZFt'),
-	(3, 'Judge2', NULL, 'Judge2', 'judge', NULL, 'Talent', NULL, 'judge2', '$2y$10$L7w6MKp4YrbaSIGKc3bMzu9Px/P1qnzEmO1/C1eW7efm9pJy6b25a', '2018-08-17 15:19:43', '2018-08-17 15:19:43', 'pFEUyuPgDthRqRi3Uy2dt4JEYeSRuQSvpNWfehQwTkBfAaPcwWZ1lUP1h4tA'),
-	(4, 'Judge3', NULL, 'Judge3', 'judge', NULL, 'Talent', NULL, 'judge3', '$2y$10$oNwq6s2dsr/tWuLIiLU4a.2T/PMultDTuQ8JOghcUVCoKGzAOJ5CO', '2018-08-17 15:20:12', '2018-08-17 15:20:12', 'tWl1fC2lClMVERGh6GenA9HwU7bjrgCQxfhfdYWIMGkrw0gQ6C0cG4ZiaHay'),
-	(5, 'Judge4', NULL, 'Judge4', 'judge', NULL, 'Speech', NULL, 'judge4', '$2y$10$L5qV9VjU..Y1fHo6I9FosO78e8FebP37sMmBvlFN5Of4e/f7d/7ui', '2018-08-17 15:20:26', '2018-08-17 15:20:26', 'bzrYsIx1lSfMxn47cfY7esEEvkX39OM1FfKh3sy0MgJQ9cy6NokzplzUHEEl'),
-	(6, 'Judge5', NULL, 'Judge5', 'judge', NULL, 'Speech', NULL, 'judge5', '$2y$10$44ljGNqH6BjB0LDi.fcBJeBIMpI1DSP5uQrkzJ7BvcBS0cSHeE86G', '2018-08-17 15:20:44', '2018-08-17 15:20:44', 'ixlPoLc7vUrRYd2BOnLrj1dprNprjTDOgXY3Cd6na02AgLabNse4eXZ7XgAh'),
-	(7, 'Judge6', NULL, 'Judge6', 'judge', NULL, 'Speech', NULL, 'judge6', '$2y$10$itIos9nZzzaq0sBh15/2H.CR0LlvmFVIRXCa4NfZganh7ZkfAPPKK', '2018-08-17 15:20:57', '2018-08-17 15:20:57', 'iqpKLZ8Q1LJ40fvZpaIjQgHUSDWQcXlSF8hTe2ol1YzgJqelNeP4eIBicBPf'),
-	(8, 'judge7', NULL, 'judge7', 'judge', NULL, 'Final', NULL, 'judge7', '$2y$10$kIIVTv3QtYwPCzmTX0TODeRQLKsPydB2PdgIVoVlWtA8KkjbLJ7Fq', '2018-08-19 07:35:07', '2018-08-19 07:35:07', 'UzSr3syNN4pNsCOAjmFLEl7KeKepJPSGpqo87300fRSM5RUlF0MJvJuFarmL');
+	(1, 'admin', NULL, 'admin', 'organizer', 'Chair', NULL, 'admin,judge', 'admin', '$2y$10$hahFnqrK4H5NgJ7wvAOAsucR2Y8Vp8V6oZ98cEtwG3u.q1loeRRhe', '2018-08-17 15:11:47', '2018-08-17 15:11:47', 'EvhWaS9MPjhiUta68fI7ZBYuPGW1lBE1gLjUydp7qBa6ahk5b6Cq38tr0NoI'),
+	(2, 'Miguel', NULL, 'Braganza', 'judge', NULL, 'Talent', NULL, 'mbraganza', '$2y$10$a9j9iIUvK3v3rPX85UHBMuyXFbW13l2Nw2BZ3a/3B8YJx16m1jeRy', '2018-08-20 06:35:52', '2018-08-20 23:17:44', '9nPewnM2sT5saUwu745Jj3VRBD6ypdPYk24AHkPyhS33A5t9rjF7hNCTru7F'),
+	(3, 'Carlou', NULL, 'Bernaldez', 'judge', NULL, 'Talent', NULL, 'cbernaldez', '$2y$10$wLnICqT.aL/oV1/uvivMd.YQ1KnGNwEeiL3bs8sdzrBgGaTZIVmrq', '2018-08-20 06:36:47', '2018-08-20 06:36:47', NULL),
+	(4, 'Junsly', NULL, 'Kitay', 'judge', NULL, 'Talent', NULL, 'jkitay', '$2y$10$CFEF.ylSI3kNvGnPWTwB1OlXBhnC5hZQM9.G2g3uuN9IdHFexebvK', '2018-08-20 06:37:44', '2018-08-20 06:37:44', NULL),
+	(5, 'Dr.', NULL, 'McCann', 'judge', NULL, 'Speech', NULL, 'dmccann', '$2y$10$pmlhOu6pjcUsfQmP6hKNpuFkqcresJuUtMETQ4Tlu2n9dfqQa8t0C', '2018-08-20 06:39:07', '2018-08-20 06:39:07', 'udoSWeLJQrD3HdVFAPzC94CJKOij2Xza0wRxfVW6zQsqazR024huMlxhTUOQ'),
+	(6, 'Lea', NULL, 'Reyes', 'judge', NULL, 'Speech', NULL, 'lreyes', '$2y$10$SPJdGnp9olg1YW02EVVfOeaKO4MNt5mhtTJDK8cbGd9Mn0oSbnvUi', '2018-08-20 06:39:40', '2018-08-20 06:39:40', NULL),
+	(7, 'Mariana', NULL, 'Botero', 'judge', NULL, 'Speech', NULL, 'mbotero', '$2y$10$spzH6silE4XM49ealFBqD.BhEmrbQWYBEw8R3LB3qbOoX1G9rdT.G', '2018-08-20 06:40:45', '2018-08-20 23:19:36', 'X41C4AOXTS1zsoXGfgSrklnbrN7F25AqCqlzyfbOPFITn7sf53oVK71jaFmJ');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

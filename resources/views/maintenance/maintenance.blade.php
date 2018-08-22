@@ -38,23 +38,25 @@
     $report_Talent = $reports;
     uasort($reports,"byAveSpeech");
     $report_Speech = $reports;
-
-?>
-
-<?php
-$obj = (object) array(
-    'can1' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can2' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can3' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can4' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can5' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can6' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can7' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can8' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can9' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can10' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-);
-//dd($obj); // outputs 'string(1) "1"' as of PHP 7.2.0; 'int(1)' previously
+    $obj = (object) array(
+    'can1' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can2' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can3' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can4' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can5' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can6' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can7' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can8' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can9' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can10' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    );
+    $obj2 = [(object) array('fName' => 'Maam', 'lName' => 'Yao'),
+            (object) array('fName' => 'Charles', 'lName' => 'Carino'),
+            (object) array('fName' => 'Rommel', 'lName' => 'Gallofin'),
+            (object) array('fName' => 'Dan', 'lName' => 'Chin'),
+            (object) array('fName' => 'Seth', 'lName' => 'Cornelio'),
+            (object) array('fName' => 'Angel', 'lName' => 'Ross'),
+            (object) array('fName' => 'And', 'lName' => 'Others')];
 ?>
 
 
@@ -605,33 +607,41 @@ $obj = (object) array(
                                                                 <tr>
                                                                     <th>College</th>
                                                                     <th>Candidate</th>
-                                                                    <th>Judge 1</th>
-                                                                    <th>Judge 2</th>
-                                                                    <th>Judge 3</th>
-                                                                    <th>Judge 4</th>
-                                                                    <th>Judge 5</th>
-                                                                    <th>Judge 6</th>
-                                                                    <th>Judge 7</th>
+                                                                    <th>{{$obj2[0]->fName}} {{$obj2[0]->lName}}</th>
+                                                                    <th>{{$obj2[1]->fName}} {{$obj2[1]->lName}}</th>
+                                                                    <th>{{$obj2[2]->fName}} {{$obj2[2]->lName}}</th>
+                                                                    <th>{{$obj2[3]->fName}} {{$obj2[3]->lName}}</th>
+                                                                    <th>{{$obj2[4]->fName}} {{$obj2[4]->lName}}</th>
+                                                                    <th>{{$obj2[5]->fName}} {{$obj2[5]->lName}}</th>
+                                                                    <th>{{$obj2[6]->fName}} {{$obj2[6]->lName}}</th>
                                                                     <th>Average</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($initScores as $key)
+                                                                @foreach($obj as $key)
                                                                 <tr class="gradeX">
-                                                                    <td>{{$key->judge}}</td>
-                                                                    <td>{{$key->candidate}}</td>
-                                                                    <td>{{$key->IS_Production_RS}}</td>
-                                                                    <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                                    <td>{{$key->IS_EveGown_RS}}</td>
-                                                                    <td>{{$key->IS_Subtotal}}</td>
-                                                                    <td>{{$key->SQ_Content_RS}}</td>
-                                                                    <td>{{$key->SQ_Confidence_RS}}</td>
-                                                                    <td>{{$key->SQ_Wit_RS}}</td>
-                                                                    <td>{{$key->SQ_Subtotal}}</td>
+                                                                    <td>{{$key->College}}</td>
+                                                                    <td>{{$key->Candidate}}</td>
+                                                                    <td class="numfield">{{$key->Judge1}}</td>
+                                                                    <td class="numfield">{{$key->Judge2}}</td>
+                                                                    <td class="numfield">{{$key->Judge3}}</td>
+                                                                    <td class="numfield">{{$key->Judge4}}</td>
+                                                                    <td class="numfield">{{$key->Judge5}}</td>
+                                                                    <td class="numfield">{{$key->Judge6}}</td>
+                                                                    <td class="numfield">{{$key->Judge7}}</td>
+                                                                    <td class="numfield">5</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
-                                                        </table>	
+                                                        </table>
+                                                        <div class="row">
+                                                            @foreach($obj2 as $key)
+                                                            <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                                <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                                <h6 style="text-align:center">SQ Judge</h6>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>	
                                                     </div>													
                                                 </div>
                                                 <!-- end: page -->
@@ -655,33 +665,41 @@ $obj = (object) array(
                                                                 <tr>
                                                                     <th>College</th>
                                                                     <th>Candidate</th>
-                                                                    <th>Judge 1</th>
-                                                                    <th>Judge 2</th>
-                                                                    <th>Judge 3</th>
-                                                                    <th>Judge 4</th>
-                                                                    <th>Judge 5</th>
-                                                                    <th>Judge 6</th>
-                                                                    <th>Judge 7</th>
+                                                                    <th>{{$obj2[0]->fName}} {{$obj2[0]->lName}}</th>
+                                                                    <th>{{$obj2[1]->fName}} {{$obj2[1]->lName}}</th>
+                                                                    <th>{{$obj2[2]->fName}} {{$obj2[2]->lName}}</th>
+                                                                    <th>{{$obj2[3]->fName}} {{$obj2[3]->lName}}</th>
+                                                                    <th>{{$obj2[4]->fName}} {{$obj2[4]->lName}}</th>
+                                                                    <th>{{$obj2[5]->fName}} {{$obj2[5]->lName}}</th>
+                                                                    <th>{{$obj2[6]->fName}} {{$obj2[6]->lName}}</th>
                                                                     <th>Average</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($initScores as $key)
+                                                                @foreach($obj as $key)
                                                                 <tr class="gradeX">
-                                                                    <td>{{$key->judge}}</td>
-                                                                    <td>{{$key->candidate}}</td>
-                                                                    <td>{{$key->IS_Production_RS}}</td>
-                                                                    <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                                    <td>{{$key->IS_EveGown_RS}}</td>
-                                                                    <td>{{$key->IS_Subtotal}}</td>
-                                                                    <td>{{$key->SQ_Content_RS}}</td>
-                                                                    <td>{{$key->SQ_Confidence_RS}}</td>
-                                                                    <td>{{$key->SQ_Wit_RS}}</td>
-                                                                    <td>{{$key->SQ_Subtotal}}</td>
+                                                                    <td>{{$key->College}}</td>
+                                                                    <td>{{$key->Candidate}}</td>
+                                                                    <td class="numfield">{{$key->Judge1}}</td>
+                                                                    <td class="numfield">{{$key->Judge2}}</td>
+                                                                    <td class="numfield">{{$key->Judge3}}</td>
+                                                                    <td class="numfield">{{$key->Judge4}}</td>
+                                                                    <td class="numfield">{{$key->Judge5}}</td>
+                                                                    <td class="numfield">{{$key->Judge6}}</td>
+                                                                    <td class="numfield">{{$key->Judge7}}</td>
+                                                                    <td class="numfield">5</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
-                                                        </table>	
+                                                        </table>
+                                                        <div class="row">
+                                                            @foreach($obj2 as $key)
+                                                            <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                                <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                                <h6 style="text-align:center">SQ Judge</h6>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>	
                                                     </div>													
                                                 </div>
                                                 <!-- end: page -->
@@ -705,33 +723,42 @@ $obj = (object) array(
                                                                 <tr>
                                                                     <th>College</th>
                                                                     <th>Candidate</th>
-                                                                    <th>Judge 1</th>
-                                                                    <th>Judge 2</th>
-                                                                    <th>Judge 3</th>
-                                                                    <th>Judge 4</th>
-                                                                    <th>Judge 5</th>
-                                                                    <th>Judge 6</th>
-                                                                    <th>Judge 7</th>
+                                                                    <th>{{$obj2[0]->fName}} {{$obj2[0]->lName}}</th>
+                                                                    <th>{{$obj2[1]->fName}} {{$obj2[1]->lName}}</th>
+                                                                    <th>{{$obj2[2]->fName}} {{$obj2[2]->lName}}</th>
+                                                                    <th>{{$obj2[3]->fName}} {{$obj2[3]->lName}}</th>
+                                                                    <th>{{$obj2[4]->fName}} {{$obj2[4]->lName}}</th>
+                                                                    <th>{{$obj2[5]->fName}} {{$obj2[5]->lName}}</th>
+                                                                    <th>{{$obj2[6]->fName}} {{$obj2[6]->lName}}</th>
                                                                     <th>Average</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($initScores as $key)
+                                                                @foreach($obj as $key)
                                                                 <tr class="gradeX">
-                                                                    <td>{{$key->judge}}</td>
-                                                                    <td>{{$key->candidate}}</td>
-                                                                    <td>{{$key->IS_Production_RS}}</td>
-                                                                    <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                                    <td>{{$key->IS_EveGown_RS}}</td>
-                                                                    <td>{{$key->IS_Subtotal}}</td>
-                                                                    <td>{{$key->SQ_Content_RS}}</td>
-                                                                    <td>{{$key->SQ_Confidence_RS}}</td>
-                                                                    <td>{{$key->SQ_Wit_RS}}</td>
-                                                                    <td>{{$key->SQ_Subtotal}}</td>
+                                                                    <td>{{$key->College}}</td>
+                                                                    <td>{{$key->Candidate}}</td>
+                                                                    <td class="numfield">{{$key->Judge1}}</td>
+                                                                    <td class="numfield">{{$key->Judge2}}</td>
+                                                                    <td class="numfield">{{$key->Judge3}}</td>
+                                                                    <td class="numfield">{{$key->Judge4}}</td>
+                                                                    <td class="numfield">{{$key->Judge5}}</td>
+                                                                    <td class="numfield">{{$key->Judge6}}</td>
+                                                                    <td class="numfield">{{$key->Judge7}}</td>
+                                                                    <td class="numfield">5</td>
                                                                 </tr>
                                                                 @endforeach
+                                                            </tbody>oreach
                                                             </tbody>
                                                         </table>	
+                                                        <div class="row">
+                                                            @foreach($obj2 as $key)
+                                                            <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                                <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                                <h6 style="text-align:center">SQ Judge</h6>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
                                                     </div>													
                                                 </div>
                                                 <!-- end: page -->
@@ -755,33 +782,41 @@ $obj = (object) array(
                                                                 <tr>
                                                                     <th>College</th>
                                                                     <th>Candidate</th>
-                                                                    <th>Judge 1</th>
-                                                                    <th>Judge 2</th>
-                                                                    <th>Judge 3</th>
-                                                                    <th>Judge 4</th>
-                                                                    <th>Judge 5</th>
-                                                                    <th>Judge 6</th>
-                                                                    <th>Judge 7</th>
+                                                                    <th>{{$obj2[0]->fName}} {{$obj2[0]->lName}}</th>
+                                                                    <th>{{$obj2[1]->fName}} {{$obj2[1]->lName}}</th>
+                                                                    <th>{{$obj2[2]->fName}} {{$obj2[2]->lName}}</th>
+                                                                    <th>{{$obj2[3]->fName}} {{$obj2[3]->lName}}</th>
+                                                                    <th>{{$obj2[4]->fName}} {{$obj2[4]->lName}}</th>
+                                                                    <th>{{$obj2[5]->fName}} {{$obj2[5]->lName}}</th>
+                                                                    <th>{{$obj2[6]->fName}} {{$obj2[6]->lName}}</th>
                                                                     <th>Average</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($initScores as $key)
+                                                                @foreach($obj as $key)
                                                                 <tr class="gradeX">
-                                                                    <td>{{$key->judge}}</td>
-                                                                    <td>{{$key->candidate}}</td>
-                                                                    <td>{{$key->IS_Production_RS}}</td>
-                                                                    <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                                    <td>{{$key->IS_EveGown_RS}}</td>
-                                                                    <td>{{$key->IS_Subtotal}}</td>
-                                                                    <td>{{$key->SQ_Content_RS}}</td>
-                                                                    <td>{{$key->SQ_Confidence_RS}}</td>
-                                                                    <td>{{$key->SQ_Wit_RS}}</td>
-                                                                    <td>{{$key->SQ_Subtotal}}</td>
+                                                                    <td>{{$key->College}}</td>
+                                                                    <td>{{$key->Candidate}}</td>
+                                                                    <td class="numfield">{{$key->Judge1}}</td>
+                                                                    <td class="numfield">{{$key->Judge2}}</td>
+                                                                    <td class="numfield">{{$key->Judge3}}</td>
+                                                                    <td class="numfield">{{$key->Judge4}}</td>
+                                                                    <td class="numfield">{{$key->Judge5}}</td>
+                                                                    <td class="numfield">{{$key->Judge6}}</td>
+                                                                    <td class="numfield">{{$key->Judge7}}</td>
+                                                                    <td class="numfield">5</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
-                                                        </table>	
+                                                        </table>
+                                                        <div class="row">
+                                                            @foreach($obj2 as $key)
+                                                            <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                                <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                                <h6 style="text-align:center">SQ Judge</h6>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>	
                                                     </div>													
                                                 </div>
                                                 <!-- end: page -->
@@ -805,33 +840,41 @@ $obj = (object) array(
                                                                 <tr>
                                                                     <th>College</th>
                                                                     <th>Candidate</th>
-                                                                    <th>Judge 1</th>
-                                                                    <th>Judge 2</th>
-                                                                    <th>Judge 3</th>
-                                                                    <th>Judge 4</th>
-                                                                    <th>Judge 5</th>
-                                                                    <th>Judge 6</th>
-                                                                    <th>Judge 7</th>
+                                                                    <th>{{$obj2[0]->fName}} {{$obj2[0]->lName}}</th>
+                                                                    <th>{{$obj2[1]->fName}} {{$obj2[1]->lName}}</th>
+                                                                    <th>{{$obj2[2]->fName}} {{$obj2[2]->lName}}</th>
+                                                                    <th>{{$obj2[3]->fName}} {{$obj2[3]->lName}}</th>
+                                                                    <th>{{$obj2[4]->fName}} {{$obj2[4]->lName}}</th>
+                                                                    <th>{{$obj2[5]->fName}} {{$obj2[5]->lName}}</th>
+                                                                    <th>{{$obj2[6]->fName}} {{$obj2[6]->lName}}</th>
                                                                     <th>Average</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($initScores as $key)
+                                                                @foreach($obj as $key)
                                                                 <tr class="gradeX">
-                                                                    <td>{{$key->judge}}</td>
-                                                                    <td>{{$key->candidate}}</td>
-                                                                    <td>{{$key->IS_Production_RS}}</td>
-                                                                    <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                                    <td>{{$key->IS_EveGown_RS}}</td>
-                                                                    <td>{{$key->IS_Subtotal}}</td>
-                                                                    <td>{{$key->SQ_Content_RS}}</td>
-                                                                    <td>{{$key->SQ_Confidence_RS}}</td>
-                                                                    <td>{{$key->SQ_Wit_RS}}</td>
-                                                                    <td>{{$key->SQ_Subtotal}}</td>
+                                                                    <td>{{$key->College}}</td>
+                                                                    <td>{{$key->Candidate}}</td>
+                                                                    <td class="numfield">{{$key->Judge1}}</td>
+                                                                    <td class="numfield">{{$key->Judge2}}</td>
+                                                                    <td class="numfield">{{$key->Judge3}}</td>
+                                                                    <td class="numfield">{{$key->Judge4}}</td>
+                                                                    <td class="numfield">{{$key->Judge5}}</td>
+                                                                    <td class="numfield">{{$key->Judge6}}</td>
+                                                                    <td class="numfield">{{$key->Judge7}}</td>
+                                                                    <td class="numfield">5</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
-                                                        </table>	
+                                                        </table>
+                                                        <div class="row">
+                                                            @foreach($obj2 as $key)
+                                                            <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                                <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                                <h6 style="text-align:center">SQ Judge</h6>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>	
                                                     </div>													
                                                 </div>
                                                 <!-- end: page -->
@@ -873,7 +916,15 @@ $obj = (object) array(
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
-                                                        </table>	
+                                                        </table>
+                                                        <div class="row">
+                                                            @foreach($obj2 as $key)
+                                                            <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                                <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                                <h6 style="text-align:center">SQ Judge</h6>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>	
                                                     </div>													
                                                 </div>
                                                 <!-- end: page -->
@@ -897,11 +948,13 @@ $obj = (object) array(
                                                 <tr>
                                                     <th>College</th>
                                                     <th>Candidate</th>
-                                                    <th>{{$talent[0]->fName}} {{$talent[0]->lName}}</th>
-                                                    <th>{{$talent[1]->fName}} {{$talent[1]->lName}}</th>
-                                                    <th>{{$talent[2]->fName}} {{$talent[2]->lName}}</th>
-                                                    <th>{{$talent[2]->fName}} {{$talent[2]->lName}}</th>
-                                                    <th>{{$talent[2]->fName}} {{$talent[2]->lName}}</th>
+                                                    <th>{{$obj2[0]->fName}} {{$obj2[0]->lName}}</th>
+                                                    <th>{{$obj2[1]->fName}} {{$obj2[1]->lName}}</th>
+                                                    <th>{{$obj2[2]->fName}} {{$obj2[2]->lName}}</th>
+                                                    <th>{{$obj2[3]->fName}} {{$obj2[3]->lName}}</th>
+                                                    <th>{{$obj2[4]->fName}} {{$obj2[4]->lName}}</th>
+                                                    <th>{{$obj2[5]->fName}} {{$obj2[5]->lName}}</th>
+                                                    <th>{{$obj2[6]->fName}} {{$obj2[6]->lName}}</th>
                                                     <th>Average</th>
                                                 </tr>
                                             </thead>
@@ -915,13 +968,15 @@ $obj = (object) array(
                                                     <td class="numfield">{{$key->Judge3}}</td>
                                                     <td class="numfield">{{$key->Judge4}}</td>
                                                     <td class="numfield">{{$key->Judge5}}</td>
+                                                    <td class="numfield">{{$key->Judge6}}</td>
+                                                    <td class="numfield">{{$key->Judge7}}</td>
                                                     <td class="numfield">5</td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
                                         <div class="row">
-                                        @foreach($talent as $key)
+                                        @foreach($obj2 as $key)
                                         <div class="col-xs-4 col-md-4" style="margin-top:50px;">
                                             <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
                                             <h6 style="text-align:center">SQ Judge</h6>

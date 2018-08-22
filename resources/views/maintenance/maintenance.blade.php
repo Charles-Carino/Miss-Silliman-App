@@ -535,6 +535,23 @@
                                     <h4 class="pull-left page-title">Pageant Night Report</h4>
                                 </div>
                             </div>
+                            <ul class="nav nav-tabs tabs tabs-top">
+                                <li class="active tab">
+                                    <a href="#evt-pn-initialScore" data-toggle="tab" aria-expanded="false">Initial Score</a>
+                                </li>
+                                <li class="tab">
+                                    <a href="#evt-pn-stdQuestion" data-toggle="tab" aria-expanded="false">Standard Question</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content col-lg-12">
+                                <div class="tab-pane active" id="evt-pn-initialScore">
+                                </div>
+                                <div class="tab-pane" id="evt-pn-stdQuestion">
+                                </div>
+                            </div>
+
+
+
                             <div class="panel">
                                 <div class="panel-body">
                                     <div class="row">

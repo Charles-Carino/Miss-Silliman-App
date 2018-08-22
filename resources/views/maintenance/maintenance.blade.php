@@ -597,19 +597,22 @@ $obj = (object) array(
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div id="print-pn-initialscore-prod">
+                                                    <div id="print-pn-initialscore-prod" style="overflow-x : auto">
                                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                                         <h4 style="font-weight:normal;">Production Number Results</h4>
                                                         <table class="table table-bordered table-striped reports">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Judge</th>
+                                                                    <th>College</th>
                                                                     <th>Candidate</th>
-                                                                    <th>Confidence</th>
-                                                                    <th>Mastery</th>
-                                                                    <th>Stage Presence</th>
-                                                                    <th>Overall Impact</th>
-                                                                    <th>Total</th>
+                                                                    <th>Judge 1</th>
+                                                                    <th>Judge 2</th>
+                                                                    <th>Judge 3</th>
+                                                                    <th>Judge 4</th>
+                                                                    <th>Judge 5</th>
+                                                                    <th>Judge 6</th>
+                                                                    <th>Judge 7</th>
+                                                                    <th>Average</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -644,19 +647,22 @@ $obj = (object) array(
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div id="print-pn-initialscore-theme">
+                                                        <div id="print-pn-initialscore-theme" style="overflow-x : auto">
                                                             <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                                             <h4 style="font-weight:normal;">Theme Wear Results</h4>
                                                             <table class="table table-bordered table-striped reports">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>Judge</th>
+                                                                        <th>College</th>
                                                                         <th>Candidate</th>
-                                                                        <th>Grace</th>
-                                                                        <th>Projection</th>
-                                                                        <th>Poise</th>
-                                                                        <th>Relevance</th>
-                                                                        <th>Total</th>
+                                                                        <th>Judge 1</th>
+                                                                        <th>Judge 2</th>
+                                                                        <th>Judge 3</th>
+                                                                        <th>Judge 4</th>
+                                                                        <th>Judge 5</th>
+                                                                        <th>Judge 6</th>
+                                                                        <th>Judge 7</th>
+                                                                        <th>Average</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>

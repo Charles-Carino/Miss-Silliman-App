@@ -856,8 +856,8 @@ $obj = (object) array(
                                                                     <th>College</th>
                                                                     <th>Candidate</th>
                                                                     <th>Press Launch (10%)</th>
-                                                                    <th>Pre-Pageant (40%)</th>
-                                                                    <th>Pageant Night (50%)</th>
+                                                                    <th>Pre-Pageant (30%)</th>
+                                                                    <th>Pageant Night (60%)</th>
                                                                     <th>Total</th>
                                                                 </tr>
                                                             </thead>
@@ -942,16 +942,15 @@ $obj = (object) array(
                                             </div>
                                             <div id="print-pn-summ">
                                                 <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
-                                                <h4 style="font-weight:normal;">Pageant Night -- Initial Score Results</h4>
+                                                <h4 style="font-weight:normal;">Pageant Night -- Final Score</h4>
                                                 <table class="table table-bordered table-striped reports">
                                                     <thead>
                                                         <tr>
                                                             <th>Judge</th>
                                                             <th>Candidate</th>
-                                                            <th>Production (Raw Score)</th>
-                                                            <th>Theme Wear (Raw Score)</th>
-                                                            <th>Evening Gown (Raw Score)</th>
-                                                            <th>Initial Score Subtotal</th>
+                                                            <th>Initial Score</th>
+                                                            <th>Standard Question</th>
+                                                            <th>Total</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -960,9 +959,8 @@ $obj = (object) array(
                                                             <td>{{$key->judge}}</td>
                                                             <td>{{$key->candidate}}</td>
                                                             <td>{{$key->IS_Production_RS}}</td>
-                                                            <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                            <td>{{$key->IS_EveGown_RS}}</td>
-                                                            <td>{{$key->IS_Subtotal}}</td>
+                                                            <td>{{$key->IS_Production_RS}}</td>
+                                                            <td>{{$key->IS_Production_RS}}</td>
                                                         </tr>
                                                         @endforeach
                                                     </tbody>
@@ -972,9 +970,6 @@ $obj = (object) array(
                                         <!-- end: page -->
                                     </div> <!-- end Panel -->
                                 </div><!--end of summary pane-->
-                                    <div class="tab-pane" id="evt-pn-stdQuestion">
-                                      
-                                    </div>
                                 </div>
                             </div>
 

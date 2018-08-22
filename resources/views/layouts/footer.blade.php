@@ -35,17 +35,20 @@ $(document).ready(function() {
     $('table.specialprojects').DataTable({
       'paging': false,
       'searching': false,
-      'order': [1,"desc"]
+      'order': [2,"desc"],
+      "info":     false
     });
-    $('table.reports').DataTable({
+    $('table.prepReports').DataTable({
       'paging': false,
       'searching': false,
-      'order': [4,"desc"]
+      'order': [5,"desc"],
+      "info": false
     });
     $('table.ranking').DataTable({
       'paging': false,
       'searching': false,
-      'order': [2,"desc"]
+      'order': [2,"desc"],
+      "info":     false
     });
     $('.input-row').css('margin-bottom','5px');
     $('.preList').click(function(event){

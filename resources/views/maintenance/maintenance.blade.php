@@ -37,23 +37,25 @@
     $report_SP = $reports;
     $report_Talent = $reports;
     $report_Speech = $reports;
-
-?>
-
-<?php
-$obj = (object) array(
-    'can1' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can2' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can3' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can4' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can5' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can6' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can7' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can8' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can9' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-    'can10' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
-);
-//dd($obj); // outputs 'string(1) "1"' as of PHP 7.2.0; 'int(1)' previously
+    $obj = (object) array(
+    'can1' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can2' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can3' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can4' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can5' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can6' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can7' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can8' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can9' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    'can10' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90, 'Judge6' => 90, 'Judge7' => 90),
+    );
+    $obj2 = [(object) array('fName' => 'Maam', 'lName' => 'Yao'),
+            (object) array('fName' => 'Charles', 'lName' => 'Carino'),
+            (object) array('fName' => 'Rommel', 'lName' => 'Gallofin'),
+            (object) array('fName' => 'Dan', 'lName' => 'Chin'),
+            (object) array('fName' => 'Seth', 'lName' => 'Cornelio'),
+            (object) array('fName' => 'Angel', 'lName' => 'Ross'),
+            (object) array('fName' => 'And', 'lName' => 'Others')];
 ?>
 
 
@@ -570,7 +572,7 @@ $obj = (object) array(
                                             <a href="#evt-pn-initialScore-prod" data-toggle="tab" aria-expanded="false">Production Number</a>
                                         </li>
                                         <li class="tab">
-                                            <a href="#evt-pn-initialScore-theme" data-toggle="tab" aria-expanded="false">Theme Wear</a>
+                                            <a href="#evt-pn-initialScore-theme" data-toggle="tab" aria-expanded="false">Themed Wear</a>
                                         </li>
                                         <li class="tab">
                                             <a href="#evt-pn-initialScore-eveGown" data-toggle="tab" aria-expanded="false">Evening Gown</a>
@@ -654,7 +656,7 @@ $obj = (object) array(
                                                     </div>
                                                     <div id="print-pn-initialscore-theme" style="overflow-x : auto">
                                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
-                                                        <h4 style="font-weight:normal;">Theme Wear Results</h4>
+                                                        <h4 style="font-weight:normal;">Themed Wear Results</h4>
                                                         <table class="table table-bordered table-striped finalreports">
                                                             <thead>
                                                                 <tr>
@@ -741,6 +743,7 @@ $obj = (object) array(
                                                                     <td class="numfield">{{$key->AverageEveGown}}</td>
                                                                 </tr>
                                                                 @endforeach
+                                                            </tbody>oreach
                                                             </tbody>
                                                         </table>	
                                                         @foreach($finalJudges as $key)
@@ -952,6 +955,8 @@ $obj = (object) array(
                                                     <td class="numfield">{{$key->Judge3}}</td>
                                                     <td class="numfield">{{$key->Judge4}}</td>
                                                     <td class="numfield">{{$key->Judge5}}</td>
+                                                    <td class="numfield">{{$key->Judge6}}</td>
+                                                    <td class="numfield">{{$key->Judge7}}</td>
                                                     <td class="numfield">5</td>
                                                 </tr>
                                                 @endforeach

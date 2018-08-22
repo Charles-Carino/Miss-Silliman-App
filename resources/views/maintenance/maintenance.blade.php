@@ -12,8 +12,10 @@
   $orgs = App\User::where('userType','organizer')
                 ->orderby('id')
                 ->get();
+    $finalJudges = App\User::where('event','Final')
+                ->orderby('id')
+                ->get();
  
-
     function bySP($a,$b)
     {
         if ($a->SP==$b->SP) return 0;
@@ -32,11 +34,8 @@
         return ( $a->AverageSpeech > $b->AverageSpeech ) ?-1 : 1;
     }
 
-    uasort($reports,"bySP");
     $report_SP = $reports;
-    uasort($reports,"byAveTalent");
     $report_Talent = $reports;
-    uasort($reports,"byAveSpeech");
     $report_Speech = $reports;
 
 ?>
@@ -374,7 +373,7 @@ $obj = (object) array(
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($report_SP as $key)
+                                                @foreach($reports as $key)
                                                 <tr class="gradeX">
                                                     <td>{{$key->cCode}}</td>
                                                     <td>{{$key->candidates}}</td>
@@ -461,7 +460,7 @@ $obj = (object) array(
                                               </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($report_Speech as $key)
+                                                @foreach($reports as $key)
                                                 <tr class="gradeX">
                                                     <td>{{$key->cCode}}</td>
                                                     <td>{{$key->candidates}}</td>
@@ -600,38 +599,44 @@ $obj = (object) array(
                                                     <div id="print-pn-initialscore-prod" style="overflow-x : auto">
                                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                                         <h4 style="font-weight:normal;">Production Number Results</h4>
-                                                        <table class="table table-bordered table-striped reports">
+                                                        <table class="table table-bordered table-striped finalreports">
                                                             <thead>
                                                                 <tr>
                                                                     <th>College</th>
                                                                     <th>Candidate</th>
-                                                                    <th>Judge 1</th>
-                                                                    <th>Judge 2</th>
-                                                                    <th>Judge 3</th>
-                                                                    <th>Judge 4</th>
-                                                                    <th>Judge 5</th>
-                                                                    <th>Judge 6</th>
-                                                                    <th>Judge 7</th>
+                                                                    <th>{{$finalJudges[0]->fName}} {{$finalJudges[0]->lName}}</th>
+                                                                    <th>{{$finalJudges[1]->fName}} {{$finalJudges[1]->lName}}</th>
+                                                                    <th>{{$finalJudges[2]->fName}} {{$finalJudges[2]->lName}}</th>
+                                                                    <th>{{$finalJudges[3]->fName}} {{$finalJudges[3]->lName}}</th>
+                                                                    <th>{{$finalJudges[4]->fName}} {{$finalJudges[4]->lName}}</th>
+                                                                    <th>{{$finalJudges[5]->fName}} {{$finalJudges[5]->lName}}</th>
+                                                                    <th>{{$finalJudges[6]->fName}} {{$finalJudges[6]->lName}}</th>
                                                                     <th>Average</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($initScores as $key)
+                                                                @foreach($initialScores as $key)
                                                                 <tr class="gradeX">
-                                                                    <td>{{$key->judge}}</td>
-                                                                    <td>{{$key->candidate}}</td>
-                                                                    <td>{{$key->IS_Production_RS}}</td>
-                                                                    <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                                    <td>{{$key->IS_EveGown_RS}}</td>
-                                                                    <td>{{$key->IS_Subtotal}}</td>
-                                                                    <td>{{$key->SQ_Content_RS}}</td>
-                                                                    <td>{{$key->SQ_Confidence_RS}}</td>
-                                                                    <td>{{$key->SQ_Wit_RS}}</td>
-                                                                    <td>{{$key->SQ_Subtotal}}</td>
+                                                                    <td>{{$key->cCode}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td class="numfield">{{$key->j1_Production}}</td>
+                                                                    <td class="numfield">{{$key->j2_Production}}</td>
+                                                                    <td class="numfield">{{$key->j3_Production}}</td>
+                                                                    <td class="numfield">{{$key->j4_Production}}</td>
+                                                                    <td class="numfield">{{$key->j5_Production}}</td>
+                                                                    <td class="numfield">{{$key->j6_Production}}</td>
+                                                                    <td class="numfield">{{$key->j7_Production}}</td>
+                                                                    <td class="numfield">{{$key->AverageProduction}}</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
-                                                        </table>	
+                                                        </table>
+                                                        @foreach($finalJudges as $key)
+                                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                            <h6 style="text-align:center">Judge</h6>
+                                                        </div>
+                                                        @endforeach	
                                                     </div>													
                                                 </div>
                                                 <!-- end: page -->
@@ -650,38 +655,44 @@ $obj = (object) array(
                                                     <div id="print-pn-initialscore-theme" style="overflow-x : auto">
                                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                                         <h4 style="font-weight:normal;">Theme Wear Results</h4>
-                                                        <table class="table table-bordered table-striped reports">
+                                                        <table class="table table-bordered table-striped finalreports">
                                                             <thead>
                                                                 <tr>
                                                                     <th>College</th>
                                                                     <th>Candidate</th>
-                                                                    <th>Judge 1</th>
-                                                                    <th>Judge 2</th>
-                                                                    <th>Judge 3</th>
-                                                                    <th>Judge 4</th>
-                                                                    <th>Judge 5</th>
-                                                                    <th>Judge 6</th>
-                                                                    <th>Judge 7</th>
+                                                                    <th>{{$finalJudges[0]->fName}} {{$finalJudges[0]->lName}}</th>
+                                                                    <th>{{$finalJudges[1]->fName}} {{$finalJudges[1]->lName}}</th>
+                                                                    <th>{{$finalJudges[2]->fName}} {{$finalJudges[2]->lName}}</th>
+                                                                    <th>{{$finalJudges[3]->fName}} {{$finalJudges[3]->lName}}</th>
+                                                                    <th>{{$finalJudges[4]->fName}} {{$finalJudges[4]->lName}}</th>
+                                                                    <th>{{$finalJudges[5]->fName}} {{$finalJudges[5]->lName}}</th>
+                                                                    <th>{{$finalJudges[6]->fName}} {{$finalJudges[6]->lName}}</th>
                                                                     <th>Average</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($initScores as $key)
+                                                                @foreach($initialScores as $key)
                                                                 <tr class="gradeX">
-                                                                    <td>{{$key->judge}}</td>
-                                                                    <td>{{$key->candidate}}</td>
-                                                                    <td>{{$key->IS_Production_RS}}</td>
-                                                                    <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                                    <td>{{$key->IS_EveGown_RS}}</td>
-                                                                    <td>{{$key->IS_Subtotal}}</td>
-                                                                    <td>{{$key->SQ_Content_RS}}</td>
-                                                                    <td>{{$key->SQ_Confidence_RS}}</td>
-                                                                    <td>{{$key->SQ_Wit_RS}}</td>
-                                                                    <td>{{$key->SQ_Subtotal}}</td>
+                                                                    <td>{{$key->cCode}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td class="numfield">{{$key->j1_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->j2_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->j3_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->j4_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->j5_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->j6_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->j7_ThemeWr}}</td>
+                                                                    <td class="numfield">{{$key->AverageThemeWr}}</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
-                                                        </table>	
+                                                        </table>
+                                                        @foreach($finalJudges as $key)
+                                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                            <h6 style="text-align:center">Judge</h6>
+                                                        </div>
+                                                        @endforeach		
                                                     </div>													
                                                 </div>
                                                 <!-- end: page -->
@@ -700,38 +711,44 @@ $obj = (object) array(
                                                     <div id="print-pn-initialscore-eveGown" style="overflow-x : auto">
                                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                                         <h4 style="font-weight:normal;">Evening Gown Results</h4>
-                                                        <table class="table table-bordered table-striped reports">
+                                                        <table class="table table-bordered table-striped finalreports">
                                                             <thead>
                                                                 <tr>
                                                                     <th>College</th>
                                                                     <th>Candidate</th>
-                                                                    <th>Judge 1</th>
-                                                                    <th>Judge 2</th>
-                                                                    <th>Judge 3</th>
-                                                                    <th>Judge 4</th>
-                                                                    <th>Judge 5</th>
-                                                                    <th>Judge 6</th>
-                                                                    <th>Judge 7</th>
+                                                                    <th>{{$finalJudges[0]->fName}} {{$finalJudges[0]->lName}}</th>
+                                                                    <th>{{$finalJudges[1]->fName}} {{$finalJudges[1]->lName}}</th>
+                                                                    <th>{{$finalJudges[2]->fName}} {{$finalJudges[2]->lName}}</th>
+                                                                    <th>{{$finalJudges[3]->fName}} {{$finalJudges[3]->lName}}</th>
+                                                                    <th>{{$finalJudges[4]->fName}} {{$finalJudges[4]->lName}}</th>
+                                                                    <th>{{$finalJudges[5]->fName}} {{$finalJudges[5]->lName}}</th>
+                                                                    <th>{{$finalJudges[6]->fName}} {{$finalJudges[6]->lName}}</th>
                                                                     <th>Average</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($initScores as $key)
+                                                                @foreach($initialScores as $key)
                                                                 <tr class="gradeX">
-                                                                    <td>{{$key->judge}}</td>
-                                                                    <td>{{$key->candidate}}</td>
-                                                                    <td>{{$key->IS_Production_RS}}</td>
-                                                                    <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                                    <td>{{$key->IS_EveGown_RS}}</td>
-                                                                    <td>{{$key->IS_Subtotal}}</td>
-                                                                    <td>{{$key->SQ_Content_RS}}</td>
-                                                                    <td>{{$key->SQ_Confidence_RS}}</td>
-                                                                    <td>{{$key->SQ_Wit_RS}}</td>
-                                                                    <td>{{$key->SQ_Subtotal}}</td>
+                                                                    <td>{{$key->cCode}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td class="numfield">{{$key->j1_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->j2_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->j3_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->j4_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->j5_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->j6_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->j7_EveGown}}</td>
+                                                                    <td class="numfield">{{$key->AverageEveGown}}</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
                                                         </table>	
+                                                        @foreach($finalJudges as $key)
+                                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                            <h6 style="text-align:center">Judge</h6>
+                                                        </div>
+                                                        @endforeach	
                                                     </div>													
                                                 </div>
                                                 <!-- end: page -->
@@ -750,38 +767,44 @@ $obj = (object) array(
                                                     <div id="print-pn-initialscore-seqInt" style="overflow-x : auto">
                                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                                         <h4 style="font-weight:normal;">Sequential Interview Results</h4>
-                                                        <table class="table table-bordered table-striped reports">
+                                                        <table class="table table-bordered table-striped finalreports">
                                                             <thead>
                                                                 <tr>
                                                                     <th>College</th>
                                                                     <th>Candidate</th>
-                                                                    <th>Judge 1</th>
-                                                                    <th>Judge 2</th>
-                                                                    <th>Judge 3</th>
-                                                                    <th>Judge 4</th>
-                                                                    <th>Judge 5</th>
-                                                                    <th>Judge 6</th>
-                                                                    <th>Judge 7</th>
+                                                                    <th>{{$finalJudges[0]->fName}} {{$finalJudges[0]->lName}}</th>
+                                                                    <th>{{$finalJudges[1]->fName}} {{$finalJudges[1]->lName}}</th>
+                                                                    <th>{{$finalJudges[2]->fName}} {{$finalJudges[2]->lName}}</th>
+                                                                    <th>{{$finalJudges[3]->fName}} {{$finalJudges[3]->lName}}</th>
+                                                                    <th>{{$finalJudges[4]->fName}} {{$finalJudges[4]->lName}}</th>
+                                                                    <th>{{$finalJudges[5]->fName}} {{$finalJudges[5]->lName}}</th>
+                                                                    <th>{{$finalJudges[6]->fName}} {{$finalJudges[6]->lName}}</th>
                                                                     <th>Average</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($initScores as $key)
+                                                                @foreach($initialScores as $key)
                                                                 <tr class="gradeX">
-                                                                    <td>{{$key->judge}}</td>
-                                                                    <td>{{$key->candidate}}</td>
-                                                                    <td>{{$key->IS_Production_RS}}</td>
-                                                                    <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                                    <td>{{$key->IS_EveGown_RS}}</td>
-                                                                    <td>{{$key->IS_Subtotal}}</td>
-                                                                    <td>{{$key->SQ_Content_RS}}</td>
-                                                                    <td>{{$key->SQ_Confidence_RS}}</td>
-                                                                    <td>{{$key->SQ_Wit_RS}}</td>
-                                                                    <td>{{$key->SQ_Subtotal}}</td>
+                                                                    <td>{{$key->cCode}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td class="numfield">{{$key->j1_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j2_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j3_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j4_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j5_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j6_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j7_SeqIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->AverageSeqIntrvw}}</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
                                                         </table>	
+                                                        @foreach($finalJudges as $key)
+                                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                            <h6 style="text-align:center">Judge</h6>
+                                                        </div>
+                                                        @endforeach	
                                                     </div>													
                                                 </div>
                                                 <!-- end: page -->
@@ -800,38 +823,44 @@ $obj = (object) array(
                                                     <div id="print-pn-initialscore-initInt" style="overflow-x : auto">
                                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                                         <h4 style="font-weight:normal;">Initial Interview Results</h4>
-                                                        <table class="table table-bordered table-striped reports">
+                                                        <table class="table table-bordered table-striped finalreports">
                                                             <thead>
                                                                 <tr>
                                                                     <th>College</th>
                                                                     <th>Candidate</th>
-                                                                    <th>Judge 1</th>
-                                                                    <th>Judge 2</th>
-                                                                    <th>Judge 3</th>
-                                                                    <th>Judge 4</th>
-                                                                    <th>Judge 5</th>
-                                                                    <th>Judge 6</th>
-                                                                    <th>Judge 7</th>
+                                                                    <th>{{$finalJudges[0]->fName}} {{$finalJudges[0]->lName}}</th>
+                                                                    <th>{{$finalJudges[1]->fName}} {{$finalJudges[1]->lName}}</th>
+                                                                    <th>{{$finalJudges[2]->fName}} {{$finalJudges[2]->lName}}</th>
+                                                                    <th>{{$finalJudges[3]->fName}} {{$finalJudges[3]->lName}}</th>
+                                                                    <th>{{$finalJudges[4]->fName}} {{$finalJudges[4]->lName}}</th>
+                                                                    <th>{{$finalJudges[5]->fName}} {{$finalJudges[5]->lName}}</th>
+                                                                    <th>{{$finalJudges[6]->fName}} {{$finalJudges[6]->lName}}</th>
                                                                     <th>Average</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($initScores as $key)
+                                                                @foreach($initialScores as $key)
                                                                 <tr class="gradeX">
-                                                                    <td>{{$key->judge}}</td>
-                                                                    <td>{{$key->candidate}}</td>
-                                                                    <td>{{$key->IS_Production_RS}}</td>
-                                                                    <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                                    <td>{{$key->IS_EveGown_RS}}</td>
-                                                                    <td>{{$key->IS_Subtotal}}</td>
-                                                                    <td>{{$key->SQ_Content_RS}}</td>
-                                                                    <td>{{$key->SQ_Confidence_RS}}</td>
-                                                                    <td>{{$key->SQ_Wit_RS}}</td>
-                                                                    <td>{{$key->SQ_Subtotal}}</td>
+                                                                    <td>{{$key->cCode}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td class="numfield">{{$key->j1_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j2_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j3_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j4_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j5_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j6_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->j7_InitIntrvw}}</td>
+                                                                    <td class="numfield">{{$key->AverageInitIntrvw}}</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
                                                         </table>	
+                                                        @foreach($finalJudges as $key)
+                                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                            <h6 style="text-align:center">Judge</h6>
+                                                        </div>
+                                                        @endforeach	
                                                     </div>													
                                                 </div>
                                                 <!-- end: page -->
@@ -874,6 +903,12 @@ $obj = (object) array(
                                                                 @endforeach
                                                             </tbody>
                                                         </table>	
+                                                        @foreach($finalJudges as $key)
+                                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                            <h6 style="text-align:center">Judge</h6>
+                                                        </div>
+                                                        @endforeach	
                                                     </div>													
                                                 </div>
                                                 <!-- end: page -->
@@ -892,16 +927,18 @@ $obj = (object) array(
                                     <div id="print-pn-stdQuestion">
                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                         <h4 style="font-weight:normal;">Standard Question Results</h4>
-                                        <table class="table table-bordered table-striped prepReports">
+                                        <table class="table table-bordered table-striped finalreports">
                                             <thead>
                                                 <tr>
                                                     <th>College</th>
                                                     <th>Candidate</th>
-                                                    <th>{{$talent[0]->fName}} {{$talent[0]->lName}}</th>
-                                                    <th>{{$talent[1]->fName}} {{$talent[1]->lName}}</th>
-                                                    <th>{{$talent[2]->fName}} {{$talent[2]->lName}}</th>
-                                                    <th>{{$talent[2]->fName}} {{$talent[2]->lName}}</th>
-                                                    <th>{{$talent[2]->fName}} {{$talent[2]->lName}}</th>
+                                                    <th>{{$finalJudges[0]->fName}} {{$finalJudges[0]->lName}}</th>
+                                                    <th>{{$finalJudges[1]->fName}} {{$finalJudges[1]->lName}}</th>
+                                                    <th>{{$finalJudges[2]->fName}} {{$finalJudges[2]->lName}}</th>
+                                                    <th>{{$finalJudges[3]->fName}} {{$finalJudges[3]->lName}}</th>
+                                                    <th>{{$finalJudges[4]->fName}} {{$finalJudges[4]->lName}}</th>
+                                                    <th>{{$finalJudges[5]->fName}} {{$finalJudges[5]->lName}}</th>
+                                                    <th>{{$finalJudges[6]->fName}} {{$finalJudges[6]->lName}}</th>
                                                     <th>Average</th>
                                                 </tr>
                                             </thead>
@@ -921,12 +958,12 @@ $obj = (object) array(
                                             </tbody>
                                         </table>
                                         <div class="row">
-                                        @foreach($talent as $key)
-                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
-                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
-                                            <h6 style="text-align:center">SQ Judge</h6>
-                                        </div>
-                                        @endforeach
+                                        @foreach($finalJudges as $key)
+                                            <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                <h6 style="text-align:center">Judge</h6>
+                                            </div>
+                                        @endforeach	
                                         </div>
                                     </div>
                                 </div><!--end of stdQuestion pane-->
@@ -943,16 +980,16 @@ $obj = (object) array(
                                             <div id="print-pn-summ">
                                                 <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                                 <h4 style="font-weight:normal;">Pageant Night -- Final Score</h4>
-                                                <table class="table table-bordered table-striped reports">
+                                                <table class="table table-bordered table-striped finalscorereports">
                                                     <thead>
                                                         <tr>
-                                                            <th>Judge</th>
+                                                            <th>College</th>
                                                             <th>Candidate</th>
                                                             <th>Initial Score</th>
                                                             <th>Standard Question</th>
                                                             <th>Total</th>
                                                         </tr>
-                                                    </thead>
+                                                    </thead> 
                                                     <tbody>
                                                         @foreach($initScores as $key)
                                                         <tr class="gradeX">
@@ -965,6 +1002,12 @@ $obj = (object) array(
                                                         @endforeach
                                                     </tbody>
                                                 </table>	
+                                                @foreach($finalJudges as $key)
+                                                <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                    <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                    <h6 style="text-align:center">Judge</h6>
+                                                </div>
+                                                @endforeach	
                                             </div>													
                                         </div>
                                         <!-- end: page -->
@@ -1323,6 +1366,11 @@ document.getElementById("btnPrint-pn-initialScore-summ").onclick = function () {
 
 document.getElementById("btnPrint-pn-stdQuestion").onclick = function () {
     $printFN = document.getElementById("print-pn-stdQuestion");
+    printElement($printFN);
+}
+
+document.getElementById("btnPrint-pn-summ").onclick = function () {
+    $printFN = document.getElementById("print-pn-summ");
     printElement($printFN);
 }
 

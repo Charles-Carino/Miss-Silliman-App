@@ -32,7 +32,8 @@ class OrganizersController extends Controller
 									->orderby('PL_RS','desc')
 									->get();
 
-                  $reports = DB::select(DB::raw("select
+        $reports = DB::select(DB::raw(
+			"select
           			t0.id,
           			t0.cCode,
                       t0.candidates,
@@ -164,6 +165,366 @@ class OrganizersController extends Controller
                   	t2.candidates=t3.candidates and t3.candidates=t4.candidates and
                   	t4.candidates=t5.candidates and t5.candidates=t6.candidates"));
 
-        return view('maintenance.maintenance',compact('judges','organizers','candidates', 'colleges','prepageants','initScores','prePajFinal', 'reports','pressLaunchScores'));
+		
+	$initialScores = DB::select(DB::raw("
+		select
+			t0.id,
+			t0.cCode,
+			t0.candidates,
+			t1.EveGown as 'j1_EveGown',
+			t2.EveGown as 'j2_EveGown',
+			t3.EveGown as 'j3_EveGown',
+			t4.EveGown as 'j4_EveGown',
+			t5.EveGown as 'j5_EveGown',
+			t6.EveGown as 'j6_EveGown',
+			t7.EveGown as 'j7_EveGown',
+			(('j1_EveGown' + 'j2_EveGown' + 'j3_EveGown' + 'j4_EveGown' + 'j5_EveGown' + 'j6_EveGown' + 'j7_EveGown')/7) as 'AverageEveGown',
+			t1.InitIntrvw as 'j1_InitIntrvw',
+			t2.InitIntrvw as 'j2_InitIntrvw',
+			t3.InitIntrvw as 'j3_InitIntrvw',
+			t4.InitIntrvw as 'j4_InitIntrvw',
+			t5.InitIntrvw as 'j5_InitIntrvw',
+			t6.InitIntrvw as 'j6_InitIntrvw',
+			t7.InitIntrvw as 'j7_InitIntrvw',
+			(('j1_InitIntrvw' + 'j2_InitIntrvw' + 'j3_InitIntrvw' + 'j4_InitIntrvw' + 'j5_InitIntrvw' + 'j6_InitIntrvw' + 'j7_InitIntrvw')/7) as 'AverageInitIntrvw',
+			t1.Production as 'j1_Production',
+			t2.Production as 'j2_Production',
+			t3.Production as 'j3_Production',
+			t4.Production as 'j4_Production',
+			t5.Production as 'j5_Production',
+			t6.Production as 'j6_Production',
+			t7.Production as 'j7_Production',
+			(('j1_Production' + 'j2_Production' + 'j3_Production' + 'j4_Production' + 'j5_Production' + 'j6_Production' + 'j7_Production')/7) as 'AverageProduction',
+			t1.SeqIntrvw as 'j1_SeqIntrvw',
+			t2.SeqIntrvw as 'j2_SeqIntrvw',
+			t3.SeqIntrvw as 'j3_SeqIntrvw',
+			t4.SeqIntrvw as 'j4_SeqIntrvw',
+			t5.SeqIntrvw as 'j5_SeqIntrvw',
+			t6.SeqIntrvw as 'j6_SeqIntrvw',
+			t7.SeqIntrvw as 'j7_SeqIntrvw',
+			(('j1_SeqIntrvw' + 'j2_SeqIntrvw' + 'j3_SeqIntrvw' + 'j4_SeqIntrvw' + 'j5_SeqIntrvw' + 'j6_SeqIntrvw' + 'j7_SeqIntrvw')/7) as 'AverageSeqIntrvw',
+			t1.ThemeWr as 'j1_ThemeWr',
+			t2.ThemeWr as 'j2_ThemeWr',
+			t3.ThemeWr as 'j3_ThemeWr',
+			t4.ThemeWr as 'j4_ThemeWr',
+			t5.ThemeWr as 'j5_ThemeWr',
+			t6.ThemeWr as 'j6_ThemeWr',
+			t7.ThemeWr as 'j7_ThemeWr',
+			(('j1_ThemeWr' + 'j2_ThemeWr' + 'j3_ThemeWr' + 'j4_ThemeWr' + 'j5_ThemeWr' + 'j6_ThemeWr' + 'j7_ThemeWr')/7) as 'AverageThemeWr',
+			t1.SQ_Confidence as 'j1_SQ_Confidence',
+			t2.SQ_Confidence as 'j2_SQ_Confidence',
+			t3.SQ_Confidence as 'j3_SQ_Confidence',
+			t4.SQ_Confidence as 'j4_SQ_Confidence',
+			t5.SQ_Confidence as 'j5_SQ_Confidence',
+			t6.SQ_Confidence as 'j6_SQ_Confidence',
+			t7.SQ_Confidence as 'j7_SQ_Confidence',
+			t1.SQ_Content as 'j1_SQ_Content',
+			t2.SQ_Content as 'j2_SQ_Content',
+			t3.SQ_Content as 'j3_SQ_Content',
+			t4.SQ_Content as 'j4_SQ_Content',
+			t5.SQ_Content as 'j5_SQ_Content',
+			t6.SQ_Content as 'j6_SQ_Content',
+			t7.SQ_Content as 'j7_SQ_Content',
+			t1.SQ_Wit as 'j1_SQ_Wit',
+			t2.SQ_Wit as 'j2_SQ_Wit',
+			t3.SQ_Wit as 'j3_SQ_Wit',
+			t4.SQ_Wit as 'j4_SQ_Wit',
+			t5.SQ_Wit as 'j5_SQ_Wit',
+			t6.SQ_Wit as 'j6_SQ_Wit',
+			t7.SQ_Wit as 'j7_SQ_Wit'
+
+			from
+			/*special project*/
+				(select can.id,concat(upper(can.lName),', ',can.fName) candidates
+					,init.judge
+					,col.`collegeCode` cCode
+				from initial_scores init
+				left join candidates can on can.id=init.candidate
+				left join colleges col on col.id=can.college
+				group by candidates
+				ORDER BY can.id) t0
+			/*end*/
+				,
+			/*judge1*/
+				(select can.id,concat(upper(can.lName),', ',can.fName) candidates
+				,init.judge
+				,IS_EveGown_Grace
+				,IS_EveGown_Poise
+				,IS_EveGown_Projection
+				,IS_EveGown_Regal
+				,(IS_EveGown_Grace+IS_EveGown_Poise+IS_EveGown_Projection+IS_EveGown_Regal) EveGown
+				,IS_InitIntrvw_Confidence
+				,IS_InitIntrvw_Content
+				,IS_InitIntrvw_Delivery
+				,IS_InitIntrvw_Wit
+				,(IS_InitIntrvw_Confidence+IS_InitIntrvw_Content+IS_InitIntrvw_Delivery+IS_InitIntrvw_Wit) InitIntrvw
+				,IS_Production_Confidence
+				,IS_Production_Mastery
+				,IS_Production_OverallImpact
+				,IS_Production_StagePresence
+				,(IS_Production_Confidence+IS_Production_Mastery+IS_Production_OverallImpact+IS_Production_StagePresence) Production
+				,IS_SeqIntrvw_Confidence
+				,IS_SeqIntrvw_Content
+				,IS_SeqIntrvw_Delivery
+				,IS_SeqIntrvw_Wit
+				,(IS_SeqIntrvw_Confidence+IS_SeqIntrvw_Content+IS_SeqIntrvw_Delivery+IS_SeqIntrvw_Wit) SeqIntrvw
+				,IS_ThemeWr_Grace
+				,IS_ThemeWr_Poise
+				,IS_ThemeWr_Projection
+				,IS_ThemeWr_Relevance
+				,(IS_ThemeWr_Grace+IS_ThemeWr_Poise+IS_ThemeWr_Projection+IS_ThemeWr_Relevance) ThemeWr
+				,SQ_Confidence
+				,SQ_Content
+				,SQ_Wit
+			from initial_scores init
+			left join candidates can on can.id=init.candidate
+			left join colleges col on col.id=can.college
+			WHERE init.judge = 8
+			group by candidates
+			ORDER BY can.id) t1
+			/*end*/
+				,
+			/*judge2*/
+				(select can.id,concat(upper(can.lName),', ',can.fName) candidates
+				,init.judge
+				,IS_EveGown_Grace
+				,IS_EveGown_Poise
+				,IS_EveGown_Projection
+				,IS_EveGown_Regal
+				,(IS_EveGown_Grace+IS_EveGown_Poise+IS_EveGown_Projection+IS_EveGown_Regal) EveGown
+				,IS_InitIntrvw_Confidence
+				,IS_InitIntrvw_Content
+				,IS_InitIntrvw_Delivery
+				,IS_InitIntrvw_Wit
+				,(IS_InitIntrvw_Confidence+IS_InitIntrvw_Content+IS_InitIntrvw_Delivery+IS_InitIntrvw_Wit) InitIntrvw
+				,IS_Production_Confidence
+				,IS_Production_Mastery
+				,IS_Production_OverallImpact
+				,IS_Production_StagePresence
+				,(IS_Production_Confidence+IS_Production_Mastery+IS_Production_OverallImpact+IS_Production_StagePresence) Production
+				,IS_SeqIntrvw_Confidence
+				,IS_SeqIntrvw_Content
+				,IS_SeqIntrvw_Delivery
+				,IS_SeqIntrvw_Wit
+				,(IS_SeqIntrvw_Confidence+IS_SeqIntrvw_Content+IS_SeqIntrvw_Delivery+IS_SeqIntrvw_Wit) SeqIntrvw
+				,IS_ThemeWr_Grace
+				,IS_ThemeWr_Poise
+				,IS_ThemeWr_Projection
+				,IS_ThemeWr_Relevance
+				,(IS_ThemeWr_Grace+IS_ThemeWr_Poise+IS_ThemeWr_Projection+IS_ThemeWr_Relevance) ThemeWr
+				,SQ_Confidence
+				,SQ_Content
+				,SQ_Wit
+			from initial_scores init
+			left join candidates can on can.id=init.candidate
+			left join colleges col on col.id=can.college
+			WHERE init.judge = 9
+			group by candidates
+			ORDER BY can.id) t2
+			/*end*/
+				,
+			/*judge3*/
+				(select can.id,concat(upper(can.lName),', ',can.fName) candidates
+				,init.judge
+				,IS_EveGown_Grace
+				,IS_EveGown_Poise
+				,IS_EveGown_Projection
+				,IS_EveGown_Regal
+				,(IS_EveGown_Grace+IS_EveGown_Poise+IS_EveGown_Projection+IS_EveGown_Regal) EveGown
+				,IS_InitIntrvw_Confidence
+				,IS_InitIntrvw_Content
+				,IS_InitIntrvw_Delivery
+				,IS_InitIntrvw_Wit
+				,(IS_InitIntrvw_Confidence+IS_InitIntrvw_Content+IS_InitIntrvw_Delivery+IS_InitIntrvw_Wit) InitIntrvw
+				,IS_Production_Confidence
+				,IS_Production_Mastery
+				,IS_Production_OverallImpact
+				,IS_Production_StagePresence
+				,(IS_Production_Confidence+IS_Production_Mastery+IS_Production_OverallImpact+IS_Production_StagePresence) Production
+				,IS_SeqIntrvw_Confidence
+				,IS_SeqIntrvw_Content
+				,IS_SeqIntrvw_Delivery
+				,IS_SeqIntrvw_Wit
+				,(IS_SeqIntrvw_Confidence+IS_SeqIntrvw_Content+IS_SeqIntrvw_Delivery+IS_SeqIntrvw_Wit) SeqIntrvw
+				,IS_ThemeWr_Grace
+				,IS_ThemeWr_Poise
+				,IS_ThemeWr_Projection
+				,IS_ThemeWr_Relevance
+				,(IS_ThemeWr_Grace+IS_ThemeWr_Poise+IS_ThemeWr_Projection+IS_ThemeWr_Relevance) ThemeWr
+				,SQ_Confidence
+				,SQ_Content
+				,SQ_Wit
+			from initial_scores init
+			left join candidates can on can.id=init.candidate
+			left join colleges col on col.id=can.college
+			WHERE init.judge = 10
+			group by candidates
+			ORDER BY can.id) t3
+			/*end*/
+				,
+			/*judge4*/
+				(select can.id,concat(upper(can.lName),', ',can.fName) candidates
+				,init.judge
+				,IS_EveGown_Grace
+				,IS_EveGown_Poise
+				,IS_EveGown_Projection
+				,IS_EveGown_Regal
+				,(IS_EveGown_Grace+IS_EveGown_Poise+IS_EveGown_Projection+IS_EveGown_Regal) EveGown
+				,IS_InitIntrvw_Confidence
+				,IS_InitIntrvw_Content
+				,IS_InitIntrvw_Delivery
+				,IS_InitIntrvw_Wit
+				,(IS_InitIntrvw_Confidence+IS_InitIntrvw_Content+IS_InitIntrvw_Delivery+IS_InitIntrvw_Wit) InitIntrvw
+				,IS_Production_Confidence
+				,IS_Production_Mastery
+				,IS_Production_OverallImpact
+				,IS_Production_StagePresence
+				,(IS_Production_Confidence+IS_Production_Mastery+IS_Production_OverallImpact+IS_Production_StagePresence) Production
+				,IS_SeqIntrvw_Confidence
+				,IS_SeqIntrvw_Content
+				,IS_SeqIntrvw_Delivery
+				,IS_SeqIntrvw_Wit
+				,(IS_SeqIntrvw_Confidence+IS_SeqIntrvw_Content+IS_SeqIntrvw_Delivery+IS_SeqIntrvw_Wit) SeqIntrvw
+				,IS_ThemeWr_Grace
+				,IS_ThemeWr_Poise
+				,IS_ThemeWr_Projection
+				,IS_ThemeWr_Relevance
+				,(IS_ThemeWr_Grace+IS_ThemeWr_Poise+IS_ThemeWr_Projection+IS_ThemeWr_Relevance) ThemeWr
+				,SQ_Confidence
+				,SQ_Content
+				,SQ_Wit
+			from initial_scores init
+			left join candidates can on can.id=init.candidate
+			left join colleges col on col.id=can.college
+			WHERE init.judge = 11
+			group by candidates
+			ORDER BY can.id) t4
+			/*end*/
+				,
+			/*judge5*/
+				(select can.id,concat(upper(can.lName),', ',can.fName) candidates
+				,init.judge
+				,IS_EveGown_Grace
+				,IS_EveGown_Poise
+				,IS_EveGown_Projection
+				,IS_EveGown_Regal
+				,(IS_EveGown_Grace+IS_EveGown_Poise+IS_EveGown_Projection+IS_EveGown_Regal) EveGown
+				,IS_InitIntrvw_Confidence
+				,IS_InitIntrvw_Content
+				,IS_InitIntrvw_Delivery
+				,IS_InitIntrvw_Wit
+				,(IS_InitIntrvw_Confidence+IS_InitIntrvw_Content+IS_InitIntrvw_Delivery+IS_InitIntrvw_Wit) InitIntrvw
+				,IS_Production_Confidence
+				,IS_Production_Mastery
+				,IS_Production_OverallImpact
+				,IS_Production_StagePresence
+				,(IS_Production_Confidence+IS_Production_Mastery+IS_Production_OverallImpact+IS_Production_StagePresence) Production
+				,IS_SeqIntrvw_Confidence
+				,IS_SeqIntrvw_Content
+				,IS_SeqIntrvw_Delivery
+				,IS_SeqIntrvw_Wit
+				,(IS_SeqIntrvw_Confidence+IS_SeqIntrvw_Content+IS_SeqIntrvw_Delivery+IS_SeqIntrvw_Wit) SeqIntrvw
+				,IS_ThemeWr_Grace
+				,IS_ThemeWr_Poise
+				,IS_ThemeWr_Projection
+				,IS_ThemeWr_Relevance
+				,(IS_ThemeWr_Grace+IS_ThemeWr_Poise+IS_ThemeWr_Projection+IS_ThemeWr_Relevance) ThemeWr
+				,SQ_Confidence
+				,SQ_Content
+				,SQ_Wit
+			from initial_scores init
+			left join candidates can on can.id=init.candidate
+			left join colleges col on col.id=can.college
+			WHERE init.judge = 12
+			group by candidates
+			ORDER BY can.id) t5
+			/*end*/
+				,
+			/*judge6*/
+				(select can.id,concat(upper(can.lName),', ',can.fName) candidates
+				,init.judge
+				,IS_EveGown_Grace
+				,IS_EveGown_Poise
+				,IS_EveGown_Projection
+				,IS_EveGown_Regal
+				,(IS_EveGown_Grace+IS_EveGown_Poise+IS_EveGown_Projection+IS_EveGown_Regal) EveGown
+				,IS_InitIntrvw_Confidence
+				,IS_InitIntrvw_Content
+				,IS_InitIntrvw_Delivery
+				,IS_InitIntrvw_Wit
+				,(IS_InitIntrvw_Confidence+IS_InitIntrvw_Content+IS_InitIntrvw_Delivery+IS_InitIntrvw_Wit) InitIntrvw
+				,IS_Production_Confidence
+				,IS_Production_Mastery
+				,IS_Production_OverallImpact
+				,IS_Production_StagePresence
+				,(IS_Production_Confidence+IS_Production_Mastery+IS_Production_OverallImpact+IS_Production_StagePresence) Production
+				,IS_SeqIntrvw_Confidence
+				,IS_SeqIntrvw_Content
+				,IS_SeqIntrvw_Delivery
+				,IS_SeqIntrvw_Wit
+				,(IS_SeqIntrvw_Confidence+IS_SeqIntrvw_Content+IS_SeqIntrvw_Delivery+IS_SeqIntrvw_Wit) SeqIntrvw
+				,IS_ThemeWr_Grace
+				,IS_ThemeWr_Poise
+				,IS_ThemeWr_Projection
+				,IS_ThemeWr_Relevance
+				,(IS_ThemeWr_Grace+IS_ThemeWr_Poise+IS_ThemeWr_Projection+IS_ThemeWr_Relevance) ThemeWr
+				,SQ_Confidence
+				,SQ_Content
+				,SQ_Wit
+			from initial_scores init
+			left join candidates can on can.id=init.candidate
+			left join colleges col on col.id=can.college
+			WHERE init.judge = 13
+			group by candidates
+			ORDER BY can.id) t6
+			/*end*/
+				,
+			/*judge7*/
+				(select can.id,concat(upper(can.lName),', ',can.fName) candidates
+				,init.judge
+				,IS_EveGown_Grace
+				,IS_EveGown_Poise
+				,IS_EveGown_Projection
+				,IS_EveGown_Regal
+				,(IS_EveGown_Grace+IS_EveGown_Poise+IS_EveGown_Projection+IS_EveGown_Regal) EveGown
+				,IS_InitIntrvw_Confidence
+				,IS_InitIntrvw_Content
+				,IS_InitIntrvw_Delivery
+				,IS_InitIntrvw_Wit
+				,(IS_InitIntrvw_Confidence+IS_InitIntrvw_Content+IS_InitIntrvw_Delivery+IS_InitIntrvw_Wit) InitIntrvw
+				,IS_Production_Confidence
+				,IS_Production_Mastery
+				,IS_Production_OverallImpact
+				,IS_Production_StagePresence
+				,(IS_Production_Confidence+IS_Production_Mastery+IS_Production_OverallImpact+IS_Production_StagePresence) Production
+				,IS_SeqIntrvw_Confidence
+				,IS_SeqIntrvw_Content
+				,IS_SeqIntrvw_Delivery
+				,IS_SeqIntrvw_Wit
+				,(IS_SeqIntrvw_Confidence+IS_SeqIntrvw_Content+IS_SeqIntrvw_Delivery+IS_SeqIntrvw_Wit) SeqIntrvw
+				,IS_ThemeWr_Grace
+				,IS_ThemeWr_Poise
+				,IS_ThemeWr_Projection
+				,IS_ThemeWr_Relevance
+				,(IS_ThemeWr_Grace+IS_ThemeWr_Poise+IS_ThemeWr_Projection+IS_ThemeWr_Relevance) ThemeWr
+				,SQ_Confidence
+				,SQ_Content
+				,SQ_Wit
+			from initial_scores init
+			left join candidates can on can.id=init.candidate
+			left join colleges col on col.id=can.college
+			WHERE init.judge = 14
+			group by candidates
+			ORDER BY can.id) t7
+			/*end*/
+
+			where
+				t0.candidates=t1.candidates and t1.candidates=t2.candidates and
+				t2.candidates=t3.candidates and t3.candidates=t4.candidates and
+				t4.candidates=t5.candidates and t5.candidates=t6.candidates and
+				t6.candidates=t7.candidates"
+			));
+
+        return view('maintenance.maintenance',compact('judges','organizers','candidates', 'colleges','prepageants','initScores','prePajFinal', 'reports','pressLaunchScores','initialScores'));
       }
 }

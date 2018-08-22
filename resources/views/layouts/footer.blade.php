@@ -50,6 +50,18 @@ $(document).ready(function() {
       'order': [2,"desc"],
       "info":     false
     });
+    $('table.finalreports').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [9,"desc"],
+      "info":     false
+    });
+    $('table.finalscorereports').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [4,"desc"],
+      "info":     false
+    });
     $('.input-row').css('margin-bottom','5px');
     $('.preList').click(function(event){
       event.preventDefault();

@@ -40,6 +40,24 @@
     $report_Speech = $reports;
 
 ?>
+
+<?php
+$obj = (object) array(
+    'can1' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
+    'can2' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
+    'can3' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
+    'can4' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
+    'can5' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
+    'can6' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
+    'can7' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
+    'can8' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
+    'can9' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
+    'can10' => (object) array('College' => 'CN', 'Candidate' => 'ARROJADO, Gabrielle', 'Judge1' => 50, 'Judge2' =>  70, 'Judge3' => 60, 'Judge4' => 80, 'Judge5' => 90),
+);
+//dd($obj); // outputs 'string(1) "1"' as of PHP 7.2.0; 'int(1)' previously
+?>
+
+
 @extends('layouts.master')
 
 @section('content')
@@ -548,11 +566,6 @@
                             </ul>
                             <div class="tab-content col-lg-12">
                                 <div class="tab-pane active" id="evt-pn-initialScore">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <h5 class="pull-left page-title">Initial Score Report</h5>
-                                        </div>
-                                    </div>
                                     <ul class="nav nav-tabs tabs tabs-top">
                                         <li class="active tab">
                                             <a href="#evt-pn-initialScore-prod" data-toggle="tab" aria-expanded="false">Production Number</a>
@@ -683,7 +696,53 @@
                                     </div>
                                 </div><!--end of initialScore pane-->
                                 <div class="tab-pane" id="evt-pn-stdQuestion">
-
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="m-b-30">
+                                                <button id="btnPrint-pn-stdQuestion" data-toggle="modal" data-target="#PPModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="print-pn-stdQuestion">
+                                        <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                        <h4 style="font-weight:normal;">Standard Question Results</h4>
+                                        <table class="table table-bordered table-striped prepReports">
+                                            <thead>
+                                                <tr>
+                                                    <th>College</th>
+                                                    <th>Candidate</th>
+                                                    <th>{{$talent[0]->fName}} {{$talent[0]->lName}}</th>
+                                                    <th>{{$talent[1]->fName}} {{$talent[1]->lName}}</th>
+                                                    <th>{{$talent[2]->fName}} {{$talent[2]->lName}}</th>
+                                                    <th>{{$talent[2]->fName}} {{$talent[2]->lName}}</th>
+                                                    <th>{{$talent[2]->fName}} {{$talent[2]->lName}}</th>
+                                                    <th>Average</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($obj as $key)
+                                                <tr class="gradeX">
+                                                    <td>{{$key->College}}</td>
+                                                    <td>{{$key->Candidate}}</td>
+                                                    <td class="numfield">{{$key->Judge1}}</td>
+                                                    <td class="numfield">{{$key->Judge2}}</td>
+                                                    <td class="numfield">{{$key->Judge3}}</td>
+                                                    <td class="numfield">{{$key->Judge4}}</td>
+                                                    <td class="numfield">{{$key->Judge5}}</td>
+                                                    <td class="numfield">5</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                        @foreach($talent as $key)
+                                        <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                            <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                            <h6 style="text-align:center">SQ Judge</h6>
+                                        </div>
+                                        @endforeach
+                                        </div>
+                                    </div>
                                 </div><!--end of stdQuestion pane-->
                                 <div class="tab-pane" id="evt-pn-summ">
                                     <div class="panel">
@@ -727,6 +786,10 @@
                                         <!-- end: page -->
                                     </div> <!-- end Panel -->
                                 </div><!--end of summary pane-->
+                                    <div class="tab-pane" id="evt-pn-stdQuestion">
+                                      
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -1054,6 +1117,11 @@ document.getElementById("btnPrint-pn-initialScore-prod").onclick = function () {
 
 document.getElementById("btnPrint-pn-initialScore-theme").onclick = function () {
     $printFN = document.getElementById("print-pn-initialscore-theme");
+    printElement($printFN);
+}
+
+document.getElementById("btnPrint-pn-stdQuestion").onclick = function () {
+    $printFN = document.getElementById("print-pn-stdQuestion");
     printElement($printFN);
 }
 

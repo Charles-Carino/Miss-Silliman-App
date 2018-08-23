@@ -78,6 +78,10 @@ class UserController extends Controller
         'candidate' => $i,
         'organizer' => $id->id
       ]);
+      InitialScores::create([
+        'candidate' => $i,
+        'judge' => $id->id
+      ]);
       if(in_array("judge",explode(",",$id->roles))){
         Prepageants::create([
           'candidate' => $i,

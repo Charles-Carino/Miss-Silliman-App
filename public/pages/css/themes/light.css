@@ -36,7 +36,7 @@ Generated From SASS
 30. Print
 31. Demo
 -------------------------------------------------------------------*/
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600');
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600'); */
 .flex-row {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -7048,7 +7048,6 @@ body.rtl .checkbox label::after {
   margin-bottom: 10px;
 }
 .form-group label:not(.error) {
-  font-family: 'Montserrat';
   font-size: 10.5px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -10807,20 +10806,22 @@ Responsive Util
   position: absolute;
   width: 100%;
   overflow: hidden;
+  background-color: #fff; 
 }
 .login-wrapper .bg-pic > img {
   height: 100%;
   opacity: 1;
 }
 .login-wrapper .login-container {
-  width: 35%;
-  height: 50%;
-  display: unset;
-  position: unset;
-  margin-left: 30%;
-  margin-top: 10%;
-  float: left;
+    width: 35%;
+    height: 50%;
+    display: unset;
+    position: unset;
+    margin-left: 30%;
+    margin-top: 30%;
+    float: left;
 }
+
 .login-wrapper .bg-caption {
   width: 500px;
 }

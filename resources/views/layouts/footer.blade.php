@@ -32,6 +32,36 @@
 $(document).ready(function() {
 
     $('table.datatable').DataTable();
+    $('table.specialprojects').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [2,"desc"],
+      "info":     false
+    });
+    $('table.prepReports').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [5,"desc"],
+      "info": false
+    });
+    $('table.ranking').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [2,"desc"],
+      "info":     false
+    });
+    $('table.finalreports').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [9,"desc"],
+      "info":     false
+    });
+    $('table.finalscorereports').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [4,"desc"],
+      "info":     false
+    });
     $('.input-row').css('margin-bottom','5px');
     $('.preList').click(function(event){
       event.preventDefault();
@@ -58,125 +88,301 @@ $(document).ready(function() {
       $('.total').removeClass('col-xs-1 col-md-1');
       $('.total').addClass('col-xs-5 col-md-5');
     });
-    
-    $(".form-line").on("input",".input_1",function(){
-        var totalSum = 0;
-        $(".input_1").each(function(){
+
+    $(".form-line").on("input",".form-control",function(){
+      var totalSum = 0;
+      var max = $(this).attr('max');
+      var min = $(this).attr('min');
+      var num =  $(this).val();
+      if(parseFloat(num)<min || parseFloat(num)>max ){
+          $(this).css("background-color","#f2dede");
+          $(this).val('').focus();
+          $(this).animate(function(){
+              $(this).removeAttr("style").an;
+          },1000);
+      }else{
+        $(this).removeAttr("style");
+        var getParam = $(this).attr("class").split('input_');
+        var prodInput = $(this).attr("class").split('prod_input_');
+        var themeInput = $(this).attr("class").split('theme_input_');
+        var eveningInput = $(this).attr("class").split('evening_input_');
+        var initInput = $(this).attr("class").split('init_input_');
+        var seqInput = $(this).attr("class").split('seq_input_');
+        var sqInput = $(this).attr("class").split('sq_input_');
+        rowID = getParam[1];
+        prodID = prodInput[2];
+        themeID = themeInput[2];
+        eveID = eveningInput[2];
+        seqID = seqInput[2];
+        initID = initInput[2];
+        sqID = sqInput[2];
+        if(prodInput[0].indexOf("production") >= 0){
+          $(".pro_input_"+prodID).each(function(){
             var inputVal = $(this).val();
             if($.isNumeric(inputVal))
               totalSum += parseFloat(inputVal);
-        });
-        $("#input_total1").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_2",function(){
-        var totalSum = 0;
-        $(".input_2").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total2").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_3",function(){
-        var totalSum = 0;
-        $(".input_3").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total3").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_4",function(){
-        var totalSum = 0;
-        $(".input_4").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total4").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_5",function(){
-        var totalSum = 0;
-        $(".input_5").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total5").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_6",function(){
-        var totalSum = 0;
-        $(".input_6").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total6").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_7",function(){
-        var totalSum = 0;
-        $(".input_7").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total7").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_8",function(){
-        var totalSum = 0;
-        $(".input_8").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total8").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_9",function(){
-        var totalSum = 0;
-        $(".input_9").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total9").attr('value',totalSum);
-    });
-    $(".form-line").on("input",".input_10",function(){
-        var totalSum = 0;
-        $(".input_10").each(function(){
-            var inputVal = $(this).val();
-            if($.isNumeric(inputVal))
-              totalSum += parseFloat(inputVal);
-        });
-        $("#input_total10").attr('value',totalSum);
+          });
+          $("#prodTotal"+prodID).attr('value',totalSum);
+        }
+        else if(themeInput[0].indexOf("themewear") >= 0){
+          $(".theme_input_"+themeID).each(function(){
+              var inputVal = $(this).val();
+              if($.isNumeric(inputVal))
+                totalSum += parseFloat(inputVal);
+          });
+          $("#themeTotal"+themeID).attr('value',totalSum);
+        }else if(eveningInput[0].indexOf("eveninggown") >= 0){
+          $(".evening_input_"+eveID).each(function(){
+              var inputVal = $(this).val();
+              if($.isNumeric(inputVal))
+                totalSum += parseFloat(inputVal);
+          });
+          $("#eveningTotal"+eveID).attr('value',totalSum);
+        }else if(seqInput[0].indexOf("seqintrvw") >= 0){
+          $(".seq_input_"+seqID).each(function(){
+              var inputVal = $(this).val();
+              if($.isNumeric(inputVal))
+                totalSum += parseFloat(inputVal);
+          });
+          $("#seqTotal"+seqID).attr('value',totalSum);
+        }else if(initInput[0].indexOf("initintrvw") >= 0){
+          $(".init_input_"+initID).each(function(){
+              var inputVal = $(this).val();
+              if($.isNumeric(inputVal))
+                totalSum += parseFloat(inputVal);
+          });
+          $("#initTotal"+initID).attr('value',totalSum);
+        }else if(sqInput[0].indexOf("stanquestion") >= 0){
+          $(".sq_input_"+sqID).each(function(){
+              var inputVal = $(this).val();
+              if($.isNumeric(inputVal))
+                totalSum += parseFloat(inputVal);
+          });
+          $("#sqTotal"+sqID).attr('value',totalSum);
+        }else{
+          $(".input_"+rowID).each(function(){
+              var inputVal = $(this).val();
+              if($.isNumeric(inputVal))
+                totalSum += parseFloat(inputVal);
+          });
+          $("#input_total"+rowID).attr('value',totalSum);
+        }
+      }
     });
 
-    $("button").click(function(){
+    $(".input").click(function(){
       var getParam = $(this).attr("data-rel");
       var paramArr = getParam.split('|');
       var judge = paramArr[0];
       var rowID = paramArr[1];
+      var judgeEvent = paramArr[2];
       var values = [];
 
-      for(var i = 1; i < 5; i++)
-        values[i] = $("#row"+rowID).find("input")[i]['value'];
+      if(judgeEvent == "Special Projects"){
+        var limit = $("#sprow"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#sprow"+rowID).find("input")[i]['value'];
+      }else if(judgeEvent == "Press Launch"){
+        var limit = $("#plrow"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#plrow"+rowID).find("input")[i]['value'];
+      }else if(judgeEvent == "Production"){
+        var limit = $("#prodRow"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#prodRow"+rowID).find("input")[i]['value'];
+      }else if(judgeEvent == "Theme Wear"){
+        var limit = $("#themeRow"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#themeRow"+rowID).find("input")[i]['value'];
+      }else if(judgeEvent == "Evening Gown"){
+        var limit = $("#eveRow"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#eveRow"+rowID).find("input")[i]['value'];
+      }else if(judgeEvent == "Sequential Interview"){
+        var limit = $("#seqRow"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#seqRow"+rowID).find("input")[i]['value'];
+      }else if(judgeEvent == "Initial Interview"){
+        var limit = $("#initRow"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#initRow"+rowID).find("input")[i]['value'];
+      }else if(judgeEvent == "Standard Question"){
+        var limit = $("#stanRow"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#stanRow"+rowID).find("input")[i]['value'];
+      }else if(judgeEvent == "Prep Deductions"){
+        // console.log($("#preDeduc"+rowID).find("input"));
+        var limit = $("#preDeduc"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#preDeduc"+rowID).find("input")[i]['value'];
+      }else if(judgeEvent == "Final Deductions"){
+        // console.log($("#finDedRow"+rowID).find("input").length);
+        var limit = $("#finDedRow"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#finDedRow"+rowID).find("input")[i]['value'];
+      }else{
+        var limit = $("#row"+rowID).find("input").length;
+        for(var i = 0; i < limit; i++)
+          values[i] = $("#row"+rowID).find("input")[i]['value'];
+      }
+      $.ajax({
+        url: "{{url('/saveCandidate')}}",
+        type: 'post',
+        postType: 'json',
+        data: {
+          "_token": "{{csrf_token()}}",
+          "values": values,
+          "row": rowID,
+          "judge": judge,
+          "event": judgeEvent,
+        },
+        success:function(data){
+            if(judgeEvent == "Special Projects"){
+              $("#sprow"+rowID+" .caption #input_success").remove();
+              $("#sprow"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }else if(judgeEvent == "Press Launch"){
+              $("#plrow"+rowID+" .caption #input_success").remove();
+              $("#plrow"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }else if(judgeEvent == "Production"){
+              $("#prodRow"+rowID+" .caption #input_success").remove();
+              $("#prodRow"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }else if(judgeEvent == "Theme Wear"){
+              $("#themeRow"+rowID+" .caption #input_success").remove();
+              $("#themeRow"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }else if(judgeEvent == "Evening Gown"){
+              $("#eveRow"+rowID+" .caption #input_success").remove();
+              $("#eveRow"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }else if(judgeEvent == "Sequential Interview"){
+              $("#seqRow"+rowID+" .caption #input_success").remove();
+              $("#seqRow"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }else if(judgeEvent == "Initial Interview"){
+              $("#initRow"+rowID+" .caption #input_success").remove();
+              $("#initRow"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }else if(judgeEvent == "Standard Question"){
+              $("#stanRow"+rowID+" .caption #input_success").remove();
+              $("#stanRow"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }else if(judgeEvent == "Prep Deductions"){
+              $("#preDeduc"+rowID+" .caption #input_success").remove();
+              $("#preDeduc"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }else if(judgeEvent == "Final Deductions"){
+              $("#finDedRow"+rowID+" .caption #input_success").remove();
+              $("#finDedRow"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }else{
+              $("#row"+rowID+" .caption #input_success").remove();
+              $("#row"+rowID+" .caption").append('<div id="input_success" class="alert alert-success" style="position:absolute;top:0;left: 10px;opacity: .7;padding: 3px;"><p style="color:white;text-align:center;font-size:10px;">Score saved!</p></div>').show(2000);
+            }
 
-      console.log(values);
-        $.ajax({
-          url: "{{url('/saveCandidate')}}",
-          type: 'post',
-          postType: 'json',
-          data: {
-            "_token": "{{csrf_token()}}",
-            "values": values,
-            "row": rowID,
-            "judge": judge,
-            "event": $("#row"+rowID).find("input")[0]['value'],
-          },
-          success:function(data){
-              $(this).html('<div class="alert alert-success"><strong>Record added!</strong>.</p></div>')
-          },
-          async:false
+        },
+        async:false
+      });
+    });
+    $('panel').on( 'click', '.add', function () {
+      $("#judgeForm").find("input[type=text]").val("");
+      $("#JudgeField-Username").attr("onClick='suggestJUsername()'");
+      $("#JudgeField-Username").removeAttr('readonly');
+    });
+
+    $('#judgeTable tbody').on( 'click', '.edit', function () {
+      var judge = $("#judgeTable").DataTable();
+      var data = judge.row($(this).parents('tr')).data();
+      var split = data[0].split(',');
+      $('#JudgeField-FName').val(split[1]);
+      $('#JudgeField-LName').val(split[0]);
+      $("#JudgeField-Event").val(data[1]);
+      $("#JudgeField-Username").val(data[2]);
+      $("#JudgeField-Username").removeAttr('onClick');
+      $("#JudgeField-Username").attr('readonly',true);
+      $(".editMode").val("edit");
+    });
+
+    $('#organizerTable tbody').on( 'click', 'a .edit', function () {
+      var org = $("#organizerTable").DataTable();
+      var data = org.row($(this).parents('tr')).data();
+      var split = data[0].split(',');
+      $('#OrgField-FName').val(split[1]);
+      $('#OrgField-LName').val(split[0]);
+      $("#OrgField-Event").val(data[1]);
+      $("#OrgField-Username").val(data[3]);
+    });
+
+    $("button.btnRanking").click(function(e){
+      // e.stopPropagation();
+
+      var x = $(this).attr("data-rel");
+      if(x == "pl"){
+        $("table.ranking").dataTable().fnDestroy();
+        $(".ranking").find("th.sprs,td.sprs").hide();
+        $(".ranking").find("th.plrs,td.plrs").show();
+        refreshTable(3);
+      }
+      else if(x == 'sp'){
+        $("table.ranking").dataTable().fnDestroy();
+        $(".ranking").find("th.plrs,td.plrs").hide();
+        $(".ranking").find("th.sprs,td.sprs").show();
+        refreshTable(3);
+      }else if(x == 'seq'){
+        $("table.ranking").dataTable().fnDestroy();
+        $(".ranking").find("th.prod,td.prod").hide();
+        $(".ranking").find("th.theme,td.theme").hide();
+        $(".ranking").find("th.eve,td.eve").hide();
+        $(".ranking").find("th.init,td.init").hide();
+        $(".ranking").find("th.sq,td.sq").hide();
+        $(".ranking").find("th.seq,td.seq").show();
+        refreshTable(2);
+      }else if(x == 'prod'){
+        $("table.ranking").dataTable().fnDestroy();
+        $(".ranking").find("th.seq,td.seq").hide();
+        $(".ranking").find("th.theme,td.theme").hide();
+        $(".ranking").find("th.eve,td.eve").hide();
+        $(".ranking").find("th.init,td.init").hide();
+        $(".ranking").find("th.sq,td.sq").hide();
+        $(".ranking").find("th.prod,td.prod").show();
+        refreshTable(3);
+      }else if(x == 'theme'){
+        $("table.ranking").dataTable().fnDestroy();
+        $(".ranking").find("th.prod,td.prod").hide();
+        $(".ranking").find("th.seq,td.seq").hide();
+        $(".ranking").find("th.eve,td.eve").hide();
+        $(".ranking").find("th.init,td.init").hide();
+        $(".ranking").find("th.sq,td.sq").hide();
+        $(".ranking").find("th.theme,td.theme").show();
+        refreshTable(4);
+      }else if(x == 'eve'){
+        $("table.ranking").dataTable().fnDestroy();
+        $(".ranking").find("th.prod,td.prod").hide();
+        $(".ranking").find("th.seq,td.seq").hide();
+        $(".ranking").find("th.theme,td.theme").hide();
+        $(".ranking").find("th.init,td.init").hide();
+        $(".ranking").find("th.sq,td.sq").hide();
+        $(".ranking").find("th.eve,td.eve").show();
+        refreshTable(5);
+      }else if(x == 'init'){
+        $("table.ranking").dataTable().fnDestroy();
+        $(".ranking").find("th.prod,td.prod").hide();
+        $(".ranking").find("th.seq,td.seq").hide();
+        $(".ranking").find("th.eve,td.eve").hide();
+        $(".ranking").find("th.theme,td.theme").hide();
+        $(".ranking").find("th.sq,td.sq").hide();
+        $(".ranking").find("th.init,td.init").show();
+        refreshTable(6);
+      }else if(x == 'sq'){
+        $("table.ranking").dataTable().fnDestroy();
+        $(".ranking").find("th.prod,td.prod").hide();
+        $(".ranking").find("th.seq,td.seq").hide();
+        $(".ranking").find("th.eve,td.eve").hide();
+        $(".ranking").find("th.init,td.init").hide();
+        $(".ranking").find("th.theme,td.theme").hide();
+        $(".ranking").find("th.sq,td.sq").show();
+        refreshTable(7);
+      }
+
+      function refreshTable(col){
+        $('table.ranking').DataTable({
+          'paging': false,
+          'searching': false,
+          'order': [col,"desc"]
         });
+      }
     });
 });
 </script>

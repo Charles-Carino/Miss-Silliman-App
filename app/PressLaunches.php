@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class PressLaunches extends Model
 {
   protected $fillable = [
-      'candidate', 'organizer'
+      'candidate', 'organizer','PL_RS'
   ];
 }

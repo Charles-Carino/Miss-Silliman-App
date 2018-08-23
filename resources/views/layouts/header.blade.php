@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Miss Silliman 2018 Application</title>
+    <title>Miss Silliman 2018</title>
     <!-- Favicon-->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
+    <link rel="icon" type="image/x-icon" href="public/pages/ico/152.png" />
+    <link rel="apple-touch-icon" href="public/pages/ico/60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="public/pages/ico/76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="public/pages/ico/120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="public/pages/ico/152.png">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link href="public/fonts/roboto.css" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
     <link href="public/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -40,9 +42,6 @@
     <!-- DataTables -->
     <link href="public/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
     <link href="public/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
-
-    <!-- print -->
-    <link href="/css/print.css" rel="stylesheet" media="print" type="text/css">
     <style>
         @media screen {
       #printSection {
@@ -63,7 +62,7 @@
         top:0;
       }
     }
-</style>
+    </style>
 
 
 
@@ -98,11 +97,6 @@
               <div class="navbar-header">
                   <a href="javascript:void(0);" class="bars"></a>
                   <a class="navbar-brand" href="{{url('/')}}">Miss Silliman 2018</a>
-              </div>
-              <div class="navbar-right navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="{{url('/login')}}">Logout</a>
               </div>
             </div>
           </div>

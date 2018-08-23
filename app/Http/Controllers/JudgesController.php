@@ -29,8 +29,12 @@ class JudgesController extends Controller
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('prepageants','prepageants.candidate','=','candidates.id')->where('judge',Auth::user()->id)->orderBy("seqTalent")->get();
         else if($user->event == "Speech")
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('prepageants','prepageants.candidate','=','candidates.id')->where('judge',Auth::user()->id)->orderBy("seqSpeech")->get();
-        else if($user->event == "Final")
+        else if($user->event == "Final"){
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('initial_scores','initial_scores.candidate','=','candidates.id')->where('judge',Auth::user()->id)->get();
+          $top5 = Candidates::join('colleges','colleges.id','=','candidates.college')->join('initial_scores','initial_scores.candidate','=','candidates.id')->where('judge',Auth::user()->id)->where('isTop','!=','')->get();
+          // dd($top5);
+          return view('welcome',compact('candidates','top5'));
+        }
         else
           $candidates = $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('initial_scores','initial_scores.candidate','=','candidates.id')->where('judge',Auth::user()->id)->get();
 

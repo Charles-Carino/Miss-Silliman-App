@@ -50,6 +50,24 @@ $(document).ready(function() {
       'order': [2,"desc"],
       "info":     false
     });
+    $('table.finalreports').DataTable({
+     'paging': false,
+     'searching': false,
+     'order': [9,"desc"],
+     "info":     false
+   });
+   $('table.finalscorereports').DataTable({
+     'paging': false,
+     'searching': false,
+     'order': [1,"desc"],
+     "info":     false
+   });
+   $('table.seqreport').DataTable({
+    'paging': false,
+    'searching': false,
+    'order': [8,"desc"],
+    "info":     false
+  });
     $('.input-row').css('margin-bottom','5px');
     $('.preList').click(function(event){
       event.preventDefault();
@@ -146,13 +164,6 @@ $(document).ready(function() {
           var x2=0;
           var x3=0;
 
-          //$(".sq_input_"+sqID).each(function(){
-          /*var inputVal = $(this).val();
-           if($.isNumeric(inputVal))
-           totalSum += parseFloat(inputVal);
-          }*/
-
-
           if($(this).hasClass("one")){
 
             if(!$.isNumeric($(this).val())) {
@@ -219,12 +230,6 @@ $(document).ready(function() {
           //console.log((x1)*.6+" - "+parseFloat(x2)*.2+" - "+parseFloat(x3) *.2);
 
           $("#sqTotal"+sqID).val(totalSum.toFixed(2));
-          // $(".sq_input_"+sqID).each(function(){
-          //     var inputVal = $(this).val();
-          //     if($.isNumeric(inputVal))
-          //       totalSum += parseFloat(inputVal);
-          // });
-          // $("#sqTotal"+sqID).attr('value',totalSum);
         }else{
           $(".input_"+rowID).each(function(){
               var inputVal = $(this).val();
@@ -342,6 +347,34 @@ $(document).ready(function() {
         async:false
       });
     });
+
+    $(".finalize").click(function(){
+       var all = $("#print-pn-initialscore-summ").find("input").length;
+       var values = [];
+       var key = [];
+       console.log($("#print-pn-initialscore-summ").find("input"));
+
+       for(var i = 0; i < all;i++){
+         key[i] = $("#print-pn-initialscore-summ").find("input")[i]['dataset']['rel'];
+         values[i] = $("#print-pn-initialscore-summ").find("input")[i]['value'];
+       }
+
+       $.ajax({
+         url: "{{url('/finalizeTop5')}}",
+         type: 'post',
+         postType: 'json',
+         data: {
+           "_token": "{{csrf_token()}}",
+           "key": key,
+           "values": values
+         },
+         success:function(data){
+           $('#finalizeTOP').modal('hide');
+         },
+         async:false
+       });
+    });
+
     $('panel').on( 'click', '.add', function () {
       $("#judgeForm").find("input[type=text]").val("");
       $("#JudgeField-Username").attr("onClick='suggestJUsername()'");
@@ -372,6 +405,9 @@ $(document).ready(function() {
     });
 
     $("button.btnRanking").click(function(e){
+      var hTitle = $('.tab-pane.active').find('h3:first').text();
+
+      $('.modal-body h3').text(hTitle);
       // e.stopPropagation();
       var hTitle = $(".tab-pane").attr('id');
       var x = $(this).attr("data-rel");

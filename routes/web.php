@@ -42,3 +42,4 @@ Route::get('/logout', function(){
     return redirect('/');
   });
 Route::post('/saveCandidate','PrepageantsController@save');
+Route::post('/finalizeTop5','InitialScoresController@finalize');

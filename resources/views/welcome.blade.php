@@ -6,9 +6,8 @@
     $offset=8*60*60; //converting 8 hours to seconds.
     $dateFormat="H:i:s";
     $timeNdate=gmdate($dateFormat, time()+$offset);
-
-    // dump($timeNdate);
-    // dd($time);
+    // dump(count($top5));
+    // dd($top5);
 ?>
 @extends('layouts.master')
 @section('content')
@@ -1237,7 +1236,7 @@
                                     @csrf
                                     <input type="hidden" name="judge" value="{{Auth::user()->id}}" />
                                     <input type="hidden" name="event" value="Standard Question" />
-                                    @foreach($candidates as $key)
+                                    @foreach($top5 as $key)
                                       <div id="stanRow{{$key->id}}" class="item col-xs-3 col-lg-3">
                                         <div class="thumbnail">
                                             <img data-rel="img{{$key->id}}" class="group list-group-image" src="{{$key->image}}" width="200"/>
@@ -1332,6 +1331,7 @@
             <div class="modal-body">
               <div class="panel">
                   <div class="panel-body">
+                      <h3></h3>
                       <table class="table table-bordered table-striped ranking">
                           <thead>
                               <tr>
@@ -1355,22 +1355,22 @@
                           <tbody>
                             @if(Auth::user()->userType == "judge")
                               @foreach($candidates as $key)
-                              <tr class="gradeX">
-                                <td><p>{{$key->lName}}, {{$key->fName}} {{$key->mName}}</p></td>
-                                <td>{{$key->collegeName}}</td>
-                                @if(Auth::user()->event == "Talent")
-                                  <td><p>{{$key->Talent_Confidence+$key->Talent_Mastery+$key->Talent_StagePresence+$key->Talent_OverallImpact}}</p></td>
-                                @elseif(Auth::user()->event == "Speech")
-                                  <td><p>{{$key->PSpch_Content+$key->PSpch_Delivery+$key->PSpch_Spontainety+$key->PSpch_Defense}}</p></td>
-                                @elseif(Auth::user()->event == "Final")
-                                  <td class="seq"><p>{{$key->IS_SeqIntrvw_Content+$key->IS_SeqIntrvw_Wit+$key->IS_SeqIntrvw_Delivery+$key->IS_SeqIntrvw_Confidence}}</p></td>
-                                  <td class="prod"><p>{{$key->IS_Production_Confidence+$key->IS_Production_Mastery+$key->IS_Production_StagePresence+$key->IS_Production_OverallImpact}}</p></td>
-                                  <td class="theme"><p>{{$key->IS_ThemeWr_Grace+$key->IS_ThemeWr_Projection+$key->IS_ThemeWr_Poise+$key->IS_ThemeWr_Relevance}}</p></td>
-                                  <td class="eve"><p>{{$key->IS_EveGown_Grace+$key->IS_EveGown_Projection+$key->IS_EveGown_Poise+$key->IS_EveGown_Regal}}</p></td>
-                                  <td class="init"><p>{{$key->IS_InitIntrvw_Content+$key->IS_InitIntrvw_Wit+$key->IS_InitIntrvw_Delivery+$key->IS_InitIntrvw_Confidence}}</p></td>
-                                  <td class="sq"><p>{{($key->SQ_Content * 0.6)+($key->SQ_Wit * 0.2)+($key->SQ_Confidence * 0.2)}}</p></td>
-                                @endif
-                              </tr>
+                                <tr class="gradeX">
+                                  <td><p>{{$key->lName}}, {{$key->fName}} {{$key->mName}}</p></td>
+                                  <td>{{$key->collegeName}}</td>
+                                  @if(Auth::user()->event == "Talent")
+                                    <td><p>{{$key->Talent_Confidence+$key->Talent_Mastery+$key->Talent_StagePresence+$key->Talent_OverallImpact}}</p></td>
+                                  @elseif(Auth::user()->event == "Speech")
+                                    <td><p>{{$key->PSpch_Content+$key->PSpch_Delivery+$key->PSpch_Spontainety+$key->PSpch_Defense}}</p></td>
+                                  @elseif(Auth::user()->event == "Final")
+                                    <td class="seq"><p>{{$key->IS_SeqIntrvw_Content+$key->IS_SeqIntrvw_Wit+$key->IS_SeqIntrvw_Delivery+$key->IS_SeqIntrvw_Confidence}}</p></td>
+                                    <td class="prod"><p>{{$key->IS_Production_Confidence+$key->IS_Production_Mastery+$key->IS_Production_StagePresence+$key->IS_Production_OverallImpact}}</p></td>
+                                    <td class="theme"><p>{{$key->IS_ThemeWr_Grace+$key->IS_ThemeWr_Projection+$key->IS_ThemeWr_Poise+$key->IS_ThemeWr_Relevance}}</p></td>
+                                    <td class="eve"><p>{{$key->IS_EveGown_Grace+$key->IS_EveGown_Projection+$key->IS_EveGown_Poise+$key->IS_EveGown_Regal}}</p></td>
+                                    <td class="init"><p>{{$key->IS_InitIntrvw_Content+$key->IS_InitIntrvw_Wit+$key->IS_InitIntrvw_Delivery+$key->IS_InitIntrvw_Confidence}}</p></td>
+                                    <td class="sq"><p>{{($key->SQ_Content * 0.6)+($key->SQ_Wit * 0.2)+($key->SQ_Confidence * 0.2)}}</p></td>
+                                  @endif
+                                </tr>
                               @endforeach
                             @elseif(Auth::user()->userType == "organizer")
                               @foreach($press as $key)

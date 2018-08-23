@@ -555,7 +555,7 @@
                                               <p class="lead">Score</p>
                                           </div>
                                           <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                              <input type="number" name="score_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="100" value="{{$key->deductions}}" {{$key->read}}>
+                                              <input type="number" name="score_{{$key->id}}" class="col-xs-7 col-md-7 form-control input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder='0.00' min="0" max="100" value="{{$key->SP_RS}}" {{$key->read}}>
                                           </div>
                                       </div>
                                       @if($key->read != "readonly")

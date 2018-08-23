@@ -7,6 +7,8 @@
     $dateFormat="H:i:s";
     $timeNdate=gmdate($dateFormat, time()+$offset);
 
+    // dump($timeNdate);
+    // dd($time);
 ?>
 @extends('layouts.master')
 @section('content')
@@ -608,7 +610,7 @@
                                     <span class="hidden-xs">Sequential Interview</span>
                                 </a>
                             </li>
-                            @if($timeNdate > $time)
+
                             <li class="tab">
                                 <a href="#production" data-toggle="tab" aria-expanded="false">
                                     <span class="visible-xs"><i class="fa fa-home"></i></span>
@@ -639,7 +641,7 @@
                                     <span class="hidden-xs">Standard Question</span>
                                 </a>
                             </li>
-                            @endif
+
                         </ul>
                         <div class="tab-content">
                           <div class="tab-pane active" id="sequentialInterview">
@@ -840,7 +842,7 @@
                                       </div>
                                     @endforeach
                                 </div>
-                              @if($candidates[0]->read != "readonly")
+                              @if($candidates[0]->readINIT != "readonly")
                               <div style="width:120px;margin:auto;">
                                 <div class="row" style="margin:auto;">
                                   <button type="button" data-toggle="modal" data-target="#initSubmit" class="btn bg-red waves-effect">
@@ -1247,7 +1249,7 @@
                                                         <p class="lead">Content</p>
                                                     </div>
                                                     <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                                        <input type="number" name="sq_content_{{$key->id}}" class="stanquestion col-xs-7 col-md-7 form-control sq_input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="25" value="{{$key->SQ_Content}}" {{$key->readSQ}}>
+                                                        <input id="sq1" type="number" name="sq_content_{{$key->id}}" class="one stanquestion col-xs-7 col-md-7 form-control sq_input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="100" value="{{$key->SQ_Content}}" {{$key->readSQ}}>
                                                     </div>
                                                 </div>
                                                 <div class="row input-row">
@@ -1255,7 +1257,7 @@
                                                         <p class="lead">Confidence</p>
                                                     </div>
                                                     <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                                        <input type="number" name="sq_confidence_{{$key->id}}" class="stanquestion col-xs-7 col-md-7 form-control sq_input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="25" value="{{$key->SQ_Confidence}}" {{$key->readSQ}}>
+                                                        <input id="sq2" type="number" name="sq_confidence_{{$key->id}}" class="two stanquestion col-xs-7 col-md-7 form-control sq_input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="100" value="{{$key->SQ_Confidence}}" {{$key->readSQ}}>
                                                     </div>
                                                 </div>
                                                 <div class="row input-row">
@@ -1263,7 +1265,7 @@
                                                         <p class="lead">Wit</p>
                                                     </div>
                                                     <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                                        <input type="number" name="sq_wit_{{$key->id}}" class="stanquestion col-xs-7 col-md-7 form-control sq_input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="25" value="{{$key->SQ_Wit}}" {{$key->readSQ}}>
+                                                        <input id="sq3" type="number" name="sq_wit_{{$key->id}}" class="three stanquestion col-xs-7 col-md-7 form-control sq_input_{{$key->id}}" name="number" required="" aria-required="true" aria-invalid="false" step='0.01' placeholder="0.00" min="0" max="100" value="{{$key->SQ_Wit}}" {{$key->readSQ}}>
                                                     </div>
                                                 </div>
                                                 <div class="row input-row" style="border-top: 1px solid #ccc; padding-top: 10px; background: #eee; margin-bottom: 10px;">
@@ -1271,7 +1273,7 @@
                                                         <p class="lead" style="font-weight:bold; padding-top:10px;">Total</p>
                                                     </div>
                                                     <div class="col-xs-7 col-md-7 col-input form-line focused">
-                                                        <input id="sqTotal{{$key->id}}" type="number" name="sqTotal_{{$key->id}}" class="col-xs-7 col-md-7 form-control" name="number" required="" aria-required="true" aria-invalid="false" readonly step='0.01' placeholder="0.00" value="{{$key->SQ_Content+$key->SQ_Confidence+$key->SQ_Wit}}" style="font-size:18px;">
+                                                        <input id="sqTotal{{$key->id}}" type="number" name="sqTotal_{{$key->id}}" class="col-xs-7 col-md-7 form-control" name="number" required="" aria-required="true" aria-invalid="false" readonly step='0.01' placeholder="0.00" value="{{number_format(($key->SQ_Content * 0.6)+($key->SQ_Confidence * 0.2)+($key->SQ_Wit * 0.2),2)}}" style="font-size:18px;">
                                                     </div>
                                                 </div>
                                                 @if($key->readSQ != "readonly")
@@ -1366,7 +1368,7 @@
                                   <td class="theme"><p>{{$key->IS_ThemeWr_Grace+$key->IS_ThemeWr_Projection+$key->IS_ThemeWr_Poise+$key->IS_ThemeWr_Relevance}}</p></td>
                                   <td class="eve"><p>{{$key->IS_EveGown_Grace+$key->IS_EveGown_Projection+$key->IS_EveGown_Poise+$key->IS_EveGown_Regal}}</p></td>
                                   <td class="init"><p>{{$key->IS_InitIntrvw_Content+$key->IS_InitIntrvw_Wit+$key->IS_InitIntrvw_Delivery+$key->IS_InitIntrvw_Confidence}}</p></td>
-                                  <td class="sq"><p>{{$key->SQ_Content+$key->SQ_Wit+$key->SQ_Confidence}}</p></td>
+                                  <td class="sq"><p>{{($key->SQ_Content * 0.6)+($key->SQ_Wit * 0.2)+($key->SQ_Confidence * 0.2)}}</p></td>
                                 @endif
                               </tr>
                               @endforeach

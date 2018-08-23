@@ -564,6 +564,9 @@
                                 <li class="tab">
                                     <a href="#evt-pn-summ" data-toggle="tab" aria-expanded="false">Summary</a>
                                 </li>
+                                <li class="tab">
+                                    <a href="#evt-pn-awards" data-toggle="tab" aria-expanded="false">Awards</a>
+                                </li>
                             </ul>
                             <div class="tab-content col-lg-12">
                                 <div class="tab-pane active" id="evt-pn-initialScore">
@@ -894,14 +897,14 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($initScores as $key)
+                                                                @foreach($initialScoreSummary as $key)
                                                                 <tr class="gradeX">
-                                                                    <td>{{$key->judge}}</td>
-                                                                    <td>{{$key->candidate}}</td>
-                                                                    <td>{{$key->IS_Production_RS}}</td>
-                                                                    <td>{{$key->IS_ThemeWr_RS}}</td>
-                                                                    <td>{{$key->IS_EveGown_RS}}</td>
-                                                                    <td>{{$key->SQ_Subtotal}}</td>
+                                                                    <td>{{$key->cCode}}</td>
+                                                                    <td>{{$key->candidates}}</td>
+                                                                    <td>{{$key->pressLaunch_tenpercent}}</td>
+                                                                    <td>{{$key->prepageant_thirtypercent}}</td>
+                                                                    <td>{{$key->pageantNight_sixtypercent}}</td>
+                                                                    <td>{{$key->totalInitial}}</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
@@ -927,7 +930,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="print-pn-stdQuestion">
+                                    <div id="print-pn-stdQuestion" style="overflow-x : auto">
                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                         <h4 style="font-weight:normal;">Standard Question Results</h4>
                                         <table class="table table-bordered table-striped finalreports">
@@ -946,18 +949,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($obj as $key)
+                                                @foreach($initialScores as $key)
                                                 <tr class="gradeX">
-                                                    <td>{{$key->College}}</td>
-                                                    <td>{{$key->Candidate}}</td>
-                                                    <td class="numfield">{{$key->Judge1}}</td>
-                                                    <td class="numfield">{{$key->Judge2}}</td>
-                                                    <td class="numfield">{{$key->Judge3}}</td>
-                                                    <td class="numfield">{{$key->Judge4}}</td>
-                                                    <td class="numfield">{{$key->Judge5}}</td>
-                                                    <td class="numfield">{{$key->Judge6}}</td>
-                                                    <td class="numfield">{{$key->Judge7}}</td>
-                                                    <td class="numfield">5</td>
+                                                    <td>{{$key->cCode}}</td>
+                                                    <td>{{$key->candidates}}</td>
+                                                    <td class="numfield">{{$key->j1_SQ_Total}}</td>
+                                                    <td class="numfield">{{$key->j2_SQ_Total}}</td>
+                                                    <td class="numfield">{{$key->j3_SQ_Total}}</td>
+                                                    <td class="numfield">{{$key->j4_SQ_Total}}</td>
+                                                    <td class="numfield">{{$key->j5_SQ_Total}}</td>
+                                                    <td class="numfield">{{$key->j6_SQ_Total}}</td>
+                                                    <td class="numfield">{{$key->j7_SQ_Total}}</td>
+                                                    <td class="numfield">{{$key->Average_SQ_Total}}</td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -992,17 +995,17 @@
                                                             <th>Candidate</th>
                                                             <th>Initial Score</th>
                                                             <th>Standard Question</th>
-                                                            <th>Total</th>
+                                                            <th>Final Score</th>
                                                         </tr>
                                                     </thead> 
                                                     <tbody>
-                                                        @foreach($initScores as $key)
+                                                        @foreach($finalScore as $key)
                                                         <tr class="gradeX">
-                                                            <td>{{$key->judge}}</td>
-                                                            <td>{{$key->candidate}}</td>
-                                                            <td>{{$key->IS_Production_RS}}</td>
-                                                            <td>{{$key->IS_Production_RS}}</td>
-                                                            <td>{{$key->IS_Production_RS}}</td>
+                                                            <td>{{$key->cCode}}</td>
+                                                            <td>{{$key->candidates}}</td>
+                                                            <td>{{$key->totalInitial}}</td>
+                                                            <td>{{$key->Average_SQ_Total}}</td>
+                                                            <td>{{$key->finalScore}}</td>
                                                         </tr>
                                                         @endforeach
                                                     </tbody>
@@ -1018,6 +1021,53 @@
                                         <!-- end: page -->
                                     </div> <!-- end Panel -->
                                 </div><!--end of summary pane-->
+                                <div class="tab-pane" id="evt-pn-awards">
+                                    <div class="panel">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="m-b-30">
+                                                        <button id="btnPrint-pn-awards" data-toggle="modal" data-target="#FNModal" class="btn btn-primary waves-effect waves-light">Print <i class="fa fa-print"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="print-pn-awards">
+                                                <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
+                                                <h4 style="font-weight:normal;">Pageant Night -- Awards</h4>
+                                                <br />
+                                                <h4 style="font-weight:normal;">Best Speaker</h4>
+                                                <h5 style="font-weight:normal;">cCode</h5>
+                                                <h5 style="font-weight:normal;">candidates</h5>
+                                                <br />
+                                                <h4 style="font-weight:normal;">Best in Talent</h4>
+                                                <h5 style="font-weight:normal;">cCode</h5>
+                                                <h5 style="font-weight:normal;">candidates</h5>
+                                                <br />
+                                                <h4 style="font-weight:normal;">Best in Production Number</h4>
+                                                <h5 style="font-weight:normal;">cCode</h5>
+                                                <h5 style="font-weight:normal;">candidates</h5>
+                                                <br />
+                                                <h4 style="font-weight:normal;">Best in Themed Wear</h4>
+                                                <h5 style="font-weight:normal;">cCode</h5>
+                                                <h5 style="font-weight:normal;">candidates</h5>
+                                                <br />
+                                                <h4 style="font-weight:normal;">Best in Evening Gown</h4>
+                                                <h5 style="font-weight:normal;">cCode</h5>
+                                                <h5 style="font-weight:normal;">candidates</h5>
+                                                <br />
+
+                                                @foreach($finalJudges as $key)
+                                                <div class="col-xs-4 col-md-4" style="margin-top:50px;">
+                                                    <h5 style="border-top: solid 1px #CCC;padding-top:10px;text-align:center">{{$key->fName}} {{$key->lName}}</h5>
+                                                    <h6 style="text-align:center">Judge</h6>
+                                                </div>
+                                                @endforeach	
+                                            </div>													
+                                        </div>
+                                        <!-- end: page -->
+                                    </div> <!-- end Panel -->
+                                </div><!--end of awards pane-->
+                                
                                 </div>
                             </div>
 
@@ -1371,6 +1421,11 @@ document.getElementById("btnPrint-pn-initialScore-summ").onclick = function () {
 
 document.getElementById("btnPrint-pn-stdQuestion").onclick = function () {
     $printFN = document.getElementById("print-pn-stdQuestion");
+    printElement($printFN);
+}
+
+document.getElementById("btnPrint-pn-awards").onclick = function () {
+    $printFN = document.getElementById("print-pn-awards");
     printElement($printFN);
 }
 

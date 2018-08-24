@@ -17,8 +17,6 @@ class InitialScoresController extends Controller
           $cleanedArray[$request['key'][$i]] = $request['values'][$i];
         }
       }
-      // dump($cleanedKeys);
-      dump($cleanedArray);
       $cleanedKeys = array_keys($cleanedArray);
       foreach($cleanedKeys as $key){
         Candidates::where('id',$key)->update([

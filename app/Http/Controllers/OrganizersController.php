@@ -309,6 +309,7 @@ $initialScores = DB::select(DB::raw($sql));
 		pressLaunch.candidates,
 		pressLaunch.PL_score as 'pressLaunchScore',
 		(( table_pre.AverageSpeech * .5 ) + ( table_pre.AverageTalent * .34 ) + ( table_pre.SP * .16 )) prepageantTotal,
+
 		(pressLaunch.PL_score * .1)  pressLaunch_tenpercent,
 		(((table_pn.AverageProduction*.10) + (table_pn.AverageThemeWr*.25) + (table_pn.AverageEveGown*.25) + (table_pn.AverageSeqIntrvw*.10) + (table_pn.AverageInitIntrvw*.30)) * .6) pageantNight_sixtypercent,
 		((( table_pre.AverageSpeech * .5 ) + ( table_pre.AverageTalent * .34 ) + ( table_pre.SP * .16 )) * .3) prepageant_thirtypercent,
@@ -336,6 +337,7 @@ $initialScores = DB::select(DB::raw($sql));
 			group by candidates
 			ORDER BY can.id) ded1
 				,
+
 		(select
 				t0.id,
 				t0.cCode,

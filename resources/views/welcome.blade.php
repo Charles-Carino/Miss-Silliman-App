@@ -871,7 +871,7 @@
                               </form>
                           </div>
                           <div class="tab-pane" id="production">
-                              <h3>Production</h3>
+                              <h3>Production </h3>
                               <div class="well well-sm">
                                 <div class="row">
                                   <div class="col-xs-1 col-md-1">
@@ -984,7 +984,7 @@
                             </form>
                           </div>
                           <div class="tab-pane" id="themeWear">
-                                <h3>Theme Wear</h3>
+                                <h3>Themed Wear</h3>
                                 <div class="well well-sm">
                                   <div class="row">
                                     <div class="col-xs-1 col-md-1">

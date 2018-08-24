@@ -15,33 +15,36 @@ class JudgesController extends Controller
       $user = User::where('id',Auth::user()->id)->first();
       if(!$check && !$user){
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->get();
-          return view('view',compact('candidates'));
+          return view('welcome',compact('candidates'));
       }
       else if($user->userType == "organizer"){
           $id = Auth::user()->id;
           $press = Candidates::join('colleges','colleges.id','=','candidates.college')->join('press_launches','press_launches.candidate','=','candidates.id')->join('prepageants','prepageants.candidate','=','candidates.id')->where('organizer',Auth::user()->id)->where('prepageants.judge',Auth::user()->id)->get();
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('prepageants','prepageants.candidate','=','candidates.id')->where('judge',Auth::user()->id)->get();
           $finals = Candidates::join('initial_scores','initial_scores.candidate','=','candidates.id')->where('initial_scores.judge',1)->get();
-          return view('view',compact('press','candidates','finals'));
+          return view('welcome',compact('press','candidates','finals'));
       }
       else if($user->userType == "judge"){
         if($user->event == "Talent")
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('prepageants','prepageants.candidate','=','candidates.id')->where('judge',Auth::user()->id)->orderBy("seqTalent")->get();
         else if($user->event == "Speech")
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('prepageants','prepageants.candidate','=','candidates.id')->where('judge',Auth::user()->id)->orderBy("seqSpeech")->get();
-        else if($user->event == "Final")
+        else if($user->event == "Final"){
           $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('initial_scores','initial_scores.candidate','=','candidates.id')->where('judge',Auth::user()->id)->get();
+          $top5 = Candidates::join('colleges','colleges.id','=','candidates.college')->join('initial_scores','initial_scores.candidate','=','candidates.id')->where('judge',Auth::user()->id)->where('isTop','!=','')->get();
+          // dd($top5);
+          return view('welcome',compact('candidates','top5'));
+        }
         else
           $candidates = $candidates = Candidates::join('colleges','colleges.id','=','candidates.college')->join('initial_scores','initial_scores.candidate','=','candidates.id')->where('judge',Auth::user()->id)->get();
 
-        return view('view',compact('candidates'));
+        return view('welcome',compact('candidates'));
       }
     }
 
     public function addScores(Request $request){
       $check = Prepageants::where('judge',$request['judge'])->get();
       $final = InitialScores::where('judge',$request['judge'])->get();
-      // dd($final);
         if($request['event'] == "Talent"){
           foreach($check as $key){
             $i = $key->candidate;

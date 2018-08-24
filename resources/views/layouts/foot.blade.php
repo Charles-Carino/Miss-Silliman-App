@@ -51,17 +51,29 @@ $(document).ready(function() {
       "info":     false
     });
     $('table.finalreports').DataTable({
-      'paging': false,
-      'searching': false,
-      'order': [9,"desc"],
-      "info":     false
-    });
-    $('table.finalscorereports').DataTable({
-      'paging': false,
-      'searching': false,
-      'order': [4,"desc"],
-      "info":     false
-    });
+     'paging': false,
+     'searching': false,
+     'order': [9,"desc"],
+     "info":     false
+   });
+    $('table.seqreport').DataTable({
+     'paging': false,
+     'searching': false,
+     'order': [8,"desc"],
+     "info":     false
+   });
+    $('table.speechresults').DataTable({
+     'paging': false,
+     'searching': false,
+     'order': [4,"desc"],
+     "info":     false
+   });
+   $('table.plsnoscandals').DataTable({
+     'paging': false,
+     'searching': false,
+     'order': [6,"desc"],
+     "info":     false
+   });
     $('.input-row').css('margin-bottom','5px');
     $('.preList').click(function(event){
       event.preventDefault();
@@ -94,6 +106,21 @@ $(document).ready(function() {
       var max = $(this).attr('max');
       var min = $(this).attr('min');
       var num =  $(this).val();
+      var getParam = $(this).attr("class").split('input_');
+      var prodInput = $(this).attr("class").split('pro_input_');
+      var themeInput = $(this).attr("class").split('theme_input_');
+      var eveningInput = $(this).attr("class").split('evening_input_');
+      var initInput = $(this).attr("class").split('init_input_');
+      var seqInput = $(this).attr("class").split('seq_input_');
+      var sqInput = $(this).attr("class").split('sq_input_');
+
+      var rowID = getParam[1];
+      var prodID = prodInput[1];
+      var themeID = themeInput[1];
+      var eveID = eveningInput[1];
+      var seqID = seqInput[1];
+      var initID = initInput[1];
+      var sqID = sqInput[1];
       if(parseFloat(num)<min || parseFloat(num)>max ){
           $(this).css("background-color","#f2dede");
           $(this).val('').focus();
@@ -102,20 +129,6 @@ $(document).ready(function() {
           },1000);
       }else{
         $(this).removeAttr("style");
-        var getParam = $(this).attr("class").split('input_');
-        var prodInput = $(this).attr("class").split('prod_input_');
-        var themeInput = $(this).attr("class").split('theme_input_');
-        var eveningInput = $(this).attr("class").split('evening_input_');
-        var initInput = $(this).attr("class").split('init_input_');
-        var seqInput = $(this).attr("class").split('seq_input_');
-        var sqInput = $(this).attr("class").split('sq_input_');
-        rowID = getParam[1];
-        prodID = prodInput[2];
-        themeID = themeInput[2];
-        eveID = eveningInput[2];
-        seqID = seqInput[2];
-        initID = initInput[2];
-        sqID = sqInput[2];
         if(prodInput[0].indexOf("production") >= 0){
           $(".pro_input_"+prodID).each(function(){
             var inputVal = $(this).val();
@@ -153,12 +166,76 @@ $(document).ready(function() {
           });
           $("#initTotal"+initID).attr('value',totalSum);
         }else if(sqInput[0].indexOf("stanquestion") >= 0){
-          $(".sq_input_"+sqID).each(function(){
-              var inputVal = $(this).val();
-              if($.isNumeric(inputVal))
-                totalSum += parseFloat(inputVal);
-          });
-          $("#sqTotal"+sqID).attr('value',totalSum);
+          var x1=0;
+          var x2=0;
+          var x3=0;
+
+          if($(this).hasClass("one")){
+
+            if(!$.isNumeric($(this).val())) {
+              $(this).val(0).select();
+              x1 = $(this).val(0);
+            }else
+              x1 = $(this).val();
+
+            if(!$.isNumeric($("#stanRow"+sqID+" #sq2").val())) {
+              $("#stanRow" + sqID + " #sq2").val(0);
+              x2 = $("#stanRow" + sqID + " #sq2").val(0);
+            }else
+              x2=$("#stanRow"+sqID+" #sq2").val();
+
+            if(!$.isNumeric($("#stanRow"+sqID+" #sq3").val())) {
+              $("#stanRow" + sqID + " #sq3").val(0);
+              x3 = $("#stanRow" + sqID + " #sq3").val(0);
+            }else
+              x3 = $("#stanRow"+sqID+" #sq3").val();
+
+          }else if($(this).hasClass("two")){
+
+            if(!$.isNumeric($(this).val())) {
+              $(this).val(0).select();
+              x2 = $(this).val(0);
+            }else
+              x2=$(this).val();
+
+            if(!$.isNumeric($("#stanRow"+sqID+" #sq1").val())) {
+              $("#stanRow"+sqID+" #sq1").val(0);
+              x1 = $("#stanRow"+sqID+" #sq1").val();
+            }else
+              x1 = $("#stanRow"+sqID+" #sq1").val();
+
+            if(!$.isNumeric($("#stanRow"+sqID+" #sq3").val())) {
+              $("#stanRow"+sqID+" #sq3").val(0);
+              x3 = $("#stanRow"+sqID+" #sq3").val();
+            }else
+              x3 = $("#stanRow"+sqID+" #sq3").val();
+
+          }else if($(this).hasClass("three")){
+
+            if(!$.isNumeric($(this).val())) {
+              $(this).val(0).select();
+              x3 = $(this).val();
+            }else
+              x3 = $(this).val();
+
+            if(!$.isNumeric($("#stanRow"+sqID+" #sq1").val())) {
+              $("#stanRow"+sqID+" #sq1").val(0);
+              x1 = $("#stanRow"+sqID+" #sq1").val();
+            }else
+              x1 = $("#stanRow"+sqID+" #sq1").val();
+
+            if(!$.isNumeric($("#stanRow"+sqID+" #sq2").val())) {
+              $("#stanRow"+sqID+" #sq2").val(0);
+              x2 = $("#stanRow"+sqID+" #sq2").val();
+            }else
+              x2 = $("#stanRow"+sqID+" #sq2").val();
+
+          }
+
+          totalSum = parseFloat(x1)*.6+parseFloat(x2)*.2+parseFloat(x3)*.2;
+          //console.log((x1)*.6+" - "+parseFloat(x2)*.2+" - "+parseFloat(x3) *.2);
+
+          $("#sqTotal"+sqID).val(totalSum.toFixed(2));
         }else{
           $(".input_"+rowID).each(function(){
               var inputVal = $(this).val();
@@ -276,6 +353,38 @@ $(document).ready(function() {
         async:false
       });
     });
+
+    $(".finalize").click(function(){
+       var all = $("#print-pn-initialscore-summ").find("input").length;
+       var values = [];
+       var key = [];
+       console.log($("#print-pn-initialscore-summ").find("input"));
+       var j = 0;
+       for(var i = 0; i < all;i++){
+         if($("#print-pn-initialscore-summ").find("input")[i]['value'] != ''){
+           key[j] = $("#print-pn-initialscore-summ").find("input")[j]['dataset']['rel'];
+           values[j] = $("#print-pn-initialscore-summ").find("input")[j]['value'];
+           // console.log('key '+i+' - j '+j);
+         }
+         j++;
+       }
+
+       $.ajax({
+         url: "{{url('/finalizeTop5')}}",
+         type: 'post',
+         postType: 'json',
+         data: {
+           "_token": "{{csrf_token()}}",
+           "key": key,
+           "values": values
+         },
+         success:function(data){
+           $('#finalizeTOP').modal('hide');
+         },
+         async:false
+       });
+    });
+
     $('panel').on( 'click', '.add', function () {
       $("#judgeForm").find("input[type=text]").val("");
       $("#JudgeField-Username").attr("onClick='suggestJUsername()'");
@@ -306,8 +415,11 @@ $(document).ready(function() {
     });
 
     $("button.btnRanking").click(function(e){
-      // e.stopPropagation();
+      var hTitle = $('.tab-pane.active').find('h3:first').text();
 
+      $('.modal-body h3').text(hTitle);
+      // e.stopPropagation();
+      var hTitle = $(".tab-pane").attr('id');
       var x = $(this).attr("data-rel");
       if(x == "pl"){
         $("table.ranking").dataTable().fnDestroy();
@@ -380,7 +492,8 @@ $(document).ready(function() {
         $('table.ranking').DataTable({
           'paging': false,
           'searching': false,
-          'order': [col,"desc"]
+          'order': [col,"desc"],
+          'info': false
         });
       }
     });

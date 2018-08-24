@@ -864,7 +864,7 @@
                                                                     <td>{{number_format($key->prepageant_thirtypercent,2)}}</td>
                                                                     <td>{{number_format($key->pageantNight_sixtypercent,2)}}</td>
                                                                     <td>{{number_format($key->totalInitial,2)}}</td>
-                                                                    @if($rank <= 5)
+                                                                    @if($rank <= 10)
                                                                     <td class="rank"><input type="number" class="form-control" data-rel="{{$key->id}}" value="{{$rank++}}"/></td>
                                                                     @else
                                                                     <td></td>

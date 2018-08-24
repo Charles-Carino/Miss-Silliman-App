@@ -634,13 +634,14 @@
                                     <span class="hidden-xs">Initial Interview</span>
                                 </a>
                             </li>
+                            @if(count($top5) > 0)
                             <li class="tab">
                                 <a href="#standardQuestion" data-toggle="tab" aria-expanded="false">
                                     <span class="visible-xs"><i class="fa fa-cog"></i></span>
                                     <span class="hidden-xs">Standard Question</span>
                                 </a>
                             </li>
-
+                            @endif
                         </ul>
                         <div class="tab-content">
                           <div class="tab-pane active" id="sequentialInterview">

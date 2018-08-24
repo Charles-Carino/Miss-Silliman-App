@@ -9,9 +9,20 @@ use App\InitialScores;
 class InitialScoresController extends Controller
 {
     public function finalize(Request $request){
+      // dd($request);
+      $cleanedArray = [];
+      $cleanedKeys = [];
       for($i = 0; $i < count($request['key']);$i++){
-        Candidates::where('id',$request['key'][$i])->update([
-            'isTop' => $request['values'][$i]
+        if(!is_null($request['values'][$i])){
+          $cleanedArray[$request['key'][$i]] = $request['values'][$i];
+        }
+      }
+      // dump($cleanedKeys);
+      dump($cleanedArray);
+      $cleanedKeys = array_keys($cleanedArray);
+      foreach($cleanedKeys as $key){
+        Candidates::where('id',$key)->update([
+            'isTop' => $cleanedArray[$key]
         ]);
       }
     }

@@ -353,10 +353,14 @@ $(document).ready(function() {
        var values = [];
        var key = [];
        console.log($("#print-pn-initialscore-summ").find("input"));
-
+       var j = 0;
        for(var i = 0; i < all;i++){
-         key[i] = $("#print-pn-initialscore-summ").find("input")[i]['dataset']['rel'];
-         values[i] = $("#print-pn-initialscore-summ").find("input")[i]['value'];
+         if($("#print-pn-initialscore-summ").find("input")[i]['value'] != ''){
+           key[j] = $("#print-pn-initialscore-summ").find("input")[j]['dataset']['rel'];
+           values[j] = $("#print-pn-initialscore-summ").find("input")[j]['value'];
+           // console.log('key '+i+' - j '+j);
+         }
+         j++;
        }
 
        $.ajax({

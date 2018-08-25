@@ -95,6 +95,10 @@ $(document).ready(function() {
       $('.total').addClass('col-xs-5 col-md-5');
     });
 
+    $("input.top5").on('click',function(){
+      $(this).select().val('');
+    });
+
     $(".form-line").on("input",".form-control",function(){
       var totalSum = 0;
       var max = $(this).attr('max');
@@ -115,6 +119,7 @@ $(document).ready(function() {
       var seqID = seqInput[1];
       var initID = initInput[1];
       var sqID = sqInput[1];
+
       if(parseFloat(num)<min || parseFloat(num)>max ){
           $(this).css("background-color","#f2dede");
           $(this).val('').focus();

@@ -770,7 +770,7 @@ function finalcmp($a, $b) {
                                                                     <td class="numfield">{{number_format($key->AverageEveGown,2)}}</td>
                                                                 </tr>
                                                                 @endforeach
-                                                            </tbody>oreach
+                                                            </tbody>
                                                             </tbody>
                                                         </table>
                                                         @foreach($finalJudges as $key)
@@ -955,6 +955,8 @@ function finalcmp($a, $b) {
                                                                     <th>Press Launch (10%)</th>
                                                                     <th>Pre-Pageant (30%)</th>
                                                                     <th>Pageant Night (60%)</th>
+                                                                    <th>Before Deductions</th>
+                                                                    <th>Deductions</th>
                                                                     <th>Total</th>
                                                                     <th>Rank</th>
                                                                 </tr>
@@ -967,6 +969,8 @@ function finalcmp($a, $b) {
                                                                     <td>{{$key->pressLaunch_tenpercent}}</td>
                                                                     <td>{{$key->prepageant_thirtypercent}}</td>
                                                                     <td>{{$key->pageantNight_sixtypercent}}</td>
+                                                                    <td>{{$key->beforeInitial}}</td>
+                                                                    <td>{{$key->deductions}}</td>
                                                                     <td>{{$key->totalInitial}}</td>
                                                                     @if($rank <= 10)
                                                                     <td class="rank"><input type="number" class="form-control top5" data-rel="{{$key->id}}" value="{{$rank++}}"/></td>

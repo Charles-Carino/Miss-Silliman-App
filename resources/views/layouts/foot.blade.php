@@ -369,7 +369,6 @@ $(document).ready(function() {
        var all = $("#print-pn-initialscore-summ").find("input").length;
        var values = [];
        var key = [];
-       console.log($("#print-pn-initialscore-summ").find("input"));
        var j = 0;
        for(var i = 0; i < all;i++){
          if($("#print-pn-initialscore-summ").find("input")[i]['value'] != ''){

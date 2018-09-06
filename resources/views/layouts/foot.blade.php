@@ -44,6 +44,18 @@ $(document).ready(function() {
       'order': [5,"desc"],
       "info": false
     });
+    $('table.initSummary').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [7,"desc"],
+      "info": false
+    });
+    $('table.speechresults').DataTable({
+      'paging': false,
+      'searching': false,
+      'order': [4,"desc"],
+      "info": false
+    });
     $('table.ranking').DataTable({
       'paging': false,
       'searching': false,

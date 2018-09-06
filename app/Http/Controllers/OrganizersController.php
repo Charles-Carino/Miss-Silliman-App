@@ -31,6 +31,10 @@ class OrganizersController extends Controller
 									->orderby('PL_RS','desc')
 									->get();
 
+        $checkTop = Candidates::where('isTop','!=','')->pluck('isTop');
+
+//        dd($checkTop);
+
         $reports = DB::select(DB::raw(
 			"select
           			t0.id,
@@ -2264,7 +2268,7 @@ $bestSpeaker = DB::select(DB::raw("
 
   $standardQuestion = DB::select(DB::raw($sql.' order by Average_SQ_Total desc limit 5'));
   // dd($sql.' order by Average_SQ_Total desc limit 5');
-	return view('maintenance.maintenance',compact('judges','organizers','candidates', 'colleges','prepageants','initScores','prePajFinal', 'reports','pressLaunchScores','initialScores','initialScoreSummary','finalScore','bestSpeaker','standardQuestion'));
+	return view('maintenance.maintenance',compact('judges','organizers','candidates', 'colleges','prepageants','initScores','prePajFinal', 'reports','pressLaunchScores','initialScores','initialScoreSummary','finalScore','bestSpeaker','standardQuestion','checkTop'));
 }
 
 }

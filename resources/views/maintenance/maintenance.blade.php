@@ -127,7 +127,7 @@ function finalcmp($a, $b) {
             <div class="tab-content">
                 @if(in_array("admin",$explode) == "true")
                 <div class="tab-pane active" id="judge">
-                  <div class="container">
+                  <div class="row">
                       <!-- Page-Title -->
                       <div class="row">
                           <div class="col-sm-12">
@@ -172,7 +172,7 @@ function finalcmp($a, $b) {
                   </div> <!-- container -->
                 </div><!-- end of judge pane -->
                 <div class="tab-pane" id="organizer">
-                  <div class="container">
+                  <div class="row">
                       <!-- Page-Title -->
                       <div class="row">
                           <div class="col-sm-12">
@@ -221,7 +221,7 @@ function finalcmp($a, $b) {
                   </div> <!-- container -->
                 </div><!-- end of organizer pane -->
                 <div class="tab-pane" id="candidate">
-                  <div class="container">
+                  <div class="row">
                       <!-- Page-Title -->
                       <div class="row">
                           <div class="col-sm-12">
@@ -269,7 +269,7 @@ function finalcmp($a, $b) {
                 </div><!-- end of candidate pane -->
                 @endif
                 <div class="tab-pane {{$active}}" id="reports">
-                  <div class="container">
+                  <div class="row">
                       <!-- Page-Title -->
                       <div class="row">
                           <div class="col-sm-12">
@@ -947,7 +947,7 @@ function finalcmp($a, $b) {
                                                     <div id="print-pn-initialscore-summ" style="overflow-x : auto">
                                                         <h3 style="font-weight:normal;">Miss Silliman 2018</h3>
                                                         <h4 style="font-weight:normal;">Overall Initial Scores</h4>
-                                                        <table class="table table-bordered table-striped prepReports">
+                                                        <table class="table table-bordered table-striped initSummary">
                                                             <thead>
                                                                 <tr>
                                                                     <th>College</th>
@@ -972,10 +972,18 @@ function finalcmp($a, $b) {
                                                                     <td>{{$key->beforeInitial}}</td>
                                                                     <td>{{$key->deductions}}</td>
                                                                     <td>{{$key->totalInitial}}</td>
-                                                                    @if($rank <= 10)
-                                                                    <td class="rank"><input type="number" class="form-control top5" data-rel="{{$key->id}}" value="{{$rank++}}"/></td>
+                                                                    @if($checkTop->count() == 0)
+                                                                        @if($rank <= 10)
+                                                                            <td class="rank"><input type="number" class="form-control top5" data-rel="{{$key->id}}" value="{{$rank++}}"/></td>
+                                                                         @else
+                                                                            <td></td>
+                                                                        @endif
                                                                     @else
-                                                                    <td></td>
+                                                                        @if($rank <= 5)
+                                                                            <td class="rank"><input type="number" class="form-control top5" data-rel="{{$key->id}}" value="{{$rank++}}" disabled/></td>
+                                                                        @else
+                                                                            <td></td>
+                                                                        @endif
                                                                     @endif
                                                                 </tr>
                                                                 @endforeach
@@ -988,9 +996,11 @@ function finalcmp($a, $b) {
                                                         </div>
                                                         @endforeach
                                                     </div>
+                                                    @if($checkTop->count() == 0)
                                                     <div class="row">
                                                       <button type="button" class="btn bg-red" data-target="#finalizeTOP" data-toggle="modal" style="margin:0 auto;display:block;">Finalize Top 5</button>
                                                     </div>
+                                                    @endif
                                                     <div class="modal fade" id="finalizeTOP" tabindex="-1" role="dialog">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
